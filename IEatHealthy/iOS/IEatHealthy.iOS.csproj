@@ -113,6 +113,18 @@
     <ImageAsset Include="Assets.xcassets\XamarinLogo.imageset\xamarin_logo%402x.png" />
     <ImageAsset Include="Assets.xcassets\XamarinLogo.imageset\xamarin_logo%403x.png" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\iehlogo.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\iehlogo.imageset\iehlogoj.jpg" />
+    <ImageAsset Include="Assets.xcassets\user icon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\user icon.imageset\user icon.jpeg" />
+    <ImageAsset Include="Assets.xcassets\password icon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\login icon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\password icon.imageset\LockIcon.jpg" />
+    <ImageAsset Include="Assets.xcassets\login icon.imageset\login icon2.jpeg" />
+    <ImageAsset Include="Assets.xcassets\Timer icon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Timer icon.imageset\timer icon.png" />
+    <ImageAsset Include="Assets.xcassets\newlogo.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\newlogo.imageset\ieh logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ViewControllers\DetailViewControllers\BrowseItemDetailViewController.cs" />
@@ -137,6 +149,18 @@
     </Compile>
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="pickermain.cs" />
+    <Compile Include="pickermain.designer.cs">
+      <DependentUpon>pickermain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="log.cs" />
+    <Compile Include="log.designer.cs">
+      <DependentUpon>log.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SignupController.cs" />
+    <Compile Include="SignupController.designer.cs">
+      <DependentUpon>SignupController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />
@@ -146,6 +170,14 @@
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Main.storyboard" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\iehlogo.imageset\" />
+    <Folder Include="Assets.xcassets\user icon.imageset\" />
+    <Folder Include="Assets.xcassets\password icon.imageset\" />
+    <Folder Include="Assets.xcassets\login icon.imageset\" />
+    <Folder Include="Assets.xcassets\Timer icon.imageset\" />
+    <Folder Include="Assets.xcassets\newlogo.imageset\" />
   </ItemGroup>
   <Import Project="..\IEatHealthy\IEatHealthy.projitems" Label="Shared" Condition="Exists('..\IEatHealthy\IEatHealthy.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
