@@ -22,9 +22,17 @@ namespace IEatHealthy.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView imgView { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITableView slidemenu { get; set; }
+
         [Action ("BtnPick_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void BtnPick_TouchUpInside (UIKit.UIButton sender);
+
+        [Action ("UIButton98821_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void UIButton98821_TouchUpInside (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
@@ -36,6 +44,11 @@ namespace IEatHealthy.iOS
             if (imgView != null) {
                 imgView.Dispose ();
                 imgView = null;
+            }
+
+            if (slidemenu != null) {
+                slidemenu.Dispose ();
+                slidemenu = null;
             }
         }
     }

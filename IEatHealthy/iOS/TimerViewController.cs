@@ -55,7 +55,7 @@ partial void StartTimerButton_TouchUpInside(UIButton sender)
 
 partial void StopTimerLabel_TouchUpInside(UIButton sender)
         {
-            timer = null;
+            timer.Invalidate();
         }
     }
 }
