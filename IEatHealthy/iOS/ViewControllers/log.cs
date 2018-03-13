@@ -11,10 +11,14 @@ namespace IEatHealthy.iOS
         {
             var aleart = UIAlertController.Create("Alert", "Username or password is incorrect", UIAlertControllerStyle.Alert);
             aleart.AddAction(UIAlertAction.Create("ok", UIAlertActionStyle.Cancel, null));
-            if (loginEmail.Text != "meaw " && loginPassword.Text != "meaw")
+            if (loginEmail.Text != "ieh" && loginPassword.Text != "ieh")
             {
                 PresentViewController(aleart, true, null);
+                LogErrMsg.Text = "Incorrect Username or password";
+                LogErrMsg.TextColor = UIColor.White;
+                LogErrMsg.BackgroundColor = UIColor.Red;
             }
+
         }
 
       

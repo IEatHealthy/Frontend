@@ -16,6 +16,10 @@ namespace IEatHealthy.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel LogErrMsg { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton LoginButton { get; set; }
 
         [Outlet]
@@ -32,6 +36,11 @@ namespace IEatHealthy.iOS
 
         void ReleaseDesignerOutlets ()
         {
+            if (LogErrMsg != null) {
+                LogErrMsg.Dispose ();
+                LogErrMsg = null;
+            }
+
             if (LoginButton != null) {
                 LoginButton.Dispose ();
                 LoginButton = null;

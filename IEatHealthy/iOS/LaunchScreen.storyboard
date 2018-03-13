@@ -18,9 +18,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2549" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" image="newlogo">
-                                <rect key="frame" x="87" y="287" width="240" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="4301" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" image="newlogo">
+                                <rect key="frame" x="41" y="241" width="322" height="79"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                             </imageView>
                         </subviews>
                     </view>
@@ -33,12 +34,13 @@
     <resources>
         <image name="First" width="32" height="30"/>
         <image name="Second" width="32" height="30"/>
-        <image name="XamarinLogo" width="220" height="51"/>
+        <image name="XamarinLogo" width="600" height="900"/>
         <image name="iehlogo" width="265" height="171"/>
         <image name="user icon" width="176" height="195"/>
         <image name="password icon" width="183" height="197"/>
         <image name="login icon" width="318" height="159"/>
         <image name="Timer icon" width="550" height="550"/>
-        <image name="newlogo" width="1350" height="525"/>
+        <image name="newlogo" width="359" height="88"/>
+        <image name="foodicon" width="580" height="384"/>
     </resources>
 </document>

@@ -21,10 +21,13 @@ namespace IEatHealthy.iOS
         //intialise  
       
 
+
         partial void Signupbutton_TouchUpInside(UIButton sender)
         {
-            this.Username = Uname.Text;
-            this.Userpassword = UPword.Text;
+           // if (Uname.Text == null) { Uname.Text = "*"; Uname.TextColor = UIColor.Red; }
+            //else { this.Username = Uname.Text; }
+            //this.Userpassword = UPword.Text;
+        
         }
     }
 }

@@ -16,11 +16,19 @@ namespace IEatHealthy.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton BtnPick { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton btnSaveItem { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField cooktime { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView imgView { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -34,12 +42,21 @@ namespace IEatHealthy.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtTitle { get; set; }
 
+        [Action ("BtnPick_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void BtnPick_TouchUpInside (UIKit.UIButton sender);
+
         [Action ("PrepValueChange:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void PrepValueChange (UIKit.UITextField sender);
 
         void ReleaseDesignerOutlets ()
         {
+            if (BtnPick != null) {
+                BtnPick.Dispose ();
+                BtnPick = null;
+            }
+
             if (btnSaveItem != null) {
                 btnSaveItem.Dispose ();
                 btnSaveItem = null;
@@ -48,6 +65,11 @@ namespace IEatHealthy.iOS
             if (cooktime != null) {
                 cooktime.Dispose ();
                 cooktime = null;
+            }
+
+            if (imgView != null) {
+                imgView.Dispose ();
+                imgView = null;
             }
 
             if (preptime != null) {
