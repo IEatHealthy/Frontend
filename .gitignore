@@ -3,12 +3,6 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="iOS/Main.storyboard">
     <Files>
       <File FileName="iOS/Main.storyboard" />
-      <File FileName="IEatHealthy/Models/UserAccount.cs" Line="11" Column="9" />
-      <File FileName="iOS/ViewControllers/WelcomepageViewController.cs" Line="15" Column="24" />
-      <File FileName="IEatHealthy/Models/Item.cs" Line="10" Column="28" />
-      <File FileName="iOS/ViewControllers/ItemNewViewController.cs" Line="35" Column="9" />
-      <File FileName="iOS/TimerViewController.cs" Line="22" Column="10" />
-      <File FileName="iOS/ViewControllers/SignupController.cs" Line="14" Column="10" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />

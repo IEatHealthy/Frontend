@@ -92,8 +92,7 @@
                     <connections>
                         <segue destination="IVu-6x-Ha6" kind="relationship" relationship="viewControllers" id="1947"/>
                         <segue id="46722" destination="46660" kind="relationship" relationship="viewControllers"/>
-                        <segue id="137476" destination="137403" kind="relationship" relationship="viewControllers"/>
-                        <segue id="137506" destination="137410" kind="relationship" relationship="viewControllers"/>
+                        <segue id="137451" destination="137401" kind="relationship" relationship="viewControllers"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -1103,43 +1102,25 @@
             </objects>
             <point key="canvasLocation" x="-691" y="528"/>
         </scene>
-        <scene sceneID="137402">
+        <scene sceneID="137400">
             <objects>
-                <viewController id="137403" sceneMemberID="viewController">
+                <viewController id="137401" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="137400"/>
-                        <viewControllerLayoutGuide type="bottom" id="137401"/>
+                        <viewControllerLayoutGuide type="top" id="137398"/>
+                        <viewControllerLayoutGuide type="bottom" id="137399"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="137404">
+                    <view key="view" contentMode="scaleToFill" id="137402">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Recipes" id="137475"/>
+                    <tabBarItem key="tabBarItem" title="Recipes" id="137450"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="137405" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="137403" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="669" y="3213"/>
-        </scene>
-        <scene sceneID="137409">
-            <objects>
-                <viewController id="137410" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="137407"/>
-                        <viewControllerLayoutGuide type="bottom" id="137408"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="137411">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" id="137505" title="Cart"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="137412" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="646" y="4150"/>
+            <point key="canvasLocation" x="117" y="2199"/>
         </scene>
     </scenes>
     <resources>
