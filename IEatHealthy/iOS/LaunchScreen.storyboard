@@ -42,5 +42,6 @@
         <image name="Timer icon" width="550" height="550"/>
         <image name="newlogo" width="359" height="88"/>
         <image name="foodicon" width="580" height="384"/>
+        <image name="flowericon" width="255" height="259"/>
     </resources>
 </document>

@@ -16,39 +16,26 @@ namespace IEatHealthy.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton BtnPick { get; set; }
+        UIKit.UIImageView profileimgButton { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIImageView imgView { get; set; }
+        UIKit.UITextField ProfiletextLabel { get; set; }
 
-        [Outlet]
+        [Action ("UIButton118449_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITableView slidemenu { get; set; }
-
-        [Action ("BtnPick_TouchUpInside:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void BtnPick_TouchUpInside (UIKit.UIButton sender);
-
-        [Action ("UIButton98821_TouchUpInside:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void UIButton98821_TouchUpInside (UIKit.UIButton sender);
+        partial void UIButton118449_TouchUpInside (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
-            if (BtnPick != null) {
-                BtnPick.Dispose ();
-                BtnPick = null;
+            if (profileimgButton != null) {
+                profileimgButton.Dispose ();
+                profileimgButton = null;
             }
 
-            if (imgView != null) {
-                imgView.Dispose ();
-                imgView = null;
-            }
-
-            if (slidemenu != null) {
-                slidemenu.Dispose ();
-                slidemenu = null;
+            if (ProfiletextLabel != null) {
+                ProfiletextLabel.Dispose ();
+                ProfiletextLabel = null;
             }
         }
     }

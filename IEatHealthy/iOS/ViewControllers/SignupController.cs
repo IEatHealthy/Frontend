@@ -6,28 +6,17 @@ namespace IEatHealthy.iOS
 {
     public partial class SignupController : UIViewController
     {
-        public SignupController (IntPtr handle) : base (handle)
+        public SignupController(IntPtr handle) : base(handle)
         {
         }
-        public string Username { get; set; } 
-        public string Userpassword { get; set; } 
-        public string  UserFirstName{ get; set; }
-        public string  UserLastName{ get; set; } 
-        public string  UserEmail{ get; set; } 
-        public string  UserCookingSkill{ get; set; } 
-
-
-         
-        //intialise  
-      
-
 
         partial void Signupbutton_TouchUpInside(UIButton sender)
         {
-           // if (Uname.Text == null) { Uname.Text = "*"; Uname.TextColor = UIColor.Red; }
-            //else { this.Username = Uname.Text; }
-            //this.Userpassword = UPword.Text;
-        
+            var user001 = new UserAccount
+            {
+            };
         }
     }
 }
+
+

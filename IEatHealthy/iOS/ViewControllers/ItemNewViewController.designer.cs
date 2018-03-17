@@ -50,6 +50,10 @@ namespace IEatHealthy.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void PrepValueChange (UIKit.UITextField sender);
 
+        [Action ("UIButton105959_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void UIButton105959_TouchUpInside (UIKit.UIButton sender);
+
         void ReleaseDesignerOutlets ()
         {
             if (BtnPick != null) {

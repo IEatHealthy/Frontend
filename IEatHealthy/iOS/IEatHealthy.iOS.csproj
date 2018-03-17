@@ -127,6 +127,12 @@
     <ImageAsset Include="Assets.xcassets\foodicon.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\foodicon.imageset\Screen Shot 2018-03-09 at 11.47.20 AM.png" />
     <ImageAsset Include="Assets.xcassets\XamarinLogo.imageset\food.jpg" />
+    <ImageAsset Include="Assets.xcassets\flowericon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\flowericon.imageset\Leaves_Logox3.png" />
+    <ImageAsset Include="Assets.xcassets\flowericon.imageset\UI_1.2 - Page 10.png" />
+    <ImageAsset Include="Assets.xcassets\flowericon.imageset\Leaves_Logox2.png" />
+    <ImageAsset Include="Assets.xcassets\profileicon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\profileicon.imageset\Screen Shot 2018-03-16 at 4.51.34 PM.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ViewControllers\DetailViewControllers\BrowseItemDetailViewController.cs" />
@@ -197,6 +203,8 @@
     <Folder Include="Assets.xcassets\Timer icon.imageset\" />
     <Folder Include="Assets.xcassets\newlogo.imageset\" />
     <Folder Include="Assets.xcassets\foodicon.imageset\" />
+    <Folder Include="Assets.xcassets\flowericon.imageset\" />
+    <Folder Include="Assets.xcassets\profileicon.imageset\" />
   </ItemGroup>
   <Import Project="..\IEatHealthy\IEatHealthy.projitems" Label="Shared" Condition="Exists('..\IEatHealthy\IEatHealthy.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
