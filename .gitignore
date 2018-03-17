@@ -1,13 +1,14 @@
 ﻿<Properties StartupConfiguration="{C2E903DD-CDDC-4AE6-AFDE-B54511A5E1C0}|Default">
   <MonoDevelop.Ide.ItemProperties.IEatHealthy.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.CCB9EF01-6919-420D-B844-551559F2010F" automaticSigning="False" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/Main.storyboard">
+  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/ViewControllers/SignupController.cs">
     <Files>
       <File FileName="iOS/Main.storyboard" />
-      <File FileName="iOS/ViewControllers/WelcomepageViewController.cs" Line="18" Column="2" />
-      <File FileName="iOS/Main.cs" Line="13" Column="1" />
-      <File FileName="iOS/TimerViewController.cs" Line="58" Column="31" />
-      <File FileName="iOS/LaunchScreen.storyboard" />
-      <File FileName="iOS/ViewControllers/moreviewcontroller.cs" Line="19" Column="6" />
+      <File FileName="iOS/ViewControllers/WelcomepageViewController.cs" Line="15" Column="32" />
+      <File FileName="iOS/Main.cs" Line="17" Column="1" />
+      <File FileName="iOS/ViewControllers/ItemNewViewController.cs" Line="28" Column="14" />
+      <File FileName="IEatHealthy/Models/UserAccount.cs" Line="11" Column="9" />
+      <File FileName="IEatHealthy/Models/Item.cs" Line="7" Column="9" />
+      <File FileName="iOS/ViewControllers/SignupController.cs" Line="23" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.IEatHealthy.Droid AndroidDesignerPreferredTheme="MasterDetailTheme" />
