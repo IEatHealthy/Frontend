@@ -1,5 +1,6 @@
 ﻿using System;
 using UIKit;
+using Foundation;
 
 namespace IEatHealthy.iOS
 {
@@ -17,11 +18,14 @@ namespace IEatHealthy.iOS
 
             Title = ViewModel.Title;
 
-            AppNameLabel.Text = "I Eat Healthy";
-            VersionLabel.Text = "1.0";
-            AboutTextView.Text = "This app is written in C# and native APIs using the Xamarin Platform. It shares code with its iOS, Android, & Windows versions.";
-        }
+               }
+        public Foundation.NSUrl url;
 
-        partial void ReadMoreButton_TouchUpInside(UIButton sender) => ViewModel.OpenWebCommand.Execute(null);
+        partial void UIButton1646_TouchUpInside(UIButton sender)
+        {
+            UIApplication.SharedApplication.OpenUrl(new NSUrl("http://ieathealthy.info/Home/About"));
+
+
+        }
     }
 }

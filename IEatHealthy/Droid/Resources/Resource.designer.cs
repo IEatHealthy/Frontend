@@ -3000,7 +3000,7 @@ namespace IEatHealthy.Droid.Resources
 
             // aapt resource value: 0x7f0a0027
             public const int tab2 = 2131361831;
-
+            public const int tab3 = 2131361832;
             // aapt resource value: 0x7f0a0030
             public const int text = 2131361840;
 

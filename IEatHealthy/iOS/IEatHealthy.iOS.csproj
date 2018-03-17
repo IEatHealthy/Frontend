@@ -109,10 +109,30 @@
     <ImageAsset Include="Assets.xcassets\Second.imageset\tab_about%402x.png" />
     <ImageAsset Include="Assets.xcassets\Second.imageset\tab_about%403x.png" />
     <ImageAsset Include="Assets.xcassets\XamarinLogo.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\XamarinLogo.imageset\xamarin_logo.png" />
     <ImageAsset Include="Assets.xcassets\XamarinLogo.imageset\xamarin_logo%402x.png" />
     <ImageAsset Include="Assets.xcassets\XamarinLogo.imageset\xamarin_logo%403x.png" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\iehlogo.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\iehlogo.imageset\iehlogoj.jpg" />
+    <ImageAsset Include="Assets.xcassets\user icon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\user icon.imageset\user icon.jpeg" />
+    <ImageAsset Include="Assets.xcassets\password icon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\login icon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\password icon.imageset\LockIcon.jpg" />
+    <ImageAsset Include="Assets.xcassets\login icon.imageset\login icon2.jpeg" />
+    <ImageAsset Include="Assets.xcassets\Timer icon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Timer icon.imageset\timer icon.png" />
+    <ImageAsset Include="Assets.xcassets\newlogo.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\newlogo.imageset\Logo-final.png" />
+    <ImageAsset Include="Assets.xcassets\foodicon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\foodicon.imageset\Screen Shot 2018-03-09 at 11.47.20 AM.png" />
+    <ImageAsset Include="Assets.xcassets\XamarinLogo.imageset\food.jpg" />
+    <ImageAsset Include="Assets.xcassets\flowericon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\flowericon.imageset\Leaves_Logox3.png" />
+    <ImageAsset Include="Assets.xcassets\flowericon.imageset\UI_1.2 - Page 10.png" />
+    <ImageAsset Include="Assets.xcassets\flowericon.imageset\Leaves_Logox2.png" />
+    <ImageAsset Include="Assets.xcassets\profileicon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\profileicon.imageset\Screen Shot 2018-03-16 at 4.51.34 PM.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ViewControllers\DetailViewControllers\BrowseItemDetailViewController.cs" />
@@ -137,6 +157,34 @@
     </Compile>
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="ViewControllers\moreviewcontroller.cs" />
+    <Compile Include="ViewControllers\moreviewcontroller.designer.cs">
+      <DependentUpon>moreviewcontroller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\PasswordResetController.cs" />
+    <Compile Include="ViewControllers\PasswordResetController.designer.cs">
+      <DependentUpon>PasswordResetController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\pickermain.cs" />
+    <Compile Include="ViewControllers\pickermain.designer.cs">
+      <DependentUpon>pickermain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\SignupController.cs" />
+    <Compile Include="ViewControllers\SignupController.designer.cs">
+      <DependentUpon>SignupController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\WelcomepageViewController.cs" />
+    <Compile Include="ViewControllers\WelcomepageViewController.designer.cs">
+      <DependentUpon>WelcomepageViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\log.cs" />
+    <Compile Include="ViewControllers\log.designer.cs">
+      <DependentUpon>log.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TimerViewController.cs" />
+    <Compile Include="TimerViewController.designer.cs">
+      <DependentUpon>TimerViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />
@@ -146,6 +194,17 @@
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Main.storyboard" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\iehlogo.imageset\" />
+    <Folder Include="Assets.xcassets\user icon.imageset\" />
+    <Folder Include="Assets.xcassets\password icon.imageset\" />
+    <Folder Include="Assets.xcassets\login icon.imageset\" />
+    <Folder Include="Assets.xcassets\Timer icon.imageset\" />
+    <Folder Include="Assets.xcassets\newlogo.imageset\" />
+    <Folder Include="Assets.xcassets\foodicon.imageset\" />
+    <Folder Include="Assets.xcassets\flowericon.imageset\" />
+    <Folder Include="Assets.xcassets\profileicon.imageset\" />
   </ItemGroup>
   <Import Project="..\IEatHealthy\IEatHealthy.projitems" Label="Shared" Condition="Exists('..\IEatHealthy\IEatHealthy.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
