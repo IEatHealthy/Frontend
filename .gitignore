@@ -1,10 +1,9 @@
 ﻿<Properties StartupConfiguration="{C2E903DD-CDDC-4AE6-AFDE-B54511A5E1C0}|Default">
-  <MonoDevelop.Ide.ItemProperties.IEatHealthy.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.375341B5-1234-4917-8987-A27E24FB0DB9" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/ViewControllers/WelcomepageViewController.cs">
+  <MonoDevelop.Ide.ItemProperties.IEatHealthy.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.65CF517D-2F9E-44B1-B679-B588A196AE3D" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/Main.storyboard">
     <Files>
+      <File FileName="iOS/ViewControllers/AboutViewController.cs" Line="1" Column="1" />
       <File FileName="iOS/Main.storyboard" />
-      <File FileName="IEatHealthy/Models/UserAccount.cs" Line="11" Column="9" />
-      <File FileName="iOS/ViewControllers/WelcomepageViewController.cs" Line="15" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
