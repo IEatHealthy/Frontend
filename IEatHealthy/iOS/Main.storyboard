@@ -1131,7 +1131,8 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="62895" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="20" y="598" width="333" height="30"/>
-                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.984313725490196" green="0.41568627450980394" blue="0.36862745098039218" alpha="1"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.96470588235294119" green="0.19215686274509805" blue="0.1803921568627451" alpha="1"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Continue with email">
                                     <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                                 </state>
@@ -1141,7 +1142,8 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="62896" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="20" y="636" width="333" height="30"/>
-                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.094117647058823528" green="0.082352941176470587" blue="0.6705882352941176" alpha="1"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0" green="0" blue="0.64313725490196083" alpha="1"/>
                                 <state key="normal" title="Continue with Facebook">
                                     <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                                 </state>
@@ -1151,7 +1153,8 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="62897" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="20" y="674" width="333" height="30"/>
-                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.45490196078431372" green="0.57647058823529407" blue="1" alpha="1"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0" green="0.36078431372549019" blue="0.95294117647058818" alpha="1"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Continue with Google">
                                     <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                                 </state>
