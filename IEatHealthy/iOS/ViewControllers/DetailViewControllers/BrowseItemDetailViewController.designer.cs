@@ -16,22 +16,40 @@ namespace IEatHealthy.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel ItemDescriptionLabel { get; set; }
+        UIKit.UIImageView IngredianPic { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel ItemNameLabel { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextView listIngrediants { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel TotaltimeLabel { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
-            if (ItemDescriptionLabel != null) {
-                ItemDescriptionLabel.Dispose ();
-                ItemDescriptionLabel = null;
+            if (IngredianPic != null) {
+                IngredianPic.Dispose ();
+                IngredianPic = null;
             }
 
             if (ItemNameLabel != null) {
                 ItemNameLabel.Dispose ();
                 ItemNameLabel = null;
+            }
+
+            if (listIngrediants != null) {
+                listIngrediants.Dispose ();
+                listIngrediants = null;
+            }
+
+            if (TotaltimeLabel != null) {
+                TotaltimeLabel.Dispose ();
+                TotaltimeLabel = null;
             }
         }
     }

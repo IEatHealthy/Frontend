@@ -32,6 +32,10 @@ namespace IEatHealthy.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton NewInstructionBtn { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField preptime { get; set; }
 
         [Outlet]
@@ -49,10 +53,6 @@ namespace IEatHealthy.iOS
         [Action ("PrepValueChange:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void PrepValueChange (UIKit.UITextField sender);
-
-        [Action ("UIButton105959_TouchUpInside:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void UIButton105959_TouchUpInside (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
@@ -74,6 +74,11 @@ namespace IEatHealthy.iOS
             if (imgView != null) {
                 imgView.Dispose ();
                 imgView = null;
+            }
+
+            if (NewInstructionBtn != null) {
+                NewInstructionBtn.Dispose ();
+                NewInstructionBtn = null;
             }
 
             if (preptime != null) {

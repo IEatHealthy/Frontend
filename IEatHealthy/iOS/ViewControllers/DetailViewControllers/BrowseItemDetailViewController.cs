@@ -14,7 +14,20 @@ namespace IEatHealthy.iOS
 
             Title = ViewModel.Title;
             ItemNameLabel.Text = ViewModel.Item.Text;
-            ItemDescriptionLabel.Text = ViewModel.Item.Description;
+            int totaltime = ViewModel.Item.PrepTime + ViewModel.Item.CookTime;
+            TotaltimeLabel.Text = totaltime.ToString();
+            IngredianPic.Image = ViewModel.Item.picture;
+            string ingrediantlistview="";
+            if (ViewModel.Item.Ingrediants != null)
+            {
+                foreach (string item in ViewModel.Item.Ingrediants)
+                {
+                    ingrediantlistview = ingrediantlistview + item + "\n";
+                }
+            }
+            listIngrediants.Text = ingrediantlistview;
+
+
         }
     }
 }

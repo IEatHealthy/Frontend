@@ -83,19 +83,19 @@
     <Reference Include="Xamarin.iOS" />
     <Reference Include="System.Net.Http" />
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Plugin.Share.Abstractions">
-      <HintPath>..\packages\Plugin.Share.7.0.1\lib\Xamarin.iOS10\Plugin.Share.Abstractions.dll</HintPath>
+      <HintPath>..\packages\Plugin.Share.7.1.1\lib\Xamarin.iOS10\Plugin.Share.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Plugin.Share">
-      <HintPath>..\packages\Plugin.Share.7.0.1\lib\Xamarin.iOS10\Plugin.Share.dll</HintPath>
+      <HintPath>..\packages\Plugin.Share.7.1.1\lib\Xamarin.iOS10\Plugin.Share.dll</HintPath>
     </Reference>
     <Reference Include="Plugin.Connectivity.Abstractions">
-      <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.2\lib\Xamarin.iOS10\Plugin.Connectivity.Abstractions.dll</HintPath>
+      <HintPath>..\packages\Xam.Plugin.Connectivity.3.1.1\lib\Xamarin.iOS10\Plugin.Connectivity.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Plugin.Connectivity">
-      <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.2\lib\Xamarin.iOS10\Plugin.Connectivity.dll</HintPath>
+      <HintPath>..\packages\Xam.Plugin.Connectivity.3.1.1\lib\Xamarin.iOS10\Plugin.Connectivity.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +137,10 @@
     <ImageAsset Include="Assets.xcassets\profile.imageset\Profile Iconx1.png" />
     <ImageAsset Include="Assets.xcassets\profile.imageset\Profile Iconx3.png" />
     <ImageAsset Include="Assets.xcassets\profile.imageset\ProfileIconx2.png" />
+    <ImageAsset Include="Assets.xcassets\RatingIcon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\CartIcon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\RatingIcon.imageset\Screen Shot 2018-03-23 at 1.38.10 PM.png" />
+    <ImageAsset Include="Assets.xcassets\CartIcon.imageset\Screen Shot 2018-03-23 at 1.38.27 PM.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ViewControllers\DetailViewControllers\BrowseItemDetailViewController.cs" />
@@ -185,8 +189,8 @@
     <Compile Include="ViewControllers\log.designer.cs">
       <DependentUpon>log.cs</DependentUpon>
     </Compile>
-    <Compile Include="TimerViewController.cs" />
-    <Compile Include="TimerViewController.designer.cs">
+    <Compile Include="ViewControllers\TimerViewController.cs" />
+    <Compile Include="ViewControllers\TimerViewController.designer.cs">
       <DependentUpon>TimerViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -210,6 +214,8 @@
     <Folder Include="Assets.xcassets\flowericon.imageset\" />
     <Folder Include="Assets.xcassets\profileicon.imageset\" />
     <Folder Include="Assets.xcassets\profile.imageset\" />
+    <Folder Include="Assets.xcassets\RatingIcon.imageset\" />
+    <Folder Include="Assets.xcassets\CartIcon.imageset\" />
   </ItemGroup>
   <Import Project="..\IEatHealthy\IEatHealthy.projitems" Label="Shared" Condition="Exists('..\IEatHealthy\IEatHealthy.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

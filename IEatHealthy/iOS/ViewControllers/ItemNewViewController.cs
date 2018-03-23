@@ -1,6 +1,7 @@
 ﻿using System;
 using Foundation;
 using UIKit;
+using System.Collections.Generic;
 
 namespace IEatHealthy.iOS
 {
@@ -20,21 +21,35 @@ namespace IEatHealthy.iOS
         }
 
 
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
             btnSaveItem.TouchUpInside += (sender, e) =>
             {
+                string []names = txtDesc.Text.Split(',');
+                if (preptime.Text == null) { preptime.Text = "0"; }
+                if (cooktime.Text == null) { cooktime.Text = "0"; }
                 var item = new Item
                 {
                     Text = txtTitle.Text,
                     Description = txtDesc.Text,
+                    PrepTime = Convert.ToInt32(preptime.Text),
+                    CookTime = Convert.ToInt32(cooktime.Text),
+                    picture = imgView.Image,
+                    Ingrediants = names,
+
+
+                   
                 };
                 ViewModel.AddItemCommand.Execute(item);
                 NavigationController.PopToRootViewController(true);
             };
+
         }
+
+        
         partial void BtnPick_TouchUpInside(UIButton sender)
         {
             picker = new UIImagePickerController();

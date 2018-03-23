@@ -8,6 +8,7 @@ namespace IEatHealthy
         public string Password { get; set; }
         public int NumberofIngrediants { get; set; }
         public int CookingSkillLevel { get; set; }
+        public string[] shoppingcart { get; set; }
 
     }
 
