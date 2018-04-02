@@ -14,6 +14,7 @@ namespace IEatHealthy.iOS
         {
             var user001 = new UserAccount
             {
+                UserName = Uname.Text,
             };
         }
     }

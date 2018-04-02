@@ -35,6 +35,10 @@ namespace IEatHealthy.iOS
             base.PrepareForSegue(segue, sender);
             var resultview = segue.DestinationViewController as FullDetailViewController;
             resultview.mm = this.ViewModel.Item;
+
+            var ingrediantView = segue.DestinationViewController as SelectIngredient;
+            ingrediantView.ggg = this.ViewModel.Item;
+
         }
     }
 }

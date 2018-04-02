@@ -197,6 +197,10 @@
     <Compile Include="FullDetailViewController.designer.cs">
       <DependentUpon>FullDetailViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\SelectIngredient.cs" />
+    <Compile Include="ViewControllers\SelectIngredient.designer.cs">
+      <DependentUpon>SelectIngredient.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />

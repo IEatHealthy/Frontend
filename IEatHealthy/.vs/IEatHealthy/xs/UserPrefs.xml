@@ -1,12 +1,12 @@
 ﻿<Properties StartupConfiguration="{C2E903DD-CDDC-4AE6-AFDE-B54511A5E1C0}|Default">
   <MonoDevelop.Ide.ItemProperties.IEatHealthy.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.0F802176-C2B6-4E37-88A4-4A6C016DECDB" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/ViewControllers/DetailViewControllers/BrowseItemDetailViewController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/Main.storyboard">
     <Files>
-      <File FileName="iOS/ViewControllers/DetailViewControllers/BrowseItemDetailViewController.cs" Line="35" Column="49" />
-      <File FileName="iOS/FullDetailViewController.cs" Line="33" Column="6" />
+      <File FileName="iOS/ViewControllers/DetailViewControllers/BrowseItemDetailViewController.cs" Line="41" Column="13" />
+      <File FileName="iOS/ViewControllers/SelectIngredient.cs" Line="3" Column="13" />
+      <File FileName="iOS/FullDetailViewController.cs" Line="30" Column="17" />
+      <File FileName="IEatHealthy/Models/Item.cs" Line="18" Column="9" />
       <File FileName="iOS/Main.storyboard" />
-      <File FileName="iOS/ViewControllers/WelcomepageViewController.cs" Line="23" Column="2" />
-      <File FileName="iOS/ViewControllers/AboutViewController.cs" Line="26" Column="102" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
