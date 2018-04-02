@@ -14,5 +14,10 @@ namespace IEatHealthy.iOS
             base.ViewDidLoad();
             bottomLabel.Font = UIFont.FromName("Helvetica-Bold", 10f);
 		}
-	}
+
+        partial void UIButton62896_TouchUpInside(UIButton sender)
+        {
+            UIApplication.SharedApplication.OpenUrl(new NSUrl("https://en-gb.facebook.com/login/"));
+        }
+    }
 }

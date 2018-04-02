@@ -1,4 +1,5 @@
 ﻿using System;
+using Foundation;
 using UIKit;
 
 namespace IEatHealthy.iOS
@@ -28,6 +29,12 @@ namespace IEatHealthy.iOS
             listIngrediants.Text = ingrediantlistview;
 
 
+        }
+        public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+        {
+            base.PrepareForSegue(segue, sender);
+            var resultview = segue.DestinationViewController as FullDetailViewController;
+            resultview.mm = this.ViewModel.Item;
         }
     }
 }
