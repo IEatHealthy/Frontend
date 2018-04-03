@@ -11,7 +11,7 @@ namespace IEatHealthy.iOS
         partial void LoginButton_TouchUpInside(UIButton sender)
         {
            // attempting to authenticate user login 
-            var request = HttpWebRequest.Create(@"http://ieathealthy.info/user/" + loginEmail.Text + "/" + loginPassword.Text);
+            var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/user/{0}/{1}",loginEmail.Text, loginPassword.Text));
             request.ContentType = "application/JSON";
             request.Method = "GET"; 
 
