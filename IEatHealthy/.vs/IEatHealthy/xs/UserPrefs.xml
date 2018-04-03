@@ -2,8 +2,8 @@
   <MonoDevelop.Ide.ItemProperties.IEatHealthy.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.65CF517D-2F9E-44B1-B679-B588A196AE3D" />
   <MonoDevelop.Ide.Workbench ActiveDocument="iOS/ViewControllers/log.cs">
     <Files>
-      <File FileName="iOS/ViewControllers/DetailViewControllers/BrowseItemDetailViewController.cs" Line="45" Column="1" />
-      <File FileName="iOS/ViewControllers/SelectIngredient.cs" Line="10" Column="10" />
+      <File FileName="iOS/ViewControllers/DetailViewControllers/BrowseItemDetailViewController.cs" Line="1" Column="1" />
+      <File FileName="iOS/ViewControllers/SelectIngredient.cs" Line="1" Column="1" />
       <File FileName="iOS/fulldetailViewController.cs" Line="36" Column="1" />
       <File FileName="IEatHealthy/Models/Item.cs" Line="18" Column="9" />
       <File FileName="iOS/Main.storyboard" />
@@ -11,7 +11,7 @@
       <File FileName="IEatHealthy/ViewModels/BaseViewModel.cs" Line="1" Column="1" />
       <File FileName="IEatHealthy/ViewModels/AboutViewModel.cs" Line="1" Column="1" />
       <File FileName="iOS/Main.cs" Line="13" Column="1" />
-      <File FileName="iOS/ViewControllers/log.cs" Line="13" Column="12" />
+      <File FileName="iOS/ViewControllers/log.cs" Line="16" Column="24" />
       <File FileName="IEatHealthy/Models/UserAccount.cs" Line="8" Column="29" />
     </Files>
   </MonoDevelop.Ide.Workbench>
