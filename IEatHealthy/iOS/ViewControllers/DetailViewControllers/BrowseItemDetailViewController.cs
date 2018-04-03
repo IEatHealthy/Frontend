@@ -36,8 +36,8 @@ namespace IEatHealthy.iOS
             var resultview = segue.DestinationViewController as FullDetailViewController;
             resultview.mm = this.ViewModel.Item;
 
-            var ingrediantView = segue.DestinationViewController as SelectIngredient;
-            ingrediantView.ggg = this.ViewModel.Item;
+          //  var ingrediantView = segue.DestinationViewController as SelectIngredient;
+           // ingrediantView.ShoppingListNames = this.ViewModel.Item;
 
         }
     }

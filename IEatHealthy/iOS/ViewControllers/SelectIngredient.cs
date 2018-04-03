@@ -10,11 +10,7 @@ namespace IEatHealthy.iOS
         {
 
         }
-        public Item ggg = new Item { };
 
 
-
-
-       
     }
 }
