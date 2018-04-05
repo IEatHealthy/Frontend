@@ -30,6 +30,10 @@ namespace IEatHealthy.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField loginPassword { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel tokenlabel { get; set; }
+
         [Action ("LoginButton_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void LoginButton_TouchUpInside (UIKit.UIButton sender);
@@ -54,6 +58,11 @@ namespace IEatHealthy.iOS
             if (loginPassword != null) {
                 loginPassword.Dispose ();
                 loginPassword = null;
+            }
+
+            if (tokenlabel != null) {
+                tokenlabel.Dispose ();
+                tokenlabel = null;
             }
         }
     }

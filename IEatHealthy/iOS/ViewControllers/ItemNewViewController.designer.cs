@@ -32,10 +32,6 @@ namespace IEatHealthy.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton NewInstructionBtn { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField preptime { get; set; }
 
         [Outlet]
@@ -74,11 +70,6 @@ namespace IEatHealthy.iOS
             if (imgView != null) {
                 imgView.Dispose ();
                 imgView = null;
-            }
-
-            if (NewInstructionBtn != null) {
-                NewInstructionBtn.Dispose ();
-                NewInstructionBtn = null;
             }
 
             if (preptime != null) {
