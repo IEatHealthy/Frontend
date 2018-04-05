@@ -23,6 +23,7 @@ namespace IEatHealthy.iOS
                 PresentViewController(alert, true, null);
             
             }
+            tokenlabel.Text = request.ToString();
 
               /*  if (response.StatusCode != HttpStatusCode.OK)
                     Console.WriteLine("status code not ok");
