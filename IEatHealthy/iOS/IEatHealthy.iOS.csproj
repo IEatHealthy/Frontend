@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
@@ -141,6 +140,14 @@
     <ImageAsset Include="Assets.xcassets\CartIcon.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\RatingIcon.imageset\Screen Shot 2018-03-23 at 1.38.10 PM.png" />
     <ImageAsset Include="Assets.xcassets\CartIcon.imageset\Screen Shot 2018-03-23 at 1.38.27 PM.png" />
+    <ImageAsset Include="Assets.xcassets\CartTab.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\CartTab.imageset\Add to cart.png" />
+    <ImageAsset Include="Assets.xcassets\CartTab.imageset\Add to cart%402x.png" />
+    <ImageAsset Include="Assets.xcassets\CartTab.imageset\Add to cart%403x.png" />
+    <ImageAsset Include="Assets.xcassets\RecipeTab.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\RecipeTab.imageset\Artboard.png" />
+    <ImageAsset Include="Assets.xcassets\RecipeTab.imageset\Artboard%402x.png" />
+    <ImageAsset Include="Assets.xcassets\RecipeTab.imageset\Artboard%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ViewControllers\DetailViewControllers\BrowseItemDetailViewController.cs" />
@@ -201,6 +208,14 @@
     <Compile Include="ViewControllers\SelectIngredient.designer.cs">
       <DependentUpon>SelectIngredient.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\RecipesViewController.cs" />
+    <Compile Include="ViewControllers\RecipesViewController.designer.cs">
+      <DependentUpon>RecipesViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CartViewController.cs" />
+    <Compile Include="ViewControllers\CartViewController.designer.cs">
+      <DependentUpon>CartViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />
@@ -224,6 +239,8 @@
     <Folder Include="Assets.xcassets\profile.imageset\" />
     <Folder Include="Assets.xcassets\RatingIcon.imageset\" />
     <Folder Include="Assets.xcassets\CartIcon.imageset\" />
+    <Folder Include="Assets.xcassets\CartTab.imageset\" />
+    <Folder Include="Assets.xcassets\RecipeTab.imageset\" />
   </ItemGroup>
   <Import Project="..\IEatHealthy\IEatHealthy.projitems" Label="Shared" Condition="Exists('..\IEatHealthy\IEatHealthy.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
