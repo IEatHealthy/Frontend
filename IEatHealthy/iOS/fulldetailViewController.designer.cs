@@ -26,9 +26,21 @@ namespace IEatHealthy.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel lav { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton newButton { get; set; }
+
         [Action ("Ddf_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void Ddf_TouchUpInside (UIKit.UIButton sender);
+
+        [Action ("NewButton_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void NewButton_TouchUpInside (UIKit.UIButton sender);
+
+        [Action ("UIButton172966_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void UIButton172966_TouchUpInside (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
@@ -45,6 +57,11 @@ namespace IEatHealthy.iOS
             if (lav != null) {
                 lav.Dispose ();
                 lav = null;
+            }
+
+            if (newButton != null) {
+                newButton.Dispose ();
+                newButton = null;
             }
         }
     }

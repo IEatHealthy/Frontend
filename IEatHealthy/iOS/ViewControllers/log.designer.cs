@@ -16,6 +16,10 @@ namespace IEatHealthy.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel errMsg { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel LogErrMsg { get; set; }
 
         [Outlet]
@@ -30,16 +34,17 @@ namespace IEatHealthy.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField loginPassword { get; set; }
 
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel tokenlabel { get; set; }
-
         [Action ("LoginButton_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void LoginButton_TouchUpInside (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
+            if (errMsg != null) {
+                errMsg.Dispose ();
+                errMsg = null;
+            }
+
             if (LogErrMsg != null) {
                 LogErrMsg.Dispose ();
                 LogErrMsg = null;
@@ -58,11 +63,6 @@ namespace IEatHealthy.iOS
             if (loginPassword != null) {
                 loginPassword.Dispose ();
                 loginPassword = null;
-            }
-
-            if (tokenlabel != null) {
-                tokenlabel.Dispose ();
-                tokenlabel = null;
             }
         }
     }

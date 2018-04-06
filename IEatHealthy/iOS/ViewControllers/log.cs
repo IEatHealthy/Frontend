@@ -8,6 +8,7 @@ namespace IEatHealthy.iOS
 {
     public partial class log : UIViewController
     {
+        public bool sign = true;
         partial void LoginButton_TouchUpInside(UIButton sender)
         {
 
@@ -23,17 +24,21 @@ namespace IEatHealthy.iOS
                 {
                     // web token received as string under myResponse
                     myResponse = sr.ReadToEnd();
+
                 }
             }
             catch (System.Net.WebException)
             {
-                var alert = UIAlertController.Create("Alert", "Username or password is incorrect", UIAlertControllerStyle.Alert);
-                alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Cancel, null));
-                PresentViewController(alert, true, null);
+
+                errMsg.Text = "Username or password is incorrect";
+                sign = false;
             }
+
+
         }
 
-        public log(IntPtr handle) : base(handle)
+
+		public log(IntPtr handle) : base(handle)
         {
 
 

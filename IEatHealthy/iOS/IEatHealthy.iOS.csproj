@@ -216,6 +216,10 @@
     <Compile Include="ViewControllers\CartViewController.designer.cs">
       <DependentUpon>CartViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="SigninSegueController.cs" />
+    <Compile Include="SigninSegueController.designer.cs">
+      <DependentUpon>SigninSegueController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />

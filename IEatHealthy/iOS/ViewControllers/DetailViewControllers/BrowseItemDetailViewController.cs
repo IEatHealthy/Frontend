@@ -16,7 +16,7 @@ namespace IEatHealthy.iOS
             Title = ViewModel.Title;
             ItemNameLabel.Text = ViewModel.Item.Text;
             int totaltime = ViewModel.Item.PrepTime + ViewModel.Item.CookTime;
-            TotaltimeLabel.Text = totaltime.ToString();
+            TotaltimeLabel.Text = totaltime.ToString() +" min";
             IngredianPic.Image = ViewModel.Item.picture;
             string ingrediantlistview="";
             if (ViewModel.Item.Ingrediants != null)
