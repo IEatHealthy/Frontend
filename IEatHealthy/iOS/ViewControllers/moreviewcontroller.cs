@@ -11,7 +11,7 @@ namespace IEatHealthy.iOS
         {
             get { return (AppDelegate)UIApplication.SharedApplication.Delegate; }
         }
-
+        // using JWT parser
         partial void SignOutButton_TouchUpInside(UIButton sender)
         {
             var handler = new JwtSecurityTokenHandler();
