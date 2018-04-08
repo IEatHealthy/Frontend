@@ -8,11 +8,17 @@ namespace IEatHealthy.iOS
 {
     public partial class log : UIViewController
     {
+        public static AppDelegate App
+        {
+            get { return (AppDelegate)UIApplication.SharedApplication.Delegate; }
+        }
+
         partial void LoginButton_TouchUpInside(UIButton sender)
         {
             
         }
         public override bool ShouldPerformSegue(string segueIdentifier, NSObject sender){
+          
             if (segueIdentifier == "LoginSegue")
             {
                 //authenticating user login 
@@ -25,9 +31,10 @@ namespace IEatHealthy.iOS
                     string myResponse = "";
                     using (StreamReader sr = new StreamReader(response.GetResponseStream()))
                     {
-                        // web token received as string under myResponse
+                        //web token received as string under myResponse
                         myResponse = sr.ReadToEnd();
-
+                        //storing token in CurrentAccount instance of type UserAccount
+                        App.currentAccount.JWTToken = myResponse;
                     }
                 }
                 catch (System.Net.WebException)

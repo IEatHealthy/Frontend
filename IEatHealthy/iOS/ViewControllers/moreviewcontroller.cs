@@ -1,14 +1,26 @@
-
-
-
-using System;  
+using System;
+using System.IdentityModel.Tokens.Jwt;
 using Foundation;  
-using UIKit;  
+using UIKit; 
+           
 namespace IEatHealthy.iOS
 {
     public partial class moreviewcontroller : UIViewController
     {
+        public static AppDelegate App
+        {
+            get { return (AppDelegate)UIApplication.SharedApplication.Delegate; }
+        }
+
+        partial void SignOutButton_TouchUpInside(UIButton sender)
+        {
+            var handler = new JwtSecurityTokenHandler();
+            var tokenS = handler.ReadToken(App.currentAccount.JWTToken) as JwtSecurityToken;
+
+        }
+
         UIImagePickerController picker;
+
        
         public override void ViewDidLoad()
         {
@@ -18,9 +30,10 @@ namespace IEatHealthy.iOS
         }
                 public moreviewcontroller(IntPtr handle) : base(handle)
             {
+            
             }
 
-partial void UIButton118449_TouchUpInside(UIButton sender)
+        partial void UIButton118449_TouchUpInside(UIButton sender)
         {
             picker = new UIImagePickerController();
             picker.SourceType = UIImagePickerControllerSourceType.PhotoLibrary;

@@ -801,6 +801,14 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="176595" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                        <rect key="frame" x="329" y="53" width="63" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Sign Out"/>
+                                        <connections>
+                                            <segue id="176718" destination="23943" kind="show"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -855,6 +863,7 @@
                     <connections>
                         <outlet property="ProfiletextLabel" destination="116222" id="name-outlet-116222"/>
                         <outlet property="profileimgButton" destination="117829" id="name-outlet-117829"/>
+                        <outlet property="signOutButton" destination="176595" id="name-outlet-176595"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="46662" userLabel="First Responder" sceneMemberID="firstResponder"/>

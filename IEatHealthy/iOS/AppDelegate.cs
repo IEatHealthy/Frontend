@@ -15,6 +15,9 @@ namespace IEatHealthy.iOS
             get;
             set;
         }
+        //creating a global instance of the user account to store information
+
+        public UserAccount currentAccount { get; set; } = new UserAccount();
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
