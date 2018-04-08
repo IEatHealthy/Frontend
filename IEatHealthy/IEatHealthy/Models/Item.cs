@@ -15,6 +15,7 @@ namespace IEatHealthy
         public UIImage picture { get; set;}
         public int calorieCount { get; set; }
         public int IngrediantsRating { get; set; }
+        public string[] steps { get; set; }
 
     }
 }

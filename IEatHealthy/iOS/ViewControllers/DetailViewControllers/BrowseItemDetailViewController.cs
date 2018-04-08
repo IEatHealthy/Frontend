@@ -8,7 +8,7 @@ namespace IEatHealthy.iOS
     {
         public ItemDetailViewModel ViewModel { get; set; }
         public BrowseItemDetailViewController(IntPtr handle) : base(handle) { }
-
+        public int itemsss = 0;
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -32,9 +32,9 @@ namespace IEatHealthy.iOS
         }
         public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
         {
-            base.PrepareForSegue(segue, sender);
-            var resultview = segue.DestinationViewController as FullDetailViewController;
-            resultview.mm = this.ViewModel.Item;
+           // base.PrepareForSegue(segue, sender);
+           // var resultview = segue.DestinationViewController as FullDetailViewController;
+           // resultview.mm = this.ViewModel.Item;
 
           //  var ingrediantView = segue.DestinationViewController as SelectIngredient;
            // ingrediantView.ShoppingListNames = this.ViewModel.Item;

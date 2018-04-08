@@ -20,10 +20,6 @@ namespace IEatHealthy.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btnSaveItem { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField cooktime { get; set; }
 
         [Outlet]
@@ -32,15 +28,19 @@ namespace IEatHealthy.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel InstructionLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField preptime { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField txtDesc { get; set; }
+        UIKit.UITextField RecipeName { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField txtTitle { get; set; }
+        UIKit.UIScrollView scrollView { get; set; }
 
         [Action ("BtnPick_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -57,11 +57,6 @@ namespace IEatHealthy.iOS
                 BtnPick = null;
             }
 
-            if (btnSaveItem != null) {
-                btnSaveItem.Dispose ();
-                btnSaveItem = null;
-            }
-
             if (cooktime != null) {
                 cooktime.Dispose ();
                 cooktime = null;
@@ -72,19 +67,24 @@ namespace IEatHealthy.iOS
                 imgView = null;
             }
 
+            if (InstructionLabel != null) {
+                InstructionLabel.Dispose ();
+                InstructionLabel = null;
+            }
+
             if (preptime != null) {
                 preptime.Dispose ();
                 preptime = null;
             }
 
-            if (txtDesc != null) {
-                txtDesc.Dispose ();
-                txtDesc = null;
+            if (RecipeName != null) {
+                RecipeName.Dispose ();
+                RecipeName = null;
             }
 
-            if (txtTitle != null) {
-                txtTitle.Dispose ();
-                txtTitle = null;
+            if (scrollView != null) {
+                scrollView.Dispose ();
+                scrollView = null;
             }
         }
     }

@@ -12,13 +12,13 @@ namespace IEatHealthy.iOS
             get { return (AppDelegate)UIApplication.SharedApplication.Delegate; }
         }
 
-        partial void SignOutButton_TouchUpInside(UIButton sender)
+     /*   partial void SignOutButton_TouchUpInside(UIButton sender)
         {
             var handler = new JwtSecurityTokenHandler();
             var tokenS = handler.ReadToken(App.currentAccount.JWTToken) as JwtSecurityToken;
 
         }
-
+        */
         UIImagePickerController picker;
 
        

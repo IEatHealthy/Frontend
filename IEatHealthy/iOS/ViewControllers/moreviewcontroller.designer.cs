@@ -26,10 +26,6 @@ namespace IEatHealthy.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton signOutButton { get; set; }
 
-        [Action ("SignOutButton_TouchUpInside:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void SignOutButton_TouchUpInside (UIKit.UIButton sender);
-
         [Action ("UIButton118449_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void UIButton118449_TouchUpInside (UIKit.UIButton sender);

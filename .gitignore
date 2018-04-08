@@ -1,11 +1,9 @@
 ﻿<Properties StartupConfiguration="{C2E903DD-CDDC-4AE6-AFDE-B54511A5E1C0}|Default">
   <MonoDevelop.Ide.ItemProperties.IEatHealthy.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.0F802176-C2B6-4E37-88A4-4A6C016DECDB" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/Main.storyboard">
+  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/ViewControllers/ItemNewViewController.cs">
     <Files>
-      <File FileName="iOS/ViewControllers/log.cs" Line="9" Column="29" />
-      <File FileName="iOS/SigninSegueController.cs" Line="12" Column="8" />
-      <File FileName="iOS/fulldetailViewController.cs" Line="24" Column="103" />
-      <File FileName="iOS/Main.storyboard" />
+      <File FileName="iOS/ViewControllers/BrowseViewController.cs" Line="120" Column="1" />
+      <File FileName="iOS/ViewControllers/ItemNewViewController.cs" Line="157" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
