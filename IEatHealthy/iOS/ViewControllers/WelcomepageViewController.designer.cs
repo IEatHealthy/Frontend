@@ -18,15 +18,21 @@ namespace IEatHealthy.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel bottomLabel { get; set; }
 
-        [Action ("UIButton62896_TouchUpInside:")]
+        [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        partial void UIButton62896_TouchUpInside (UIKit.UIButton sender);
+        UIKit.UIButton LoginSignUpButton { get; set; }
+
 
         void ReleaseDesignerOutlets ()
         {
             if (bottomLabel != null) {
                 bottomLabel.Dispose ();
                 bottomLabel = null;
+            }
+
+            if (LoginSignUpButton != null) {
+                LoginSignUpButton.Dispose ();
+                LoginSignUpButton = null;
             }
         }
     }
