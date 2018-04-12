@@ -8,7 +8,7 @@ namespace IEatHealthy.iOS
 {
     public partial class ItemNewViewController : UIViewController
     {   
-
+        
         public List<UITextField> IngrediantList = new List<UITextField>();
         public List<UITextView> PreperationStepsList = new List<UITextView>();
         UIImagePickerController picker;

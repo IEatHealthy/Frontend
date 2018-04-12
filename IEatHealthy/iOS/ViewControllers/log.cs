@@ -14,7 +14,7 @@ namespace IEatHealthy.iOS
         {
             base.ViewDidLoad();
             //bottomLabel.Font = UIFont.FromName("Helvetica-Bold", 10f);
-            LoginButton.Layer.CornerRadius = 10;
+            LoginButton.Layer.CornerRadius = 7;
         }
 
         public static AppDelegate App

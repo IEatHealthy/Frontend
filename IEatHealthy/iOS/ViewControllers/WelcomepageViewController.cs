@@ -6,6 +6,11 @@ namespace IEatHealthy.iOS
 {
     public partial class WelcomepageViewController : UIViewController
     {
+    partial void LoginMainButton_TouchUpInside(UIButton sender)
+        {
+            
+        }
+
         public WelcomepageViewController (IntPtr handle) : base (handle)
         {
         }
@@ -13,7 +18,7 @@ namespace IEatHealthy.iOS
 		{
             base.ViewDidLoad();
             //bottomLabel.Font = UIFont.FromName("Helvetica-Bold", 10f);
-            //LoginSignUpButton.Layer.CornerRadius = 10; 
+            LoginMainButton.Layer.CornerRadius = 7; 
                     
 		}
 
