@@ -19,6 +19,7 @@ namespace IEatHealthy.iOS
 
         public UserAccount currentAccount { get; set; } = new UserAccount();
 
+
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
             App.Initialize();

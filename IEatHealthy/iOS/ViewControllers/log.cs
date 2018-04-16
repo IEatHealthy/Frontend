@@ -5,6 +5,8 @@ using CoreGraphics;
 using System.Net;
 using System.IO;
 
+using Security;
+
 namespace IEatHealthy.iOS
 {
     public partial class log : UIViewController
@@ -42,9 +44,13 @@ namespace IEatHealthy.iOS
                     {
                         //web token received as string under myResponse
                         myResponse = sr.ReadToEnd();
-                        //storing token in CurrentAccount instance of type UserAccount
-                        App.currentAccount.JWTToken = myResponse;
+                        //storing token in Keychain 
+                        /*
+                        string reply = App.currentAccount.StoreKeysInKeychain(myResponse, loginEmail.Text);
+                        errMsg.Text = reply;
+                        */
                     }
+
                 }
                 catch (System.Net.WebException)
                 {
