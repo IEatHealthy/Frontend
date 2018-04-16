@@ -48,7 +48,7 @@ namespace IEatHealthy.iOS
 
                     y = y + 60;
                     i++;
-                    newButton.Center = new CoreGraphics.CGPoint(150, y + 20);
+                //    newButton.Center = new CoreGraphics.CGPoint(150, y + 20);
 
 
             };

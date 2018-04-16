@@ -1,10 +1,12 @@
 ﻿<Properties StartupConfiguration="{C2E903DD-CDDC-4AE6-AFDE-B54511A5E1C0}|Default">
   <MonoDevelop.Ide.ItemProperties.IEatHealthy.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.0F802176-C2B6-4E37-88A4-4A6C016DECDB" automaticSigning="False" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/ViewControllers/ItemNewViewController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/ViewControllers/log.cs">
     <Files>
       <File FileName="iOS/Main.storyboard" />
-      <File FileName="iOS/ViewControllers/DetailViewControllers/BrowseItemDetailViewController.cs" Line="18" Column="44" />
-      <File FileName="iOS/ViewControllers/ItemNewViewController.cs" Line="257" Column="73" />
+      <File FileName="iOS/ViewControllers/DetailViewControllers/BrowseItemDetailViewController.cs" Line="18" Column="74" />
+      <File FileName="iOS/ViewControllers/ItemNewViewController.cs" Line="265" Column="51" />
+      <File FileName="iOS/fulldetailViewController.cs" Line="51" Column="19" />
+      <File FileName="iOS/ViewControllers/log.cs" Line="24" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />

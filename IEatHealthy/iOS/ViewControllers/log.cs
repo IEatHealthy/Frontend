@@ -9,12 +9,20 @@ namespace IEatHealthy.iOS
 {
     public partial class log : UIViewController
     {
+        UITextView errMsg = new UITextView(new System.Drawing.RectangleF(46, 160, 270, 26));
+
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
             //bottomLabel.Font = UIFont.FromName("Helvetica-Bold", 10f);
+
             LoginButton.Layer.CornerRadius = 7;
+
+            errMsg.TextAlignment = UITextAlignment.Center;
+            errMsg.Layer.CornerRadius = 10;
+            View.AddSubview(errMsg);
+           
         }
 
         public static AppDelegate App
@@ -48,9 +56,8 @@ namespace IEatHealthy.iOS
                 }
                 catch (System.Net.WebException)
                 {
-
+                    
                     errMsg.Text = "Username or password is incorrect";
-                    errMsg.Layer.CornerRadius = 10;
                     errMsg.BackgroundColor = UIColor.FromRGB(244, 217, 66);
                     return false;
                 }
