@@ -16,6 +16,14 @@ namespace IEatHealthy.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextView Brieflabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel DifficultyLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView IngredianPic { get; set; }
 
         [Outlet]
@@ -28,10 +36,24 @@ namespace IEatHealthy.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel TotaltimeLabel { get; set; }
+        UIKit.UILabel ReadyInLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel ServingSizeLabel { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
+            if (Brieflabel != null) {
+                Brieflabel.Dispose ();
+                Brieflabel = null;
+            }
+
+            if (DifficultyLabel != null) {
+                DifficultyLabel.Dispose ();
+                DifficultyLabel = null;
+            }
+
             if (IngredianPic != null) {
                 IngredianPic.Dispose ();
                 IngredianPic = null;
@@ -47,9 +69,14 @@ namespace IEatHealthy.iOS
                 listIngrediants = null;
             }
 
-            if (TotaltimeLabel != null) {
-                TotaltimeLabel.Dispose ();
-                TotaltimeLabel = null;
+            if (ReadyInLabel != null) {
+                ReadyInLabel.Dispose ();
+                ReadyInLabel = null;
+            }
+
+            if (ServingSizeLabel != null) {
+                ServingSizeLabel.Dispose ();
+                ServingSizeLabel = null;
             }
         }
     }

@@ -16,6 +16,10 @@ namespace IEatHealthy.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextView BriefDescInput { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton BtnPick { get; set; }
 
         [Outlet]
@@ -24,7 +28,15 @@ namespace IEatHealthy.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel DifficultyLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView imgView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel IngrediantLabel { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -36,11 +48,23 @@ namespace IEatHealthy.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField ReadyTimeIput { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField RecipeName { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIScrollView scrollView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField ServingSizeInput { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel sToolLabel { get; set; }
 
         [Action ("BtnPick_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -52,6 +76,11 @@ namespace IEatHealthy.iOS
 
         void ReleaseDesignerOutlets ()
         {
+            if (BriefDescInput != null) {
+                BriefDescInput.Dispose ();
+                BriefDescInput = null;
+            }
+
             if (BtnPick != null) {
                 BtnPick.Dispose ();
                 BtnPick = null;
@@ -62,9 +91,19 @@ namespace IEatHealthy.iOS
                 cooktime = null;
             }
 
+            if (DifficultyLabel != null) {
+                DifficultyLabel.Dispose ();
+                DifficultyLabel = null;
+            }
+
             if (imgView != null) {
                 imgView.Dispose ();
                 imgView = null;
+            }
+
+            if (IngrediantLabel != null) {
+                IngrediantLabel.Dispose ();
+                IngrediantLabel = null;
             }
 
             if (InstructionLabel != null) {
@@ -77,6 +116,11 @@ namespace IEatHealthy.iOS
                 preptime = null;
             }
 
+            if (ReadyTimeIput != null) {
+                ReadyTimeIput.Dispose ();
+                ReadyTimeIput = null;
+            }
+
             if (RecipeName != null) {
                 RecipeName.Dispose ();
                 RecipeName = null;
@@ -85,6 +129,16 @@ namespace IEatHealthy.iOS
             if (scrollView != null) {
                 scrollView.Dispose ();
                 scrollView = null;
+            }
+
+            if (ServingSizeInput != null) {
+                ServingSizeInput.Dispose ();
+                ServingSizeInput = null;
+            }
+
+            if (sToolLabel != null) {
+                sToolLabel.Dispose ();
+                sToolLabel = null;
             }
         }
     }
