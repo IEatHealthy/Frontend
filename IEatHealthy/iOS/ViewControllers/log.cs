@@ -20,7 +20,7 @@ namespace IEatHealthy.iOS
             LoginButton.Layer.CornerRadius = 7;
 
             errMsg.TextAlignment = UITextAlignment.Center;
-            errMsg.Layer.CornerRadius = 10;
+            errMsg.Layer.CornerRadius = 5;
             View.AddSubview(errMsg);
            
         }
