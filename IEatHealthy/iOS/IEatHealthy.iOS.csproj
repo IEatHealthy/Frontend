@@ -162,6 +162,8 @@
     <ImageAsset Include="Assets.xcassets\RecipeTab.imageset\Artboard%403x.png" />
     <ImageAsset Include="Assets.xcassets\AddRecipeIcon.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\AddRecipeIcon.imageset\Blank Diagram.png" />
+    <ImageAsset Include="Assets.xcassets\pancake.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\pancake.imageset\Screen Shot 2018-04-18 at 4.03.12 PM.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ViewControllers\DetailViewControllers\BrowseItemDetailViewController.cs" />
@@ -265,6 +267,7 @@
     <Folder Include="Assets.xcassets\CartTab.imageset\" />
     <Folder Include="Assets.xcassets\RecipeTab.imageset\" />
     <Folder Include="Assets.xcassets\AddRecipeIcon.imageset\" />
+    <Folder Include="Assets.xcassets\pancake.imageset\" />
   </ItemGroup>
   <Import Project="..\IEatHealthy\IEatHealthy.projitems" Label="Shared" Condition="Exists('..\IEatHealthy\IEatHealthy.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

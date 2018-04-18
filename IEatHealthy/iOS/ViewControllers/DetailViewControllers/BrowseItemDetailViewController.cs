@@ -14,9 +14,10 @@ namespace IEatHealthy.iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            scrollView.ContentSize = new CGSize(View.Frame.Width, View.Frame.Height);
+            scrollView.ContentSize = new CGSize(View.Frame.Width, View.Frame.Height*2);
             scrollView.AutoresizingMask = UIViewAutoresizing.FlexibleHeight;
 
+            IngredianPic.Image = ViewModel.Item.picture;
             int YforEverything = (int)(IngredianPic.Frame.Height);
             /*
             UILabel graybox = new UILabel(new CGRect(0, YforEverything, View.Frame.Width, 5));
@@ -53,19 +54,20 @@ namespace IEatHealthy.iOS
             scrollView.AddSubview(graybox);
 
 
-            UILabel BriefDescrivtion = new UILabel(new CGRect(10, YforEverything, 120, 20));
+            UILabel BriefDescrivtion = new UILabel(new CGRect(10, YforEverything, 180, 20));
             BriefDescrivtion.Text = "Brief Describtion";
             scrollView.AddSubview(BriefDescrivtion);
 
             YforEverything += 30;
             UITextView DescrivtionView = new UITextView(new CGRect(10, YforEverything, View.Frame.Width - 60, 40));
             DescrivtionView.Text = ViewModel.Item.BriefDescribtion;
-            DescrivtionView.Layer.BorderWidth = 0.2f;
+            //DescrivtionView.Layer.BorderWidth = 0.2f;
+            DescrivtionView.Text = ViewModel.Item.BriefDescribtion;
             scrollView.AddSubview(DescrivtionView);
 
             YforEverything += 50;
 
-            UILabel Ingredientlist = new UILabel(new CGRect(10, YforEverything, 120, 20));
+            UILabel Ingredientlist = new UILabel(new CGRect(10, YforEverything, 180, 20));
             Ingredientlist.Text = "Ingredient List ";
             scrollView.AddSubview(Ingredientlist);
 
@@ -88,24 +90,28 @@ namespace IEatHealthy.iOS
 
                 }
             }
-            UILabel StepList = new UILabel(new CGRect(10, YforEverything, 120, 20));
+            UILabel graybox2 = new UILabel(new CGRect(0, YforEverything - 5, View.Frame.Width, 2));
+            graybox2.BackgroundColor = UIColor.Gray;
+            scrollView.AddSubview(graybox2);
+
+            UILabel StepList = new UILabel(new CGRect(10, YforEverything, 180, 20));
             StepList.Text = "Preperation Steps ";
             scrollView.AddSubview(StepList);
 
             YforEverything += 30;
-
+           
 
             {
                 foreach (string item in ViewModel.Item.steps)
                 {
-                    UITextField label2 = new UITextField(new System.Drawing.RectangleF(20, YforEverything, 250, 40));
+                    UITextView label2 = new UITextView(new System.Drawing.RectangleF(20, YforEverything, 250, 60));
                     //label.Placeholder = " Step " + i.ToString();
                     //   label2.Layer.BorderWidth = 0.1f;
                     label2.Layer.CornerRadius = 8;
                     label2.Text = item;
                     scrollView.Add(label2);
                     scrollView.AddSubview(label2);
-                    YforEverything += 40;
+                    YforEverything += 65;
                 }
             }
 

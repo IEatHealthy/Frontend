@@ -14,13 +14,26 @@ namespace IEatHealthy
             items = new List<Item>();
             var _items = new List<Item>
             {
-                new Item { Id = Guid.NewGuid().ToString(), Text = "First item", Description="This is a nice description",Ingrediants=new string[]{ "one", "two", "three"},steps=new string[]{ "one", "two", "three"}},
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Second item", Description="This is a nice description",Ingrediants=new string[]{ "one", "two", "three"},steps=new string[]{ "one", "two", "three"}},
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Third item", Description="This is a nice description",Ingrediants=new string[]{ "one", "two", "three"},steps=new string[]{ "one", "two", "three"}},
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description="This is a nice description",Ingrediants=new string[]{ "one", "two", "three"},steps=new string[]{ "one", "two", "three"}},
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description="This is a nice description",Ingrediants=new string[]{ "one", "two", "three"},steps=new string[]{ "one", "two", "three"}},
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is a nice description",Ingrediants=new string[]{ "one", "two", "three"},steps=new string[]{ "one", "two", "three"}},
-                new Item {Id= Guid.NewGuid().ToString(), Text="Recipe", Description= "First test",Ingrediants=new string[]{ "one", "two", "three"},steps=new string[]{ "one", "two", "three"}},
+                new Item { Id = Guid.NewGuid().ToString(),
+                    Text = "Strawberry Vanilla Pancakes",
+                    Description="20 min  8 Servings   *Easy",
+                    BriefDescribtion="Very sweet and easy to prepare pancakes",
+                    Ingrediants=new string[]{"12 Strawberry","1 Vanilla extract", "8 eggs","Sugar Powder","Butter"},
+                    steps=new string[]{ "Prepare the pancakes  by mixing the eggs with the butter",
+                        "Add vanilla and milk to the mixture",
+                        "Mix well and add sugar to taste . Mix everything together in the food processor",
+                        "Add butter to a flat iron pancakes pain. Cook it until it’s golden",
+                        "Chop the strawberries and add it to the pancake",
+                        "Add sugar powder and serve"
+                    },
+                    Difficulty="Easy",
+                    PrepTime=5,
+                    CookTime=5,
+
+                    ServingSize=8,
+                    ReadyTime=20,
+                    picture=UIKit.UIImage.FromBundle ("pancake")},
+                
 
             };
 
