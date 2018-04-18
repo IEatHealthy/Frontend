@@ -16,11 +16,7 @@ namespace IEatHealthy.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextView Brieflabel { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel DifficultyLabel { get; set; }
+        UIKit.UILabel CookTimeLabel { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -28,11 +24,7 @@ namespace IEatHealthy.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel ItemNameLabel { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextView listIngrediants { get; set; }
+        UIKit.UILabel PrepTimeLabel { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -40,18 +32,13 @@ namespace IEatHealthy.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel ServingSizeLabel { get; set; }
+        UIKit.UIScrollView scrollView { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (Brieflabel != null) {
-                Brieflabel.Dispose ();
-                Brieflabel = null;
-            }
-
-            if (DifficultyLabel != null) {
-                DifficultyLabel.Dispose ();
-                DifficultyLabel = null;
+            if (CookTimeLabel != null) {
+                CookTimeLabel.Dispose ();
+                CookTimeLabel = null;
             }
 
             if (IngredianPic != null) {
@@ -59,14 +46,9 @@ namespace IEatHealthy.iOS
                 IngredianPic = null;
             }
 
-            if (ItemNameLabel != null) {
-                ItemNameLabel.Dispose ();
-                ItemNameLabel = null;
-            }
-
-            if (listIngrediants != null) {
-                listIngrediants.Dispose ();
-                listIngrediants = null;
+            if (PrepTimeLabel != null) {
+                PrepTimeLabel.Dispose ();
+                PrepTimeLabel = null;
             }
 
             if (ReadyInLabel != null) {
@@ -74,9 +56,9 @@ namespace IEatHealthy.iOS
                 ReadyInLabel = null;
             }
 
-            if (ServingSizeLabel != null) {
-                ServingSizeLabel.Dispose ();
-                ServingSizeLabel = null;
+            if (scrollView != null) {
+                scrollView.Dispose ();
+                scrollView = null;
             }
         }
     }

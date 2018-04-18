@@ -14,12 +14,14 @@ namespace IEatHealthy
             items = new List<Item>();
             var _items = new List<Item>
             {
-                new Item { Id = Guid.NewGuid().ToString(), Text = "First item", Description="This is a nice description"},
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Second item", Description="This is a nice description"},
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Third item", Description="This is a nice description"},
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description="This is a nice description"},
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description="This is a nice description"},
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is a nice description"},
+                new Item { Id = Guid.NewGuid().ToString(), Text = "First item", Description="This is a nice description",Ingrediants=new string[]{ "one", "two", "three"},steps=new string[]{ "one", "two", "three"}},
+                new Item { Id = Guid.NewGuid().ToString(), Text = "Second item", Description="This is a nice description",Ingrediants=new string[]{ "one", "two", "three"},steps=new string[]{ "one", "two", "three"}},
+                new Item { Id = Guid.NewGuid().ToString(), Text = "Third item", Description="This is a nice description",Ingrediants=new string[]{ "one", "two", "three"},steps=new string[]{ "one", "two", "three"}},
+                new Item { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description="This is a nice description",Ingrediants=new string[]{ "one", "two", "three"},steps=new string[]{ "one", "two", "three"}},
+                new Item { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description="This is a nice description",Ingrediants=new string[]{ "one", "two", "three"},steps=new string[]{ "one", "two", "three"}},
+                new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is a nice description",Ingrediants=new string[]{ "one", "two", "three"},steps=new string[]{ "one", "two", "three"}},
+                new Item {Id= Guid.NewGuid().ToString(), Text="Recipe", Description= "First test",Ingrediants=new string[]{ "one", "two", "three"},steps=new string[]{ "one", "two", "three"}},
+
             };
 
             foreach (Item item in _items)
