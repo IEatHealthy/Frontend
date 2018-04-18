@@ -1300,6 +1300,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="166477">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" colorSpace="calibratedWhite" white="0" alpha="1"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue id="166586" destination="166486" kind="relationship" relationship="rootViewController"/>
@@ -1309,7 +1313,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="166478" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="694" y="3990"/>
+            <point key="canvasLocation" x="677" y="4023"/>
         </scene>
         <scene sceneID="166485">
             <objects>
@@ -1333,11 +1337,73 @@
                             <outlet property="delegate" destination="166486" id="166489"/>
                         </connections>
                     </tableView>
-                    <navigationItem title="Shopping Cart" id="166585" key="navigationItem"/>
+                    <navigationItem title="Cart" id="166585" key="navigationItem">
+                        <barButtonItem key="rightBarButtonItem" id="245388" systemItem="add">
+                            <color key="tintColor" colorSpace="calibratedWhite" white="0" alpha="1"/>
+                            <connections>
+                                <segue id="245464" destination="245384" kind="show"/>
+                                <action selector="UIBarButtonItem245388_Activated:" destination="166486" id="245696"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="Clear" id="245582">
+                            <connections>
+                                <action selector="ClearBtn_Activated:" destination="166486" id="245697"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="ClearBtn" destination="245582" id="name-outlet-245582"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="166492" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1278" y="3989"/>
+            <point key="canvasLocation" x="1275" y="4029"/>
+        </scene>
+        <scene sceneID="245383">
+            <objects>
+                <viewController id="245384" sceneMemberID="viewController" customClass="AddIngredientViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="245381"/>
+                        <viewControllerLayoutGuide type="bottom" id="245382"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="245385">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="245466" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="55" y="201" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="AddBtn_TouchUpInside:" destination="245384" id="245469" eventType="touchUpInside"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="245467" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="55" y="125" width="70" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="245468" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="53" y="154" width="180" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="AddBtn" destination="245466" id="name-outlet-245466"/>
+                        <outlet property="ingreName" destination="245468" id="name-outlet-245468"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="245386" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1836" y="4026"/>
         </scene>
     </scenes>
     <resources>

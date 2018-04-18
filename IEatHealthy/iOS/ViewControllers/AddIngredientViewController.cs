@@ -1,0 +1,5 @@
+using Foundation; using System; using System.Collections; using UIKit; using System.IO; using Newtonsoft.Json; using System.Collections.Generic;  namespace IEatHealthy.iOS {     public partial class AddIngredientViewController : UIViewController     {         public AddIngredientViewController(IntPtr handle) : base(handle)         {          }
+
+        partial void AddBtn_TouchUpInside(UIButton sender)
+        {             // contents of textbox             string name = ingreName.Text;              Ingredient ingredient = new Ingredient             {                 Name = name             };              string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);             string filename = Path.Combine(path, "myshoppingcart.json");             List<Ingredient> ingredients = JsonConvert.DeserializeObject<List<Ingredient>>(File.ReadAllText(@filename));              ingredients.Add(ingredient);              File.WriteAllText(@filename, JsonConvert.SerializeObject(ingredients));              ingreName.Text = "";
+        }     } } 

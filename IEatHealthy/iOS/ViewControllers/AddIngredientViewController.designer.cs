@@ -11,26 +11,31 @@ using UIKit;
 
 namespace IEatHealthy.iOS
 {
-    [Register ("CartViewController")]
-    partial class CartViewController
+    [Register ("AddIngredientViewController")]
+    partial class AddIngredientViewController
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIBarButtonItem ClearBtn { get; set; }
+        UIKit.UIButton AddBtn { get; set; }
 
-        [Action ("ClearBtn_Activated:")]
+        [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        partial void ClearBtn_Activated (UIKit.UIBarButtonItem sender);
+        UIKit.UITextField ingreName { get; set; }
 
-        [Action ("UIBarButtonItem245388_Activated:")]
+        [Action ("AddBtn_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
-        partial void UIBarButtonItem245388_Activated (UIKit.UIBarButtonItem sender);
+        partial void AddBtn_TouchUpInside (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
-            if (ClearBtn != null) {
-                ClearBtn.Dispose ();
-                ClearBtn = null;
+            if (AddBtn != null) {
+                AddBtn.Dispose ();
+                AddBtn = null;
+            }
+
+            if (ingreName != null) {
+                ingreName.Dispose ();
+                ingreName = null;
             }
         }
     }
