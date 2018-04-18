@@ -1336,6 +1336,8 @@
                             <outlet property="dataSource" destination="166486" id="166488"/>
                             <outlet property="delegate" destination="166486" id="166489"/>
                         </connections>
+                        <color key="tintColor" colorSpace="calibratedWhite" white="0" alpha="1"/>
+                        <color key="sectionIndexColor" colorSpace="calibratedWhite" white="0" alpha="1"/>
                     </tableView>
                     <navigationItem title="Cart" id="166585" key="navigationItem">
                         <barButtonItem key="rightBarButtonItem" id="245388" systemItem="add">
