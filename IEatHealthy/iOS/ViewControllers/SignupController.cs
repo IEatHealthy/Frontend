@@ -6,7 +6,12 @@ namespace IEatHealthy.iOS
 {
     public partial class SignupController : UIViewController
     {
-        public SignupController(IntPtr handle) : base(handle)
+		public override void ViewDidLoad()
+		{
+            base.ViewDidLoad();
+            signupbutton.Layer.CornerRadius = 7;
+		}
+		public SignupController(IntPtr handle) : base(handle)
         {
         }
 

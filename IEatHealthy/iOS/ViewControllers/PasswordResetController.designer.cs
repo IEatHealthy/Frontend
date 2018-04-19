@@ -16,11 +16,19 @@ namespace IEatHealthy.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton BackButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView ForgotPasseord { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel PasswordResetMsg { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton ResetButton { get; set; }
 
         [Action ("UIButton47525_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -28,6 +36,11 @@ namespace IEatHealthy.iOS
 
         void ReleaseDesignerOutlets ()
         {
+            if (BackButton != null) {
+                BackButton.Dispose ();
+                BackButton = null;
+            }
+
             if (ForgotPasseord != null) {
                 ForgotPasseord.Dispose ();
                 ForgotPasseord = null;
@@ -36,6 +49,11 @@ namespace IEatHealthy.iOS
             if (PasswordResetMsg != null) {
                 PasswordResetMsg.Dispose ();
                 PasswordResetMsg = null;
+            }
+
+            if (ResetButton != null) {
+                ResetButton.Dispose ();
+                ResetButton = null;
             }
         }
     }
