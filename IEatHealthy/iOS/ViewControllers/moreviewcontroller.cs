@@ -26,6 +26,8 @@ namespace IEatHealthy.iOS
         {
             base.ViewDidLoad();
             ProfiletextLabel.Font=UIFont.FromName("Helvetica-Bold", 30f);
+            signOutButton.Layer.CornerRadius = 7;
+
             // Perform any additional setup after loading the view, typically from a nib.  
         }
                 public moreviewcontroller(IntPtr handle) : base(handle)
