@@ -1,6 +1,6 @@
 ﻿<Properties StartupConfiguration="{C2E903DD-CDDC-4AE6-AFDE-B54511A5E1C0}|Default">
   <MonoDevelop.Ide.ItemProperties.IEatHealthy.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.C5C5D123-994F-474E-BB74-EC8E6A0A676D" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/ViewControllers/moreviewcontroller.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="IEatHealthy/Services/MockDataStore.cs">
     <Files>
       <File FileName="iOS/ingredient.cs" Line="10" Column="1" />
       <File FileName="iOS/ViewControllers/CartViewController.cs" Line="1" Column="1" />
@@ -13,8 +13,9 @@
       <File FileName="iOS/ViewControllers/log.cs" Line="65" Column="1" />
       <File FileName="iOS/Main.storyboard" />
       <File FileName="iOS/ViewControllers/PasswordResetController.cs" Line="13" Column="48" />
-      <File FileName="iOS/ViewControllers/SignupController.cs" Line="13" Column="4" />
-      <File FileName="iOS/ViewControllers/moreviewcontroller.cs" Line="30" Column="10" />
+      <File FileName="iOS/ViewControllers/SignupController.cs" Line="12" Column="49" />
+      <File FileName="iOS/ViewControllers/moreviewcontroller.cs" Line="29" Column="50" />
+      <File FileName="IEatHealthy/Services/MockDataStore.cs" Line="8" Column="27" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />

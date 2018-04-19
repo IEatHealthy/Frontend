@@ -53,10 +53,15 @@ namespace IEatHealthy
                     "2 mint sprigs, leaves picked",
 
                 },
-                steps = new string[]{ "In a wide dish, whisk the egg, milk and vanilla together. Coat one side of the bread slices in the liquid, then carefully flip them over and leave them to soak for 1-2 mins.",
-                    "Melt 1 tbsp of the butter in a large non-stick pan over a medium heat and add two slices of bread. Cook for 5 mins or until golden, then turn to cook the other side for another 5 mins. Transfer to a plate and cook the other two slices in the rest of the butter.",
+                steps = new string[]{ "In a wide dish, whisk the egg, milk and vanilla together. " +
+                        "Coat one side of the bread slices in the liquid, then carefully flip them over" +
+                        " and leave them to soak for 1-2 mins.",
+                    "Melt 1 tbsp of the butter in a large non-stick pan over a medium heat and add two " +
+                        "slices of bread. Cook for 5 mins or until golden, then turn to cook the other side" +
+                        " for another 5 mins. Transfer to a plate and cook the other two slices in the rest of the butter.",
                         "Mix well and add sugar to taste . Mix everything together in the food processor",
-                    "Halve the toast on the diagonal and spread each slice with the ricotta. Drizzle over the honey and a pinch of flaky sea salt, and arrange some sliced strawberries in a fan across the toast. Decorate the plate with the halved strawberries and mint.",
+                    "Halve the toast on the diagonal and spread each slice with the ricotta. Drizzle over the honey and a pinch " +
+                        "of flaky sea salt, and arrange some sliced strawberries in a fan across the toast. Decorate the plate with the halved strawberries and mint.",
 
                     },
                 Difficulty = "Easy",
@@ -85,8 +90,14 @@ namespace IEatHealthy
                    
 
                 },
-                    steps = new string[]{ "Cook the bulgur wheat following pack instructions. Heat the olive oil in a frying pan over a medium heat. Add the salmon fillets and cook for 3 mins on each side. Stir in the spring onions and cook for 1 min. Add lemon juice, honey, orange juice and zest to the pan and bubble for 1 min more to make a sauce.",
-                        "Meanwhile, boil the green beans for 4 mins or until tender. Drain. Stir the bulgur wheat with a fork, mixing in the green beans, lemon zest and a little of the sauce. Serve the salmon on a bed of bulgur and beans, with the rest of the sauce spooned over.",
+                    steps = new string[]{ "Cook the bulgur wheat following pack instructions. " +
+                        "Heat the olive oil in a frying pan over a medium heat. Add the salmon fillets " +
+                        "and cook for 3 mins on each side. Stir in the spring onions and cook for 1 min. " +
+                        "Add lemon juice, honey, orange juice and zest to the pan and bubble for 1 min more " +
+                        "to make a sauce.",
+                        "Meanwhile, boil the green beans for 4 mins or until tender. Drain. Stir the " +
+                        "bulgur wheat with a fork, mixing in the green beans, lemon zest and a little of " +
+                        "the sauce. Serve the salmon on a bed of bulgur and beans, with the rest of the sauce spooned over.",
                     
 
                     },

@@ -561,7 +561,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24242">
                                 <rect key="frame" x="16" y="610" width="343" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666696" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.10196078431372549" green="0.596078431372549" blue="0.9882352941176471" alpha="1"/>
                                 <state key="normal" title="Sign up">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
@@ -569,11 +569,8 @@
                                     <action selector="Signupbutton_TouchUpInside:" destination="24238" eventType="touchUpInside" id="38847"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24243">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24243" fixedFrame="YES">
                                 <rect key="frame" x="20" y="153" width="143" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="143" id="80112"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -729,7 +726,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Profile" textAlignment="center" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="116222">
-                                        <rect key="frame" x="-6" y="49" width="398" height="30"/>
+                                        <rect key="frame" x="-61" y="49" width="398" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -744,9 +741,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="176595" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                        <rect key="frame" x="299" y="53" width="63" height="30"/>
+                                        <rect key="frame" x="284" y="53" width="78" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Sign Out"/>
+                                        <color key="backgroundColor" colorSpace="calibratedRGB" red="0.10196078431372549" green="0.596078431372549" blue="0.9882352941176471" alpha="1"/>
+                                        <state key="normal" title="Sign Out">
+                                            <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                        </state>
                                         <connections>
                                             <segue id="176718" destination="23943" kind="show"/>
                                         </connections>
@@ -871,6 +871,9 @@
                                 <state key="normal" title="Back To Login">
                                     <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                                 </state>
+                                <connections>
+                                    <segue id="259755" destination="23943" kind="show"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
