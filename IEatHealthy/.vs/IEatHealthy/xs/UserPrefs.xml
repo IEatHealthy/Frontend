@@ -3,8 +3,9 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="iOS/ViewControllers/DetailViewControllers/BrowseItemDetailViewController.cs">
     <Files>
       <File FileName="iOS/Main.storyboard" />
-      <File FileName="iOS/ViewControllers/DetailViewControllers/BrowseItemDetailViewController.cs" Line="28" Column="34" />
-      <File FileName="IEatHealthy/Services/MockDataStore.cs" Line="19" Column="62" />
+      <File FileName="iOS/ViewControllers/DetailViewControllers/BrowseItemDetailViewController.cs" Line="80" Column="56" />
+      <File FileName="IEatHealthy/Services/MockDataStore.cs" Line="35" Column="65" />
+      <File FileName="iOS/ViewControllers/ItemNewViewController.cs" Line="171" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
