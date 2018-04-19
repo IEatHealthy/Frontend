@@ -207,6 +207,9 @@
                     <navigationItem key="navigationItem" id="104">
                         <barButtonItem key="rightBarButtonItem" id="255578" systemItem="add">
                             <color key="tintColor" colorSpace="calibratedWhite" white="0" alpha="1"/>
+                            <connections>
+                                <segue id="256045" destination="2248" kind="show"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
