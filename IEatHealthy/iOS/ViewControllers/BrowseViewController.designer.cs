@@ -16,7 +16,7 @@ namespace IEatHealthy.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btnAddItem { get; set; }
+        UIKit.UIBarButtonItem btnAddItem { get; set; }
 
         void ReleaseDesignerOutlets ()
         {

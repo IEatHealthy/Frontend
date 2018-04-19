@@ -204,23 +204,14 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Recipes" id="104">
-                        <barButtonItem key="rightBarButtonItem" id="2253">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2252">
-                                <rect key="frame" x="0.0" y="0.0" width="86" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add Item">
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="2248" kind="show" identifier="NavigateToNewItemSegue" id="2326"/>
-                                </connections>
-                            </button>
+                    <navigationItem key="navigationItem" id="104">
+                        <barButtonItem key="rightBarButtonItem" id="255578" systemItem="add">
+                            <color key="tintColor" colorSpace="calibratedWhite" white="0" alpha="1"/>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="btnAddItem" destination="2252" id="name-outlet-2252"/>
+                        <outlet property="btnAddItem" destination="255578" id="name-outlet-255578"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="81" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1145,7 +1136,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="162644" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2874" y="-2415"/>
+            <point key="canvasLocation" x="2884" y="-2538"/>
         </scene>
         <scene sceneID="165429">
             <objects>
@@ -1251,7 +1242,7 @@
         </scene>
         <scene sceneID="245383">
             <objects>
-                <viewController id="245384" sceneMemberID="viewController" customClass="AddIngredientViewController">
+                <viewController id="245384" sceneMemberID="viewController" customClass="AddIngredientViewController" title="Add Ingredient">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="245381"/>
                         <viewControllerLayoutGuide type="bottom" id="245382"/>
@@ -1318,5 +1309,6 @@
         <image name="pancake" width="560" height="460"/>
         <image name="toast" width="500" height="454"/>
         <image name="salmon" width="500" height="454"/>
+        <image name="HomeLogo" width="359" height="88"/>
     </resources>
 </document>

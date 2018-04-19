@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Specialized;
-
 using Foundation;
 using UIKit;
+using CoreGraphics;
 
 namespace IEatHealthy.iOS
 {
@@ -22,17 +22,17 @@ namespace IEatHealthy.iOS
 
             ViewModel = new ItemsViewModel();
 
+            NavBar();
             // Setup UITableView.
             refreshControl = new UIRefreshControl();
             refreshControl.ValueChanged += RefreshControl_ValueChanged;
             TableView.Add(refreshControl);
             TableView.Source = new ItemsDataSource(ViewModel);
 
-            Title = ViewModel.Title;
-
             ViewModel.PropertyChanged += IsBusy_PropertyChanged;
             ViewModel.Items.CollectionChanged += Items_CollectionChanged;
         }
+
 
         public override void ViewDidAppear(bool animated)
         {
@@ -57,6 +57,28 @@ namespace IEatHealthy.iOS
                 var controller = segue.DestinationViewController as ItemNewViewController;
                 controller.ViewModel = ViewModel;
             }
+        }
+
+        void NavBar() {
+            var navBar = NavigationController.NavigationBar;
+
+            // Adds logo on navigation bar
+            var imageView = new UIImageView(UIImage.FromBundle("newlogo"));
+            imageView.ContentMode = UIViewContentMode.ScaleAspectFit;
+            var titleView = new UIView(new CGRect(0, 0, imageView.Image.CGImage.Width/2.5, imageView.Image.CGImage.Height/2.5));
+            imageView.Frame = titleView.Bounds;
+            titleView.AddSubview(imageView);
+            NavigationItem.TitleView = titleView;
+
+            // Adds search bar to navigation bar
+            var search = new UISearchController(searchResultsController: null)
+            {
+                HidesNavigationBarDuringPresentation = true,
+                DimsBackgroundDuringPresentation = true
+            };
+            search.SearchBar.Placeholder = "Search for a Recipe";
+            NavigationItem.SearchController = search;
+            NavigationItem.HidesSearchBarWhenScrolling = false;
         }
 
         void RefreshControl_ValueChanged(object sender, EventArgs e)
