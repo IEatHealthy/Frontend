@@ -1,6 +1,8 @@
 using Foundation;
 using System;
 using UIKit;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace IEatHealthy.iOS
 {
@@ -10,6 +12,8 @@ namespace IEatHealthy.iOS
         {
 
         }
+
+        //public string ingredients = new string;
 
 
     }

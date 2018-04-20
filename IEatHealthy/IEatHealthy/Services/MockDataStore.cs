@@ -100,7 +100,7 @@ namespace IEatHealthy
             },
 
                 new Item { Id = Guid.NewGuid().ToString(),
-                    Text = "HUEY'S ITALIAN SAUSAGE DOG",
+                    Text = "Huey's Italian sausage dog",
                     Description="20 min  8 Servings   *Easy",
                     BriefDescribtion="Very sweet and easy to prepare pancakes",
                     Ingrediants=new string[]{
@@ -142,7 +142,7 @@ namespace IEatHealthy
                 new Item
             {
                 Id = Guid.NewGuid().ToString(),
-                    Text = "SMOTHERED FLAT IRON STEAK IN A PARMESAN PEPPER SAUCE",
+                    Text = "Smothered flad iron stake in a paresan pepper sauce",
                 Description = "30 min  2 Servings   *Easy",
                     BriefDescribtion = "Fresh citrus flavours turn a salmon fillet into a special meal",
                     Ingrediants = new string[] {"1 lb flat iron steak",
@@ -174,7 +174,7 @@ namespace IEatHealthy
                 new Item
             {
                 Id = Guid.NewGuid().ToString(),
-                    Text = "GENERAL TSO'S CHICKEN",
+                    Text = " General Tso's chicken",
                 Description = "50 min  8 Servings   *Intermediate",
                     BriefDescribtion = "Fresh citrus flavours turn a salmon fillet into a special meal",
                     Ingrediants = new string[] {"3 lbs boneless skinless chicken breasts, cut into chunks",
