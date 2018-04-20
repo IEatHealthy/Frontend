@@ -3,6 +3,7 @@ using System.Collections.Specialized;
 using Foundation;
 using UIKit;
 using CoreGraphics;
+using System.Drawing;
 
 namespace IEatHealthy.iOS
 {
@@ -128,12 +129,28 @@ namespace IEatHealthy.iOS
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
+
+            UIImage ResizeImage(UIImage sourceImage, float width, float height)
+            {
+                UIGraphics.BeginImageContext(new SizeF(width, height));
+                sourceImage.Draw(new RectangleF(0, 0, width, height));
+                var resultImage = UIGraphics.GetImageFromCurrentImageContext();
+                UIGraphics.EndImageContext();
+                return resultImage;
+            }
+
             var cell = tableView.DequeueReusableCell(CELL_IDENTIFIER, indexPath);
+
 
             var item = viewModel.Items[indexPath.Row];
             cell.TextLabel.Text = item.Text;
             cell.DetailTextLabel.Text = item.Description;
             cell.LayoutMargins = UIEdgeInsets.Zero;
+            var image = ResizeImage(item.picture, 45, 35);
+            cell.ImageView.Image = image;
+
+
+
 
             return cell;
         }

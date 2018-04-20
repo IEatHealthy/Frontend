@@ -170,6 +170,12 @@
     <ImageAsset Include="Assets.xcassets\salmon.imageset\salmon.jpg" />
     <ImageAsset Include="Assets.xcassets\HomeLogo.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\HomeLogo.imageset\logo-final.png" />
+    <ImageAsset Include="Assets.xcassets\img1.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\img2.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\img3.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\img1.imageset\dog.jpg" />
+    <ImageAsset Include="Assets.xcassets\img2.imageset\stake.jpg" />
+    <ImageAsset Include="Assets.xcassets\img3.imageset\tso chicken.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ViewControllers\DetailViewControllers\BrowseItemDetailViewController.cs" />
@@ -277,6 +283,9 @@
     <Folder Include="Assets.xcassets\toast.imageset\" />
     <Folder Include="Assets.xcassets\salmon.imageset\" />
     <Folder Include="Assets.xcassets\HomeLogo.imageset\" />
+    <Folder Include="Assets.xcassets\img1.imageset\" />
+    <Folder Include="Assets.xcassets\img2.imageset\" />
+    <Folder Include="Assets.xcassets\img3.imageset\" />
   </ItemGroup>
   <Import Project="..\IEatHealthy\IEatHealthy.projitems" Label="Shared" Condition="Exists('..\IEatHealthy\IEatHealthy.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
