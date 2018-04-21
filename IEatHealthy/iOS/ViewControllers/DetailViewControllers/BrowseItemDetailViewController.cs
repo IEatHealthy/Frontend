@@ -15,6 +15,7 @@ namespace IEatHealthy.iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            Title = ViewModel.Item.Text;
             scrollView.ContentSize = new CGSize(View.Frame.Width, View.Frame.Height*2);
             scrollView.AutoresizingMask = UIViewAutoresizing.FlexibleHeight;
 
@@ -22,12 +23,12 @@ namespace IEatHealthy.iOS
             int YforEverything = (int)(IngredianPic.Frame.Height);
 
             UILabel graybox = new UILabel(new CGRect(0, YforEverything-5, View.Frame.Width, 5));
-            graybox.BackgroundColor = UIColor.Gray;
+            graybox.BackgroundColor = UIColor.FromRGB(240,240,240);
             scrollView.AddSubview(graybox);
 
 
             YforEverything += 15;
-            PrepTimeLabel.Center = new CGPoint(60, YforEverything);
+            PrepTimeLabel.Center = new CGPoint(66, YforEverything);
             CookTimeLabel.Center = new CGPoint(180, YforEverything);
             ReadyInLabel.Center = new CGPoint(300, YforEverything);
             PrepTimeLabel.Text = "PrepTime " + ViewModel.Item.PrepTime.ToString();
@@ -51,12 +52,12 @@ namespace IEatHealthy.iOS
 
             YforEverything += 30;
             UILabel graybox4 = new UILabel(new CGRect(0, YforEverything - 5, View.Frame.Width, 2));
-            graybox4.BackgroundColor = UIColor.Gray;
+            graybox4.BackgroundColor = UIColor.FromRGB(240, 240, 240);
             scrollView.AddSubview(graybox);
 
 
             UILabel BriefDescrivtion = new UILabel(new CGRect(10, YforEverything, 180, 20));
-            BriefDescrivtion.Text = "Brief Describtion";
+            BriefDescrivtion.Text = "Brief Description";
             scrollView.AddSubview(BriefDescrivtion);
 
             YforEverything += 30;
@@ -70,8 +71,8 @@ namespace IEatHealthy.iOS
 
             YforEverything += (int)DescrivtionView.Frame.Height;
 
-            UILabel graybox3 = new UILabel(new CGRect(0, YforEverything - 5, View.Frame.Width, 2));
-            graybox3.BackgroundColor = UIColor.Gray;
+            UILabel graybox3 = new UILabel(new CGRect(0, YforEverything - 5, View.Frame.Width,5));
+            graybox3.BackgroundColor = UIColor.FromRGB(240, 240, 240);
             scrollView.AddSubview(graybox3);
 
             UILabel Ingredientlist = new UILabel(new CGRect(10, YforEverything, 180, 20));
@@ -109,8 +110,8 @@ namespace IEatHealthy.iOS
 
                 }
             }
-            UILabel graybox2 = new UILabel(new CGRect(0, YforEverything - 5, View.Frame.Width, 2));
-            graybox2.BackgroundColor = UIColor.Gray;
+            UILabel graybox2 = new UILabel(new CGRect(0, YforEverything - 5, View.Frame.Width, 5));
+            graybox2.BackgroundColor = UIColor.FromRGB(240, 240, 240);
             scrollView.AddSubview(graybox2);
 
             UILabel StepList = new UILabel(new CGRect(10, YforEverything, 180, 20));

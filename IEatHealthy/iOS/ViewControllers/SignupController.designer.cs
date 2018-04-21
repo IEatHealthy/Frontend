@@ -16,6 +16,18 @@ namespace IEatHealthy.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btn1 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btn2 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btn3 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField Fname { get; set; }
 
         [Outlet]
@@ -25,10 +37,6 @@ namespace IEatHealthy.iOS
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton signupbutton { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UISlider UCskill { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -46,12 +54,39 @@ namespace IEatHealthy.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField URPword { get; set; }
 
+        [Action ("Btn1_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void Btn1_TouchUpInside (UIKit.UIButton sender);
+
+        [Action ("Btn2_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void Btn2_TouchUpInside (UIKit.UIButton sender);
+
+        [Action ("Btn3_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void Btn3_TouchUpInside (UIKit.UIButton sender);
+
         [Action ("Signupbutton_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void Signupbutton_TouchUpInside (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
+            if (btn1 != null) {
+                btn1.Dispose ();
+                btn1 = null;
+            }
+
+            if (btn2 != null) {
+                btn2.Dispose ();
+                btn2 = null;
+            }
+
+            if (btn3 != null) {
+                btn3.Dispose ();
+                btn3 = null;
+            }
+
             if (Fname != null) {
                 Fname.Dispose ();
                 Fname = null;
@@ -65,11 +100,6 @@ namespace IEatHealthy.iOS
             if (signupbutton != null) {
                 signupbutton.Dispose ();
                 signupbutton = null;
-            }
-
-            if (UCskill != null) {
-                UCskill.Dispose ();
-                UCskill = null;
             }
 
             if (UEmail != null) {

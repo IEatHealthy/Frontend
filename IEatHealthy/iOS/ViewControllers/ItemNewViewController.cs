@@ -35,6 +35,7 @@ namespace IEatHealthy.iOS
 
         public override void ViewDidLoad()
         {
+            Title = "New Recipe";
             string RecipeDifficulty="intermediate";
 
             var easy = new UIButton(UIButtonType.Custom)
