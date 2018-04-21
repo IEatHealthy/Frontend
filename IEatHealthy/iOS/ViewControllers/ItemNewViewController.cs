@@ -57,18 +57,18 @@ namespace IEatHealthy.iOS
             Hard.SetTitleColor(UIColor.Black, UIControlState.Normal);
             Hard.SetTitle("Hard", UIControlState.Normal);
             Hard.Layer.BorderWidth = 0.2f;
-            Hard.Layer.CornerRadius = 8;
+            Hard.Layer.CornerRadius = 5;
             scrollView.AddSubview(Hard);
 
             Intermediate.SetTitle("Intermediate", UIControlState.Normal);
             Intermediate.SetTitleColor(UIColor.Black, UIControlState.Normal);
-            Intermediate.Layer.CornerRadius = 8;
+            Intermediate.Layer.CornerRadius = 5;
             Intermediate.Layer.BorderWidth = 0.2f;
             scrollView.AddSubview(Intermediate);
 
             easy.SetTitle("Easy", UIControlState.Normal);
             easy.SetTitleColor(UIColor.Black, UIControlState.Normal);
-            easy.Layer.CornerRadius = 8;
+            easy.Layer.CornerRadius = 5;
             easy.Layer.BorderWidth = 0.2f;
             scrollView.AddSubview(easy);
 
@@ -96,7 +96,7 @@ namespace IEatHealthy.iOS
 
            
 
-          int YforIngrediant = 540;
+            int YforIngrediant = 540;
             int YforStep = 640;
 
             base.ViewDidLoad();
@@ -105,14 +105,7 @@ namespace IEatHealthy.iOS
 
             sToolLabel.Center = new CGPoint(100, YforIngrediant -100);
             int YforSpecial = (int)(sToolLabel.Frame.Y + 30);
-            /*
-            var addStoolsBtn = new UIButton(UIButtonType.ContactAdd)
-            {
-                Frame = new CGRect(300, sToolLabel.Frame.Y+30 , 20, 20),
-
-            };
-            */
-
+        
             UITextField label4 = new UITextField(new System.Drawing.RectangleF(20, YforSpecial, 330, 30));
             //label.Placeholder = " Step " + i.ToString();
             label4.Layer.BorderWidth = 1f;
@@ -122,34 +115,17 @@ namespace IEatHealthy.iOS
 
             YforSpecial += 50;
 
-            /*
-            addStoolsBtn.TouchUpInside += (s, e) =>
-            {
-                UITextField label5 = new UITextField(new System.Drawing.RectangleF(20,YforSpecial, 250, 30));
-                //label.Placeholder = " Step " + i.ToString();
-                label5.Layer.BorderWidth = 1f;
-                label5.Layer.CornerRadius = 8;
-                IngrediantList.Add(label5);
-                scrollView.AddSubview(label5);
-                SpecialTools.Add(label5);
-
-                addStoolsBtn.Center = new CGPoint(310, addStoolsBtn.Frame.Y+50);
-
-            
-            
-            };
-*/
 
 
 
             UITextField label1 = new UITextField(new System.Drawing.RectangleF(20, YforIngrediant, 250, 30));
             //label.Placeholder = " Step " + i.ToString();
             label1.Layer.BorderWidth = 1f;
-            label1.Layer.CornerRadius = 8;
+            label1.Layer.CornerRadius = 5;
             IngrediantList.Add(label1);
             scrollView.AddSubview(label1);
             BriefDescInput.Layer.BorderWidth = 1f;
-            BriefDescInput.Layer.CornerRadius = 8;
+            BriefDescInput.Layer.CornerRadius = 5;
 
             //AddingrediantButton.Center=new CGPoint(310,YforIngrediant+5);
 
@@ -168,25 +144,27 @@ namespace IEatHealthy.iOS
 
 
             };
-
+            // creating save button with dynamic movements after additional steps are added
             var btnSaveItem = new UIButton(UIButtonType.Custom)
             {
-                Frame = new CGRect(40, YforStep+80, 150, 30),
-                BackgroundColor = UIColor.White,
+                Frame = new CGRect(25, YforStep + 80, 320, 40),
+                BackgroundColor = UIColor.FromRGB(66,134,244),
+              //  Font = UIFont(System, 12)
+
+
 
             };
             AddIngrediantButton.SetTitle("Add Recipe", UIControlState.Normal);
             scrollView.AddSubview(AddIngrediantButton);
             YforIngrediant += 50;
             IngrediantLabel.Center = new CGPoint(106, YforIngrediant - 70);
+
+            //dynamically adding ingredient boxes as plus button is pressed
             AddIngrediantButton.TouchUpInside += (s, e) =>
             {
-
-              //  ingcount++;
                 UITextField label2 = new UITextField(new System.Drawing.RectangleF(20, YforIngrediant, 250, 30));
-                //label.Placeholder = " Step " + i.ToString();
                 label2.Layer.BorderWidth = 1f;
-                label2.Layer.CornerRadius = 8;
+                label2.Layer.CornerRadius = 5;
                 IngrediantList.Add(label2);
                 scrollView.AddSubview(label2);
 
@@ -205,7 +183,7 @@ namespace IEatHealthy.iOS
                 YforStep += 50;
                 textfield += 65;
                 scrollView.ContentSize = new CGSize(View.Frame.Width, View.Frame.Height +textview+textfield);
-                btnSaveItem.Center = new CGPoint(100, btnSaveItem.Frame.Y + 70);
+                btnSaveItem.Center = new CGPoint(175, btnSaveItem.Frame.Y + 90);
             };
 
 
@@ -215,7 +193,7 @@ namespace IEatHealthy.iOS
             UITextView label = new UITextView(new System.Drawing.RectangleF(20, YforStep, 270, 50));
             //label.Placeholder = " Step " + i.ToString();
             label.Layer.BorderWidth = 1f;
-            label.Layer.CornerRadius = 8;
+            label.Layer.CornerRadius = 5;
             PreperationStepsList.Add(label);
             scrollView.AddSubview(label);
 
@@ -228,14 +206,14 @@ namespace IEatHealthy.iOS
                 UITextView label3 = new UITextView(new System.Drawing.RectangleF(15, YforStep, 270, 50));
                 //label.Placeholder = " Step " + i.ToString();
                 label3.Layer.BorderWidth = 1f;
-                label3.Layer.CornerRadius = 8;
+                label3.Layer.CornerRadius = 5;
                 PreperationStepsList.Add(label3);
                 scrollView.AddSubview(label3);
 
-                AddStepButton.Center = new CGPoint(310, AddStepButton.Frame.Y+ 80);
+                AddStepButton.Center = new CGPoint(330, AddStepButton.Frame.Y+ 80);
                 textview += 80;
                 scrollView.ContentSize = new CGSize(View.Frame.Width, View.Frame.Height + textview + textfield);
-                btnSaveItem.Center = new CGPoint(100, btnSaveItem.Frame.Y + 85);
+                btnSaveItem.Center = new CGPoint(175, btnSaveItem.Frame.Y + 105);
 
             };
 
@@ -244,8 +222,10 @@ namespace IEatHealthy.iOS
 
 
             btnSaveItem.SetTitle("Save Recipe", UIControlState.Normal);
+            btnSaveItem.Layer.CornerRadius = 7;
+
             scrollView.AddSubview(btnSaveItem);
-            btnSaveItem.SetTitleColor(UIColor.Blue, UIControlState.Normal);
+            btnSaveItem.SetTitleColor(UIColor.White, UIControlState.Normal);
             btnSaveItem.TouchUpInside += (sender, e) =>
             {
                
