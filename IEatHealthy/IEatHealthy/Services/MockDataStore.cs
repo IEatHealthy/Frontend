@@ -26,6 +26,7 @@ namespace IEatHealthy
                         "Chop the strawberries and add it to the pancake",
                         "Add sugar powder and serve"
                     },
+                    Author="MockDataStore",
                     Difficulty="Easy",
                     PrepTime=5,
                     CookTime=5,
@@ -53,6 +54,7 @@ namespace IEatHealthy
                     "2 mint sprigs, leaves picked",
 
                 },
+                    Author="MockDataStore",
                 steps = new string[]{ "In a wide dish, whisk the egg, milk and vanilla together. Coat one side of the bread slices in the liquid, then carefully flip them over and leave them to soak for 1-2 mins.",
                     "Melt 1 tbsp of the butter in a large non-stick pan over a medium heat and add two slices of bread. Cook for 5 mins or until golden, then turn to cook the other side for another 5 mins. Transfer to a plate and cook the other two slices in the rest of the butter.",
                         "Mix well and add sugar to taste . Mix everything together in the food processor",
@@ -90,6 +92,7 @@ namespace IEatHealthy
 
 
                     },
+                    Author="MockDataStore",
                 Difficulty = "Easy",
                 PrepTime = 5,
                 CookTime = 20,
@@ -130,6 +133,7 @@ namespace IEatHealthy
 "Place on the sausage-filled baguettes on a baking tray, top with cheeses and grill until golden and bubbling.",
 "Serve with a garnish of basil.",
                     },
+                    Author="MockDataStore",
                     Difficulty="Easy",
                     PrepTime=5,
                     CookTime=25,
@@ -162,6 +166,7 @@ namespace IEatHealthy
                         "Drain steak; discard marinade. Cook steak in same skillet on medium heat 3-4 on each side for medium doneness. Place on cutting board; slice crosswise into thin strips. Serve steak topped with sauce and onions.",
 
                     },
+                    Author="MockDataStore",
                 Difficulty = "Easy",
                 PrepTime = 10,
                 CookTime = 15,
@@ -202,6 +207,7 @@ namespace IEatHealthy
                         "Add chicken to sauce in wok and heat just until the chicken is hot enough for you. It may not even need a minute if you kept the chicken warm. The quicker you serve it the crispier the chicken stays.",
 
                     },
+                    Author="MockDataStore",
                 Difficulty = "Intermediate",
                 PrepTime = 10,
                 CookTime = 40,

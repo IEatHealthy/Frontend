@@ -21,7 +21,7 @@ namespace IEatHealthy
         public string BriefDescribtion { set; get; }
         public string SpecialTools { get; set; }
         public string Difficulty { get; set; }
-
+        public string Author { get; set; }
        
     }
 }
