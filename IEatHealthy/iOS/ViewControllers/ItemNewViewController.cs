@@ -35,6 +35,8 @@ namespace IEatHealthy.iOS
 
         public override void ViewDidLoad()
         {
+            View.BackgroundColor = UIColor.FromRGB(229, 231, 232);
+
             Title = "New Recipe";
             string RecipeDifficulty="intermediate";
 
