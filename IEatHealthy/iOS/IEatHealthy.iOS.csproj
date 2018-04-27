@@ -253,6 +253,10 @@
       <DependentUpon>AddIngredientViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="ingredient.cs" />
+    <Compile Include="CommentController.cs" />
+    <Compile Include="CommentController.designer.cs">
+      <DependentUpon>CommentController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />

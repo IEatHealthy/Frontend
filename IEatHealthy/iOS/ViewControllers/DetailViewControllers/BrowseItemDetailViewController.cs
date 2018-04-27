@@ -13,6 +13,7 @@ namespace IEatHealthy.iOS
         public ItemDetailViewModel ViewModel { get; set; }
         public List<UITextView> IngrediantList = new List<UITextView>();
         public List<UITextView> StepList = new List<UITextView>();
+        public List<UILabel> NutrationalFactsList = new List<UILabel>();
 
         public BrowseItemDetailViewController(IntPtr handle) : base(handle) { }
         public int itemsss = 0;
@@ -38,6 +39,20 @@ namespace IEatHealthy.iOS
 
             UIImageView ratingimg = new UIImageView(new CGRect(10, 90, 80, 20));
             ratingimg.Image = UIImage.FromBundle("RatingIcon");
+
+
+            ReviewButton.Frame = new CGRect(View.Frame.Width - 160, 90, 150, 20);
+
+            ReviewButton.Font = UIFont.FromName("Helvetica", 15f);
+            ReviewButton.SetTitle("5 reviews", UIControlState.Normal);
+            ReviewButton.SetTitleColor(UIColor.FromRGB(66, 134, 244), UIControlState.Normal);
+            scrollView.AddSubview(ReviewButton);
+
+            CommentButton.Frame = new CGRect(View.Frame.Width - 160, 110, 150, 20);
+            CommentButton.Font = UIFont.FromName("Helvetica", 15f);
+            CommentButton.SetTitle("Rate/Comment", UIControlState.Normal);
+            CommentButton.SetTitleColor(UIColor.FromRGB(66, 134, 244), UIControlState.Normal);
+            scrollView.AddSubview(CommentButton);
 
             UIImageView BookmarkImg = new UIImageView(new CGRect(View.Frame.Width - 60, 50, 20, 30));
             BookmarkImg.Image = UIImage.FromBundle("BookmarkIcon");
@@ -74,50 +89,51 @@ namespace IEatHealthy.iOS
             UITextView DescrivtionView = new UITextView(new CGRect(30, recipeImage.Frame.Y + recipeImage.Frame.Height + 10, View.Frame.Width - 60, 40));
             DescrivtionView.Text = ViewModel.Item.BriefDescribtion;
             DescrivtionView.AutoresizingMask = UIViewAutoresizing.All;
-            DescrivtionView.Font = UIFont.FromName("Helvetica", 14f);
+            DescrivtionView.Font = UIFont.FromName("Helvetica-bold", 16f);
             DescrivtionView.SizeToFit();
+            DescrivtionView.Editable = false;
             DescrivtionView.ScrollEnabled = false;
             DescrivtionView.Text = ViewModel.Item.BriefDescribtion;
             scrollView.AddSubview(DescrivtionView);
 
-            UILabel graybox = new UILabel(new CGRect(0, DescrivtionView.Frame.Y + 40, View.Frame.Width, 5));
+            UILabel graybox = new UILabel(new CGRect(0, DescrivtionView.Frame.Y + DescrivtionView.Frame.Height + 10, View.Frame.Width, 5));
             graybox.BackgroundColor = UIColor.Gray;
             graybox.Layer.CornerRadius = -10;
             scrollView.AddSubview(graybox);
 
-            UILabel preptimelabel = new UILabel(new CGRect(20, DescrivtionView.Frame.Y + 50, 100, 20));
+            UILabel preptimelabel = new UILabel(new CGRect(20, graybox.Frame.Y + 10, 100, 20));
             preptimelabel.Font = UIFont.FromName("Helvetica", 14f);
 
             preptimelabel.Text = "Prep Time";
-            UILabel preptime = new UILabel(new CGRect(140, DescrivtionView.Frame.Y + 50, 100, 20));
+            UILabel preptime = new UILabel(new CGRect(140, graybox.Frame.Y + 10, 100, 20));
             preptime.Text = ViewModel.Item.PrepTime + " Min";
             preptime.Font = UIFont.FromName("Helvetica", 14f);
 
 
-            UILabel CooktimeLabel = new UILabel(new CGRect(20, DescrivtionView.Frame.Y + 80, 100, 20));
+            UILabel CooktimeLabel = new UILabel(new CGRect(20, preptimelabel.Frame.Y + 20, 100, 20));
             CooktimeLabel.Text = "Cook Time";
             CooktimeLabel.Font = UIFont.FromName("Helvetica", 14f);
 
-            UILabel Cooktime = new UILabel(new CGRect(140, DescrivtionView.Frame.Y + 80, 100, 20));
+            UILabel Cooktime = new UILabel(new CGRect(140, preptimelabel.Frame.Y + 20, 100, 20));
             Cooktime.Text = ViewModel.Item.CookTime + " Min";
             Cooktime.Font = UIFont.FromName("Helvetica", 14f);
 
-            UILabel Readyinlabel = new UILabel(new CGRect(20, DescrivtionView.Frame.Y + 110, 100, 20));
+            UILabel Readyinlabel = new UILabel(new CGRect(20, Cooktime.Frame.Y + 20, 100, 20));
             Readyinlabel.Text = "Ready In";
             Readyinlabel.Font = UIFont.FromName("Helvetica", 14f);
 
-            UILabel Readyin = new UILabel(new CGRect(140, DescrivtionView.Frame.Y + 110, 100, 20));
+            UILabel Readyin = new UILabel(new CGRect(140, Cooktime.Frame.Y + 20, 100, 20));
             Readyin.Text = ViewModel.Item.ReadyTime + " Min";
             Readyin.Font = UIFont.FromName("Helvetica", 14f);
 
 
 
 
-            UILabel difficultylabel = new UILabel(new CGRect(20, Readyin.Frame.Y + 30, 100, 20));
+            UILabel difficultylabel = new UILabel(new CGRect(20, Readyin.Frame.Y + 20, 100, 20));
             difficultylabel.Text = "Difficulty ";
             difficultylabel.Font = UIFont.FromName("Helvetica", 14f);
 
-            UILabel difficulty = new UILabel(new CGRect(140, Readyin.Frame.Y + 30, 100, 20));
+            UILabel difficulty = new UILabel(new CGRect(140, Readyin.Frame.Y + 20, 100, 20));
             difficulty.Text = ViewModel.Item.Difficulty;
             difficulty.Font = UIFont.FromName("Helvetica", 14f);
 
@@ -125,22 +141,248 @@ namespace IEatHealthy.iOS
             graybox1.BackgroundColor = UIColor.Gray;
             scrollView.AddSubview(graybox1);
 
-            UILabel NutrationalFactsLabel = new UILabel(new CGRect(20, graybox1.Frame.Y + 30, 300, 30));
+
+            UILabel NutrationalFactsLabel = new UILabel(new CGRect(20, graybox1.Frame.Y + 10, 300, 30));
             NutrationalFactsLabel.Text = "Nutrition Facts";
-            NutrationalFactsLabel.Font = UIFont.FromName("Helvetica-bold", 16f);
+            NutrationalFactsLabel.Font = UIFont.FromName("Helvetica-bold", 22f);
+            NutrationalFactsList.Add(NutrationalFactsLabel);
 
-            UILabel Label1 = new UILabel(new CGRect(20, graybox1.Frame.Y + 60, 300, 30));
-            Label1.Text = "Nutrition Facts will be presented bellow";
+            UILabel ServingSizeLabel = new UILabel(new CGRect(20, NutrationalFactsLabel.Frame.Y + 30, 300, 25));
+            ServingSizeLabel.Text = "Serving size " + ViewModel.Item.ServingSize.ToString();
+            ServingSizeLabel.Font = UIFont.FromName("Helvetica", 17f);
+            NutrationalFactsList.Add(ServingSizeLabel);
+
+            UILabel graybox11 = new UILabel(new CGRect(0, ServingSizeLabel.Frame.Y + 26, View.Frame.Width, 2));
+            graybox11.BackgroundColor = UIColor.Gray;
+
+            NutrationalFactsList.Add(graybox11);
+
+            UILabel AmountLabel = new UILabel(new CGRect(20, graybox11.Frame.Y + 4, 300, 30));
+            AmountLabel.Text = "Amount Per Serving";//+ViewModel.Item.calorieCount;
+            AmountLabel.Font = UIFont.FromName("Helvetica-bold", 15f);
+            NutrationalFactsList.Add(AmountLabel);
+
+            UILabel graybox12 = new UILabel(new CGRect(0, AmountLabel.Frame.Y + 26, View.Frame.Width, 2));
+            graybox12.BackgroundColor = UIColor.Gray;
+            NutrationalFactsList.Add(graybox12);
+
+
+            UILabel CalorieLabel = new UILabel(new CGRect(20, graybox12.Frame.Y + 4, 300, 30));
+            CalorieLabel.Text = "Calories 200";//+ViewModel.Item.calorieCount;
+            CalorieLabel.Font = UIFont.FromName("Helvetica", 15f);
+            NutrationalFactsList.Add(CalorieLabel);
+
+            UILabel graybox13 = new UILabel(new CGRect(0, CalorieLabel.Frame.Y + 30, View.Frame.Width, 4));
+            graybox13.BackgroundColor = UIColor.Gray;
+            NutrationalFactsList.Add(graybox13);
+
+
+            UILabel DailyValue = new UILabel(new CGRect(View.Frame.Width - 170, graybox13.Frame.Y + 4, 150, 30));
+            DailyValue.Text = "% Daily Value  ";//+ViewModel.Item.calorieCount;
+            DailyValue.Font = UIFont.FromName("Helvetica", 15f);
+            DailyValue.TextAlignment = UITextAlignment.Right;
+            NutrationalFactsList.Add(DailyValue);
+
+            UILabel graybox14 = new UILabel(new CGRect(0, DailyValue.Frame.Y + 30, View.Frame.Width, 2));
+            graybox14.BackgroundColor = UIColor.Gray;
+            NutrationalFactsList.Add(graybox14);
+
+            UILabel Fatlabel = new UILabel(new CGRect(20, graybox14.Frame.Y + 4, 300, 20));
+            Fatlabel.Text = "Total Fat  0g";//+ViewModel.Item.calorieCount;
+            Fatlabel.Font = UIFont.FromName("Helvetica-bold", 15f);
+            NutrationalFactsList.Add(Fatlabel);
+
+            UILabel fatper = new UILabel(new CGRect(View.Frame.Width - 50, graybox14.Frame.Y + 4, 30, 20));
+            fatper.Text = "0 %";//+ViewModel.Item.calorieCount;
+            fatper.Font = UIFont.FromName("Helvetica", 15f);
+            NutrationalFactsList.Add(fatper);
+
+            UILabel graybox15 = new UILabel(new CGRect(0, Fatlabel.Frame.Y + 20, View.Frame.Width, 2));
+            graybox15.BackgroundColor = UIColor.Gray;
+            NutrationalFactsList.Add(graybox15);
+
+            UILabel satFatlabel = new UILabel(new CGRect(40, graybox15.Frame.Y + 4, 300, 20));
+            satFatlabel.Text = "Saturated Fat  0g";//+ViewModel.Item.calorieCount;
+            satFatlabel.Font = UIFont.FromName("Helvetica", 15f);
+            NutrationalFactsList.Add(satFatlabel);
+
+            UILabel graybox16 = new UILabel(new CGRect(0, satFatlabel.Frame.Y + 20, View.Frame.Width, 2));
+            graybox16.BackgroundColor = UIColor.Gray;
+            NutrationalFactsList.Add(graybox16);
+
+            UILabel Transfat = new UILabel(new CGRect(40, graybox16.Frame.Y + 4, 300, 20));
+            Transfat.Text = "Trans Fat  0g";//+ViewModel.Item.calorieCount;
+            Transfat.Font = UIFont.FromName("Helvetica", 15f);
+            NutrationalFactsList.Add(Transfat);
+
+            UILabel Transper = new UILabel(new CGRect(View.Frame.Width - 50, graybox16.Frame.Y + 4, 30, 20));
+            Transper.Text = "0 %";//+ViewModel.Item.calorieCount;
+            Transper.Font = UIFont.FromName("Helvetica", 15f);
+            NutrationalFactsList.Add(Transper);
+
+            UILabel graybox17 = new UILabel(new CGRect(0, Transfat.Frame.Y + 20, View.Frame.Width, 2));
+            graybox17.BackgroundColor = UIColor.Gray;
+            NutrationalFactsList.Add(graybox17);
+
+            UILabel cholesLabel = new UILabel(new CGRect(20, graybox17.Frame.Y + 4, 300, 20));
+            cholesLabel.Text = "Cholesterol  0mg";//+ViewModel.Item.calorieCount;
+            cholesLabel.Font = UIFont.FromName("Helvetica-bold", 15f);
+            NutrationalFactsList.Add(cholesLabel);
+
+            UILabel cholper = new UILabel(new CGRect(View.Frame.Width - 50, graybox17.Frame.Y + 4, 30, 20));
+            cholper.Text = "0 %";//+ViewModel.Item.calorieCount;
+            cholper.Font = UIFont.FromName("Helvetica", 15f);
+            NutrationalFactsList.Add(cholper);
+
+            UILabel graybox18 = new UILabel(new CGRect(0, cholesLabel.Frame.Y + 20, View.Frame.Width, 2));
+            graybox18.BackgroundColor = UIColor.Gray;
+            NutrationalFactsList.Add(graybox18);
+
+            UILabel SodiiumLabel = new UILabel(new CGRect(20, graybox18.Frame.Y + 4, 300, 20));
+            SodiiumLabel.Text = "Sodium  0mg";//+ViewModel.Item.calorieCount;
+            SodiiumLabel.Font = UIFont.FromName("Helvetica-bold", 15f);
+            NutrationalFactsList.Add(SodiiumLabel);
+
+            UILabel sodper = new UILabel(new CGRect(View.Frame.Width - 50, graybox18.Frame.Y + 4, 30, 20));
+            sodper.Text = "0 %";//+ViewModel.Item.calorieCount;
+            sodper.Font = UIFont.FromName("Helvetica", 15f);
+            NutrationalFactsList.Add(sodper);
+
+            UILabel graybox19 = new UILabel(new CGRect(0, SodiiumLabel.Frame.Y + 20, View.Frame.Width, 2));
+            graybox19.BackgroundColor = UIColor.Gray;
+            NutrationalFactsList.Add(graybox19);
+
+            UILabel Carblabel = new UILabel(new CGRect(20, graybox19.Frame.Y + 4, 300, 20));
+            Carblabel.Text = "Total Carbohydrate  0g";//+ViewModel.Item.calorieCount;
+            Carblabel.Font = UIFont.FromName("Helvetica-bold", 15f);
+            NutrationalFactsList.Add(Carblabel);
+
+            UILabel carbper = new UILabel(new CGRect(View.Frame.Width - 50, graybox19.Frame.Y + 4, 30, 20));
+            carbper.Text = "0 %";//+ViewModel.Item.calorieCount;
+            carbper.Font = UIFont.FromName("Helvetica", 15f);
+            NutrationalFactsList.Add(carbper);
+
+            UILabel graybox20 = new UILabel(new CGRect(0, Carblabel.Frame.Y + 20, View.Frame.Width, 2));
+            graybox20.BackgroundColor = UIColor.Gray;
+            NutrationalFactsList.Add(graybox20);
+
+            UILabel Fiberlabel = new UILabel(new CGRect(40, graybox20.Frame.Y + 4, 300, 20));
+            Fiberlabel.Text = "Fiber  0g";//+ViewModel.Item.calorieCount;
+            Fiberlabel.Font = UIFont.FromName("Helvetica", 15f);
+            NutrationalFactsList.Add(Fiberlabel);
+
+            UILabel fiberper = new UILabel(new CGRect(View.Frame.Width - 50, graybox20.Frame.Y + 4, 30, 20));
+            fiberper.Text = "0 %";//+ViewModel.Item.calorieCount;
+            fiberper.Font = UIFont.FromName("Helvetica", 15f);
+            NutrationalFactsList.Add(fiberper);
+
+            UILabel graybox21 = new UILabel(new CGRect(0, Fiberlabel.Frame.Y + 20, View.Frame.Width, 2));
+            graybox21.BackgroundColor = UIColor.Gray;
+            NutrationalFactsList.Add(graybox21);
+
+            UILabel Sugerlabel = new UILabel(new CGRect(40, graybox21.Frame.Y + 4, 300, 20));
+            Sugerlabel.Text = "Sugars  0g";//+ViewModel.Item.calorieCount;
+            Sugerlabel.Font = UIFont.FromName("Helvetica", 15f);
+            NutrationalFactsList.Add(Sugerlabel);
+
+            UILabel graybox22 = new UILabel(new CGRect(0, Sugerlabel.Frame.Y + 20, View.Frame.Width, 2));
+            graybox22.BackgroundColor = UIColor.Gray;
+            NutrationalFactsList.Add(graybox22);
+
+            UILabel ProteinLabel = new UILabel(new CGRect(20, graybox22.Frame.Y + 4, 300, 20));
+            ProteinLabel.Text = "Protein 0g";//+ViewModel.Item.calorieCount;
+            ProteinLabel.Font = UIFont.FromName("Helvetica-bold", 15f);
+            NutrationalFactsList.Add(ProteinLabel);
+
+            UILabel graybox23 = new UILabel(new CGRect(0, ProteinLabel.Frame.Y + 20, View.Frame.Width, 4));
+            graybox23.BackgroundColor = UIColor.Gray;
+            NutrationalFactsList.Add(graybox23);
+
+            UILabel Vitalabel = new UILabel(new CGRect(20, graybox23.Frame.Y + 4, 300, 20));
+            Vitalabel.Text = "Vitamin A";//+ViewModel.Item.calorieCount;
+            Vitalabel.Font = UIFont.FromName("Helvetica-bold", 15f);
+            NutrationalFactsList.Add(Vitalabel);
+
+            UILabel VitaPer = new UILabel(new CGRect(View.Frame.Width - 50, graybox23.Frame.Y + 4, 30, 20));
+            VitaPer.Text = "0 %";//+ViewModel.Item.calorieCount;
+            VitaPer.Font = UIFont.FromName("Helvetica", 15f);
+            NutrationalFactsList.Add(VitaPer);
+
+            UILabel graybox24 = new UILabel(new CGRect(0, Vitalabel.Frame.Y + 20, View.Frame.Width, 2));
+            graybox24.BackgroundColor = UIColor.Gray;
+            NutrationalFactsList.Add(graybox24);
+
+            UILabel Vitclabel = new UILabel(new CGRect(20, graybox24.Frame.Y + 4, 300, 20));
+            Vitclabel.Text = "Vitamin C";//+ViewModel.Item.calorieCount;
+            Vitclabel.Font = UIFont.FromName("Helvetica-bold", 15f);
+            NutrationalFactsList.Add(Vitclabel);
+
+            UILabel VitcPer = new UILabel(new CGRect(View.Frame.Width - 50, graybox24.Frame.Y + 4, 30, 20));
+            VitcPer.Text = "0 %";//+ViewModel.Item.calorieCount;
+            VitcPer.Font = UIFont.FromName("Helvetica", 15f);
+            NutrationalFactsList.Add(VitcPer);
+
+            UILabel graybox25 = new UILabel(new CGRect(0, Vitclabel.Frame.Y + 20, View.Frame.Width, 2));
+            graybox25.BackgroundColor = UIColor.Gray;
+            NutrationalFactsList.Add(graybox25);
+
+            UILabel Vitdlabel = new UILabel(new CGRect(20, graybox25.Frame.Y + 4, 300, 20));
+            Vitdlabel.Text = "Vitamin D";//+ViewModel.Item.calorieCount;
+            Vitdlabel.Font = UIFont.FromName("Helvetica-bold", 15f);
+            NutrationalFactsList.Add(Vitdlabel);
+
+            UILabel VitdPer = new UILabel(new CGRect(View.Frame.Width - 50, graybox25.Frame.Y + 4, 30, 20));
+            VitdPer.Text = "0 %";//+ViewModel.Item.calorieCount;
+            VitdPer.Font = UIFont.FromName("Helvetica", 15f);
+            NutrationalFactsList.Add(VitdPer);
+
+            UILabel graybox26 = new UILabel(new CGRect(0, Vitdlabel.Frame.Y + 20, View.Frame.Width, 2));
+            graybox26.BackgroundColor = UIColor.Gray;
+            NutrationalFactsList.Add(graybox26);
+
+            UILabel Ironlabel = new UILabel(new CGRect(20, graybox26.Frame.Y + 4, 300, 20));
+            Ironlabel.Text = "Iron";//+ViewModel.Item.calorieCount;
+            Ironlabel.Font = UIFont.FromName("Helvetica-bold", 15f);
+            NutrationalFactsList.Add(Ironlabel);
+
+            UILabel ironper = new UILabel(new CGRect(View.Frame.Width - 50, graybox26.Frame.Y + 4, 30, 20));
+            ironper.Text = "0 %";//+ViewModel.Item.calorieCount;
+            ironper.Font = UIFont.FromName("Helvetica", 15f);
+            NutrationalFactsList.Add(ironper);
+
+            UILabel graybox27 = new UILabel(new CGRect(0, ironper.Frame.Y + 20, View.Frame.Width, 2));
+            graybox27.BackgroundColor = UIColor.Gray;
+            NutrationalFactsList.Add(graybox27);
+
+            UILabel Potlabel = new UILabel(new CGRect(20, graybox27.Frame.Y + 4, 300, 20));
+            Potlabel.Text = "Potassium";//+ViewModel.Item.calorieCount;
+            Potlabel.Font = UIFont.FromName("Helvetica-bold", 15f);
+            NutrationalFactsList.Add(Potlabel);
+
+            UILabel potper = new UILabel(new CGRect(View.Frame.Width - 50, graybox27.Frame.Y + 4, 30, 20));
+            potper.Text = "0 %";//+ViewModel.Item.calorieCount;
+            potper.Font = UIFont.FromName("Helvetica", 15f);
+            NutrationalFactsList.Add(potper);
 
 
 
-            scrollView.AddSubviews(preptime, preptimelabel, Cooktime, CooktimeLabel, Readyin, Readyinlabel, difficulty, difficultylabel, NutrationalFactsLabel, graybox1, Label1);
+
+
+
+            foreach (UILabel item in NutrationalFactsList)
+            {
+                scrollView.AddSubview(item);
+            }
+
+
+
+            scrollView.AddSubviews(preptime, preptimelabel, Cooktime, CooktimeLabel, Readyin, Readyinlabel, difficulty, difficultylabel, graybox1);
 
 
 
 
 
-            scrollView.ContentSize = new CGSize(View.Frame.Width, Label1.Frame.Y);
+            scrollView.ContentSize = new CGSize(View.Frame.Width, potper.Frame.Y + 40);
 
             int YforIngredient = (int)(recipeImage.Frame.Y + 10);
 
@@ -227,9 +469,12 @@ namespace IEatHealthy.iOS
 
                         }
                     }
-                    scrollView.AddSubviews(graybox, recipeImage, DescrivtionView, preptime, preptimelabel, Cooktime, CooktimeLabel, Readyin, Readyinlabel, difficulty, difficultylabel, graybox1, NutrationalFactsLabel, Label1);
-                    scrollView.ContentSize = new CGSize(View.Frame.Width, Label1.Frame.Y);
-
+                    scrollView.AddSubviews(graybox, recipeImage, DescrivtionView, preptime, preptimelabel, Cooktime, CooktimeLabel, Readyin, Readyinlabel, difficulty, difficultylabel, graybox1, NutrationalFactsLabel);
+                    scrollView.ContentSize = new CGSize(View.Frame.Width, CalorieLabel.Frame.Y + 20);
+                    foreach (UILabel item in NutrationalFactsList)
+                    {
+                        scrollView.AddSubview(item);
+                    }
                     previousIndex = 0;
 
 
@@ -252,7 +497,11 @@ namespace IEatHealthy.iOS
                         difficultylabel.RemoveFromSuperview();
                         graybox1.RemoveFromSuperview();
                         NutrationalFactsLabel.RemoveFromSuperview();
-                        Label1.RemoveFromSuperview();
+                        NutrationalFactsLabel.RemoveFromSuperview();
+                        foreach (UILabel item in NutrationalFactsList)
+                        {
+                            item.RemoveFromSuperview();
+                        }
 
 
                     }
@@ -294,7 +543,11 @@ namespace IEatHealthy.iOS
                         difficultylabel.RemoveFromSuperview();
                         graybox1.RemoveFromSuperview();
                         NutrationalFactsLabel.RemoveFromSuperview();
-                        Label1.RemoveFromSuperview();
+                        NutrationalFactsLabel.RemoveFromSuperview();
+                        foreach (UILabel item in NutrationalFactsList)
+                        {
+                            item.RemoveFromSuperview();
+                        }
 
                     }
                     if (previousIndex == 1)
@@ -327,7 +580,22 @@ namespace IEatHealthy.iOS
 
         public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
         {
-            // base.PrepareForSegue(segue, sender);
+
+
+            if (segue.Identifier == "CommentSegue")
+            {
+                var resultview = segue.DestinationViewController as CommentController;
+                resultview.isCOmment = true;
+
+            }
+            else
+            {
+                var resultview = segue.DestinationViewController as CommentController;
+                resultview.isCOmment = false;
+
+            }
+
+            base.PrepareForSegue(segue, sender);
             // var resultview = segue.DestinationViewController as FullDetailViewController;
             // resultview.mm = this.ViewModel.Item;
 

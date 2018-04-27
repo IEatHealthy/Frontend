@@ -1,12 +1,11 @@
 ﻿<Properties StartupConfiguration="{C2E903DD-CDDC-4AE6-AFDE-B54511A5E1C0}|Default">
-  <MonoDevelop.Ide.ItemProperties.IEatHealthy.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.C5C5D123-994F-474E-BB74-EC8E6A0A676D" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/ViewControllers/ItemNewViewController.cs">
+  <MonoDevelop.Ide.ItemProperties.IEatHealthy.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.0F802176-C2B6-4E37-88A4-4A6C016DECDB" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/CommentController.cs">
     <Files>
-      <File FileName="iOS/ViewControllers/DetailViewControllers/BrowseItemDetailViewController.cs" Line="34" Column="51" />
-      <File FileName="iOS/Main.storyboard" />
+      <File FileName="iOS/ViewControllers/DetailViewControllers/BrowseItemDetailViewController.cs" Line="592" Column="14" />
       <File FileName="IEatHealthy/Models/Item.cs" Line="24" Column="36" />
-      <File FileName="IEatHealthy/Services/MockDataStore.cs" Line="29" Column="22" />
-      <File FileName="iOS/ViewControllers/ItemNewViewController.cs" Line="38" Column="18" />
+      <File FileName="iOS/Main.storyboard" />
+      <File FileName="iOS/CommentController.cs" Line="56" Column="27" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
