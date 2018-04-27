@@ -54,6 +54,7 @@ namespace IEatHealthy.iOS
             CommentButton.SetTitleColor(UIColor.FromRGB(66, 134, 244), UIControlState.Normal);
             scrollView.AddSubview(CommentButton);
 
+
             UIImageView BookmarkImg = new UIImageView(new CGRect(View.Frame.Width - 60, 50, 20, 30));
             BookmarkImg.Image = UIImage.FromBundle("BookmarkIcon");
             scrollView.AddSubview(BookmarkImg);
@@ -386,12 +387,13 @@ namespace IEatHealthy.iOS
 
             int YforIngredient = (int)(recipeImage.Frame.Y + 10);
 
-            var CartButton = new UIButton(UIButtonType.Custom)
-            {
-                Frame = new CGRect(View.Frame.Width - 45, YforIngredient, 30, 20),
-            };
+
             //CartButton.Layer.BorderWidth = 1f;
-            CartButton.SetImage(UIImage.FromBundle("CartTab"), UIControlState.Normal);
+            Cartbutton.Frame = new CGRect(View.Frame.Width - 45, YforIngredient, 30, 20);
+            Cartbutton.SetImage(UIImage.FromBundle("CartTab"), UIControlState.Normal);
+            Cartbutton.RemoveFromSuperview();
+
+
 
 
             YforIngredient += 30;
@@ -458,7 +460,7 @@ namespace IEatHealthy.iOS
                             item.RemoveFromSuperview();
 
                         }
-                        CartButton.RemoveFromSuperview();
+                        Cartbutton.RemoveFromSuperview();
 
                     }
                     if (previousIndex == 2)
@@ -520,7 +522,7 @@ namespace IEatHealthy.iOS
                         scrollView.AddSubview(item);
 
                     }
-                    scrollView.AddSubview(CartButton);
+                    scrollView.AddSubview(Cartbutton);
                     scrollView.ContentSize = new CGSize(View.Frame.Width, YforIngredient + 20);
                     previousIndex = 1;
                 }
@@ -557,7 +559,7 @@ namespace IEatHealthy.iOS
                             item.RemoveFromSuperview();
 
                         }
-                        CartButton.RemoveFromSuperview();
+                        Cartbutton.RemoveFromSuperview();
                     }
 
                     previousIndex = 2;
@@ -586,21 +588,27 @@ namespace IEatHealthy.iOS
             {
                 var resultview = segue.DestinationViewController as CommentController;
                 resultview.isCOmment = true;
+                base.PrepareForSegue(segue, sender);
 
             }
+            if (segue.Identifier == "Cartsegue")
+            {
+                var resultview = segue.DestinationViewController as SelectIngredient;
+                resultview.item = ViewModel.Item;
+                base.PrepareForSegue(segue, sender);
+            }
+
+
             else
             {
                 var resultview = segue.DestinationViewController as CommentController;
                 resultview.isCOmment = false;
+                base.PrepareForSegue(segue, sender);
 
             }
 
-            base.PrepareForSegue(segue, sender);
-            // var resultview = segue.DestinationViewController as FullDetailViewController;
-            // resultview.mm = this.ViewModel.Item;
-
-            //  var ingrediantView = segue.DestinationViewController as SelectIngredient;
-            // ingrediantView.ShoppingListNames = this.ViewModel.Item;
+           
+           
 
         }
     }

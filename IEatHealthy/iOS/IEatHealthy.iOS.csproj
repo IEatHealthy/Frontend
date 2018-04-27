@@ -91,22 +91,22 @@
       <HintPath>..\packages\Xam.Plugin.Connectivity.3.1.1\lib\Xamarin.iOS10\Plugin.Connectivity.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.Compression" />
-    <Reference Include="Microsoft.IdentityModel.Logging">
-      <HintPath>..\packages\Microsoft.IdentityModel.Logging.5.2.1\lib\netstandard1.4\Microsoft.IdentityModel.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="System.IdentityModel.Tokens.Jwt">
-      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.2.1\lib\netstandard1.4\System.IdentityModel.Tokens.Jwt.dll</HintPath>
-    </Reference>
     <Reference Include="Plugin.Connectivity">
       <HintPath>..\packages\Xam.Plugin.Connectivity.3.1.1\lib\Xamarin.iOS10\Plugin.Connectivity.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.IdentityModel.Tokens">
-      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.2.1\lib\netstandard1.4\Microsoft.IdentityModel.Tokens.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.5.2.2\lib\netstandard1.4\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.2.2\lib\netstandard1.4\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IdentityModel.Tokens.Jwt">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.2.2\lib\netstandard1.4\System.IdentityModel.Tokens.Jwt.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +176,10 @@
     <ImageAsset Include="Assets.xcassets\img1.imageset\dog.jpg" />
     <ImageAsset Include="Assets.xcassets\img2.imageset\stake.jpg" />
     <ImageAsset Include="Assets.xcassets\img3.imageset\tso chicken.jpg" />
+    <ImageAsset Include="Assets.xcassets\str1.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\str2.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\str2.imageset\Blank Diagram %281%29.png" />
+    <ImageAsset Include="Assets.xcassets\str1.imageset\Blank Diagram.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ViewControllers\DetailViewControllers\BrowseItemDetailViewController.cs" />
@@ -290,6 +294,8 @@
     <Folder Include="Assets.xcassets\img1.imageset\" />
     <Folder Include="Assets.xcassets\img2.imageset\" />
     <Folder Include="Assets.xcassets\img3.imageset\" />
+    <Folder Include="Assets.xcassets\str1.imageset\" />
+    <Folder Include="Assets.xcassets\str2.imageset\" />
   </ItemGroup>
   <Import Project="..\IEatHealthy\IEatHealthy.projitems" Label="Shared" Condition="Exists('..\IEatHealthy\IEatHealthy.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

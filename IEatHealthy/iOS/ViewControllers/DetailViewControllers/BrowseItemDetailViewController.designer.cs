@@ -16,6 +16,10 @@ namespace IEatHealthy.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton Cartbutton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton CommentButton { get; set; }
 
         [Outlet]
@@ -28,6 +32,11 @@ namespace IEatHealthy.iOS
 
         void ReleaseDesignerOutlets ()
         {
+            if (Cartbutton != null) {
+                Cartbutton.Dispose ();
+                Cartbutton = null;
+            }
+
             if (CommentButton != null) {
                 CommentButton.Dispose ();
                 CommentButton = null;

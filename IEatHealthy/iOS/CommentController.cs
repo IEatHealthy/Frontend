@@ -17,38 +17,42 @@ namespace IEatHealthy.iOS
             base.ViewDidLoad();
             if (isCOmment == true)
             {
+                UILabel ratingLabel = new UILabel(new CGRect(20, 40, 200, 30));
+                ratingLabel.Text="Rating";
+                ratingLabel.Font=UIFont.FromName("Helvetica-bold", 18f);
+                scrollview.AddSubview(ratingLabel);
                 //label1.Text = "Comment page";
                 var str1 = new UIButton(UIButtonType.Custom)
                 {
-                    Frame = new CGRect(20, 100, 40, 40),
+                    Frame = new CGRect(20, 70, 40, 40),
                 };
                 //CartButton.Layer.BorderWidth = 1f;
                 str1.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
 
                 var str2 = new UIButton(UIButtonType.Custom)
                 {
-                    Frame = new CGRect(60, 100, 40, 40),
+                    Frame = new CGRect(60, 70, 40, 40),
                 };
                 //CartButton.Layer.BorderWidth = 1f;
                 str2.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
 
                 var str3 = new UIButton(UIButtonType.Custom)
                 {
-                    Frame = new CGRect(100, 100, 40, 40),
+                    Frame = new CGRect(100, 70, 40, 40),
                 };
                 //CartButton.Layer.BorderWidth = 1f;
                 str3.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
 
                 var str4 = new UIButton(UIButtonType.Custom)
                 {
-                    Frame = new CGRect(140, 100, 40, 40),
+                    Frame = new CGRect(140, 70, 40, 40),
                 };
                 //CartButton.Layer.BorderWidth = 1f;
                 str4.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
 
                 var str5 = new UIButton(UIButtonType.Custom)
                 {
-                    Frame = new CGRect(180, 100, 40, 40),
+                    Frame = new CGRect(180, 70, 40, 40),
                 };
                 //CartButton.Layer.BorderWidth = 1f;
                 str5.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
@@ -96,23 +100,43 @@ namespace IEatHealthy.iOS
 
                 };
 
-                UITextView CommentField = new UITextView(new CGRect(20, 200, 330, 150));
+                UILabel CommentLabel = new UILabel(new CGRect(20, 120, 200, 30));
+                CommentLabel.Text = "Comments";
+                CommentLabel.Font = UIFont.FromName("Helvetica-bold", 18f);
+                scrollview.AddSubview(CommentLabel);
+
+                UITextView CommentField = new UITextView(new CGRect(20, 170, 330, 150));
                 CommentField.Layer.BorderWidth = 1f;
                 CommentField.Layer.CornerRadius = 5;
+                CommentLabel.Font = UIFont.FromName("Helvetica", 16f);
                 CommentField.AutoresizingMask = UIViewAutoresizing.All;
 
                 CommentField.Editable = true;
 
                 var SaveComment = new UIButton(UIButtonType.Custom)
                 {
-                    Frame = new CGRect(40, CommentField.Frame.Y + CommentField.Frame.Height + 20, View.Frame.Width - 80, 40),
+                    Frame = new CGRect(20, CommentField.Frame.Y + CommentField.Frame.Height + 20, View.Frame.Width - 40, 40),
                 };
                 SaveComment.SetTitle("Save Comment", UIControlState.Normal);
-                SaveComment.BackgroundColor = UIColor.Blue;
+                SaveComment.BackgroundColor = UIColor.Red;//UIColor.FromRGB(244, 95, 66);
+                SaveComment.Layer.CornerRadius = 8;
                 scrollview.AddSubviews(CommentField, SaveComment);
+
+                SaveComment.TouchUpInside += (s, e) => {
+
+                    //post the rating and comment and go back to the recipedetail page
+                    NavigationController.PopViewController(true);
+                };
+                if(isCOmment==false){
+
+
+
+                }
 
             }
             //  else { label1.Text = "Review Page"; }
         }
     }
 }
+
+

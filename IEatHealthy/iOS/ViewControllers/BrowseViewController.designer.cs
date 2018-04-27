@@ -18,11 +18,29 @@ namespace IEatHealthy.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIBarButtonItem btnAddItem { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UINavigationItem MainNavigation { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITableView RecipeTableView { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
             if (btnAddItem != null) {
                 btnAddItem.Dispose ();
                 btnAddItem = null;
+            }
+
+            if (MainNavigation != null) {
+                MainNavigation.Dispose ();
+                MainNavigation = null;
+            }
+
+            if (RecipeTableView != null) {
+                RecipeTableView.Dispose ();
+                RecipeTableView = null;
             }
         }
     }

@@ -13,7 +13,7 @@ namespace IEatHealthy.iOS
 
         }
 
-        //public string ingredients = new string;
+        public Item item = new Item();
 
 
     }

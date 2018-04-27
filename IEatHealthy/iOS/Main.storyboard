@@ -88,6 +88,7 @@
                         <rect key="frame" x="0.0" y="763" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" colorSpace="calibratedRGB" red="0.96078431372549022" green="0.96470588235294119" blue="0.96078431372549022" alpha="1"/>
+                        <color key="selectedImageTintColor" colorSpace="calibratedRGB" red="0.88627450980392153" green="0.28235294117647058" blue="0.25098039215686274" alpha="1"/>
                     </tabBar>
                     <connections>
                         <segue destination="IVu-6x-Ha6" kind="relationship" relationship="viewControllers" id="1947"/>
@@ -168,7 +169,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" customColorSpace="sRGB" colorSpace="calibratedRGB" red="0.96078431372549022" green="0.96470588235294119" blue="0.96078431372549022" alpha="1"/>
-                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ITEM_CELL" textLabel="2166" detailTextLabel="2167" rowHeight="80" style="IBUITableViewCellStyleSubtitle" id="79">
                                 <rect key="frame" x="0.0" y="22" width="375" height="80"/>
@@ -202,11 +202,12 @@
                             <outlet property="dataSource" destination="75" id="77"/>
                             <outlet property="delegate" destination="75" id="78"/>
                         </connections>
+                        <inset key="separatorInset" minX="15" minY="0" maxX="0" maxY="0"/>
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="104">
                         <barButtonItem key="rightBarButtonItem" id="255578" systemItem="add">
-                            <color key="tintColor" colorSpace="calibratedWhite" white="0" alpha="1"/>
+                            <color key="tintColor" colorSpace="calibratedRGB" red="0.88627450980392153" green="0.28235294117647058" blue="0.25098039215686274" alpha="1"/>
                             <connections>
                                 <segue id="276672" destination="2248" kind="push"/>
                             </connections>
@@ -215,6 +216,8 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="btnAddItem" destination="255578" id="name-outlet-255578"/>
+                        <outlet property="MainNavigation" destination="104" id="name-outlet-104"/>
+                        <outlet property="RecipeTableView" destination="76" id="name-outlet-76"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="81" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -239,6 +242,7 @@
                         <outlet property="scrollView" destination="246305" id="name-outlet-246305"/>
                         <outlet property="CommentButton" destination="277526" id="name-outlet-277526"/>
                         <outlet property="ReviewButton" destination="277527" id="name-outlet-277527"/>
+                        <outlet property="Cartbutton" destination="290038" id="name-outlet-290038"/>
                     </connections>
                     <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="246305">
                         <rect key="frame" x="0.0" y="64" width="375" height="748"/>
@@ -248,11 +252,24 @@
                                 <rect key="frame" x="273" y="148" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue id="278851" destination="277951" kind="push" identifier="CommentSegue"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="277527" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
                                 <rect key="frame" x="273" y="210" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue id="280561" destination="277951" kind="push"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="290038" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="273" y="275" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue id="291040" destination="162638" kind="push" identifier="Cartsegue"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1144,7 +1161,7 @@
             <objects>
                 <tableViewController restorationIdentifier="detail" storyboardIdentifier="detail" id="162638" customClass="SelectIngredient" sceneMemberID="viewController" title="Add to Cart">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="162639">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="748"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -1323,12 +1340,12 @@
                         <viewControllerLayoutGuide type="bottom" id="277949"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="277952">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="748"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="278359" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="748"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </scrollView>
                         </subviews>
@@ -1336,6 +1353,7 @@
                     <connections>
                         <outlet property="scrollview" destination="278359" id="name-outlet-278359"/>
                     </connections>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO" translucent="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="277953" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1368,5 +1386,7 @@
         <image name="img3" width="644" height="362"/>
         <image name="img1" width="563" height="401"/>
         <image name="img2" width="707" height="398"/>
+        <image name="str2" width="563" height="563"/>
+        <image name="str1" width="600" height="563"/>
     </resources>
 </document>

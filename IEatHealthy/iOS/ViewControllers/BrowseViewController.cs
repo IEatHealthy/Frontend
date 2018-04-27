@@ -17,9 +17,14 @@ namespace IEatHealthy.iOS
         {
         }
 
+
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+
+            RecipeTableView.RowHeight = 60;
+            RecipeTableView.ReloadData();
 
             ViewModel = new ItemsViewModel();
 
@@ -32,6 +37,9 @@ namespace IEatHealthy.iOS
 
             ViewModel.PropertyChanged += IsBusy_PropertyChanged;
             ViewModel.Items.CollectionChanged += Items_CollectionChanged;
+            RecipeTableView.RowHeight = UITableView.AutomaticDimension;
+            RecipeTableView.EstimatedRowHeight = 100;
+            RecipeTableView.ReloadData();
         }
 
 
@@ -62,7 +70,7 @@ namespace IEatHealthy.iOS
 
         void NavBar() {
             var navBar = NavigationController.NavigationBar;
-
+            navBar.TintColor = UIColor.Red;
             // Adds logo on navigation bar
             var imageView = new UIImageView(UIImage.FromBundle("newlogo"));
             imageView.ContentMode = UIViewContentMode.ScaleAspectFit;
@@ -129,9 +137,8 @@ namespace IEatHealthy.iOS
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
-
             UIImage ResizeImage(UIImage sourceImage, float width, float height)
-            {
+            {   
                 UIGraphics.BeginImageContext(new SizeF(width, height));
                 sourceImage.Draw(new RectangleF(0, 0, width, height));
                 var resultImage = UIGraphics.GetImageFromCurrentImageContext();
@@ -140,7 +147,6 @@ namespace IEatHealthy.iOS
             }
 
             var cell = tableView.DequeueReusableCell(CELL_IDENTIFIER, indexPath);
-
 
             var item = viewModel.Items[indexPath.Row];
             cell.TextLabel.Text = item.Text;
