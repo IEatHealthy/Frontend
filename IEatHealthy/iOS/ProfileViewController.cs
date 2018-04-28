@@ -1,30 +1,17 @@
+using Foundation;
 using System;
-//using System.IdentityModel.Tokens.Jwt;
-using Foundation;  
 using UIKit;
 using CoreGraphics;
 using System.Collections.Generic;
-           
+
 namespace IEatHealthy.iOS
 {
-    public partial class moreviewcontroller : UIViewController
+    public partial class ProfileViewController : UIViewController
     {
-        public static AppDelegate App
+        public ProfileViewController(IntPtr handle) : base(handle)
         {
-            get { return (AppDelegate)UIApplication.SharedApplication.Delegate; }
         }
 
-        public moreviewcontroller(IntPtr handle) : base(handle)
-        {
-            
-        }
-        /*   partial void SignOutButton_TouchUpInside(UIButton sender)
-        {
-            var handler = new JwtSecurityTokenHandler();
-            var tokenS = handler.ReadToken(App.currentAccount.JWTToken) as JwtSecurityToken;
-
-        }
-        */
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -103,6 +90,7 @@ namespace IEatHealthy.iOS
 
             // Collection View for the Badges
             var BadgeCollection = new UICollectionView(new CGRect(0, ContainerLocation, View.Bounds.Size.Width, 100), layout);
+            BadgeCollection.BackgroundColor = UIColor.White;
 
             this.View.AddSubview(BadgeCollection);
 
@@ -129,6 +117,9 @@ namespace IEatHealthy.iOS
             };
 
         }
-       
+        // Func for segmented control    
     }
+
+    // Datasource for the Badge Collection View
+
 }
