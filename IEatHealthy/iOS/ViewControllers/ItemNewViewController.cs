@@ -174,7 +174,7 @@ namespace IEatHealthy.iOS
                 AddIngrediantButton.Center = new CGPoint(310, YforIngrediant + 15);
                  foreach (UITextView item in PreperationStepsList)
                  {
-                     item.Center = new CGPoint(148, item.Frame.Y + 80);
+                     item.Center = new CGPoint(148, item.Frame.Y + 50);
 
                  }
                  
@@ -202,10 +202,12 @@ namespace IEatHealthy.iOS
 
             AddStepButton.Center = new CGPoint(330, YforStep+15);
 
+            YforStep += 70;
+
             AddStepButton.TouchUpInside += (s, e) =>
             {
                // stepcount++;
-                YforStep += 70;
+
                 UITextView label3 = new UITextView(new System.Drawing.RectangleF(15, YforStep, 270, 50));
                 //label.Placeholder = " Step " + i.ToString();
                 label3.Layer.BorderWidth = 1f;
@@ -217,6 +219,7 @@ namespace IEatHealthy.iOS
                 textview += 80;
                 scrollView.ContentSize = new CGSize(View.Frame.Width, View.Frame.Height + textview + textfield);
                 btnSaveItem.Center = new CGPoint(175, btnSaveItem.Frame.Y + 105);
+                YforStep += 70;
 
             };
 

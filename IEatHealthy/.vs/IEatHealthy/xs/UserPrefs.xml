@@ -1,14 +1,14 @@
 ﻿<Properties StartupConfiguration="{C2E903DD-CDDC-4AE6-AFDE-B54511A5E1C0}|Default">
   <MonoDevelop.Ide.ItemProperties.IEatHealthy.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.0F802176-C2B6-4E37-88A4-4A6C016DECDB" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/Main.storyboard">
+  <MonoDevelop.Ide.Workbench ActiveDocument="IEatHealthy/Models/Comment.cs">
     <Files>
-      <File FileName="iOS/ViewControllers/DetailViewControllers/BrowseItemDetailViewController.cs" Line="598" Column="53" />
-      <File FileName="IEatHealthy/Models/Item.cs" Line="28" Column="1" />
-      <File FileName="iOS/CommentController.cs" Line="125" Column="57" />
-      <File FileName="iOS/ViewControllers/BrowseViewController.cs" Line="40" Column="72" />
-      <File FileName="iOS/ViewControllers/SelectIngredient.cs" Line="16" Column="38" />
-      <File FileName="iOS/Main.cs" Line="13" Column="1" />
+      <File FileName="IEatHealthy/Models/Item.cs" Line="26" Column="6" />
+      <File FileName="iOS/CommentController.cs" Line="11" Column="9" />
+      <File FileName="iOS/ViewControllers/SelectIngredient.cs" Line="18" Column="9" />
+      <File FileName="iOS/ViewControllers/log.cs" Line="66" Column="14" />
+      <File FileName="iOS/ViewControllers/DetailViewControllers/BrowseItemDetailViewController.cs" Line="24" Column="13" />
       <File FileName="iOS/Main.storyboard" />
+      <File FileName="IEatHealthy/Models/Comment.cs" Line="9" Column="6" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />

@@ -52,6 +52,8 @@ namespace IEatHealthy.iOS
                         myResponse = sr.ReadToEnd();
                         //storing token in CurrentAccount instance of type UserAccount
                         App.currentAccount.JWTToken = myResponse;
+
+
                     }
                 }
                 catch (System.Net.WebException)
@@ -62,8 +64,12 @@ namespace IEatHealthy.iOS
                     return false;
                 }
             }
+
+
             return base.ShouldPerformSegue(segueIdentifier, sender);
+
         }
+
 
 		public log(IntPtr handle) : base(handle)
         {

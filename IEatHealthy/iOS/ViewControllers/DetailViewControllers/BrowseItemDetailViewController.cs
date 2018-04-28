@@ -391,6 +391,7 @@ namespace IEatHealthy.iOS
             //CartButton.Layer.BorderWidth = 1f;
             Cartbutton.Frame = new CGRect(View.Frame.Width - 45, YforIngredient, 30, 20);
             Cartbutton.SetImage(UIImage.FromBundle("CartTab"), UIControlState.Normal);
+            Cartbutton.TintColor = UIColor.Red;
             Cartbutton.RemoveFromSuperview();
 
 
@@ -594,13 +595,12 @@ namespace IEatHealthy.iOS
             if (segue.Identifier == "Cartsegue")
             {
                 var resultview = segue.DestinationViewController as SelectIngredient;
-                resultview.item = ViewModel.Item;
+                resultview.ViewModel = ViewModel;
                 base.PrepareForSegue(segue, sender);
             }
 
 
-            else
-            {
+            if(segue.Identifier=="ReviewSegue"){
                 var resultview = segue.DestinationViewController as CommentController;
                 resultview.isCOmment = false;
                 base.PrepareForSegue(segue, sender);
