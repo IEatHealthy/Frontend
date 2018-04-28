@@ -180,6 +180,8 @@
     <ImageAsset Include="Assets.xcassets\str2.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\str2.imageset\Blank Diagram %281%29.png" />
     <ImageAsset Include="Assets.xcassets\str1.imageset\Blank Diagram.png" />
+    <ImageAsset Include="Assets.xcassets\NewbBadge.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\NewbBadge.imageset\Badge-1-Newbie-1.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ViewControllers\DetailViewControllers\BrowseItemDetailViewController.cs" />
@@ -261,6 +263,10 @@
     <Compile Include="CommentController.designer.cs">
       <DependentUpon>CommentController.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProfileViewController.cs" />
+    <Compile Include="ProfileViewController.designer.cs">
+      <DependentUpon>ProfileViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />
@@ -296,6 +302,7 @@
     <Folder Include="Assets.xcassets\img3.imageset\" />
     <Folder Include="Assets.xcassets\str1.imageset\" />
     <Folder Include="Assets.xcassets\str2.imageset\" />
+    <Folder Include="Assets.xcassets\NewbBadge.imageset\" />
   </ItemGroup>
   <Import Project="..\IEatHealthy\IEatHealthy.projitems" Label="Shared" Condition="Exists('..\IEatHealthy\IEatHealthy.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
