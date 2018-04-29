@@ -267,6 +267,10 @@
     <Compile Include="ProfileViewController.designer.cs">
       <DependentUpon>ProfileViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="editProfileViewController_.cs" />
+    <Compile Include="editProfileViewController_.designer.cs">
+      <DependentUpon>editProfileViewController_.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />

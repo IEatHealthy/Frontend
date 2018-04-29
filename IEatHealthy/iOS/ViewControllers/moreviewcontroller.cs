@@ -29,6 +29,8 @@ namespace IEatHealthy.iOS
         {
             base.ViewDidLoad();
 
+
+
             this.View.BackgroundColor = UIColor.FromRGB(240, 240, 240);
             var statusBarHeight = UIApplication.SharedApplication.StatusBarFrame.Size.Height;
 

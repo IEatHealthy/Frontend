@@ -19,6 +19,9 @@ namespace IEatHealthy.iOS
             this.View.BackgroundColor = UIColor.FromRGB(240, 240, 240);
             var statusBarHeight = UIApplication.SharedApplication.StatusBarFrame.Size.Height;
 
+
+
+
             var statusbar = new UIView();
             statusbar.Frame = new CGRect(0, 0, View.Bounds.Size.Width, statusBarHeight);
             statusbar.BackgroundColor = UIColor.White;
@@ -54,6 +57,13 @@ namespace IEatHealthy.iOS
             TitleLabel.SizeToFit();
             InfoView.AddSubview(TitleLabel);
 
+            editInfo.Frame = new CGRect(260, 100, 100, 30);
+            editInfo.BackgroundColor = UIColor.FromRGB(54, 198, 13);
+            editInfo.SetTitleColor(UIColor.White, UIControlState.Normal);
+            editInfo.Layer.CornerRadius = 5;
+            editInfo.SetTitle("Edit Info", UIControlState.Normal);
+            InfoView.AddSubview(editInfo);
+
             // UI segmented control
             double NavLocation = statusBarHeight + 150.0;
 
@@ -72,6 +82,8 @@ namespace IEatHealthy.iOS
                 Font = UIFont.FromName("Helvetica-Bold", 14f),
                 TextShadowColor = UIColor.Clear
             }, UIControlState.Normal);
+
+
 
             segmentControl.SetTitleTextAttributes(new UITextAttributes()
             {
