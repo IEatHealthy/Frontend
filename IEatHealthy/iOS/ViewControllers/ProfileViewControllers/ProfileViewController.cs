@@ -1,8 +1,6 @@
-using Foundation;
 using System;
 using UIKit;
 using CoreGraphics;
-using System.Collections.Generic;
 
 namespace IEatHealthy.iOS
 {
@@ -18,9 +16,6 @@ namespace IEatHealthy.iOS
 
             this.View.BackgroundColor = UIColor.FromRGB(240, 240, 240);
             var statusBarHeight = UIApplication.SharedApplication.StatusBarFrame.Size.Height;
-
-
-
 
             var statusbar = new UIView();
             statusbar.Frame = new CGRect(0, 0, View.Bounds.Size.Width, statusBarHeight);
@@ -97,20 +92,53 @@ namespace IEatHealthy.iOS
             this.View.AddSubview(segmentControl);
 
             double ContainerLocation = NavLocation + 50;
-            var layout = new UICollectionViewLayout();
 
+            var scroll = new UIScrollView(new CGRect(0, ContainerLocation, View.Bounds.Size.Width, 900));
+            scroll.BackgroundColor = UIColor.White;
+            scroll.AutoresizingMask = UIViewAutoresizing.FlexibleHeight;
+            this.View.AddSubview(scroll);
 
             // Collection View for the Badges
-            var BadgeCollection = new UICollectionView(new CGRect(0, ContainerLocation, View.Bounds.Size.Width, 100), layout);
+            var badgeCollectionLayout = new UICollectionViewFlowLayout
+            {
+                SectionInset = new UIEdgeInsets(0,0,0,0),
+                MinimumInteritemSpacing = 5,
+                MinimumLineSpacing = 5,
+                ItemSize = new CGSize(View.Bounds.Size.Width, 70)
+            };
+
+            var BadgeCollection = new UICollectionView(new CGRect(0, 0, View.Bounds.Size.Width, 900), badgeCollectionLayout);
             BadgeCollection.BackgroundColor = UIColor.White;
+            BadgeCollection.ContentSize = View.Frame.Size;
 
-            this.View.AddSubview(BadgeCollection);
+            var badgeCollectionSource = new BadgeCollectionSource();
 
-            // Collection View for the Recipe Collections
-            var CreationCollection = new UICollectionView(new CGRect(0, ContainerLocation, View.Bounds.Size.Width, 100), layout);
 
-            // Collection View for the Profile Info
-            var ProfileCollection = new UICollectionView(new CGRect(0, ContainerLocation, View.Bounds.Size.Width, 100), layout);
+            BadgeCollection.RegisterClassForCell(typeof(BadgeCell), BadgeCell.BadgeID);
+            BadgeCollection.Source = badgeCollectionSource;
+            BadgeElement badgeElement = new BadgeElement(UIImage.FromBundle("NewbBadge"), "Newbie");
+            badgeCollectionSource.Rows.Add(badgeElement);
+            badgeElement = new BadgeElement(UIImage.FromBundle("MeatFace"), "Carnivore");
+            badgeCollectionSource.Rows.Add(badgeElement);
+            badgeElement = new BadgeElement(UIImage.FromBundle("EggFace"), "Egg Face");
+            badgeCollectionSource.Rows.Add(badgeElement);
+            badgeElement = new BadgeElement(UIImage.FromBundle("VeggieFace"), "Mother Earth");
+            badgeCollectionSource.Rows.Add(badgeElement);
+            badgeElement = new BadgeElement(UIImage.FromBundle("SweetTooth"), "Sweet Tooth");
+            badgeCollectionSource.Rows.Add(badgeElement);
+            badgeElement = new BadgeElement(UIImage.FromBundle("CookieMonster"), "Cookie Monster");
+            badgeCollectionSource.Rows.Add(badgeElement);
+            badgeElement = new BadgeElement(UIImage.FromBundle("SmoothieQueen"), "Smoothie Queen");
+            badgeCollectionSource.Rows.Add(badgeElement);
+            badgeElement = new BadgeElement(UIImage.FromBundle("SmoothieKing"), "Smoothie King");
+            badgeCollectionSource.Rows.Add(badgeElement);
+            badgeElement = new BadgeElement(UIImage.FromBundle("BaconFace"), "Keep Calm & Eat Bacon");
+            badgeCollectionSource.Rows.Add(badgeElement);
+            badgeElement = new BadgeElement(UIImage.FromBundle("FishFace"), "The Fisherman");
+            badgeCollectionSource.Rows.Add(badgeElement);
+
+            scroll.AddSubview(BadgeCollection);
+
 
             segmentControl.ValueChanged += (sender, e) =>
             {
