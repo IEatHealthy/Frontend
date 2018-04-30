@@ -182,6 +182,24 @@
     <ImageAsset Include="Assets.xcassets\str1.imageset\Blank Diagram.png" />
     <ImageAsset Include="Assets.xcassets\NewbBadge.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\NewbBadge.imageset\Badge-1-Newbie-1.png" />
+    <ImageAsset Include="Assets.xcassets\MeatFace.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\EggFace.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\MeatFace.imageset\2-MeatFace.jpg" />
+    <ImageAsset Include="Assets.xcassets\EggFace.imageset\3-EggFace.jpg" />
+    <ImageAsset Include="Assets.xcassets\VeggieFace.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\SweetTooth.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\CookieMonster.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\CookieMonster.imageset\6-CookieMonster.jpg" />
+    <ImageAsset Include="Assets.xcassets\SweetTooth.imageset\5-SweetTooth.jpg" />
+    <ImageAsset Include="Assets.xcassets\SmoothieQueen.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\BaconFace.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\FishFace.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\FishFace.imageset\10-FishFace.jpg" />
+    <ImageAsset Include="Assets.xcassets\BaconFace.imageset\9-BaconFace.jpg" />
+    <ImageAsset Include="Assets.xcassets\SmoothieKing.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\SmoothieKing.imageset\8-SmothieKing.jpg" />
+    <ImageAsset Include="Assets.xcassets\SmoothieQueen.imageset\7-SmoothieQueen.jpg" />
+    <ImageAsset Include="Assets.xcassets\VeggieFace.imageset\4-VeggieFace.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ViewControllers\DetailViewControllers\BrowseItemDetailViewController.cs" />
@@ -263,14 +281,16 @@
     <Compile Include="CommentController.designer.cs">
       <DependentUpon>CommentController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProfileViewController.cs" />
-    <Compile Include="ProfileViewController.designer.cs">
-      <DependentUpon>ProfileViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="editProfileViewController_.cs" />
     <Compile Include="editProfileViewController_.designer.cs">
       <DependentUpon>editProfileViewController_.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\ProfileViewControllers\ProfileViewController.cs" />
+    <Compile Include="ViewControllers\ProfileViewControllers\ProfileViewController.designer.cs">
+      <DependentUpon>ProfileViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\ProfileViewControllers\BadgeCollectionSource.cs" />
+    <Compile Include="ViewControllers\ProfileViewControllers\BadgeCell.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />
@@ -307,6 +327,16 @@
     <Folder Include="Assets.xcassets\str1.imageset\" />
     <Folder Include="Assets.xcassets\str2.imageset\" />
     <Folder Include="Assets.xcassets\NewbBadge.imageset\" />
+    <Folder Include="ViewControllers\ProfileViewControllers\" />
+    <Folder Include="Assets.xcassets\MeatFace.imageset\" />
+    <Folder Include="Assets.xcassets\EggFace.imageset\" />
+    <Folder Include="Assets.xcassets\VeggieFace.imageset\" />
+    <Folder Include="Assets.xcassets\SweetTooth.imageset\" />
+    <Folder Include="Assets.xcassets\CookieMonster.imageset\" />
+    <Folder Include="Assets.xcassets\SmoothieQueen.imageset\" />
+    <Folder Include="Assets.xcassets\BaconFace.imageset\" />
+    <Folder Include="Assets.xcassets\FishFace.imageset\" />
+    <Folder Include="Assets.xcassets\SmoothieKing.imageset\" />
   </ItemGroup>
   <Import Project="..\IEatHealthy\IEatHealthy.projitems" Label="Shared" Condition="Exists('..\IEatHealthy\IEatHealthy.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
