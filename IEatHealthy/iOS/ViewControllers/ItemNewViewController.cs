@@ -239,16 +239,16 @@ namespace IEatHealthy.iOS
                 if (cooktime.Text == null) { cooktime.Text = "0"; }
                 var item = new Item
                 {
-                    Text = RecipeName.Text,
-                    ServingSize = Convert.ToInt32(ServingSizeInput.Text),
-                    PrepTime = Convert.ToInt32(preptime.Text),
-                    CookTime = Convert.ToInt32(cooktime.Text),
+                    name = RecipeName.Text,
+                    servings = Convert.ToInt32(ServingSizeInput.Text),
+                    preptime = Convert.ToInt32(preptime.Text),
+                    cookTime = Convert.ToInt32(cooktime.Text),
                     picture = imgView.Image,
-                    Ingrediants = convertIng(),
+                    ingredients = convertIng(),
                     steps = convertStep(),
-                    BriefDescribtion = BriefDescInput.Text,
-                    SpecialTools = label4.Text,
-                    Difficulty = RecipeDifficulty,
+                    description = BriefDescInput.Text,
+                    // = label4.Text,
+                    difficulty = 1,
 
 
                    
@@ -261,26 +261,27 @@ namespace IEatHealthy.iOS
 
 
 
-
-        string[] convertStep(){
-            string[] ing=new string[PreperationStepsList.Count];
-            int i = 0;
+        List<IngredientItem> convertIng(){
+            List<IngredientItem> ing=null;
+         
             foreach (UITextView item in PreperationStepsList)
             {
-                ing[i] = item.Text;
-                i++;
+                IngredientItem aa = new IngredientItem();
+                aa.ingredientId = item.Text;
+                ing.Add(aa);
+
             }
             return ing;
 
         }
-        string[] convertIng()
+        List<string> convertStep()
         {
-            string[] ing = new string[IngrediantList.Count];
+            List<string> ing = null; 
             int i = 0;
             foreach (UITextField item in IngrediantList)
             {
-                ing[i] = item.Text;
-                i++;
+                ing.Add(item.Text);
+
             }
             return ing;
 

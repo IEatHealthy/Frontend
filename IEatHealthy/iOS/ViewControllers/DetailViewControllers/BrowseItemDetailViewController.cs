@@ -25,14 +25,14 @@ namespace IEatHealthy.iOS
             scrollView.AutoresizingMask = UIViewAutoresizing.FlexibleHeight;
 
             UILabel recipename = new UILabel(new CGRect(0, 10, View.Frame.Width, 30));
-            recipename.Text = ViewModel.Item.Text;
+            recipename.Text = ViewModel.Item.name;
             recipename.TextAlignment = UITextAlignment.Center;
             recipename.Font = UIFont.FromName("Helvetica-Bold", 20f);
             recipename.AutoresizingMask = UIViewAutoresizing.All;
             scrollView.AddSubview(recipename);
 
             UILabel bylabel = new UILabel(new CGRect(10, 50, 200, 30));
-            bylabel.Text = "by " + ViewModel.Item.Author;
+            bylabel.Text = "by " + ViewModel.Item.author;
             bylabel.Font = UIFont.FromName("Helvetica", 15f);
 
             scrollView.AddSubview(bylabel);
@@ -88,13 +88,13 @@ namespace IEatHealthy.iOS
             scrollView.AddSubview(RecipeControl);
 
             UITextView DescrivtionView = new UITextView(new CGRect(30, recipeImage.Frame.Y + recipeImage.Frame.Height + 10, View.Frame.Width - 60, 40));
-            DescrivtionView.Text = ViewModel.Item.BriefDescribtion;
+            DescrivtionView.Text = ViewModel.Item.description;
             DescrivtionView.AutoresizingMask = UIViewAutoresizing.All;
             DescrivtionView.Font = UIFont.FromName("Helvetica-bold", 16f);
             DescrivtionView.SizeToFit();
             DescrivtionView.Editable = false;
             DescrivtionView.ScrollEnabled = false;
-            DescrivtionView.Text = ViewModel.Item.BriefDescribtion;
+            DescrivtionView.Text = ViewModel.Item.description;
             scrollView.AddSubview(DescrivtionView);
 
             UILabel graybox = new UILabel(new CGRect(0, DescrivtionView.Frame.Y + DescrivtionView.Frame.Height + 10, View.Frame.Width, 5));
@@ -107,7 +107,7 @@ namespace IEatHealthy.iOS
 
             preptimelabel.Text = "Prep Time";
             UILabel preptime = new UILabel(new CGRect(140, graybox.Frame.Y + 10, 100, 20));
-            preptime.Text = ViewModel.Item.PrepTime + " Min";
+            preptime.Text = ViewModel.Item.preptime + " Min";
             preptime.Font = UIFont.FromName("Helvetica", 14f);
 
 
@@ -116,7 +116,7 @@ namespace IEatHealthy.iOS
             CooktimeLabel.Font = UIFont.FromName("Helvetica", 14f);
 
             UILabel Cooktime = new UILabel(new CGRect(140, preptimelabel.Frame.Y + 20, 100, 20));
-            Cooktime.Text = ViewModel.Item.CookTime + " Min";
+            Cooktime.Text = ViewModel.Item.cookTime + " Min";
             Cooktime.Font = UIFont.FromName("Helvetica", 14f);
 
             UILabel Readyinlabel = new UILabel(new CGRect(20, Cooktime.Frame.Y + 20, 100, 20));
@@ -124,7 +124,7 @@ namespace IEatHealthy.iOS
             Readyinlabel.Font = UIFont.FromName("Helvetica", 14f);
 
             UILabel Readyin = new UILabel(new CGRect(140, Cooktime.Frame.Y + 20, 100, 20));
-            Readyin.Text = ViewModel.Item.ReadyTime + " Min";
+            Readyin.Text = ViewModel.Item.readyTime + " Min";
             Readyin.Font = UIFont.FromName("Helvetica", 14f);
 
 
@@ -135,7 +135,7 @@ namespace IEatHealthy.iOS
             difficultylabel.Font = UIFont.FromName("Helvetica", 14f);
 
             UILabel difficulty = new UILabel(new CGRect(140, Readyin.Frame.Y + 20, 100, 20));
-            difficulty.Text = ViewModel.Item.Difficulty;
+            difficulty.Text = ViewModel.Item.difficulty.ToString();
             difficulty.Font = UIFont.FromName("Helvetica", 14f);
 
             UILabel graybox1 = new UILabel(new CGRect(0, difficulty.Frame.Y + 30, View.Frame.Width, 5));
@@ -149,7 +149,7 @@ namespace IEatHealthy.iOS
             NutrationalFactsList.Add(NutrationalFactsLabel);
 
             UILabel ServingSizeLabel = new UILabel(new CGRect(20, NutrationalFactsLabel.Frame.Y + 30, 300, 25));
-            ServingSizeLabel.Text = "Serving size " + ViewModel.Item.ServingSize.ToString();
+            ServingSizeLabel.Text = "Serving size " + ViewModel.Item.servings.ToString();
             ServingSizeLabel.Font = UIFont.FromName("Helvetica", 17f);
             NutrationalFactsList.Add(ServingSizeLabel);
 
@@ -399,10 +399,8 @@ namespace IEatHealthy.iOS
 
             YforIngredient += 30;
 
-            if (ViewModel.Item.Ingrediants != null || ViewModel.Item.Ingrediants.Length != 0)
-            {
-
-                foreach (string item in ViewModel.Item.Ingrediants)
+           /*
+            foreach (IngredientItem item in ViewModel.Item.ingredients)
                 {
 
                     UITextView label2 = new UITextView(new System.Drawing.RectangleF(20, YforIngredient, 350, 30));
@@ -413,7 +411,7 @@ namespace IEatHealthy.iOS
 
                     label2.ScrollEnabled = false;
                     label2.Editable = false;
-                    label2.Text = item;
+                    label2.Text = item.ingredientId;
                     label2.AutoresizingMask = UIViewAutoresizing.All;
 
                     IngrediantList.Add(label2);
@@ -421,7 +419,8 @@ namespace IEatHealthy.iOS
 
 
                 }
-            }
+                */
+
 
             int Yforstep = (int)(recipeImage.Frame.Y + 10);
             foreach (string item in ViewModel.Item.steps)

@@ -8,12 +8,13 @@ using UIKit;
 namespace IEatHealthy.iOS
 {
     public partial class CommentController : UIViewController
-    {   
+    {
         public CommentController(IntPtr handle) : base(handle)
         {
         }
+        public string token = null;
         public bool isCOmment = false;
-        public string token;
+
         public int rating = 6;
         public override void ViewDidLoad()
         {
@@ -139,36 +140,103 @@ namespace IEatHealthy.iOS
             }
 
 
-                if(isCOmment==false){
+            if (isCOmment == false)
+            {
 
-                    UITextView aa = new UITextView(new CGRect(20, 40, 330, 150));
-                    aa.Layer.BorderWidth = 1f;
-                    aa.Layer.CornerRadius = 5;
-                    aa.Font = UIFont.FromName("Helvetica", 16f);
-                    aa.AutoresizingMask = UIViewAutoresizing.All;
-                    scrollview.Add(aa);
+                UITextView aa = new UITextView(new CGRect(20, 40, 330, 150));
+                aa.Layer.BorderWidth = 1f;
+                aa.Layer.CornerRadius = 5;
+                aa.Font = UIFont.FromName("Helvetica", 16f);
+                aa.AutoresizingMask = UIViewAutoresizing.All;
+                scrollview.Add(aa);
 
-             
-                var request = (HttpWebRequest)WebRequest.Create("http://ieathealthy.info/api/user/test@ieathealthy.info/test123");
-                var response = (HttpWebResponse)request.GetResponse();
-                string responseString;
-                using (var stream = response.GetResponseStream())
+
+                UIButton aaa = new UIButton(new CGRect(100, 300, 50, 50));
+                aaa.SetTitle("aa button", UIControlState.Normal);
+                aaa.Layer.BorderWidth = 1f;
+                aaa.BackgroundColor = UIColor.Blue;
+                scrollview.AddSubview(aaa);
+
+
+                //deleating user account
+
+
+                aaa.TouchUpInside += (s, e) =>
                 {
-                    using (var reader = new StreamReader(stream))
-                    {
-                        responseString = reader.ReadToEnd();
-                        aa.Text = responseString;
-                    }
-                }
-                }
+
+                    var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/"));
+                    request.ContentType = "application/JSON";
+                    request.Method = "GET";
+                   
+                        var response = request.GetResponse() as HttpWebResponse;
+
+                        string myResponse = "";
+                        using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+                        {
+
+                            myResponse = sr.ReadToEnd();
 
 
-                
+                        }
+
+
+
+
+
+
+
+
+                };
+
+
+
 
             }
             //  else { label1.Text = "Review Page"; }
         }
     }
+}
+
+    /*
 
 
+                    var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/user/aaa/bbb"));
+    request.ContentType = "application/JSON";
+                    request.Method = "DELETE";
+                    try
+                    {
+                        var response = request.GetResponse() as HttpWebResponse;
 
+    string myResponse = "";
+                            using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+                            {
+
+                                myResponse = sr.ReadToEnd();
+                            UITextView mm = new UITextView(new CGRect(20, 500, 100, 20));
+    mm.Layer.BorderWidth = 1f;
+                            mm.Layer.CornerRadius = 5;
+                            mm.Font = UIFont.FromName("Helvetica", 16f);
+                            mm.AutoresizingMask = UIViewAutoresizing.All;
+                            mm.Text = response.StatusCode.ToString();
+                            scrollview.AddSubview(mm);
+
+                            }
+                        }
+
+                    catch (WebException err)
+                    {
+
+                        UITextView mm = new UITextView(new CGRect(20, 400, 100, 20));
+mm.Layer.BorderWidth = 1f;
+                        mm.Layer.CornerRadius = 5;
+                        mm.Font = UIFont.FromName("Helvetica", 16f);
+                        mm.AutoresizingMask = UIViewAutoresizing.All;
+                        mm.Text = err.Status.ToString();
+                        scrollview.AddSubview(mm);
+                       
+                    }
+                };
+
+               */  
+
+                //deleating user account

@@ -149,11 +149,11 @@ namespace IEatHealthy.iOS
             var cell = tableView.DequeueReusableCell(CELL_IDENTIFIER, indexPath);
 
             var item = viewModel.Items[indexPath.Row];
-            cell.TextLabel.Text = item.Text;
-            cell.DetailTextLabel.Text = item.Description;
+            cell.TextLabel.Text = item.name;
+            cell.DetailTextLabel.Text = item.description;
             cell.LayoutMargins = UIEdgeInsets.Zero;
-            var image = ResizeImage(item.picture, 45, 35);
-            cell.ImageView.Image = image;
+          //  var image = ResizeImage(item.picture, 45, 35);
+          //  cell.ImageView.Image = image;
 
 
 

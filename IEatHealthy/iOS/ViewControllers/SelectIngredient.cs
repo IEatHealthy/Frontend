@@ -30,14 +30,14 @@ namespace IEatHealthy.iOS
         {
             base.ViewDidLoad();
             // Gets ingredient string into local string
-            string[] Items = ViewModel.Item.Ingrediants;
+            List<IngredientItem> Items = ViewModel.Item.ingredients;
 
             Ingredient placeholder = new Ingredient();
 
             // for each ingredient place into the tableitems.
-            foreach (string ingre in Items)
+            foreach (IngredientItem ingre in Items)
             {
-                placeholder.Name = ingre;
+                placeholder.Name = ingre.ingredientId;
                 tableItems.Add(placeholder.Name);
             }
         }

@@ -4,13 +4,17 @@ using UIKit;
 using CoreGraphics;
 using System.Net;
 using System.IO;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace IEatHealthy.iOS
 {
+    
     public partial class log : UIViewController
     {
         UITextView errMsg = new UITextView(new System.Drawing.RectangleF(46, 160, 270, 26));
-
+        public bool datareceved = false;
+        public bool loggedin = false;
 
         public override void ViewDidLoad()
         {
@@ -35,9 +39,10 @@ namespace IEatHealthy.iOS
             
         }
         public override bool ShouldPerformSegue(string segueIdentifier, NSObject sender){
-          
+
             if (segueIdentifier == "LoginSegue")
             {
+
                 //authenticating user login 
                 var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/user/{0}/{1}", loginEmail.Text, loginPassword.Text));
                 request.ContentType = "application/JSON";
@@ -52,29 +57,65 @@ namespace IEatHealthy.iOS
                         myResponse = sr.ReadToEnd();
                         //storing token in CurrentAccount instance of type UserAccount
                         App.currentAccount.JWTToken = myResponse;
-
+                        getdata(myResponse);
+                        loggedin = true;
 
                     }
                 }
                 catch (System.Net.WebException)
                 {
-                    
+
                     errMsg.Text = "Username or password is incorrect";
                     errMsg.BackgroundColor = UIColor.FromRGB(244, 217, 66);
-                    return false;
+                    loggedin = false;
                 }
             }
 
+            if (loggedin == true && datareceved == true)
+            {
 
-            return base.ShouldPerformSegue(segueIdentifier, sender);
+                return false;//base.ShouldPerformSegue(segueIdentifier, sender);
+            }
+            else return false;
+        }
 
+        public async Task getdata(string myResponse)
+        { 
+            var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info//api/user/accountOwner/{0}?token={1}", loginEmail.Text,myResponse));
+            request.ContentType = "application/JSON";
+            request.Method = "GET";
+            try
+            {
+                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                string aResponse = "";
+                using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+                {
+                    
+                    aResponse = sr.ReadToEnd();
+                    //storing token in CurrentAccount instance of type UserAccount
+                    // App.currentAccount.JWTToken = aResponse;
+
+                     UserAccount aa = JsonConvert.DeserializeObject<UserAccount>(aResponse);
+
+                    UITextView aaaa = new UITextView(new CGRect(10, 500, 200, 700));
+                    aaaa.Text = aResponse.Replace(",", "," + System.Environment.NewLine);;
+                    View.AddSubview(aaaa);
+                    datareceved = true;
+
+                }
+            }
+            catch (System.Net.WebException)
+            {
+
+                errMsg.Text = "couldnt retreve user data";
+                errMsg.BackgroundColor = UIColor.FromRGB(244, 217, 66);
+                datareceved = false;
+            }
         }
 
 
 		public log(IntPtr handle) : base(handle)
         {
-
-
         }
 
     }

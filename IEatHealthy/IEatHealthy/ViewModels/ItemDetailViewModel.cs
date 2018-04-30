@@ -9,7 +9,7 @@ namespace IEatHealthy
         {
             if (item != null)
             {
-                Title = item.Text;
+                Title = item.name;
                 Item = item;
 
 

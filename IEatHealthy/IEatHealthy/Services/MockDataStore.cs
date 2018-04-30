@@ -8,42 +8,43 @@ namespace IEatHealthy
     public class MockDataStore : IDataStore<Item>
     {
         List<Item> items;
-
+        UserAccount MainUser = new UserAccount();
         public MockDataStore()
         {
             items = new List<Item>();
             var _items = new List<Item>
             {
                 new Item { Id = Guid.NewGuid().ToString(),
-                    Text = "Strawberry Vanilla Pancakes",
-                    Description="20 min  8 Servings   *Easy",
-                    BriefDescribtion="Very sweet and easy to prepare pancakes",
-                    Ingrediants=new string[]{"12 Strawberry","1 Vanilla extract", "8 eggs","Sugar Powder","Butter"},
-                    steps=new string[]{ "Prepare the pancakes  by mixing the eggs with the butter",
+                    name = "Strawberry Vanilla Pancakes",
+                  //  Description="20 min  8 Servings   *Easy",
+                    description="Very sweet and easy to prepare pancakes",
+                  //  ingredients=new List<IngredientItem>.Enumerator {"12 Strawberry","1 Vanilla extract", "8 eggs","Sugar Powder","Butter"},
+                    steps=new List<string>{ "Prepare the pancakes  by mixing the eggs with the butter",
                         "Add vanilla and milk to the mixture",
                         "Mix well and add sugar to taste . Mix everything together in the food processor",
                         "Add butter to a flat iron pancakes pain. Cook it until it’s golden",
                         "Chop the strawberries and add it to the pancake",
                         "Add sugar powder and serve"
                     },
-                    Author="MockDataStore",
-                    Difficulty="Easy",
-                    PrepTime=5,
-                    CookTime=5,
+                    author="MockDataStore",
+                    difficulty=1,
+                    preptime=5,
+                    cookTime=5,
 
-                    ServingSize=8,
-                    ReadyTime=20,
+                    servings=8,
+                    readyTime=20,
                     picture=UIKit.UIImage.FromBundle ("pancake")},
-
+                
 
 
             new Item
             {
                 Id = Guid.NewGuid().ToString(),
-                Text = "Ricotta strawberry French toast",
-                Description = "30 min  2 Servings   *Easy",
-                BriefDescribtion = "Give your French toast a summer makeover with fresh berries, lashings of ricotta, honey and mint ",
-                Ingrediants = new string[] {"1 Large Egg, beaten",
+                    name = "Ricotta strawberry French toast",
+                  //  description = "30 min  2 Servings   *Easy",
+                    description = "Give your French toast a summer makeover with fresh berries, lashings of ricotta, honey and mint ",
+                   /*
+                    ingredients = new string[] {"1 Large Egg, beaten",
                     "300ml milk",
                     "1 tbsp vanilla extract",
                     "4 slices thick-cut white bread",
@@ -53,23 +54,24 @@ namespace IEatHealthy
                     "100g strawberries, some sliced, some halved",
                     "2 mint sprigs, leaves picked",
 
-                },
-                    Author="MockDataStore",
-                steps = new string[]{ "In a wide dish, whisk the egg, milk and vanilla together. Coat one side of the bread slices in the liquid, then carefully flip them over and leave them to soak for 1-2 mins.",
+                },*/
+                
+                    author="MockDataStore",
+                    steps =new List<string>{ "In a wide dish, whisk the egg, milk and vanilla together. Coat one side of the bread slices in the liquid, then carefully flip them over and leave them to soak for 1-2 mins.",
                     "Melt 1 tbsp of the butter in a large non-stick pan over a medium heat and add two slices of bread. Cook for 5 mins or until golden, then turn to cook the other side for another 5 mins. Transfer to a plate and cook the other two slices in the rest of the butter.",
                         "Mix well and add sugar to taste . Mix everything together in the food processor",
                     "Halve the toast on the diagonal and spread each slice with the ricotta. Drizzle over the honey and a pinch of flaky sea salt, and arrange some sliced strawberries in a fan across the toast. Decorate the plate with the halved strawberries and mint.",
 
                     },
-                Difficulty = "Easy",
-                PrepTime = 10,
-                CookTime = 20,
+                    difficulty =1,
+                    preptime = 10,
+                    cookTime = 20,
 
-                ServingSize = 2,
-                ReadyTime = 30,
-                picture = UIKit.UIImage.FromBundle("toast")
+                    servings = 2,
+                    readyTime = 30,
+                //picture = UIKit.UIImage.FromBundle("toast")
             },
-
+                /*
                 new Item
             {
                 Id = Guid.NewGuid().ToString(),
@@ -216,7 +218,9 @@ namespace IEatHealthy
                 ReadyTime = 50,
                 picture = UIKit.UIImage.FromBundle("img3")
             },
+            */
             };
+
 
 
             foreach (Item item in _items)
