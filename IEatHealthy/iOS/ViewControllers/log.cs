@@ -69,14 +69,16 @@ namespace IEatHealthy.iOS
                     errMsg.BackgroundColor = UIColor.FromRGB(244, 217, 66);
                     loggedin = false;
                 }
-            }
+                if (loggedin == true && datareceved == true)
+                {
 
-            if (loggedin == true && datareceved == true)
-            {
-
-                return false;//base.ShouldPerformSegue(segueIdentifier, sender);
+                    return false;//base.ShouldPerformSegue(segueIdentifier, sender);
+                }
+                else return false;
             }
-            else return false;
+            else return base.ShouldPerformSegue(segueIdentifier, sender);
+           
+
         }
 
         public async Task getdata(string myResponse)
@@ -97,7 +99,7 @@ namespace IEatHealthy.iOS
 
                      UserAccount aa = JsonConvert.DeserializeObject<UserAccount>(aResponse);
 
-                    UITextView aaaa = new UITextView(new CGRect(10, 500, 200, 700));
+                    UITextView aaaa = new UITextView(new CGRect(10, 500, 200, 400));
                     aaaa.Text = aResponse.Replace(",", "," + System.Environment.NewLine);;
                     View.AddSubview(aaaa);
                     datareceved = true;

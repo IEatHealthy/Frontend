@@ -1505,5 +1505,14 @@
         <image name="str2" width="563" height="563"/>
         <image name="str1" width="600" height="563"/>
         <image name="NewbBadge" width="60" height="60"/>
+        <image name="MeatFace" width="300" height="300"/>
+        <image name="EggFace" width="300" height="300"/>
+        <image name="CookieMonster" width="300" height="300"/>
+        <image name="SweetTooth" width="300" height="300"/>
+        <image name="FishFace" width="300" height="300"/>
+        <image name="BaconFace" width="300" height="300"/>
+        <image name="SmoothieKing" width="300" height="300"/>
+        <image name="SmoothieQueen" width="300" height="300"/>
+        <image name="VeggieFace" width="300" height="300"/>
     </resources>
 </document>

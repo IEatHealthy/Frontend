@@ -150,6 +150,7 @@ namespace IEatHealthy.iOS
                 aa.AutoresizingMask = UIViewAutoresizing.All;
                 scrollview.Add(aa);
 
+                /*
 
                 UIButton aaa = new UIButton(new CGRect(100, 300, 50, 50));
                 aaa.SetTitle("aa button", UIControlState.Normal);
@@ -190,9 +191,10 @@ namespace IEatHealthy.iOS
 
 
 
-
+            */
             }
             //  else { label1.Text = "Review Page"; }
+           
         }
     }
 }

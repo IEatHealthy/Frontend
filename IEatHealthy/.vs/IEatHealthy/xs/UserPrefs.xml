@@ -1,0 +1,21 @@
+﻿<Properties StartupConfiguration="{C2E903DD-CDDC-4AE6-AFDE-B54511A5E1C0}|Default">
+  <MonoDevelop.Ide.ItemProperties.IEatHealthy.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.0F802176-C2B6-4E37-88A4-4A6C016DECDB" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/Main.storyboard">
+    <Files>
+      <File FileName="iOS/CommentController.cs" Line="198" Column="2" />
+      <File FileName="iOS/ViewControllers/SignupController.cs" Line="105" Column="20" />
+      <File FileName="iOS/ViewControllers/log.cs" Line="100" Column="80" />
+      <File FileName="IEatHealthy/Models/UserAccount.cs" Line="32" Column="9" />
+      <File FileName="iOS/ViewControllers/DetailViewControllers/BrowseItemDetailViewController.cs" Line="583" Column="87" />
+      <File FileName="iOS/Main.cs" Line="17" Column="1" />
+      <File FileName="IEatHealthy/Services/MockDataStore.cs" Line="7" Column="2" />
+      <File FileName="iOS/Main.storyboard" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
