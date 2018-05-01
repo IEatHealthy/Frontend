@@ -61,10 +61,10 @@ namespace IEatHealthy.iOS
                         //storing token in CurrentAccount instance of type UserAccount
                         tokendata = myResponse;
                          getdata(myResponse);
-<<<<<<< HEAD
+
                        // getrecipe(myResponse);
                       
-=======
+
                         getrecipe(myResponse);
                        if (datareceved == true)
                         {
@@ -80,7 +80,7 @@ namespace IEatHealthy.iOS
                             View.AddSubview(aad);
                             */
                       }
->>>>>>> 4113d309f3c7013539d70f1a1e54a1e36fe45d5c
+
                         loggedin = true;
 
                     }
@@ -94,12 +94,9 @@ namespace IEatHealthy.iOS
                 }
                 if (loggedin == true && datareceved == true)
                 {
-<<<<<<< HEAD
                     App.currentAccount = JsonConvert.DeserializeObject<UserAccount>(userdata);
                     App.currentAccount.JWTToken = tokendata;
-=======
                     App.currentAccount.email = loginEmail.Text;
->>>>>>> 4113d309f3c7013539d70f1a1e54a1e36fe45d5c
                     return base.ShouldPerformSegue(segueIdentifier, sender);
                 }
                 else return false;
@@ -121,23 +118,22 @@ namespace IEatHealthy.iOS
                 string aResponse = "";
                 using (StreamReader sr = new StreamReader(response.GetResponseStream()))
                 {
-                    
+
                     aResponse = sr.ReadToEnd();
-<<<<<<< HEAD
+
                     userdata = aResponse;
-                    datareceved = true; 
-=======
+                    datareceved = true;
+
                     //storing token in CurrentAccount instance of type UserAccount
-                   // App.currentAccount.JWTToken = aResponse;
-                   // objectret = aResponse;
-                   // UserAccount aa = JsonConvert.DeserializeObject<UserAccount>(aResponse);
-                   // string bba = JsonConvert.SerializeObject(aa);
+                    // App.currentAccount.JWTToken = aResponse;
+                    // objectret = aResponse;
+                    // UserAccount aa = JsonConvert.DeserializeObject<UserAccount>(aResponse);
+                    // string bba = JsonConvert.SerializeObject(aa);
                     UITextView aaaa = new UITextView(new CGRect(50, 300, 250, 400));
                     aaaa.Text = aResponse.Replace(",", "," + System.Environment.NewLine);
                     View.AddSubview(aaaa);
                     datareceved = true;
 
->>>>>>> 4113d309f3c7013539d70f1a1e54a1e36fe45d5c
                 }
             }
             catch (System.Net.WebException)
@@ -164,11 +160,11 @@ namespace IEatHealthy.iOS
 
                     aResponse = sr.ReadToEnd();
                     //storing token in CurrentAccount instance of type UserAccount
-<<<<<<< HEAD
+
                    // App.currentAccount.JWTToken = aResponse;
-=======
+
                  //   App.currentAccount.JWTToken = aResponse;
->>>>>>> 4113d309f3c7013539d70f1a1e54a1e36fe45d5c
+
                   //  objectret = aResponse;
                   // Item newitem= JsonConvert.DeserializeObject<Item>(json);
                  //   newitem=JsonConvert.DeserializeObject<>
