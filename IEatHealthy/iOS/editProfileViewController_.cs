@@ -10,7 +10,7 @@ namespace IEatHealthy.iOS
 {
     public partial class editProfileViewController : UIViewController
     {
-        public class passwordClass{
+        public class Password{
             public string password { get; set; }
         }
 
@@ -53,17 +53,19 @@ namespace IEatHealthy.iOS
             {
                 if (verifyNewPassword.Text == newPassword.Text)
                 {
+                    
                     var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/user/{0}?token={1}", App.currentAccount.email, App.currentAccount.JWTToken));
                     request.ContentType = "application/JSON";
                     request.Method = "PUT";
+
                     using (var streamWriter = new StreamWriter(request.GetRequestStream()))
                     {
-                        string newPass = JsonConvert.SerializeObject(new passwordClass
+                        string json = JsonConvert.SerializeObject(new Password
                         {
-                            password = newPassword.Text,
+                            password = newPassword.Text
                         });
 
-                        streamWriter.Write(newPassword.Text);
+                        streamWriter.Write(json);
                     }
                    try
                     {
@@ -74,12 +76,13 @@ namespace IEatHealthy.iOS
                             return base.ShouldPerformSegue(segueIdentifier, sender);
                         }
                     }
-                    catch (System.Net.WebException)
+                   catch (System.Net.WebException)
                     {
                         var okAlertController = UIAlertController.Create("Error", "Password Not Changed", UIAlertControllerStyle.Alert);
                         okAlertController.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
                         PresentViewController(okAlertController, true, null);
                     }
+
 
                 }
                 else
