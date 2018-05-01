@@ -81,9 +81,6 @@
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="Plugin.Share.Abstractions">
-      <HintPath>..\packages\Plugin.Share.7.1.1\lib\Xamarin.iOS10\Plugin.Share.Abstractions.dll</HintPath>
-    </Reference>
     <Reference Include="Plugin.Share">
       <HintPath>..\packages\Plugin.Share.7.1.1\lib\Xamarin.iOS10\Plugin.Share.dll</HintPath>
     </Reference>
@@ -108,6 +105,9 @@
     <Reference Include="System.IdentityModel.Tokens.Jwt">
       <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.2.2\lib\netstandard1.4\System.IdentityModel.Tokens.Jwt.dll</HintPath>
     </Reference>
+    <Reference Include="Plugin.Share.Abstractions">
+      <HintPath>..\packages\Plugin.Share.7.1.1\lib\Xamarin.iOS10\Plugin.Share.Abstractions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -115,22 +115,12 @@
     <ImageAsset Include="Assets.xcassets\First.imageset\tab_feed.png" />
     <ImageAsset Include="Assets.xcassets\First.imageset\tab_feed%402x.png" />
     <ImageAsset Include="Assets.xcassets\First.imageset\tab_feed%403x.png" />
-    <ImageAsset Include="Assets.xcassets\Second.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\Second.imageset\tab_about.png" />
-    <ImageAsset Include="Assets.xcassets\Second.imageset\tab_about%402x.png" />
-    <ImageAsset Include="Assets.xcassets\Second.imageset\tab_about%403x.png" />
     <ImageAsset Include="Assets.xcassets\XamarinLogo.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\XamarinLogo.imageset\xamarin_logo%402x.png" />
     <ImageAsset Include="Assets.xcassets\XamarinLogo.imageset\xamarin_logo%403x.png" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\iehlogo.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\iehlogo.imageset\iehlogoj.jpg" />
-    <ImageAsset Include="Assets.xcassets\user icon.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\user icon.imageset\user icon.jpeg" />
     <ImageAsset Include="Assets.xcassets\password icon.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\login icon.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\password icon.imageset\LockIcon.jpg" />
-    <ImageAsset Include="Assets.xcassets\login icon.imageset\login icon2.jpeg" />
     <ImageAsset Include="Assets.xcassets\Timer icon.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Timer icon.imageset\timer icon.png" />
     <ImageAsset Include="Assets.xcassets\newlogo.imageset\Contents.json" />
@@ -142,15 +132,11 @@
     <ImageAsset Include="Assets.xcassets\flowericon.imageset\Leaves_Logox3.png" />
     <ImageAsset Include="Assets.xcassets\flowericon.imageset\UI_1.2 - Page 10.png" />
     <ImageAsset Include="Assets.xcassets\flowericon.imageset\Leaves_Logox2.png" />
-    <ImageAsset Include="Assets.xcassets\profileicon.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\profileicon.imageset\Screen Shot 2018-03-16 at 4.51.34 PM.png" />
     <ImageAsset Include="Assets.xcassets\profile.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\profile.imageset\Profile Iconx1.png" />
     <ImageAsset Include="Assets.xcassets\profile.imageset\Profile Iconx3.png" />
     <ImageAsset Include="Assets.xcassets\profile.imageset\ProfileIconx2.png" />
-    <ImageAsset Include="Assets.xcassets\RatingIcon.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\CartIcon.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\RatingIcon.imageset\Screen Shot 2018-03-23 at 1.38.10 PM.png" />
     <ImageAsset Include="Assets.xcassets\CartIcon.imageset\Screen Shot 2018-03-23 at 1.38.27 PM.png" />
     <ImageAsset Include="Assets.xcassets\CartTab.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\CartTab.imageset\Add to cart.png" />
@@ -206,10 +192,6 @@
     <Compile Include="ViewControllers\DetailViewControllers\BrowseItemDetailViewController.designer.cs">
       <DependentUpon>BrowseItemDetailViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewControllers\AboutViewController.cs" />
-    <Compile Include="ViewControllers\AboutViewController.designer.cs">
-      <DependentUpon>AboutViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="ViewControllers\BrowseViewController.cs" />
     <Compile Include="ViewControllers\BrowseViewController.designer.cs">
       <DependentUpon>BrowseViewController.cs</DependentUpon>
@@ -224,10 +206,6 @@
     </Compile>
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Main.cs" />
-    <Compile Include="ViewControllers\moreviewcontroller.cs" />
-    <Compile Include="ViewControllers\moreviewcontroller.designer.cs">
-      <DependentUpon>moreviewcontroller.cs</DependentUpon>
-    </Compile>
     <Compile Include="ViewControllers\PasswordResetController.cs" />
     <Compile Include="ViewControllers\PasswordResetController.designer.cs">
       <DependentUpon>PasswordResetController.cs</DependentUpon>
@@ -264,26 +242,13 @@
     <Compile Include="ViewControllers\RecipesViewController.designer.cs">
       <DependentUpon>RecipesViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewControllers\CartViewController.cs" />
-    <Compile Include="ViewControllers\CartViewController.designer.cs">
-      <DependentUpon>CartViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="SigninSegueController.cs" />
     <Compile Include="SigninSegueController.designer.cs">
       <DependentUpon>SigninSegueController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewControllers\AddIngredientViewController.cs" />
-    <Compile Include="ViewControllers\AddIngredientViewController.designer.cs">
-      <DependentUpon>AddIngredientViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ingredient.cs" />
     <Compile Include="CommentController.cs" />
     <Compile Include="CommentController.designer.cs">
       <DependentUpon>CommentController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="editProfileViewController_.cs" />
-    <Compile Include="editProfileViewController_.designer.cs">
-      <DependentUpon>editProfileViewController_.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewControllers\ProfileViewControllers\ProfileViewController.cs" />
     <Compile Include="ViewControllers\ProfileViewControllers\ProfileViewController.designer.cs">
@@ -295,6 +260,19 @@
     <Compile Include="ViewControllers\ProfileViewControllers\CreationSource\CreationCollectionSource.cs" />
     <Compile Include="ViewControllers\ProfileViewControllers\InfoSource\InfoCell.cs" />
     <Compile Include="ViewControllers\ProfileViewControllers\InfoSource\InfoCollectionSource.cs" />
+    <Compile Include="ViewControllers\CartViewControllers\CartViewController.cs" />
+    <Compile Include="ViewControllers\CartViewControllers\CartViewController.designer.cs">
+      <DependentUpon>CartViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CartViewControllers\AddIngredientViewController.cs" />
+    <Compile Include="ViewControllers\CartViewControllers\AddIngredientViewController.designer.cs">
+      <DependentUpon>AddIngredientViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\CartViewControllers\ingredient.cs" />
+    <Compile Include="ViewControllers\ProfileViewControllers\editProfileViewController_.cs" />
+    <Compile Include="ViewControllers\ProfileViewControllers\editProfileViewController_.designer.cs">
+      <DependentUpon>editProfileViewController_.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />
@@ -344,6 +322,7 @@
     <Folder Include="ViewControllers\ProfileViewControllers\BadgeSource\" />
     <Folder Include="ViewControllers\ProfileViewControllers\CreationSource\" />
     <Folder Include="ViewControllers\ProfileViewControllers\InfoSource\" />
+    <Folder Include="ViewControllers\CartViewControllers\" />
   </ItemGroup>
   <Import Project="..\IEatHealthy\IEatHealthy.projitems" Label="Shared" Condition="Exists('..\IEatHealthy\IEatHealthy.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

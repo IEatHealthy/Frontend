@@ -16,115 +16,17 @@ namespace IEatHealthy.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextView BriefDescInput { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton BtnPick { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton btnSaveItem { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField cooktime { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel DifficultyLabel { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIImageView imgView { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField preptime { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField ReadyTimeIput { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField RecipeName { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIScrollView scrollView { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField ServingSizeInput { get; set; }
-
-        [Action ("BtnPick_TouchUpInside:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void BtnPick_TouchUpInside (UIKit.UIButton sender);
 
         [Action ("BtnSaveItem_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void BtnSaveItem_TouchUpInside (UIKit.UIButton sender);
 
-        [Action ("PrepValueChange:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void PrepValueChange (UIKit.UITextField sender);
-
         void ReleaseDesignerOutlets ()
         {
-            if (BriefDescInput != null) {
-                BriefDescInput.Dispose ();
-                BriefDescInput = null;
-            }
-
-            if (BtnPick != null) {
-                BtnPick.Dispose ();
-                BtnPick = null;
-            }
-
             if (btnSaveItem != null) {
                 btnSaveItem.Dispose ();
                 btnSaveItem = null;
-            }
-
-            if (cooktime != null) {
-                cooktime.Dispose ();
-                cooktime = null;
-            }
-
-            if (DifficultyLabel != null) {
-                DifficultyLabel.Dispose ();
-                DifficultyLabel = null;
-            }
-
-            if (imgView != null) {
-                imgView.Dispose ();
-                imgView = null;
-            }
-
-            if (preptime != null) {
-                preptime.Dispose ();
-                preptime = null;
-            }
-
-            if (ReadyTimeIput != null) {
-                ReadyTimeIput.Dispose ();
-                ReadyTimeIput = null;
-            }
-
-            if (RecipeName != null) {
-                RecipeName.Dispose ();
-                RecipeName = null;
-            }
-
-            if (scrollView != null) {
-                scrollView.Dispose ();
-                scrollView = null;
-            }
-
-            if (ServingSizeInput != null) {
-                ServingSizeInput.Dispose ();
-                ServingSizeInput = null;
             }
         }
     }
