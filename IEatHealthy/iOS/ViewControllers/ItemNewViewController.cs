@@ -16,7 +16,8 @@ namespace IEatHealthy.iOS
         public List<UITextField> SpecialTools = new List<UITextField>();
         public List<UITextField> ingredients = new List<UITextField>();
         UIImagePickerController picker;
-        public UIButton Image { get; private set; }
+        public UIButton ImageBtn { get; private set; }
+        public UIImageView ImageView { get; private set; }
         public ItemsViewModel ViewModel { get; set; }
 
         // Initialize UITextFields
@@ -53,10 +54,9 @@ namespace IEatHealthy.iOS
             border.Frame = new CGRect(0, RecipeName.Frame.Size.Height - 1, RecipeName.Frame.Size.Width, 1);
             RecipeName.Layer.AddSublayer(border);
 
-            Image = new UIButton();
-            Image.Frame = new CGRect(20, 10, 140, 130);
-            Image.SetBackgroundImage(UIImage.FromBundle("AddRecipeIcon"), UIControlState.Normal);
-            Image.TouchUpInside += (s, e) =>
+            ImageBtn = new UIButton();
+            ImageBtn.Frame = new CGRect(20, 10, 140, 130);
+            ImageBtn.TouchUpInside += (s, e) =>
             {
                 picker = new UIImagePickerController();
                 picker.SourceType = UIImagePickerControllerSourceType.PhotoLibrary;
@@ -66,7 +66,12 @@ namespace IEatHealthy.iOS
                 PresentViewController(picker, animated: true, completionHandler: null);
             };
 
-            RecipeName.AddSubview(Image);
+            ImageView = new UIImageView();
+            ImageView.Frame = new CGRect(20, 10, 140, 130);
+            ImageView.Image = UIImage.FromBundle("AddRecipeIcon");
+
+            RecipeName.AddSubview(ImageBtn);
+            RecipeName.AddSubview(ImageView);
 
 
 
@@ -574,7 +579,7 @@ namespace IEatHealthy.iOS
 
                 if (originalImage != null)
                 {
-                    //imgView.Image = originalImage;
+                    ImageView.Image = originalImage;
                 }
             }
             else
