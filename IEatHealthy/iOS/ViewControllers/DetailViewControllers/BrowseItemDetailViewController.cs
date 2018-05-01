@@ -4,7 +4,8 @@ using CoreGraphics;
 using Foundation;
 using UIKit;
 using System.Collections.Generic;
-
+using System.Net;
+using System.IO;
 
 namespace IEatHealthy.iOS
 {
@@ -14,6 +15,10 @@ namespace IEatHealthy.iOS
         public List<UITextView> IngrediantList = new List<UITextView>();
         public List<UITextView> StepList = new List<UITextView>();
         public List<UILabel> NutrationalFactsList = new List<UILabel>();
+        public static AppDelegate App
+        {
+            get { return (AppDelegate)UIApplication.SharedApplication.Delegate; }
+        }
 
         public BrowseItemDetailViewController(IntPtr handle) : base(handle) { }
         public int itemsss = 0;
@@ -54,10 +59,40 @@ namespace IEatHealthy.iOS
             CommentButton.SetTitleColor(UIColor.FromRGB(66, 134, 244), UIControlState.Normal);
             scrollView.AddSubview(CommentButton);
 
+            var Bookmark = new UIButton(UIButtonType.Custom)
+            {
+                Frame = new CGRect(View.Frame.Width - 60, 50, 40, 50),
 
-            UIImageView BookmarkImg = new UIImageView(new CGRect(View.Frame.Width - 60, 50, 20, 30));
-            BookmarkImg.Image = UIImage.FromBundle("BookmarkIcon");
-            scrollView.AddSubview(BookmarkImg);
+             };
+
+            Bookmark.SetImage(UIImage.FromBundle("bookmarkicon"), UIControlState.Normal);
+            scrollView.AddSubview(Bookmark);
+            Bookmark.TouchUpInside += (sender, e) => {
+                App.currentAccount.bookmarkedRecipes.Add(ViewModel.Item.id);
+                var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/bookmark?recipeId={0}&email={1}&token={2}",ViewModel.Item.stringId, App.currentAccount.email, App.currentAccount.JWTToken));
+                request.ContentType = "application/JSON";
+                request.Method = "POST";
+                using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+                {
+                    try
+                    {
+                        HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                        using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+                        {
+                            var result = sr.ReadToEnd();
+                            var okAlertController = UIAlertController.Create("Success", "Recipe bookmarked", UIAlertControllerStyle.Alert);
+                            okAlertController.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
+                            PresentViewController(okAlertController, true, null);
+                        }
+                    }
+                    catch (System.Net.WebException)
+                    {
+                        var okAlertController = UIAlertController.Create("Success", ViewModel.Item.id, UIAlertControllerStyle.Alert);
+                        okAlertController.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
+                        PresentViewController(okAlertController, true, null);
+                    }
+                }
+            };
 
             UILabel ratinglabel = new UILabel(new CGRect(10, 114, 100, 15));
             ratinglabel.Text = "  5 of 5";

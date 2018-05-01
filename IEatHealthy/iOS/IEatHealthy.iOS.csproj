@@ -186,6 +186,8 @@
     <ImageAsset Include="Assets.xcassets\SmoothieQueen.imageset\7-SmoothieQueen.jpg" />
     <ImageAsset Include="Assets.xcassets\VeggieFace.imageset\4-VeggieFace.jpg" />
     <ImageAsset Include="Assets.xcassets\NewbBadge.imageset\1-Newbie.jpg" />
+    <ImageAsset Include="Assets.xcassets\bookmarkicon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\bookmarkicon.imageset\bookmark.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ViewControllers\DetailViewControllers\BrowseItemDetailViewController.cs" />
@@ -323,6 +325,7 @@
     <Folder Include="ViewControllers\ProfileViewControllers\CreationSource\" />
     <Folder Include="ViewControllers\ProfileViewControllers\InfoSource\" />
     <Folder Include="ViewControllers\CartViewControllers\" />
+    <Folder Include="Assets.xcassets\bookmarkicon.imageset\" />
   </ItemGroup>
   <Import Project="..\IEatHealthy\IEatHealthy.projitems" Label="Shared" Condition="Exists('..\IEatHealthy\IEatHealthy.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

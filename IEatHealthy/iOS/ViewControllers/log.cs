@@ -50,6 +50,7 @@ namespace IEatHealthy.iOS
                 var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/user/{0}/{1}", loginEmail.Text, loginPassword.Text));
                 request.ContentType = "application/JSON";
                 request.Method = "GET";
+
                 try
                 {
                     HttpWebResponse response = request.GetResponse() as HttpWebResponse;

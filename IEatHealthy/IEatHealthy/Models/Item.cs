@@ -45,10 +45,6 @@ namespace IEatHealthy
         public double vitAiu { get; set; }
         public double vitDiu { get; set; }
         public double cholestrol { get; set; }
-
-
-
-    
    
     }
 }
