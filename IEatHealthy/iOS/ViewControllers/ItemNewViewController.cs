@@ -460,7 +460,7 @@ namespace IEatHealthy.iOS
                         item.RemoveFromSuperview();
                     }
                     scrollView.AddSubview(AddStepButton);
-
+                    AddStepButton.RemoveFromSuperview();
                 }
                 if (index == 1)
                 {

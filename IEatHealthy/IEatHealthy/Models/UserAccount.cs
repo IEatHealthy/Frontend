@@ -7,14 +7,14 @@ namespace IEatHealthy
     public class UserAccount
     {
         public String email { get; set; }
-        private String firstName { get; set; }
-        private String lastName { get; set; }
-        private String username { get; set; }
+        public String firstName { get; set; }
+        public String lastName { get; set; }
+        public String username { get; set; }
         public int skillLevel { get; set; }
-        private ArrayList badgesEarned { get; set; }
-        private ArrayList titlesEarned { get; set; }
-        private Badge badgeSelected { get; set; }
-        private Title titleSelected { get; set; }
+        public ArrayList badgesEarned { get; set; }
+        public ArrayList titlesEarned { get; set; }
+        public Badge badgeSelected { get; set; }
+        public Title titleSelected { get; set; }
         public string JWTToken { get; set; }
         public List<string> recipesCreated { get; set; }
         public List<string> bookmarkedRecipes { get; set; }
@@ -22,16 +22,16 @@ namespace IEatHealthy
     public class Badge
     {
 
-        private int badgeId { get; set; }
-        private String decsription { get; set; }
-        private bool awardOnSignup { get; set; }
+        public int badgeId { get; set; }
+        public String decsription { get; set; }
+        public bool awardOnSignup { get; set; }
     }
     public class Title
     {
 
-        private String title { get; set; }
-        private String description { get; set; }
-        private bool awardOnSignUp { get; set; }
+        public String title { get; set; }
+        public String description { get; set; }
+        public bool awardOnSignUp { get; set; }
 
     }
 

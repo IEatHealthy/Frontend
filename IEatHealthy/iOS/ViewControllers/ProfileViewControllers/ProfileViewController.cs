@@ -10,6 +10,10 @@ namespace IEatHealthy.iOS
         {
         }
 
+        public static AppDelegate App
+        {
+            get { return (AppDelegate)UIApplication.SharedApplication.Delegate; }
+        }
 
         public override void ViewDidAppear(bool animated)
         {
@@ -147,6 +151,7 @@ namespace IEatHealthy.iOS
 
             BadgeCollection.RegisterClassForCell(typeof(BadgeCell), BadgeCell.BadgeID);
             BadgeCollection.Source = badgeCollectionSource;
+            //addEarnedBadges(badgeCollectionSource);
 
             BadgeElement badgeElement = new BadgeElement(UIImage.FromBundle("NewbBadge"), "The Newbie", "Create an Account");
             badgeCollectionSource.Rows.Add(badgeElement);
@@ -234,9 +239,9 @@ namespace IEatHealthy.iOS
                 }
             };
 
-            //public void addEarnedBadges(BadgeCollectionSource badgeCollectionSource)
+            //void addEarnedBadges(BadgeCollectionSource badgeCollection)
             //{
-            //foreach (Badge badge in BadgesEarned)
+            //    foreach (Badge badge in App.currentAccount.badgesEarned)
             //{
             //    int index = badge.badgeId;
             //    BadgeElement badgeElement;
@@ -244,43 +249,43 @@ namespace IEatHealthy.iOS
             //    {
             //        case 1:
             //            badgeElement = new BadgeElement(UIImage.FromBundle("NewbBadge"), "Newbie");
-            //            badgeCollectionSource.Rows.Add(badgeElement);
+            //            badgeCollection.Rows.Add(badgeElement);
             //            break;
             //        case 2:
             //            badgeElement = new BadgeElement(UIImage.FromBundle("MeatFace"), "Carnivore");
-            //            badgeCollectionSource.Rows.Add(badgeElement);
+            //            badgeCollection.Rows.Add(badgeElement);
             //            break;
             //        case 3:
             //            badgeElement = new BadgeElement(UIImage.FromBundle("EggFace"), "Egg Face");
-            //            badgeCollectionSource.Rows.Add(badgeElement);
+            //            badgeCollection.Rows.Add(badgeElement);
             //            break;
             //        case 4:
             //            badgeElement = new BadgeElement(UIImage.FromBundle("VeggieFace"), "Mother Earth");
-            //            badgeCollectionSource.Rows.Add(badgeElement);
+            //            badgeCollection.Rows.Add(badgeElement);
             //            break;
             //        case 5:
             //            badgeElement = new BadgeElement(UIImage.FromBundle("SweetTooth"), "Sweet Tooth");
-            //            badgeCollectionSource.Rows.Add(badgeElement);
+            //            badgeCollection.Rows.Add(badgeElement);
             //            break;
             //        case 6:
             //            badgeElement = new BadgeElement(UIImage.FromBundle("CookieMonster"), "Cookie Monster");
-            //            badgeCollectionSource.Rows.Add(badgeElement);
+            //            badgeCollection.Rows.Add(badgeElement);
             //            break;
             //        case 7:
             //            badgeElement = new BadgeElement(UIImage.FromBundle("SmoothieQueen"), "Smoothie Queen");
-            //            badgeCollectionSource.Rows.Add(badgeElement);
+            //            badgeCollection.Rows.Add(badgeElement);
             //            break;
             //        case 8:
             //            badgeElement = new BadgeElement(UIImage.FromBundle("SmoothieKing"), "Smoothie King");
-            //            badgeCollectionSource.Rows.Add(badgeElement);
+            //            badgeCollection.Rows.Add(badgeElement);
             //            break;
             //        case 9:
             //            badgeElement = new BadgeElement(UIImage.FromBundle("BaconFace"), "Keep Calm & Eat Bacon");
-            //            badgeCollectionSource.Rows.Add(badgeElement);
+            //            badgeCollection.Rows.Add(badgeElement);
             //            break;
             //        case 10:
             //            badgeElement = new BadgeElement(UIImage.FromBundle("FishFace"), "The Fisherman");
-            //            badgeCollectionSource.Rows.Add(badgeElement);
+            //            badgeCollection.Rows.Add(badgeElement);
             //            break;
             //    }
             //}
