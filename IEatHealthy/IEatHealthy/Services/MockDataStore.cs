@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Foundation;
+using UIKit;
 
 namespace IEatHealthy
 {
     public class MockDataStore : IDataStore<Item>
     {
+       
+         
+
+
         List<Item> items;
         UserAccount MainUser = new UserAccount();
         public MockDataStore()
@@ -14,7 +20,7 @@ namespace IEatHealthy
             items = new List<Item>();
             var _items = new List<Item>
             {
-                new Item { Id = Guid.NewGuid().ToString(),
+                new Item { id = Guid.NewGuid().ToString(),
                     name = "Strawberry Vanilla Pancakes",
                   //  Description="20 min  8 Servings   *Easy",
                     description="Very sweet and easy to prepare pancakes",
@@ -28,18 +34,20 @@ namespace IEatHealthy
                     },
                     author="MockDataStore",
                     difficulty=1,
-                    preptime=5,
+                    prepTime=5,
                     cookTime=5,
 
                     servings=8,
-                    readyTime=20,
-                    picture=UIKit.UIImage.FromBundle ("pancake")},
-                
+                    readyInTime=20,
+                   // picture=UIKit.UIImage.FromBundle ("pancake")},
+                   // FoodImage = base641,
 
+                
+                },
 
             new Item
             {
-                Id = Guid.NewGuid().ToString(),
+                    id = Guid.NewGuid().ToString(),
                     name = "Ricotta strawberry French toast",
                   //  description = "30 min  2 Servings   *Easy",
                     description = "Give your French toast a summer makeover with fresh berries, lashings of ricotta, honey and mint ",
@@ -64,12 +72,13 @@ namespace IEatHealthy
 
                     },
                     difficulty =1,
-                    preptime = 10,
+                    prepTime = 10,
                     cookTime = 20,
 
                     servings = 2,
-                    readyTime = 30,
-                //picture = UIKit.UIImage.FromBundle("toast")
+                    readyInTime = 30,
+
+         //   FoodImage = base642,
             },
                 /*
                 new Item
@@ -238,7 +247,7 @@ namespace IEatHealthy
 
         public async Task<bool> UpdateItemAsync(Item item)
         {
-            var _item = items.Where((Item arg) => arg.Id == item.Id).FirstOrDefault();
+            var _item = items.Where((Item arg) => arg.id == item.id).FirstOrDefault();
             items.Remove(_item);
             items.Add(item);
 
@@ -247,7 +256,7 @@ namespace IEatHealthy
 
         public async Task<bool> DeleteItemAsync(string id)
         {
-            var _item = items.Where((Item arg) => arg.Id == id).FirstOrDefault();
+            var _item = items.Where((Item arg) => arg.id == id).FirstOrDefault();
             items.Remove(_item);
 
             return await Task.FromResult(true);
@@ -255,7 +264,7 @@ namespace IEatHealthy
 
         public async Task<Item> GetItemAsync(string id)
         {
-            return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
+            return await Task.FromResult(items.FirstOrDefault(s => s.id == id));
         }
 
         public async Task<IEnumerable<Item>> GetItemsAsync(bool forceRefresh = false)

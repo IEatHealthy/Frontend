@@ -5,11 +5,11 @@ namespace IEatHealthy
 
     public class UserAccount
     {
-        private String email { get; set; }
+        public String email { get; set; }
         private String firstName { get; set; }
         private String lastName { get; set; }
         private String username { get; set; }
-        private int skillLevel { get; set; }
+        public int skillLevel { get; set; }
         private ArrayList badgesEarned { get; set; }
         private ArrayList titlesEarned { get; set; }
         private Badge badgeSelected { get; set; }

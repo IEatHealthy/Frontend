@@ -24,6 +24,10 @@ namespace IEatHealthy.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnSaveItem { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField cooktime { get; set; }
 
         [Outlet]
@@ -33,14 +37,6 @@ namespace IEatHealthy.iOS
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView imgView { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel IngrediantLabel { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel InstructionLabel { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -62,13 +58,13 @@ namespace IEatHealthy.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField ServingSizeInput { get; set; }
 
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel sToolLabel { get; set; }
-
         [Action ("BtnPick_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void BtnPick_TouchUpInside (UIKit.UIButton sender);
+
+        [Action ("BtnSaveItem_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void BtnSaveItem_TouchUpInside (UIKit.UIButton sender);
 
         [Action ("PrepValueChange:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -86,6 +82,11 @@ namespace IEatHealthy.iOS
                 BtnPick = null;
             }
 
+            if (btnSaveItem != null) {
+                btnSaveItem.Dispose ();
+                btnSaveItem = null;
+            }
+
             if (cooktime != null) {
                 cooktime.Dispose ();
                 cooktime = null;
@@ -99,16 +100,6 @@ namespace IEatHealthy.iOS
             if (imgView != null) {
                 imgView.Dispose ();
                 imgView = null;
-            }
-
-            if (IngrediantLabel != null) {
-                IngrediantLabel.Dispose ();
-                IngrediantLabel = null;
-            }
-
-            if (InstructionLabel != null) {
-                InstructionLabel.Dispose ();
-                InstructionLabel = null;
             }
 
             if (preptime != null) {
@@ -134,11 +125,6 @@ namespace IEatHealthy.iOS
             if (ServingSizeInput != null) {
                 ServingSizeInput.Dispose ();
                 ServingSizeInput = null;
-            }
-
-            if (sToolLabel != null) {
-                sToolLabel.Dispose ();
-                sToolLabel = null;
             }
         }
     }

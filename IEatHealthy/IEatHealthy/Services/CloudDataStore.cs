@@ -59,14 +59,14 @@ namespace IEatHealthy
 
         public async Task<bool> UpdateItemAsync(Item item)
         {
-            if (item == null || item.Id == null || !CrossConnectivity.Current.IsConnected)
+            if (item == null || item.id == null || !CrossConnectivity.Current.IsConnected)
                 return false;
 
             var serializedItem = JsonConvert.SerializeObject(item);
             var buffer = Encoding.UTF8.GetBytes(serializedItem);
             var byteContent = new ByteArrayContent(buffer);
 
-            var response = await client.PutAsync(new Uri($"api/item/{item.Id}"), byteContent);
+            var response = await client.PutAsync(new Uri($"api/item/{item.id}"), byteContent);
 
             return response.IsSuccessStatusCode;
         }

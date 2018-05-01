@@ -9,10 +9,14 @@ namespace IEatHealthy.iOS
 {
     public partial class CommentController : UIViewController
     {
+        public static AppDelegate App
+        {
+            get { return (AppDelegate)UIApplication.SharedApplication.Delegate; }
+        }
         public CommentController(IntPtr handle) : base(handle)
         {
         }
-        public string token = null;
+        public string token="ss";
         public bool isCOmment = false;
 
         public int rating = 6;
@@ -21,6 +25,7 @@ namespace IEatHealthy.iOS
             base.ViewDidLoad();
             if (isCOmment == true)
             {
+                
                 UILabel ratingLabel = new UILabel(new CGRect(20, 40, 200, 30));
                 ratingLabel.Text = "Rating";
                 ratingLabel.Font = UIFont.FromName("Helvetica-bold", 18f);
@@ -148,9 +153,10 @@ namespace IEatHealthy.iOS
                 aa.Layer.CornerRadius = 5;
                 aa.Font = UIFont.FromName("Helvetica", 16f);
                 aa.AutoresizingMask = UIViewAutoresizing.All;
+                aa.Text = token;
                 scrollview.Add(aa);
-
                 /*
+
 
                 UIButton aaa = new UIButton(new CGRect(100, 300, 50, 50));
                 aaa.SetTitle("aa button", UIControlState.Normal);
@@ -165,7 +171,7 @@ namespace IEatHealthy.iOS
                 aaa.TouchUpInside += (s, e) =>
                 {
 
-                    var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/"));
+                    var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/name?name=Grilled%20Salmon"));
                     request.ContentType = "application/JSON";
                     request.Method = "GET";
                    
@@ -176,7 +182,7 @@ namespace IEatHealthy.iOS
                         {
 
                             myResponse = sr.ReadToEnd();
-
+                        string bb=response.Replace(",", "," + System.Environment.NewLine);
 
                         }
 
@@ -191,7 +197,7 @@ namespace IEatHealthy.iOS
 
 
 
-            */
+           */
             }
             //  else { label1.Text = "Review Page"; }
            

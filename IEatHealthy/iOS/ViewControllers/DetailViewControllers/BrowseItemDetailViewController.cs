@@ -72,7 +72,7 @@ namespace IEatHealthy.iOS
             RecipeControl.SelectedSegment = 0;
 
             UIImage pp = new UIImage();
-            pp = ViewModel.Item.picture;
+          //  pp = ViewModel.Item.picture;
             float x = (float)pp.Size.Width;
             float y = (float)pp.Size.Height;
             float ratio = x / y;
@@ -81,7 +81,7 @@ namespace IEatHealthy.iOS
 
 
             UIImageView recipeImage = new UIImageView(new CGRect(40, 180, View.Frame.Width - 80, y));
-            recipeImage.Image = ViewModel.Item.picture;
+           // recipeImage.Image = ViewModel.Item.picture;
 
 
             scrollView.AddSubview(recipeImage);
@@ -107,7 +107,7 @@ namespace IEatHealthy.iOS
 
             preptimelabel.Text = "Prep Time";
             UILabel preptime = new UILabel(new CGRect(140, graybox.Frame.Y + 10, 100, 20));
-            preptime.Text = ViewModel.Item.preptime + " Min";
+            preptime.Text = ViewModel.Item.prepTime + " Min";
             preptime.Font = UIFont.FromName("Helvetica", 14f);
 
 
@@ -124,7 +124,7 @@ namespace IEatHealthy.iOS
             Readyinlabel.Font = UIFont.FromName("Helvetica", 14f);
 
             UILabel Readyin = new UILabel(new CGRect(140, Cooktime.Frame.Y + 20, 100, 20));
-            Readyin.Text = ViewModel.Item.readyTime + " Min";
+            Readyin.Text = ViewModel.Item.prepTime + " Min";
             Readyin.Font = UIFont.FromName("Helvetica", 14f);
 
 

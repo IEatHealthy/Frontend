@@ -37,7 +37,7 @@ namespace IEatHealthy.iOS
             // for each ingredient place into the tableitems.
             foreach (IngredientItem ingre in Items)
             {
-                placeholder.Name = ingre.ingredientId;
+                placeholder.Name = ingre.desc;
                 tableItems.Add(placeholder.Name);
             }
         }

@@ -146,14 +146,18 @@ namespace IEatHealthy.iOS
                 return resultImage;
             }
 
+
             var cell = tableView.DequeueReusableCell(CELL_IDENTIFIER, indexPath);
 
             var item = viewModel.Items[indexPath.Row];
             cell.TextLabel.Text = item.name;
             cell.DetailTextLabel.Text = item.description;
             cell.LayoutMargins = UIEdgeInsets.Zero;
-          //  var image = ResizeImage(item.picture, 45, 35);
-          //  cell.ImageView.Image = image;
+         //   var imageBytes = Convert.FromBase64String()
+         //   var imagedata = NSData.FromArray(imageBytes);
+         //   var uiimage = UIImage.LoadFromData(imagedata);
+         //   var image = ResizeImage(uiimage, 45, 35);
+         //    cell.ImageView.Image = image;
 
 
 
