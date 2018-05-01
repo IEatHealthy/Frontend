@@ -18,11 +18,20 @@ namespace IEatHealthy.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton editInfo { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton signOut { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
             if (editInfo != null) {
                 editInfo.Dispose ();
                 editInfo = null;
+            }
+
+            if (signOut != null) {
+                signOut.Dispose ();
+                signOut = null;
             }
         }
     }

@@ -60,6 +60,15 @@ namespace IEatHealthy.iOS
             editInfo.SetTitle("Edit Info", UIControlState.Normal);
             InfoView.AddSubview(editInfo);
 
+            signOut.Frame = new CGRect(140, 100, 100, 30);
+            signOut.BackgroundColor = UIColor.FromRGB(37, 153, 254);
+            signOut.SetTitleColor(UIColor.White, UIControlState.Normal);
+            signOut.Layer.CornerRadius = 5;
+            signOut.SetTitle("Sign Out", UIControlState.Normal);
+            InfoView.AddSubview(signOut);
+
+
+
             // UI segmented control for info, badge and creation tabs
             double NavLocation = statusBarHeight + 150.0;
 

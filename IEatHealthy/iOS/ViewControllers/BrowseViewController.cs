@@ -49,8 +49,13 @@ namespace IEatHealthy.iOS
             RecipeTableView.EstimatedRowHeight = 100;
             RecipeTableView.ReloadData();
 
+<<<<<<< HEAD
 
             var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/recommended/test@ieathealthy.info?token={0}",App.currentAccount.JWTToken));
+=======
+            /*
+            var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/recommended/test@ieathealthy.info"));
+>>>>>>> 4113d309f3c7013539d70f1a1e54a1e36fe45d5c
             request.ContentType = "application/JSON";
             request.Method = "GET";
             HttpWebResponse response = request.GetResponse() as HttpWebResponse;
@@ -65,6 +70,7 @@ namespace IEatHealthy.iOS
                 }
 
             }
+            */
         }
 
 
