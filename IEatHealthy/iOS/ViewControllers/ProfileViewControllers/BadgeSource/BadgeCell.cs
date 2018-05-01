@@ -37,8 +37,11 @@ namespace IEatHealthy.iOS
             LabelView.Text = element.Title;
             ImageView.Image = element.Image;
 
-            ImageView.Frame = new CGRect(5, 5, 60, 60);
-            LabelView.Frame = new CGRect(70, 0, 50, 50);
+            ImageView.Frame = new CGRect(10, 5, 50, 50);
+            ImageView.BackgroundColor = UIColor.Red;
+            LabelView.Frame = new CGRect(75, 10, 50, 50);
+            LabelView.Font = UIFont.FromName("Helvetica-Bold", 14f);
+            LabelView.SizeToFit();
         }
     }
 }

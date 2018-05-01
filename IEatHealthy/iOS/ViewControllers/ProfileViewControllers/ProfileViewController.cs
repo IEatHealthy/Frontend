@@ -17,12 +17,13 @@ namespace IEatHealthy.iOS
             this.View.BackgroundColor = UIColor.FromRGB(240, 240, 240);
             var statusBarHeight = UIApplication.SharedApplication.StatusBarFrame.Size.Height;
 
+            // Background color for the status bar
             var statusbar = new UIView();
             statusbar.Frame = new CGRect(0, 0, View.Bounds.Size.Width, statusBarHeight);
             statusbar.BackgroundColor = UIColor.White;
             this.View.AddSubview(statusbar);
 
-            // User Details
+            // User Details Subview
             var InfoView = new UIView();
             InfoView.Frame = new CGRect(0, statusBarHeight, View.Bounds.Size.Width, 150);
             InfoView.BackgroundColor = UIColor.White;
@@ -59,7 +60,7 @@ namespace IEatHealthy.iOS
             editInfo.SetTitle("Edit Info", UIControlState.Normal);
             InfoView.AddSubview(editInfo);
 
-            // UI segmented control
+            // UI segmented control for info, badge and creation tabs
             double NavLocation = statusBarHeight + 150.0;
 
             var segmentControl = new UISegmentedControl();
@@ -91,23 +92,39 @@ namespace IEatHealthy.iOS
 
             this.View.AddSubview(segmentControl);
 
-            double ContainerLocation = NavLocation + 50;
+            double ContainerLocation = NavLocation + 45;
 
-            var scroll = new UIScrollView(new CGRect(0, ContainerLocation, View.Bounds.Size.Width, 900));
-            scroll.BackgroundColor = UIColor.White;
-            scroll.AutoresizingMask = UIViewAutoresizing.FlexibleHeight;
-            this.View.AddSubview(scroll);
+            // Collection View for the Info tab
+            var InfoCollectionLayout = new UICollectionViewFlowLayout
+            {
+                SectionInset = new UIEdgeInsets(0, 0, 0, 0),
+                MinimumInteritemSpacing = 5,
+                MinimumLineSpacing = 5,
+                ItemSize = new CGSize(View.Bounds.Size.Width, 60),
+                ScrollDirection = UICollectionViewScrollDirection.Vertical
+            };
 
-            // Collection View for the Badges
+            var infoCollection = new UICollectionView(new CGRect(0, ContainerLocation, View.Bounds.Size.Width, 490), InfoCollectionLayout);
+            infoCollection.BackgroundColor = UIColor.White;
+            infoCollection.ContentSize = View.Frame.Size;
+
+            var infoCollectionSource = new InfoCollectionSource();
+
+
+            infoCollection.RegisterClassForCell(typeof(InfoCell), InfoCell.InfoID);
+            infoCollection.Source = infoCollectionSource;
+
+            // Collection View for the Badge tab
             var badgeCollectionLayout = new UICollectionViewFlowLayout
             {
                 SectionInset = new UIEdgeInsets(0,0,0,0),
                 MinimumInteritemSpacing = 5,
                 MinimumLineSpacing = 5,
-                ItemSize = new CGSize(View.Bounds.Size.Width, 70)
+                ItemSize = new CGSize(View.Bounds.Size.Width, 60),
+                ScrollDirection = UICollectionViewScrollDirection.Vertical
             };
 
-            var BadgeCollection = new UICollectionView(new CGRect(0, 0, View.Bounds.Size.Width, 900), badgeCollectionLayout);
+            var BadgeCollection = new UICollectionView(new CGRect(0, ContainerLocation, View.Bounds.Size.Width, 490), badgeCollectionLayout);
             BadgeCollection.BackgroundColor = UIColor.White;
             BadgeCollection.ContentSize = View.Frame.Size;
 
@@ -116,6 +133,7 @@ namespace IEatHealthy.iOS
 
             BadgeCollection.RegisterClassForCell(typeof(BadgeCell), BadgeCell.BadgeID);
             BadgeCollection.Source = badgeCollectionSource;
+
             BadgeElement badgeElement = new BadgeElement(UIImage.FromBundle("NewbBadge"), "Newbie");
             badgeCollectionSource.Rows.Add(badgeElement);
             badgeElement = new BadgeElement(UIImage.FromBundle("MeatFace"), "Carnivore");
@@ -137,29 +155,65 @@ namespace IEatHealthy.iOS
             badgeElement = new BadgeElement(UIImage.FromBundle("FishFace"), "The Fisherman");
             badgeCollectionSource.Rows.Add(badgeElement);
 
-            scroll.AddSubview(BadgeCollection);
+            this.View.AddSubview(BadgeCollection);
+
+            // Collection View for Creations tab
+            var creationCollectionLayout = new UICollectionViewFlowLayout
+            {
+                SectionInset = new UIEdgeInsets(5, 5, 5, 5),
+                MinimumInteritemSpacing = 5,
+                MinimumLineSpacing = 5,
+                ItemSize = new CGSize(View.Bounds.Size.Width, 100),
+                ScrollDirection = UICollectionViewScrollDirection.Vertical
+            };
+
+            var creationCollection = new UICollectionView(new CGRect(0, ContainerLocation, View.Bounds.Size.Width, 490), creationCollectionLayout);
+            creationCollection.BackgroundColor = UIColor.White;
+            creationCollection.ContentSize = View.Frame.Size;
+
+            var creationCollectionSource = new CreationCollectionSource();
 
 
+            creationCollection.RegisterClassForCell(typeof(CreationCell), CreationCell.CreationID);
+            creationCollection.Source = creationCollectionSource;
+
+            // Segmented Control for navigation among Info, Badge, and Creation tabs
+            int previousindex = 1;
             segmentControl.ValueChanged += (sender, e) =>
             {
-                var index = segmentControl.SelectedSegment;
-
-                switch (segmentControl.SelectedSegment)
-                {
-                    case 0:
-                        break;
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                }
-
+            var index = segmentControl.SelectedSegment;
+            switch (index)
+            {
+                case 0:
+                    if (previousindex == 1) {
+                        BadgeCollection.RemoveFromSuperview();
+                    }
+                    else if (previousindex == 2) {
+                        creationCollection.RemoveFromSuperview();
+                    }
+                    this.View.AddSubview(infoCollection);
+                    break;
+                case 1:
+                    if (previousindex == 0) {
+                        infoCollection.RemoveFromSuperview();
+                    }
+                    else if (previousindex == 2) {
+                        creationCollection.RemoveFromSuperview();
+                    }
+                    this.View.AddSubview(BadgeCollection);
+                    break;
+                case 2:
+                    if (previousindex == 0) {
+                        infoCollection.RemoveFromSuperview();
+                    }
+                    else if (previousindex == 1) {
+                        BadgeCollection.RemoveFromSuperview();
+                    }
+                    this.View.AddSubview(creationCollection);
+                    break;
+                    }
             };
 
         }
-        // Func for segmented control    
     }
-
-    // Datasource for the Badge Collection View
-
 }
