@@ -139,6 +139,32 @@ namespace IEatHealthy.iOS
                 Uname.Layer.BorderColor = UIColor.Red.CGColor;
             }
         }
+        /*
+        public async void getdata(string myResponse)
+        {
+            var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info//api/user/accountOwner/{0}?token={1}", UEmail.Text, myResponse));
+            request.ContentType = "application/JSON";
+            request.Method = "GET";
+            try
+            {
+                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                string aResponse = "";
+                using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+                {
+
+                    aResponse = sr.ReadToEnd();
+                    userdata = aResponse;
+                }
+            }
+            catch (System.Net.WebException)
+            {
+
+                errMsg.Text = "couldnt retreve user data";
+                errMsg.BackgroundColor = UIColor.FromRGB(244, 217, 66);
+                datareceved = false;
+            }
+        }
+*/
 
     }
 }

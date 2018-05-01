@@ -156,7 +156,6 @@ namespace IEatHealthy.iOS
                 aa.Layer.CornerRadius = 5;
                 aa.Font = UIFont.FromName("Helvetica", 16f);
                 aa.AutoresizingMask = UIViewAutoresizing.All;
-                aa.Text = App.currentAccount.JWTToken;
                 scrollview.Add(aa);
                
                  
@@ -175,22 +174,10 @@ namespace IEatHealthy.iOS
                 aaa.TouchUpInside += (s, e) =>
                 {
 
-                    var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/name?name=Grilled%20Salmon"));
-                    request.ContentType = "application/JSON";
-                    request.Method = "GET";
+                    foreach(string item in App.currentAccount.recipesCreated){
+                        aa.Text = aa.Text + item + "\n";
+                    }
                    
-                        var response = request.GetResponse() as HttpWebResponse;
-
-                        string myResponse = "";
-                        using (StreamReader sr = new StreamReader(response.GetResponseStream()))
-                        {
-
-                            myResponse = sr.ReadToEnd();
-                       // string bb=response.Replace(",", "," + System.Environment.NewLine);
-
-                        }
-
-
 
 
 

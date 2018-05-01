@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Net;
 using System.IO;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace IEatHealthy.iOS
 {
@@ -25,7 +26,7 @@ namespace IEatHealthy.iOS
         }
 
 
-
+        public List<Item> ingred;
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -49,23 +50,25 @@ namespace IEatHealthy.iOS
             RecipeTableView.ReloadData();
 
 
-            var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/recommended/test@ieathealthy.info"));
+            var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/recommended/test@ieathealthy.info?token={0}",App.currentAccount.JWTToken));
             request.ContentType = "application/JSON";
-            request.Method = "POST";
-
-            using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+            request.Method = "GET";
+            HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+            string aResponse = "";
+            using (StreamReader sr = new StreamReader(response.GetResponseStream()))
             {
-                string json = JsonConvert.SerializeObject(App.currentAccount.JWTToken);
 
-                streamWriter.Write(json);
-            }
+                aResponse = sr.ReadToEnd();
+               ingred = JsonConvert.DeserializeObject<List<Item>>(aResponse);
+                foreach(Item item in ingred){
+                    ViewModel.Items.Add(item);
+                }
 
-            var response = (HttpWebResponse)request.GetResponse();
-            using (var streamReader = new StreamReader(response.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
             }
         }
+
+
+           
            
           
    
@@ -82,6 +85,7 @@ namespace IEatHealthy.iOS
         {
             if (segue.Identifier == "NavigateToItemDetailSegue")
             {
+                
                 var controller = segue.DestinationViewController as BrowseItemDetailViewController;
                 var indexPath = TableView.IndexPathForCell(sender as UITableViewCell);
                 var item = ViewModel.Items[indexPath.Row];
@@ -181,16 +185,12 @@ namespace IEatHealthy.iOS
             cell.TextLabel.Text = item.name;
             cell.DetailTextLabel.Text = item.description;
             cell.LayoutMargins = UIEdgeInsets.Zero;
-            /*
-            UIImage img = UIImage.FromBundle("img1");
-            NSData data = img.AsPNG();
-            string img64 = data.GetBase64EncodedString(NSDataBase64EncodingOptions.None);
-    */
-            //    var imageBytes = Convert.FromBase64String();
-            //   var imagedata = NSData.FromArray(imageBytes);
-            //  var uiimage = UIImage.LoadFromData(imagedata);
-            //   var image = ResizeImage(uiimage, 45, 35);
-            //     cell.ImageView.Image = image;
+
+            var imageBytes = Convert.FromBase64String(item.foodImage.data);
+               var imagedata = NSData.FromArray(imageBytes);
+             var uiimage = UIImage.LoadFromData(imagedata);
+              var image = ResizeImage(uiimage, 45, 35);
+                cell.ImageView.Image = image;
 
 
 

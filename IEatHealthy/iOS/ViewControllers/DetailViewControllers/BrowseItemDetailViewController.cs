@@ -71,19 +71,18 @@ namespace IEatHealthy.iOS
             RecipeControl.Layer.BorderWidth = 0f;
             RecipeControl.SelectedSegment = 0;
 
-            UIImage pp = new UIImage();
-          //  pp = ViewModel.Item.picture;
-            float x = (float)pp.Size.Width;
-            float y = (float)pp.Size.Height;
+          
+            var imageBytes = Convert.FromBase64String(ViewModel.Item.foodImage.data);
+            var imagedata = NSData.FromArray(imageBytes);
+            var uiimage = UIImage.LoadFromData(imagedata);
+
+            float x = (float)uiimage.Size.Width;
+            float y = (float)uiimage.Size.Height;
             float ratio = x / y;
             y = (float)((View.Frame.Width - 80) / ratio);
 
-
-
-            UIImageView recipeImage = new UIImageView(new CGRect(40, 180, View.Frame.Width - 80, 100));
-           // recipeImage.Image = ViewModel.Item.picture;
-
-
+            UIImageView recipeImage = new UIImageView(new CGRect(40, 180, View.Frame.Width - 80, y));
+            recipeImage.Image = uiimage;
             scrollView.AddSubview(recipeImage);
             scrollView.AddSubview(RecipeControl);
 
@@ -169,7 +168,7 @@ namespace IEatHealthy.iOS
 
 
             UILabel CalorieLabel = new UILabel(new CGRect(20, graybox12.Frame.Y + 4, 300, 30));
-            CalorieLabel.Text = "Calories 200";//+ViewModel.Item.calorieCount;
+            CalorieLabel.Text = "Calories "+ViewModel.Item.calories.ToString();
             CalorieLabel.Font = UIFont.FromName("Helvetica", 15f);
             NutrationalFactsList.Add(CalorieLabel);
 
@@ -179,7 +178,7 @@ namespace IEatHealthy.iOS
 
 
             UILabel DailyValue = new UILabel(new CGRect(View.Frame.Width - 170, graybox13.Frame.Y + 4, 150, 30));
-            DailyValue.Text = "% Daily Value  ";//+ViewModel.Item.calorieCount;
+            DailyValue.Text = "% Daily Value ";
             DailyValue.Font = UIFont.FromName("Helvetica", 15f);
             DailyValue.TextAlignment = UITextAlignment.Right;
             NutrationalFactsList.Add(DailyValue);
@@ -189,7 +188,7 @@ namespace IEatHealthy.iOS
             NutrationalFactsList.Add(graybox14);
 
             UILabel Fatlabel = new UILabel(new CGRect(20, graybox14.Frame.Y + 4, 300, 20));
-            Fatlabel.Text = "Total Fat  0g";//+ViewModel.Item.calorieCount;
+            Fatlabel.Text = "Total Fat "+ViewModel.Item.fat.ToString();
             Fatlabel.Font = UIFont.FromName("Helvetica-bold", 15f);
             NutrationalFactsList.Add(Fatlabel);
 
@@ -203,7 +202,7 @@ namespace IEatHealthy.iOS
             NutrationalFactsList.Add(graybox15);
 
             UILabel satFatlabel = new UILabel(new CGRect(40, graybox15.Frame.Y + 4, 300, 20));
-            satFatlabel.Text = "Saturated Fat  0g";//+ViewModel.Item.calorieCount;
+            satFatlabel.Text = "Saturated Fat "+ViewModel.Item.fat.ToString();
             satFatlabel.Font = UIFont.FromName("Helvetica", 15f);
             NutrationalFactsList.Add(satFatlabel);
 
@@ -212,7 +211,7 @@ namespace IEatHealthy.iOS
             NutrationalFactsList.Add(graybox16);
 
             UILabel Transfat = new UILabel(new CGRect(40, graybox16.Frame.Y + 4, 300, 20));
-            Transfat.Text = "Trans Fat  0g";//+ViewModel.Item.calorieCount;
+            Transfat.Text = "Trans Fat  "+ViewModel.Item.fat.ToString();
             Transfat.Font = UIFont.FromName("Helvetica", 15f);
             NutrationalFactsList.Add(Transfat);
 
@@ -226,7 +225,7 @@ namespace IEatHealthy.iOS
             NutrationalFactsList.Add(graybox17);
 
             UILabel cholesLabel = new UILabel(new CGRect(20, graybox17.Frame.Y + 4, 300, 20));
-            cholesLabel.Text = "Cholesterol  0mg";//+ViewModel.Item.calorieCount;
+            cholesLabel.Text = "Cholesterol "+ViewModel.Item.cholestrol.ToString();
             cholesLabel.Font = UIFont.FromName("Helvetica-bold", 15f);
             NutrationalFactsList.Add(cholesLabel);
 
@@ -240,7 +239,7 @@ namespace IEatHealthy.iOS
             NutrationalFactsList.Add(graybox18);
 
             UILabel SodiiumLabel = new UILabel(new CGRect(20, graybox18.Frame.Y + 4, 300, 20));
-            SodiiumLabel.Text = "Sodium  0mg";//+ViewModel.Item.calorieCount;
+            SodiiumLabel.Text = "Sodium "+ViewModel.Item.sodium.ToString();
             SodiiumLabel.Font = UIFont.FromName("Helvetica-bold", 15f);
             NutrationalFactsList.Add(SodiiumLabel);
 
@@ -254,7 +253,7 @@ namespace IEatHealthy.iOS
             NutrationalFactsList.Add(graybox19);
 
             UILabel Carblabel = new UILabel(new CGRect(20, graybox19.Frame.Y + 4, 300, 20));
-            Carblabel.Text = "Total Carbohydrate  0g";//+ViewModel.Item.calorieCount;
+            Carblabel.Text = "Total Carbohydrate "+ViewModel.Item.carbohydrate.ToString();
             Carblabel.Font = UIFont.FromName("Helvetica-bold", 15f);
             NutrationalFactsList.Add(Carblabel);
 
@@ -399,7 +398,7 @@ namespace IEatHealthy.iOS
 
             YforIngredient += 30;
 
-           /*
+         
             foreach (IngredientItem item in ViewModel.Item.ingredients)
                 {
 
@@ -411,7 +410,7 @@ namespace IEatHealthy.iOS
 
                     label2.ScrollEnabled = false;
                     label2.Editable = false;
-                    label2.Text = item.ingredientId;
+                label2.Text = item.desc;
                     label2.AutoresizingMask = UIViewAutoresizing.All;
 
                     IngrediantList.Add(label2);
@@ -419,7 +418,7 @@ namespace IEatHealthy.iOS
 
 
                 }
-                */
+                
 
 
             int Yforstep = (int)(recipeImage.Frame.Y + 10);

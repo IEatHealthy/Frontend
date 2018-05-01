@@ -16,6 +16,7 @@ namespace IEatHealthy
             return img64;
         }
         List<Item> items;
+        public List<Item> items2;
         UserAccount MainUser = new UserAccount();
         public MockDataStore()
         {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections;
 namespace IEatHealthy
 {
@@ -15,6 +16,8 @@ namespace IEatHealthy
         private Badge badgeSelected { get; set; }
         private Title titleSelected { get; set; }
         public string JWTToken { get; set; }
+        public List<string> recipesCreated { get; set; }
+        public List<string> bookmarkedRecipes { get; set; }
     }
     public class Badge
     {
