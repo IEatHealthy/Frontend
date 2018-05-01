@@ -1,18 +1,17 @@
 ﻿<Properties StartupConfiguration="{C2E903DD-CDDC-4AE6-AFDE-B54511A5E1C0}|Default">
-  <MonoDevelop.Ide.ItemProperties.IEatHealthy.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.0F802176-C2B6-4E37-88A4-4A6C016DECDB" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/ViewControllers/SignupController.cs">
+  <MonoDevelop.Ide.ItemProperties.IEatHealthy.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.C5C5D123-994F-474E-BB74-EC8E6A0A676D" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/ViewControllers/BrowseViewController.cs">
     <Files>
-      <File FileName="iOS/ViewControllers/ItemNewViewController.cs" Line="291" Column="1" />
-      <File FileName="IEatHealthy/Models/Item.cs" Line="15" Column="24" />
-      <File FileName="IEatHealthy/Models/UserAccount.cs" Line="7" Column="6" />
-      <File FileName="iOS/ViewControllers/BrowseViewController.cs" Line="54" Column="13" />
-      <File FileName="iOS/CommentController.cs" Line="189" Column="26" />
-      <File FileName="iOS/ViewControllers/DetailViewControllers/BrowseItemDetailViewController.cs" Line="83" Column="101" />
-      <File FileName="IEatHealthy/Services/MockDataStore.cs" Line="82" Column="21" />
-      <File FileName="iOS/ViewControllers/SelectIngredient.cs" Line="24" Column="13" />
-      <File FileName="iOS/ViewControllers/log.cs" Line="45" Column="47" />
+      <File FileName="iOS/ViewControllers/DetailViewControllers/BrowseItemDetailViewController.cs" Line="1" Column="1" />
+      <File FileName="iOS/ViewControllers/ItemNewViewController.cs" Line="22" Column="1" />
+      <File FileName="iOS/ViewControllers/moreviewcontroller.cs" Line="40" Column="45" />
+      <File FileName="iOS/Main.cs" Line="17" Column="1" />
+      <File FileName="iOS/ViewControllers/log.cs" Line="38" Column="1" />
+      <File FileName="iOS/ViewControllers/SignupController.cs" Line="127" Column="14" />
+      <File FileName="iOS/ViewControllers/ProfileViewControllers/ProfileViewController.cs" Line="68" Column="60" />
+      <File FileName="iOS/editProfileViewController_.cs" Line="91" Column="17" />
       <File FileName="iOS/Main.storyboard" />
-      <File FileName="iOS/ViewControllers/SignupController.cs" Line="122" Column="20" />
+      <File FileName="iOS/ViewControllers/BrowseViewController.cs" Line="63" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />

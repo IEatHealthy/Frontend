@@ -48,7 +48,7 @@ namespace IEatHealthy.iOS
             RecipeTableView.EstimatedRowHeight = 100;
             RecipeTableView.ReloadData();
 
-
+            /*
             var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/recommended/test@ieathealthy.info"));
             request.ContentType = "application/JSON";
             request.Method = "POST";
@@ -65,6 +65,7 @@ namespace IEatHealthy.iOS
             {
                 var result = streamReader.ReadToEnd();
             }
+            */
         }
            
           

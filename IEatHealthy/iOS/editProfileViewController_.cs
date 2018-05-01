@@ -13,9 +13,15 @@ namespace IEatHealthy.iOS
         public class passwordClass{
             public string password { get; set; }
         }
+
         public editProfileViewController (IntPtr handle) : base (handle)
         {
         }
+        public static AppDelegate App
+        {
+            get { return (AppDelegate)UIApplication.SharedApplication.Delegate; }
+        }
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -47,7 +53,7 @@ namespace IEatHealthy.iOS
             {
                 if (verifyNewPassword.Text == newPassword.Text)
                 {
-                    var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/user/test@ieathealthy.info"));
+                    var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/user/{0}?token={1}", App.currentAccount.email, App.currentAccount.JWTToken));
                     request.ContentType = "application/JSON";
                     request.Method = "PUT";
                     using (var streamWriter = new StreamWriter(request.GetRequestStream()))
@@ -57,7 +63,7 @@ namespace IEatHealthy.iOS
                             password = newPassword.Text,
                         });
 
-                        streamWriter.Write(newPass);
+                        streamWriter.Write(newPassword.Text);
                     }
                    try
                     {
