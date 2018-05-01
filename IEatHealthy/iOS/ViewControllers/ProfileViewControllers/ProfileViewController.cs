@@ -10,6 +10,12 @@ namespace IEatHealthy.iOS
         {
         }
 
+
+        public override void ViewDidAppear(bool animated)
+        {
+            base.ViewDidAppear(animated);
+        }
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -66,7 +72,6 @@ namespace IEatHealthy.iOS
             signOut.Layer.CornerRadius = 5;
             signOut.SetTitle("Sign Out", UIControlState.Normal);
             InfoView.AddSubview(signOut);
-
 
 
             // UI segmented control for info, badge and creation tabs
@@ -126,7 +131,7 @@ namespace IEatHealthy.iOS
             // Collection View for the Badge tab
             var badgeCollectionLayout = new UICollectionViewFlowLayout
             {
-                SectionInset = new UIEdgeInsets(0,0,0,0),
+                SectionInset = new UIEdgeInsets(0, 0, 0, 0),
                 MinimumInteritemSpacing = 5,
                 MinimumLineSpacing = 5,
                 ItemSize = new CGSize(View.Bounds.Size.Width, 60),
@@ -143,25 +148,25 @@ namespace IEatHealthy.iOS
             BadgeCollection.RegisterClassForCell(typeof(BadgeCell), BadgeCell.BadgeID);
             BadgeCollection.Source = badgeCollectionSource;
 
-            BadgeElement badgeElement = new BadgeElement(UIImage.FromBundle("NewbBadge"), "Newbie");
+            BadgeElement badgeElement = new BadgeElement(UIImage.FromBundle("NewbBadge"), "The Newbie", "Create an Account");
             badgeCollectionSource.Rows.Add(badgeElement);
-            badgeElement = new BadgeElement(UIImage.FromBundle("MeatFace"), "Carnivore");
+            badgeElement = new BadgeElement(UIImage.FromBundle("MeatFace"), "Carnivore", "Bookmark 10 Meat Recipes");
             badgeCollectionSource.Rows.Add(badgeElement);
-            badgeElement = new BadgeElement(UIImage.FromBundle("EggFace"), "Egg Face");
+            badgeElement = new BadgeElement(UIImage.FromBundle("EggFace"), "Egg Face", "Bookmark 5 Breakfast Recipes");
             badgeCollectionSource.Rows.Add(badgeElement);
-            badgeElement = new BadgeElement(UIImage.FromBundle("VeggieFace"), "Mother Earth");
+            badgeElement = new BadgeElement(UIImage.FromBundle("VeggieFace"), "Mother Earth", "Bookmark 10 Salad Recipes");
             badgeCollectionSource.Rows.Add(badgeElement);
-            badgeElement = new BadgeElement(UIImage.FromBundle("SweetTooth"), "Sweet Tooth");
+            badgeElement = new BadgeElement(UIImage.FromBundle("SweetTooth"), "Sweet Tooth", "Bookmark 10 Dessert Recipes");
             badgeCollectionSource.Rows.Add(badgeElement);
-            badgeElement = new BadgeElement(UIImage.FromBundle("CookieMonster"), "Cookie Monster");
+            badgeElement = new BadgeElement(UIImage.FromBundle("CookieMonster"), "Cookie Monster", "Bookmark 10 Cookie Recipes");
             badgeCollectionSource.Rows.Add(badgeElement);
-            badgeElement = new BadgeElement(UIImage.FromBundle("SmoothieQueen"), "Smoothie Queen");
+            badgeElement = new BadgeElement(UIImage.FromBundle("SmoothieQueen"), "Smoothie Queen", "Bookmark 5 Smoothie Recipes");
             badgeCollectionSource.Rows.Add(badgeElement);
-            badgeElement = new BadgeElement(UIImage.FromBundle("SmoothieKing"), "Smoothie King");
+            badgeElement = new BadgeElement(UIImage.FromBundle("SmoothieKing"), "Smoothie King", "Bookmark 10 Smoothie Recipes");
             badgeCollectionSource.Rows.Add(badgeElement);
-            badgeElement = new BadgeElement(UIImage.FromBundle("BaconFace"), "Keep Calm & Eat Bacon");
+            badgeElement = new BadgeElement(UIImage.FromBundle("BaconFace"), "Keep Calm & Eat Bacon", "Bookmark 10 Breakfast Recipes");
             badgeCollectionSource.Rows.Add(badgeElement);
-            badgeElement = new BadgeElement(UIImage.FromBundle("FishFace"), "The Fisherman");
+            badgeElement = new BadgeElement(UIImage.FromBundle("FishFace"), "The Fisherman", "Bookmark 10 Fish Recipes");
             badgeCollectionSource.Rows.Add(badgeElement);
 
             this.View.AddSubview(BadgeCollection);
@@ -186,42 +191,100 @@ namespace IEatHealthy.iOS
             creationCollection.RegisterClassForCell(typeof(CreationCell), CreationCell.CreationID);
             creationCollection.Source = creationCollectionSource;
 
-            // Segmented Control for navigation among Info, Badge, and Creation tabs
             int previousindex = 1;
+            // Segmented Control for navigation among Info, Badge, and Creation tabs
             segmentControl.ValueChanged += (sender, e) =>
             {
-            var index = segmentControl.SelectedSegment;
-            switch (index)
-            {
-                case 0:
-                    if (previousindex == 1) {
-                        BadgeCollection.RemoveFromSuperview();
-                    }
-                    else if (previousindex == 2) {
-                        creationCollection.RemoveFromSuperview();
-                    }
-                    this.View.AddSubview(infoCollection);
-                    break;
-                case 1:
-                    if (previousindex == 0) {
-                        infoCollection.RemoveFromSuperview();
-                    }
-                    else if (previousindex == 2) {
-                        creationCollection.RemoveFromSuperview();
-                    }
-                    this.View.AddSubview(BadgeCollection);
-                    break;
-                case 2:
-                    if (previousindex == 0) {
-                        infoCollection.RemoveFromSuperview();
-                    }
-                    else if (previousindex == 1) {
-                        BadgeCollection.RemoveFromSuperview();
-                    }
-                    this.View.AddSubview(creationCollection);
-                    break;
-                    }
+                var index = segmentControl.SelectedSegment;
+                switch (index)
+                {
+                    case 0:
+                        if (previousindex == 1)
+                        {
+                            BadgeCollection.RemoveFromSuperview();
+                        }
+                        else if (previousindex == 2)
+                        {
+                            creationCollection.RemoveFromSuperview();
+                        }
+                        this.View.AddSubview(infoCollection);
+                        break;
+                    case 1:
+                        if (previousindex == 0)
+                        {
+                            infoCollection.RemoveFromSuperview();
+                        }
+                        else if (previousindex == 2)
+                        {
+                            creationCollection.RemoveFromSuperview();
+                        }
+                        this.View.AddSubview(BadgeCollection);
+                        break;
+                    case 2:
+                        if (previousindex == 0)
+                        {
+                            infoCollection.RemoveFromSuperview();
+                        }
+                        else if (previousindex == 1)
+                        {
+                            BadgeCollection.RemoveFromSuperview();
+                        }
+                        this.View.AddSubview(creationCollection);
+                        break;
+                }
             };
+
+            //public void addEarnedBadges(BadgeCollectionSource badgeCollectionSource)
+            //{
+            //foreach (Badge badge in BadgesEarned)
+            //{
+            //    int index = badge.badgeId;
+            //    BadgeElement badgeElement;
+            //    switch (index)
+            //    {
+            //        case 1:
+            //            badgeElement = new BadgeElement(UIImage.FromBundle("NewbBadge"), "Newbie");
+            //            badgeCollectionSource.Rows.Add(badgeElement);
+            //            break;
+            //        case 2:
+            //            badgeElement = new BadgeElement(UIImage.FromBundle("MeatFace"), "Carnivore");
+            //            badgeCollectionSource.Rows.Add(badgeElement);
+            //            break;
+            //        case 3:
+            //            badgeElement = new BadgeElement(UIImage.FromBundle("EggFace"), "Egg Face");
+            //            badgeCollectionSource.Rows.Add(badgeElement);
+            //            break;
+            //        case 4:
+            //            badgeElement = new BadgeElement(UIImage.FromBundle("VeggieFace"), "Mother Earth");
+            //            badgeCollectionSource.Rows.Add(badgeElement);
+            //            break;
+            //        case 5:
+            //            badgeElement = new BadgeElement(UIImage.FromBundle("SweetTooth"), "Sweet Tooth");
+            //            badgeCollectionSource.Rows.Add(badgeElement);
+            //            break;
+            //        case 6:
+            //            badgeElement = new BadgeElement(UIImage.FromBundle("CookieMonster"), "Cookie Monster");
+            //            badgeCollectionSource.Rows.Add(badgeElement);
+            //            break;
+            //        case 7:
+            //            badgeElement = new BadgeElement(UIImage.FromBundle("SmoothieQueen"), "Smoothie Queen");
+            //            badgeCollectionSource.Rows.Add(badgeElement);
+            //            break;
+            //        case 8:
+            //            badgeElement = new BadgeElement(UIImage.FromBundle("SmoothieKing"), "Smoothie King");
+            //            badgeCollectionSource.Rows.Add(badgeElement);
+            //            break;
+            //        case 9:
+            //            badgeElement = new BadgeElement(UIImage.FromBundle("BaconFace"), "Keep Calm & Eat Bacon");
+            //            badgeCollectionSource.Rows.Add(badgeElement);
+            //            break;
+            //        case 10:
+            //            badgeElement = new BadgeElement(UIImage.FromBundle("FishFace"), "The Fisherman");
+            //            badgeCollectionSource.Rows.Add(badgeElement);
+            //            break;
+            //    }
+            //}
+            //}
 
         }
     }
