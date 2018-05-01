@@ -13,6 +13,7 @@ namespace IEatHealthy.iOS
         {
             get { return (AppDelegate)UIApplication.SharedApplication.Delegate; }
         }
+
         public CommentController(IntPtr handle) : base(handle)
         {
         }
@@ -21,10 +22,12 @@ namespace IEatHealthy.iOS
 
         public int rating = 6;
         public override void ViewDidLoad()
-        {
+        {   
             base.ViewDidLoad();
             if (isCOmment == true)
             {
+                
+
                 
                 UILabel ratingLabel = new UILabel(new CGRect(20, 40, 200, 30));
                 ratingLabel.Text = "Rating";
@@ -147,15 +150,16 @@ namespace IEatHealthy.iOS
 
             if (isCOmment == false)
             {
-
+                
                 UITextView aa = new UITextView(new CGRect(20, 40, 330, 150));
                 aa.Layer.BorderWidth = 1f;
                 aa.Layer.CornerRadius = 5;
                 aa.Font = UIFont.FromName("Helvetica", 16f);
                 aa.AutoresizingMask = UIViewAutoresizing.All;
-                aa.Text = token;
+                aa.Text = App.currentAccount.JWTToken;
                 scrollview.Add(aa);
-                /*
+               
+                 
 
 
                 UIButton aaa = new UIButton(new CGRect(100, 300, 50, 50));
@@ -167,7 +171,7 @@ namespace IEatHealthy.iOS
 
                 //deleating user account
 
-
+              
                 aaa.TouchUpInside += (s, e) =>
                 {
 
@@ -182,7 +186,7 @@ namespace IEatHealthy.iOS
                         {
 
                             myResponse = sr.ReadToEnd();
-                        string bb=response.Replace(",", "," + System.Environment.NewLine);
+                       // string bb=response.Replace(",", "," + System.Environment.NewLine);
 
                         }
 
@@ -197,7 +201,7 @@ namespace IEatHealthy.iOS
 
 
 
-           */
+           
             }
             //  else { label1.Text = "Review Page"; }
            

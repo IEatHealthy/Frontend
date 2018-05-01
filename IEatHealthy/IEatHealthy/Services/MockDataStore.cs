@@ -6,13 +6,15 @@ using Foundation;
 using UIKit;
 
 namespace IEatHealthy
-{
+{       
     public class MockDataStore : IDataStore<Item>
-    {
-       
-         
-
-
+    {   public string convertimg(UIImage a)
+        {
+            UIImage img = a;
+            NSData data = img.AsPNG();
+            string img64 = data.GetBase64EncodedString(NSDataBase64EncodingOptions.None);
+            return img64;
+        }
         List<Item> items;
         UserAccount MainUser = new UserAccount();
         public MockDataStore()
@@ -39,8 +41,8 @@ namespace IEatHealthy
 
                     servings=8,
                     readyInTime=20,
-                   // picture=UIKit.UIImage.FromBundle ("pancake")},
-                   // FoodImage = base641,
+
+       
 
                 
                 },
@@ -77,6 +79,7 @@ namespace IEatHealthy
 
                     servings = 2,
                     readyInTime = 30,
+
 
          //   FoodImage = base642,
             },

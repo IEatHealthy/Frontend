@@ -1493,7 +1493,7 @@
         <image name="img2" width="707" height="398"/>
         <image name="str2" width="563" height="563"/>
         <image name="str1" width="600" height="563"/>
-        <image name="NewbBadge" width="60" height="60"/>
+        <image name="NewbBadge" width="300" height="300"/>
         <image name="MeatFace" width="300" height="300"/>
         <image name="EggFace" width="300" height="300"/>
         <image name="CookieMonster" width="300" height="300"/>

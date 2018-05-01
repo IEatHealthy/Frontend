@@ -87,7 +87,7 @@ namespace IEatHealthy.iOS
                 if (loggedin == true && datareceved == true)
                 {
 
-                    return false;// base.ShouldPerformSegue(segueIdentifier, sender);
+                    return base.ShouldPerformSegue(segueIdentifier, sender);
                 }
                 else return false;
             }
@@ -95,15 +95,7 @@ namespace IEatHealthy.iOS
            
 
         }
-		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
-		{
-            if (loggedin == true)
-            {
-                var aa = segue.DestinationViewController as CommentController;
-              //  aa.token = "no token yet";
-            }
-            base.PrepareForSegue(segue, sender);
-		}
+	
 
 		public async void getdata(string myResponse)
         { 

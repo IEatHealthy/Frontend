@@ -80,7 +80,7 @@ namespace IEatHealthy.iOS
 
 
 
-            UIImageView recipeImage = new UIImageView(new CGRect(40, 180, View.Frame.Width - 80, y));
+            UIImageView recipeImage = new UIImageView(new CGRect(40, 180, View.Frame.Width - 80, 100));
            // recipeImage.Image = ViewModel.Item.picture;
 
 

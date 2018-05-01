@@ -4,15 +4,22 @@ using Foundation;
 using UIKit;
 using CoreGraphics;
 using System.Drawing;
+using System.Net;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace IEatHealthy.iOS
 {
     public partial class BrowseViewController : UITableViewController
     {
+        public string token { get; set; }
         UIRefreshControl refreshControl;
 
         public ItemsViewModel ViewModel { get; set; }
-
+        public static AppDelegate App
+        {
+            get { return (AppDelegate)UIApplication.SharedApplication.Delegate; }
+        }
         public BrowseViewController(IntPtr handle) : base(handle)
         {
         }
@@ -40,8 +47,28 @@ namespace IEatHealthy.iOS
             RecipeTableView.RowHeight = UITableView.AutomaticDimension;
             RecipeTableView.EstimatedRowHeight = 100;
             RecipeTableView.ReloadData();
-        }
 
+
+            var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/recommended/test@ieathealthy.info"));
+            request.ContentType = "application/JSON";
+            request.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+            {
+                string json = JsonConvert.SerializeObject(App.currentAccount.JWTToken);
+
+                streamWriter.Write(json);
+            }
+
+            var response = (HttpWebResponse)request.GetResponse();
+            using (var streamReader = new StreamReader(response.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+            }
+        }
+           
+          
+   
 
         public override void ViewDidAppear(bool animated)
         {
@@ -68,13 +95,14 @@ namespace IEatHealthy.iOS
             }
         }
 
-        void NavBar() {
+        void NavBar()
+        {
             var navBar = NavigationController.NavigationBar;
             navBar.TintColor = UIColor.Red;
             // Adds logo on navigation bar
             var imageView = new UIImageView(UIImage.FromBundle("newlogo"));
             imageView.ContentMode = UIViewContentMode.ScaleAspectFit;
-            var titleView = new UIView(new CGRect(0, 0, imageView.Image.CGImage.Width/2.5, imageView.Image.CGImage.Height/2.5));
+            var titleView = new UIView(new CGRect(0, 0, imageView.Image.CGImage.Width / 2.5, imageView.Image.CGImage.Height / 2.5));
             imageView.Frame = titleView.Bounds;
             titleView.AddSubview(imageView);
             NavigationItem.TitleView = titleView;
@@ -138,7 +166,7 @@ namespace IEatHealthy.iOS
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
             UIImage ResizeImage(UIImage sourceImage, float width, float height)
-            {   
+            {
                 UIGraphics.BeginImageContext(new SizeF(width, height));
                 sourceImage.Draw(new RectangleF(0, 0, width, height));
                 var resultImage = UIGraphics.GetImageFromCurrentImageContext();
@@ -153,11 +181,16 @@ namespace IEatHealthy.iOS
             cell.TextLabel.Text = item.name;
             cell.DetailTextLabel.Text = item.description;
             cell.LayoutMargins = UIEdgeInsets.Zero;
-         //   var imageBytes = Convert.FromBase64String()
-         //   var imagedata = NSData.FromArray(imageBytes);
-         //   var uiimage = UIImage.LoadFromData(imagedata);
-         //   var image = ResizeImage(uiimage, 45, 35);
-         //    cell.ImageView.Image = image;
+            /*
+            UIImage img = UIImage.FromBundle("img1");
+            NSData data = img.AsPNG();
+            string img64 = data.GetBase64EncodedString(NSDataBase64EncodingOptions.None);
+    */
+            //    var imageBytes = Convert.FromBase64String();
+            //   var imagedata = NSData.FromArray(imageBytes);
+            //  var uiimage = UIImage.LoadFromData(imagedata);
+            //   var image = ResizeImage(uiimage, 45, 35);
+            //     cell.ImageView.Image = image;
 
 
 
