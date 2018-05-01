@@ -181,7 +181,6 @@
     <ImageAsset Include="Assets.xcassets\str2.imageset\Blank Diagram %281%29.png" />
     <ImageAsset Include="Assets.xcassets\str1.imageset\Blank Diagram.png" />
     <ImageAsset Include="Assets.xcassets\NewbBadge.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\NewbBadge.imageset\Badge-1-Newbie-1.png" />
     <ImageAsset Include="Assets.xcassets\MeatFace.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\EggFace.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\MeatFace.imageset\2-MeatFace.jpg" />
@@ -200,6 +199,7 @@
     <ImageAsset Include="Assets.xcassets\SmoothieKing.imageset\8-SmothieKing.jpg" />
     <ImageAsset Include="Assets.xcassets\SmoothieQueen.imageset\7-SmoothieQueen.jpg" />
     <ImageAsset Include="Assets.xcassets\VeggieFace.imageset\4-VeggieFace.jpg" />
+    <ImageAsset Include="Assets.xcassets\NewbBadge.imageset\1-Newbie.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ViewControllers\DetailViewControllers\BrowseItemDetailViewController.cs" />
@@ -289,8 +289,12 @@
     <Compile Include="ViewControllers\ProfileViewControllers\ProfileViewController.designer.cs">
       <DependentUpon>ProfileViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewControllers\ProfileViewControllers\BadgeCollectionSource.cs" />
-    <Compile Include="ViewControllers\ProfileViewControllers\BadgeCell.cs" />
+    <Compile Include="ViewControllers\ProfileViewControllers\BadgeSource\BadgeCell.cs" />
+    <Compile Include="ViewControllers\ProfileViewControllers\BadgeSource\BadgeCollectionSource.cs" />
+    <Compile Include="ViewControllers\ProfileViewControllers\CreationSource\CreationCell.cs" />
+    <Compile Include="ViewControllers\ProfileViewControllers\CreationSource\CreationCollectionSource.cs" />
+    <Compile Include="ViewControllers\ProfileViewControllers\InfoSource\InfoCell.cs" />
+    <Compile Include="ViewControllers\ProfileViewControllers\InfoSource\InfoCollectionSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />
@@ -337,6 +341,9 @@
     <Folder Include="Assets.xcassets\BaconFace.imageset\" />
     <Folder Include="Assets.xcassets\FishFace.imageset\" />
     <Folder Include="Assets.xcassets\SmoothieKing.imageset\" />
+    <Folder Include="ViewControllers\ProfileViewControllers\BadgeSource\" />
+    <Folder Include="ViewControllers\ProfileViewControllers\CreationSource\" />
+    <Folder Include="ViewControllers\ProfileViewControllers\InfoSource\" />
   </ItemGroup>
   <Import Project="..\IEatHealthy\IEatHealthy.projitems" Label="Shared" Condition="Exists('..\IEatHealthy\IEatHealthy.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
