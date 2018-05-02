@@ -1340,14 +1340,12 @@
     </scenes>
     <resources>
         <image name="CartIcon" width="76" height="58"/>
-        <image name="Second" width="32" height="30"/>
         <image name="Timer icon" width="550" height="550"/>
         <image name="flowericon" width="74" height="76"/>
         <image name="foodicon" width="580" height="384"/>
         <image name="newlogo" width="359" height="88"/>
         <image name="password icon" width="183" height="197"/>
         <image name="profile" width="25" height="25"/>
-        <image name="profileicon" width="362" height="336"/>
         <image name="user icon" width="176" height="195"/>
         <image name="First" width="32" height="30"/>
         <image name="XamarinLogo" width="600" height="900"/>

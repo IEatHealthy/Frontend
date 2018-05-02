@@ -28,7 +28,7 @@ namespace IEatHealthy.iOS
             errMsg.Layer.CornerRadius = 5;
             View.AddSubview(errMsg);
             loginEmail.Text = "test@ieathealthy.info";
-            loginPassword.Text = "test123";
+            loginPassword.Text = "potato2";
            
         }
 
@@ -66,7 +66,7 @@ namespace IEatHealthy.iOS
                        // getrecipe(myResponse);
                       
 
-                        getrecipe(myResponse);
+                   
                        if (datareceved == true)
                         {
                           /*I var newitem = JsonConvert.DeserializeObject<Item>(objectret);
@@ -130,10 +130,10 @@ namespace IEatHealthy.iOS
                     // objectret = aResponse;
                     // UserAccount aa = JsonConvert.DeserializeObject<UserAccount>(aResponse);
                     // string bba = JsonConvert.SerializeObject(aa);
-                    UITextView aaaa = new UITextView(new CGRect(50, 300, 250, 400));
-                    aaaa.Text = aResponse.Replace(",", "," + System.Environment.NewLine);
-                    View.AddSubview(aaaa);
-                    datareceved = true;
+                //    UITextView aaaa = new UITextView(new CGRect(50, 300, 250, 400));
+                //    aaaa.Text = aResponse.Replace(",", "," + System.Environment.NewLine);
+                //    View.AddSubview(aaaa);
+                //    datareceved = true;
 
                 }
             }
@@ -169,9 +169,9 @@ namespace IEatHealthy.iOS
                   //  objectret = aResponse;
                   // Item newitem= JsonConvert.DeserializeObject<Item>(json);
                  //   newitem=JsonConvert.DeserializeObject<>
-                   UITextView bbb = new UITextView(new CGRect(150, 500, 200, 400));
-                   bbb.Text = aResponse.Replace(",", "," + System.Environment.NewLine);
-                  View.AddSubview(bbb);
+                //   UITextView bbb = new UITextView(new CGRect(150, 500, 200, 400));
+                //   bbb.Text = aResponse.Replace(",", "," + System.Environment.NewLine);
+                //  View.AddSubview(bbb);
                     datareceved = true;
                   
                 }

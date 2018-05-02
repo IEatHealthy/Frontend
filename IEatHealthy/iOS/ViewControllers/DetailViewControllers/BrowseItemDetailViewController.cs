@@ -6,6 +6,7 @@ using UIKit;
 using System.Collections.Generic;
 using System.Net;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace IEatHealthy.iOS
 {
@@ -22,10 +23,13 @@ namespace IEatHealthy.iOS
 
         public BrowseItemDetailViewController(IntPtr handle) : base(handle) { }
         public int itemsss = 0;
+        public int reviewCount = 0;
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
             //   Title = ViewModel.Item.Text;
+
+
 
             scrollView.AutoresizingMask = UIViewAutoresizing.FlexibleHeight;
 
@@ -46,12 +50,16 @@ namespace IEatHealthy.iOS
             ratingimg.Image = UIImage.FromBundle("RatingIcon");
 
 
-            ReviewButton.Frame = new CGRect(View.Frame.Width - 160, 90, 150, 20);
 
+            ReviewButton.Frame = new CGRect(View.Frame.Width - 160, 90, 150, 20);
+            getCommentCount();
             ReviewButton.Font = UIFont.FromName("Helvetica", 15f);
-            ReviewButton.SetTitle("5 reviews", UIControlState.Normal);
+            string aa = reviewCount.ToString() + " reviews";
+            ReviewButton.SetTitle(aa, UIControlState.Normal);
             ReviewButton.SetTitleColor(UIColor.FromRGB(66, 134, 244), UIControlState.Normal);
             scrollView.AddSubview(ReviewButton);
+
+
 
             CommentButton.Frame = new CGRect(View.Frame.Width - 160, 110, 150, 20);
             CommentButton.Font = UIFont.FromName("Helvetica", 15f);
@@ -68,7 +76,7 @@ namespace IEatHealthy.iOS
             Bookmark.SetImage(UIImage.FromBundle("bookmarkicon"), UIControlState.Normal);
             scrollView.AddSubview(Bookmark);
             Bookmark.TouchUpInside += (sender, e) => {
-                App.currentAccount.bookmarkedRecipes.Add(ViewModel.Item.id);
+                App.currentAccount.bookmarkedRecipes.Add(ViewModel.Item.stringId);
                 var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/bookmark?recipeId={0}&email={1}&token={2}",ViewModel.Item.stringId, App.currentAccount.email, App.currentAccount.JWTToken));
                 request.ContentType = "application/JSON";
                 request.Method = "POST";
@@ -622,6 +630,7 @@ namespace IEatHealthy.iOS
             {
                 var resultview = segue.DestinationViewController as CommentController;
                 resultview.isCOmment = true;
+                resultview.ViewModel = ViewModel;
                 base.PrepareForSegue(segue, sender);
 
             }
@@ -636,12 +645,32 @@ namespace IEatHealthy.iOS
             if(segue.Identifier=="ReviewSegue"){
                 var resultview = segue.DestinationViewController as CommentController;
                 resultview.isCOmment = false;
+                resultview.ViewModel = ViewModel;
                 base.PrepareForSegue(segue, sender);
 
             }
 
            
            
+
+        }
+        public async void getCommentCount()
+        { 
+            var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/{0}/reviews?token={1}", ViewModel.Item.stringId, App.currentAccount.JWTToken));
+            request.ContentType = "application/JSON";
+            request.Method = "GET";
+
+
+            HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+            string aResponse = "";
+            using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+            {
+
+                aResponse = sr.ReadToEnd();
+                var newitem = JsonConvert.DeserializeObject<List<commentClass>>(aResponse);
+                if (newitem == null) { reviewCount = 0; }
+                else reviewCount = newitem.Count;
+            }
 
         }
     }

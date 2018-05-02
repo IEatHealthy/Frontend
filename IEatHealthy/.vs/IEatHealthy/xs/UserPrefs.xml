@@ -1,11 +1,16 @@
 ﻿<Properties StartupConfiguration="{C2E903DD-CDDC-4AE6-AFDE-B54511A5E1C0}|Default">
-  <MonoDevelop.Ide.ItemProperties.IEatHealthy.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.56785AEB-D7EB-4D6D-8E4A-26D412125AE4" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/ViewControllers/ItemNewViewController.cs">
+  <MonoDevelop.Ide.ItemProperties.IEatHealthy.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.0F802176-C2B6-4E37-88A4-4A6C016DECDB" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/ViewControllers/DetailViewControllers/BrowseItemDetailViewController.cs">
     <Files>
-      <File FileName="iOS/ViewControllers/ProfileViewControllers/ProfileViewController.cs" Line="245" Column="14" />
-      <File FileName="iOS/ViewControllers/log.cs" Line="35" Column="1" />
-      <File FileName="IEatHealthy/Models/UserAccount.cs" Line="1" Column="1" />
-      <File FileName="iOS/ViewControllers/ItemNewViewController.cs" Line="233" Column="67" />
+      <File FileName="IEatHealthy/Models/Item.cs" Line="18" Column="6" />
+      <File FileName="iOS/ViewControllers/DetailViewControllers/BrowseItemDetailViewController.cs" Line="670" Column="22" />
+      <File FileName="iOS/ViewControllers/BrowseViewController.cs" Line="191" Column="63" />
+      <File FileName="iOS/ViewControllers/log.cs" Line="150" Column="10" />
+      <File FileName="iOS/ViewControllers/SignupController.cs" Line="15" Column="45" />
+      <File FileName="iOS/CommentController.cs" Line="227" Column="1" />
+      <File FileName="iOS/ViewControllers/ItemNewViewController.cs" Line="1" Column="1" />
+      <File FileName="iOS/Main.storyboard" />
+      <File FileName="iOS/Main.cs" Line="13" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />

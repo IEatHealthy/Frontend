@@ -186,11 +186,12 @@ namespace IEatHealthy.iOS
             cell.DetailTextLabel.Text = item.description;
             cell.LayoutMargins = UIEdgeInsets.Zero;
 
-            var imageBytes = Convert.FromBase64String(item.foodImage.data);
-               var imagedata = NSData.FromArray(imageBytes);
-             var uiimage = UIImage.LoadFromData(imagedata);
-              var image = ResizeImage(uiimage, 45, 35);
+                var imageBytes = Convert.FromBase64String(item.foodImage.data);
+                var imagedata = NSData.FromArray(imageBytes);
+                var uiimage = UIImage.LoadFromData(imagedata);
+                var image = ResizeImage(uiimage, 45, 35);
                 cell.ImageView.Image = image;
+
 
 
 
