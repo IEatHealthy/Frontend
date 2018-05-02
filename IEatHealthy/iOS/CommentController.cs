@@ -9,17 +9,7 @@ using Newtonsoft.Json;
 
 namespace IEatHealthy.iOS
 {
-    public class ratingClass
-    {
-        public string userEmail { get; set; }
-        public string userRating { get; set; }
-    }
 
-    public class commentClass
-    {
-        public string userEmail { get; set; }
-        public string userReview { get; set; }
-    }
     public partial class CommentController : UIViewController
     {
         public static AppDelegate App
@@ -35,7 +25,7 @@ namespace IEatHealthy.iOS
         public string token = "ss";
         public bool isCOmment = false;
 
-        public string ratingvalue = "0";
+        public int ratingvalue = 0;
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -94,7 +84,7 @@ namespace IEatHealthy.iOS
                     str3.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
                     str2.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
                     str1.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
-                    ratingvalue = "1";
+                    ratingvalue = 1;
 
                 };
                 str2.TouchUpInside += (s, e) =>
@@ -104,7 +94,7 @@ namespace IEatHealthy.iOS
                     str3.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
                     str2.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
                     str1.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
-                    ratingvalue = "2";
+                    ratingvalue = 2;
 
                 };
                 str3.TouchUpInside += (s, e) =>
@@ -114,7 +104,7 @@ namespace IEatHealthy.iOS
                     str3.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
                     str2.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
                     str1.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
-                    ratingvalue = "3";
+                    ratingvalue = 3;
 
                 };
                 str4.TouchUpInside += (s, e) =>
@@ -124,7 +114,7 @@ namespace IEatHealthy.iOS
                     str3.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
                     str2.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
                     str1.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
-                    ratingvalue = "4";
+                    ratingvalue = 4;
 
                 };
                 str5.TouchUpInside += (s, e) =>
@@ -134,7 +124,7 @@ namespace IEatHealthy.iOS
                     str3.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
                     str2.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
                     str1.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
-                    ratingvalue = "5";
+                    ratingvalue = 5;
 
                 };
 
@@ -149,6 +139,7 @@ namespace IEatHealthy.iOS
                 CommentField.Font = UIFont.FromName("Helvetica", 16f);
                 CommentField.AutoresizingMask = UIViewAutoresizing.All;
 
+                getreview();
                 CommentField.Editable = true;
 
                 var SaveComment = new UIButton(UIButtonType.Custom)
@@ -162,28 +153,28 @@ namespace IEatHealthy.iOS
 
                 SaveComment.TouchUpInside += (s, e) =>
                 {
-                    /*
+
                     //post the rating and comment and go back to the recipedetail page
 
-                    var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/{0}/rate?token={1}", ViewModel.Item.stringId, App.currentAccount.JWTToken));
+                    var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/{0}/rating?token={1}", ViewModel.Item.stringId, App.currentAccount.JWTToken));
 
                     request.ContentType = "application/json";
                     request.Method = "POST";
 
                     using (var streamWriter = new StreamWriter(request.GetRequestStream()))
                     {
-                        string json = JsonConvert.SerializeObject(new ratingClass
+                        string json = JsonConvert.SerializeObject(new UserRating
                         {
                             userEmail = App.currentAccount.email,
-                            userRating = CommentField.Text,
+                            userRating = ratingvalue,
 
                         });
 
                         streamWriter.Write(json);
                     }
 
-                    var response = (HttpWebResponse)request.GetResponse();
-                    using (var streamReader = new StreamReader(response.GetResponseStream()))
+                    var response1 = (HttpWebResponse)request.GetResponse();
+                    using (var streamReader = new StreamReader(response1.GetResponseStream()))
                     {
                         var result = streamReader.ReadToEnd();
                     }
@@ -193,7 +184,7 @@ namespace IEatHealthy.iOS
 
                     // SaveComment.Layer.BackgroundColor = UIColor.Gray.CGColor;
 
-                    */
+
 
                     NavigationController.PopViewController(true);
                 };
@@ -203,7 +194,7 @@ namespace IEatHealthy.iOS
             if (isCOmment == false)
             {
 
-
+                /*
 
                 var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/{0}/reviews?token={1}", ViewModel.Item.stringId, App.currentAccount.JWTToken));
                 request.ContentType = "application/JSON";
@@ -217,10 +208,12 @@ namespace IEatHealthy.iOS
 
                     aResponse = sr.ReadToEnd();
 
-                    var newitem = JsonConvert.DeserializeObject<List<commentClass>>(aResponse);
-                    //UITextView aads = new UITextView(new CGRect(20, 200, 300, 200));
-                    //aads.Text = newitem.Count.ToString();
-                    //scrollview.AddSubview(aads);
+                    var newitem = JsonConvert.DeserializeObject<List<UserReview>>(aResponse);
+                    UITextView aads = new UITextView(new CGRect(20, 200, 300, 200));
+                    foreach (UserReview item in newitem){
+                        aads.Text = aads.Text + item.userReview + "\n";
+                    }
+                    scrollview.AddSubview(aads);
 
 
 
@@ -228,14 +221,179 @@ namespace IEatHealthy.iOS
 
                 }
 
+                var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/{0}/review?email={1}&token={2}", ViewModel.Item.stringId, App.currentAccount.email, App.currentAccount.JWTToken));
+                request.ContentType = "application/JSON";
+                request.Method = "GET";
+
+
+                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                string aResponse = "";
+                using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+                {
+
+                    aResponse = sr.ReadToEnd();
+
+                    //var newitem = JsonConvert.DeserializeObject<UserReview>(aResponse);
+                    UITextView aads = new UITextView(new CGRect(20, 200, 300, 200));
+
+                    aads.Text = aResponse;//newitem.userReview;
+
+                    scrollview.AddSubview(aads);
+*/
+                UITextField searchfield = new UITextField(new CGRect (20, 30, 200, 30));
+                searchfield.Placeholder = "search";
+                scrollview.AddSubview(searchfield);
+
+                var searchbutton = new UIButton(UIButtonType.ContactAdd)
+                {
+                    Frame = new CGRect(250, 30, 30, 30),
+                };
+                scrollview.AddSubview(searchbutton);
+
+                searchbutton.TouchUpInside += (s, e) =>
+                {
+                    string aa = searchfield.Text;
+                    aa = aa.Replace(" ", "%20");
+                    //string inputToSearch;
+                    //string userInput = searchfield.Text;
+
+                    //for (int i = 0; i < userInput.Length(); i++) {
+                        
+
+                    var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/{0}?token={1}", aa, App.currentAccount.JWTToken));
+                    request.ContentType = "application/JSON";
+                    request.Method = "GET";
+
+
+                    HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                    string aResponse = "";
+                    using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+                    {
+
+                        aResponse = sr.ReadToEnd();
+
+                        var newitem = JsonConvert.DeserializeObject<List<Item>>(aResponse);
+
+                        UITextView aads = new UITextView(new CGRect(20, 80, 300, 500));
+
+                        aads.Text =aResponse.Replace(",", "," + System.Environment.NewLine);;
+                        scrollview.AddSubview(aads);
+
+
+
+
+
+                    }
+                };
+            }
+
+                }
+
+
+
+        public async void getreview()
+        {
+            var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/{0}/review?email={1}&token={2}", ViewModel.Item.stringId, App.currentAccount.email, App.currentAccount.JWTToken));
+            request.ContentType = "application/JSON";
+            request.Method = "GET";
+
+
+            HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+            string aResponse = "";
+            using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+            {
+
+                aResponse = sr.ReadToEnd();
+
+                //var newitem = JsonConvert.DeserializeObject<UserReview>(aResponse);
+                UITextView aads = new UITextView(new CGRect(20, 200, 300, 200));
+
+                aads.Text = aResponse;//newitem.userReview;
+
+                scrollview.AddSubview(aads);
+
 
 
 
 
             }
-
-
         }
+    }
+}
+   
+        /*          
+
+
+
+                    NavigationController.PopViewController(true);
+                };
+            }
+
+
+            if (isCOmment == false)
+            {
+
+                /*
+
+                var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/{0}/reviews?token={1}", ViewModel.Item.stringId, App.currentAccount.JWTToken));
+                request.ContentType = "application/JSON";
+                request.Method = "GET";
+
+
+                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                string aResponse = "";
+                using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+                {
+
+                    aResponse = sr.ReadToEnd();
+
+                    var newitem = JsonConvert.DeserializeObject<List<UserReview>>(aResponse);
+                    UITextView aads = new UITextView(new CGRect(20, 200, 300, 200));
+                    foreach (UserReview item in newitem){
+                        aads.Text = aads.Text + item.userReview + "\n";
+                    }
+                    scrollview.AddSubview(aads);
+
+
+
+
+
+                }
+                */
+               
+
+
+/*
+public async void getrating()
+{
+    var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/{0}/rating?email={1}&token={2}", ViewModel.Item.stringId, App.currentAccount.email, App.currentAccount.JWTToken));
+    request.ContentType = "application/JSON";
+    request.Method = "GET";
+
+
+    HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+    string aResponse = "";
+    using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+    {
+
+        aResponse = sr.ReadToEnd();
+
+        //var newitem = JsonConvert.DeserializeObject<UserReview>(aResponse);
+        UITextView aads = new UITextView(new CGRect(20, 200, 300, 200));
+
+        aads.Text = aResponse;//newitem.userReview;
+
+        scrollview.AddSubview(aads);
+
+
+
+
+
+    }
+}
+
+
+
     }
 }
 

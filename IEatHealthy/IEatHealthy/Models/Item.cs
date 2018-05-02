@@ -4,6 +4,17 @@ using UIKit;
 using System.Collections.Generic;
 namespace IEatHealthy
 {
+    public class UserRating
+    {
+        public string userEmail { get; set; }
+        public int userRating { get; set; }
+    }
+
+    public class UserReview
+    {
+        public string userEmail { get; set; }
+        public string userReview { get; set; }
+    }
     public class IngredientItem
     { 
         public string unitOfMeasure { get; set; }
@@ -13,6 +24,11 @@ namespace IEatHealthy
     public class FoodImage{
         public int type { get; set; }
         public NSString data { get; set; }
+    }
+    public class RecipeRating{
+        public string id;
+        public List<UserRating> ratings;
+        public double totalRating;
     }
     public class Item
     {

@@ -24,6 +24,8 @@ namespace IEatHealthy.iOS
         public BrowseItemDetailViewController(IntPtr handle) : base(handle) { }
         public int itemsss = 0;
         public int reviewCount = 0;
+        public int ratingCount = 0;
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -45,10 +47,11 @@ namespace IEatHealthy.iOS
             bylabel.Font = UIFont.FromName("Helvetica", 15f);
 
             scrollView.AddSubview(bylabel);
-
-            UIImageView ratingimg = new UIImageView(new CGRect(10, 90, 80, 20));
-            ratingimg.Image = UIImage.FromBundle("RatingIcon");
-
+            gettotalRatingt();
+            UILabel ratingimg = new UILabel(new CGRect(10, 90, 80, 20));
+            // ratingimg.Image = UIImage.FromBundle("RatingIcon");
+            ratingimg.Text = ratingCount.ToString() + "/5";
+            scrollView.AddSubview(ratingimg);
 
 
             ReviewButton.Frame = new CGRect(View.Frame.Width - 160, 90, 150, 20);
@@ -643,16 +646,14 @@ namespace IEatHealthy.iOS
 
 
             if(segue.Identifier=="ReviewSegue"){
-                var resultview = segue.DestinationViewController as CommentController;
-                resultview.isCOmment = false;
-                resultview.ViewModel = ViewModel;
-                base.PrepareForSegue(segue, sender);
-
+                if (reviewCount > 0)
+                {
+                    var resultview = segue.DestinationViewController as CommentController;
+                    resultview.isCOmment = false;
+                    resultview.ViewModel = ViewModel;
+                    base.PrepareForSegue(segue, sender);
+                }
             }
-
-           
-           
-
         }
         public async void getCommentCount()
         { 
@@ -667,11 +668,32 @@ namespace IEatHealthy.iOS
             {
 
                 aResponse = sr.ReadToEnd();
-                var newitem = JsonConvert.DeserializeObject<List<commentClass>>(aResponse);
+                var newitem = JsonConvert.DeserializeObject<List<UserReview>>(aResponse);
                 if (newitem == null) { reviewCount = 0; }
                 else reviewCount = newitem.Count;
             }
 
         }
+        public async void gettotalRatingt()
+        {
+            var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/{0}/ratings?token={1}", ViewModel.Item.stringId, App.currentAccount.JWTToken));
+            request.ContentType = "application/JSON";
+            request.Method = "GET";
+
+
+            HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+            string aResponse = "";
+            using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+            {
+
+                aResponse = sr.ReadToEnd();
+               // var newitem = JsonConvert.DeserializeObject<RecipeRating>(aResponse);
+               // if (newitem == null) { reviewCount = 0; }
+             //   else{ if (newitem.ratings == null) { reviewCount = 0; }
+             //   else ratingCount = (int)newitem.totalRating;
+                }
+
+            }
+
+        }
     }
-}

@@ -1057,32 +1057,14 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue id="165995" destination="165941" kind="relationship" relationship="rootViewController"/>
+                        <segue id="331032" destination="330967" kind="push"/>
                     </connections>
                     <tabBarItem key="tabBarItem" title="Bookmarks" id="165475" image="RecipeTab"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="165433" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="683" y="3178"/>
-        </scene>
-        <scene sceneID="165940">
-            <objects>
-                <viewController id="165941" sceneMemberID="viewController" title="Recipes" customClass="RecipesViewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="165938"/>
-                        <viewControllerLayoutGuide type="bottom" id="165939"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="165942">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" colorSpace="calibratedRGB" red="0.96078431372549022" green="0.96470588235294119" blue="0.96078431372549022" alpha="1"/>
-                    </view>
-                    <navigationItem title="Recipes" id="165994" key="navigationItem"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="165943" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1271" y="3177"/>
+            <point key="canvasLocation" x="651" y="3137"/>
         </scene>
         <scene sceneID="166474">
             <objects>
@@ -1337,6 +1319,33 @@
             </objects>
             <point key="canvasLocation" x="1799" y="2291"/>
         </scene>
+        <scene sceneID="330966">
+            <objects>
+                <viewController id="330967" sceneMemberID="viewController" customClass="RecipesViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="330964"/>
+                        <viewControllerLayoutGuide type="bottom" id="330965"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="330968">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="331034" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                            </scrollView>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="scrollview" destination="331034" id="name-outlet-331034"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="330969" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1341" y="3171"/>
+        </scene>
     </scenes>
     <resources>
         <image name="CartIcon" width="76" height="58"/>
@@ -1346,11 +1355,8 @@
         <image name="newlogo" width="359" height="88"/>
         <image name="password icon" width="183" height="197"/>
         <image name="profile" width="25" height="25"/>
-        <image name="user icon" width="176" height="195"/>
         <image name="First" width="32" height="30"/>
         <image name="XamarinLogo" width="600" height="900"/>
-        <image name="iehlogo" width="265" height="171"/>
-        <image name="login icon" width="318" height="159"/>
         <image name="CartTab" width="25" height="20"/>
         <image name="RecipeTab" width="25" height="25"/>
         <image name="AddRecipeIcon" width="938" height="863"/>
