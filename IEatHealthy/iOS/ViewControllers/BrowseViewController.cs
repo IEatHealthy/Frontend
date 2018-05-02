@@ -15,7 +15,7 @@ namespace IEatHealthy.iOS
     {
         public string token { get; set; }
         UIRefreshControl refreshControl;
-
+        public UISearchController search { get; set; }
         public ItemsViewModel ViewModel { get; set; }
         public static AppDelegate App
         {
@@ -67,12 +67,6 @@ namespace IEatHealthy.iOS
             }
         }
 
-
-           
-           
-          
-   
-
         public override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
@@ -112,7 +106,7 @@ namespace IEatHealthy.iOS
             NavigationItem.TitleView = titleView;
 
             // Adds search bar to navigation bar
-            var search = new UISearchController(searchResultsController: null)
+            search = new UISearchController(searchResultsController: null)
             {
                 HidesNavigationBarDuringPresentation = true,
                 DimsBackgroundDuringPresentation = true

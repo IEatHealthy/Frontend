@@ -11,8 +11,8 @@ namespace IEatHealthy
         public String lastName { get; set; }
         public String username { get; set; }
         public int skillLevel { get; set; }
-        public ArrayList badgesEarned { get; set; }
-        public ArrayList titlesEarned { get; set; }
+        public List<Badge> badgesEarned { get; set; }
+        public List<Title> titlesEarned { get; set; }
         public Badge badgeSelected { get; set; }
         public Title titleSelected { get; set; }
         public string JWTToken { get; set; }
@@ -23,7 +23,7 @@ namespace IEatHealthy
     {
 
         public int badgeId { get; set; }
-        public String decsription { get; set; }
+        public String description { get; set; }
         public bool awardOnSignup { get; set; }
     }
     public class Title

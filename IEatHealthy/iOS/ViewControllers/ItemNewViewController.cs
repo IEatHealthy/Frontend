@@ -12,9 +12,9 @@ namespace IEatHealthy.iOS
     {
 
         public List<IngredientItem> IngrediantList = new List<IngredientItem>();
-        public List<UITextView> PreperationStepsList = new List<UITextView>();
-        public List<UITextField> SpecialTools = new List<UITextField>();
-        public List<UITextField> ingredients = new List<UITextField>();
+        public List<Steps> PreparationStepsList = new List<Steps>();
+        public List<Tools> SpecialTools = new List<Tools>();
+        public List<Ingre> ingredients = new List<Ingre>();
         UIImagePickerController picker;
         public UIButton ImageBtn { get; private set; }
         public UIImageView ImageView { get; private set; }
@@ -32,6 +32,11 @@ namespace IEatHealthy.iOS
         {
         }
 
+        public static AppDelegate App
+        {
+            get { return (AppDelegate)UIApplication.SharedApplication.Delegate; }
+        }
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -39,18 +44,26 @@ namespace IEatHealthy.iOS
             View.BackgroundColor = UIColor.FromRGB(240, 240, 240);
             Title = "Craft Recipe";
 
+            // Initial Height of scrollView
             this.View.BackgroundColor = UIColor.FromRGB(240, 240, 240);
             var statusBarHeight = UIApplication.SharedApplication.StatusBarFrame.Size.Height;
             var topNavigationHeight = NavigationController.NavigationBar.Frame.Height;
             var startRecipeHeight = statusBarHeight + topNavigationHeight;
 
+            // Initialize scrollview
+            var scrollView = new UIScrollView();
+            scrollView.Frame = new CGRect(0, startRecipeHeight, View.Bounds.Size.Width, View.Bounds.Size.Height - startRecipeHeight - NavigationController.TabBarController.TabBar.Bounds.Height);
+            scrollView.BackgroundColor = UIColor.FromRGB(240, 240, 240);
+            scrollView.PagingEnabled = true;
+            scrollView.ContentSize = new CGSize(View.Bounds.Size.Width, 1500);
+            this.View.AddSubview(scrollView);
 
             // Recipe Name and Description UIView
             var RecipeName = new UIView();
-            RecipeName.Frame = new CGRect(0, startRecipeHeight, View.Bounds.Size.Width, 150);
+            RecipeName.Frame = new CGRect(0, 0, View.Bounds.Size.Width, 150);
             RecipeName.BackgroundColor = UIColor.White;
             var border = new CALayer();
-            border.BackgroundColor = UIColor.FromRGB(200,200,200).CGColor;
+            border.BackgroundColor = UIColor.FromRGB(200, 200, 200).CGColor;
             border.Frame = new CGRect(0, RecipeName.Frame.Size.Height - 1, RecipeName.Frame.Size.Width, 1);
             RecipeName.Layer.AddSublayer(border);
 
@@ -76,7 +89,7 @@ namespace IEatHealthy.iOS
 
 
             var NameLabel = new UILabel();
-            NameLabel.Frame = new CGRect(View.Bounds.Size.Width/2 + 10, 10, 10, 10);
+            NameLabel.Frame = new CGRect(View.Bounds.Size.Width / 2 + 10, 10, 10, 10);
             NameLabel.Text = "Name:";
             NameLabel.Font = UIFont.FromName("Helvetica-Light", 14f);
             NameLabel.SizeToFit();
@@ -84,15 +97,7 @@ namespace IEatHealthy.iOS
 
             NameText = new UITextField(new CGRect(View.Bounds.Size.Width / 2 + 10, 30, View.Bounds.Width / 2 - 20, 25));
             NameText.BackgroundColor = UIColor.White;
-            NameText.Layer.BorderWidth = 1f;
-            NameText.Layer.BorderColor = UIColor.FromRGB(200,200,200).CGColor;
-            NameText.Layer.CornerRadius = 5;
-            NameText.Layer.ShadowRadius = 2f;
-            NameText.Layer.ShadowColor = UIColor.FromRGB(100,100,100).CGColor;
-            NameText.Layer.ShadowOffset = new CGSize(1.0, 1.0);
-            NameText.Layer.ShadowOpacity = 1f;
-            NameText.Font = UIFont.FromName("Helvetica-Light", 14f);
-            NameText.AdjustsFontSizeToFitWidth = true;
+            NewTextField(NameText);
             RecipeName.AddSubview(NameText);
 
             var DescriptionLabel = new UILabel();
@@ -104,37 +109,36 @@ namespace IEatHealthy.iOS
 
             DescriptionText = new UITextView();
             DescriptionText.ContentMode = UIViewContentMode.ScaleAspectFit;
-            var DescriptionBox = new UIView(new CGRect(View.Bounds.Size.Width / 2 + 10, 80, View.Bounds.Width/2-20, 50));
+            var DescriptionBox = new UIView(new CGRect(View.Bounds.Size.Width / 2 + 10, 80, View.Bounds.Width / 2 - 20, 50));
             DescriptionText.Frame = DescriptionBox.Bounds;
             DescriptionBox.AddSubview(DescriptionText);
 
             DescriptionBox.Layer.ShadowRadius = 2f;
-            DescriptionBox.Layer.ShadowColor = UIColor.FromRGB(100,100,100).CGColor;
+            DescriptionBox.Layer.ShadowColor = UIColor.FromRGB(100, 100, 100).CGColor;
             DescriptionBox.Layer.ShadowOffset = new CGSize(1.0, 1.0);
             DescriptionBox.Layer.ShadowOpacity = 1f;
 
             DescriptionText.BackgroundColor = UIColor.White;
-            DescriptionText.Layer.BorderColor = UIColor.FromRGB(200,200,200).CGColor;
+            DescriptionText.Layer.BorderColor = UIColor.FromRGB(200, 200, 200).CGColor;
             DescriptionText.Layer.BorderWidth = 1f;
             DescriptionText.Layer.CornerRadius = 5;
             DescriptionText.Font = UIFont.FromName("Helvetica-Light", 14f);
             DescriptionText.ScrollEnabled = true;
             RecipeName.AddSubview(DescriptionBox);
 
-            this.View.AddSubview(RecipeName);
-
+            scrollView.AddSubview(RecipeName);
 
             // Recipe Numbers UIView
             var RecipeNumbers = new UIView();
 
-            var RecipeNumbersPosition = startRecipeHeight + RecipeName.Bounds.Height + 5;
+            var RecipeNumbersPosition = RecipeName.Bounds.Height + 5;
             RecipeNumbers.Frame = new CGRect(0, RecipeNumbersPosition, View.Bounds.Size.Width, 140);
             RecipeNumbers.BackgroundColor = UIColor.White;
             var NumBorder = new CALayer();
             NumBorder.BackgroundColor = UIColor.FromRGB(200, 200, 200).CGColor;
             NumBorder.Frame = new CGRect(0, RecipeNumbers.Frame.Size.Height - 1, RecipeNumbers.Frame.Size.Width, 1);
             RecipeNumbers.Layer.AddSublayer(NumBorder);
-            this.View.AddSubview(RecipeNumbers);
+            scrollView.AddSubview(RecipeNumbers);
 
             float NumTextWidth = 70;
 
@@ -147,16 +151,7 @@ namespace IEatHealthy.iOS
             RecipeNumbers.AddSubview(PrepTimeLabel);
 
             PrepTimeText = new UITextField(new CGRect(20, 30, NumTextWidth, 25));
-            PrepTimeText.Layer.BorderColor = UIColor.FromRGB(200, 200, 200).CGColor;
-            PrepTimeText.Layer.BorderWidth = 1f;
-            PrepTimeText.Layer.CornerRadius = 5;
-            PrepTimeText.Layer.ShadowRadius = 2f;
-            PrepTimeText.Layer.ShadowColor = UIColor.FromRGB(100,100,100).CGColor;
-            PrepTimeText.Layer.ShadowOffset = new CGSize(1.0, 1.0);
-            PrepTimeText.Layer.ShadowOpacity = 1f;
-            PrepTimeText.BackgroundColor = UIColor.White;
-            PrepTimeText.Font = UIFont.FromName("Helvetica-Light", 14f);
-            PrepTimeText.AdjustsFontSizeToFitWidth = true;
+            NewTextField(PrepTimeText);
             RecipeNumbers.AddSubview(PrepTimeText);
 
             // Cook Time
@@ -168,16 +163,7 @@ namespace IEatHealthy.iOS
             RecipeNumbers.AddSubview(CookTimeLabel);
 
             CookTimeText = new UITextField(new CGRect(View.Bounds.Width / 2 + 10, 30, NumTextWidth, 25));
-            CookTimeText.Layer.BorderWidth = 1f;
-            CookTimeText.Layer.BorderColor = UIColor.FromRGB(200, 200, 200).CGColor;
-            CookTimeText.Layer.CornerRadius = 5;
-            CookTimeText.Layer.ShadowRadius = 2f;
-            CookTimeText.Layer.ShadowColor = UIColor.FromRGB(100, 100, 100).CGColor;
-            CookTimeText.Layer.ShadowOffset = new CGSize(1.0, 1.0);
-            CookTimeText.Layer.ShadowOpacity = 1f;
-            CookTimeText.BackgroundColor = UIColor.White;
-            CookTimeText.Font = UIFont.FromName("Helvetica-Light", 14f);
-            CookTimeText.AdjustsFontSizeToFitWidth = true;
+            NewTextField(CookTimeText);
             RecipeNumbers.AddSubview(CookTimeText);
 
             // Ready In
@@ -189,16 +175,7 @@ namespace IEatHealthy.iOS
             RecipeNumbers.AddSubview(ReadyInLabel);
 
             ReadyInText = new UITextField(new CGRect(20, 95, NumTextWidth, 25));
-            ReadyInText.Layer.BorderWidth = 1f;
-            ReadyInText.Layer.BorderColor = UIColor.FromRGB(200, 200, 200).CGColor;
-            ReadyInText.Layer.CornerRadius = 5;
-            ReadyInText.Layer.ShadowRadius = 2f;
-            ReadyInText.Layer.ShadowColor = UIColor.FromRGB(100, 100, 100).CGColor;
-            ReadyInText.Layer.ShadowOffset = new CGSize(1.0, 1.0);
-            ReadyInText.Layer.ShadowOpacity = 1f;
-            ReadyInText.BackgroundColor = UIColor.White;
-            ReadyInText.Font = UIFont.FromName("Helvetica-Light", 14f);
-            ReadyInText.AdjustsFontSizeToFitWidth = true;
+            NewTextField(ReadyInText);
             RecipeNumbers.AddSubview(ReadyInText);
 
             // Serving Size
@@ -210,18 +187,10 @@ namespace IEatHealthy.iOS
             RecipeNumbers.AddSubview(ServingSizeLabel);
 
             ServingSizeText = new UITextField(new CGRect(View.Bounds.Size.Width / 2 + 10, 95, NumTextWidth, 25));
-            ServingSizeText.Layer.BorderWidth = 1f;
-            ServingSizeText.Layer.BorderColor = UIColor.FromRGB(200, 200, 200).CGColor;
-            ServingSizeText.Layer.CornerRadius = 5;
-            ServingSizeText.Layer.ShadowRadius = 2f;
-            ServingSizeText.Layer.ShadowColor = UIColor.FromRGB(100, 100, 100).CGColor;
-            ServingSizeText.Layer.ShadowOffset = new CGSize(1.0, 1.0);
-            ServingSizeText.Layer.ShadowOpacity = 1f;
-            ServingSizeText.BackgroundColor = UIColor.White;
-            ServingSizeText.Font = UIFont.FromName("Helvetica-Light", 14f);
-            ServingSizeText.AdjustsFontSizeToFitWidth = true;
+            NewTextField(ServingSizeText);
             RecipeNumbers.AddSubview(ServingSizeText);
 
+            // Difficulty Buttons
             var DifficultyPosition = RecipeNumbersPosition + RecipeNumbers.Bounds.Height + 5;
             var DifficultyButtons = new UIView();
 
@@ -231,7 +200,7 @@ namespace IEatHealthy.iOS
             DifficultyBorder.BackgroundColor = UIColor.FromRGB(200, 200, 200).CGColor;
             DifficultyBorder.Frame = new CGRect(0, DifficultyButtons.Frame.Size.Height - 1, DifficultyBorder.Frame.Size.Width, 1);
             DifficultyButtons.Layer.AddSublayer(DifficultyBorder);
-            this.View.AddSubview(DifficultyButtons);
+            scrollView.AddSubview(DifficultyButtons);
 
             var DifficultyLabel = new UILabel();
             DifficultyLabel.Frame = new CGRect(20, 10, 10, 10);
@@ -299,17 +268,11 @@ namespace IEatHealthy.iOS
                 RecipeDifficulty = 3;
             };
 
-            // SegControl UIView
+            // SegControl
             var SegControlPosition = DifficultyPosition + DifficultyButtons.Bounds.Height + 5;
-            var scrollView = new UIScrollView();
-            scrollView.Frame = new CGRect(0, SegControlPosition, View.Bounds.Size.Width, 300);
-            scrollView.BackgroundColor = UIColor.White;
-            this.View.AddSubview(scrollView);
-
-            // The SegControl
             var ChangeInput = new UISegmentedControl();
             UISegmentedControl.AppearanceWhenContainedIn();
-            ChangeInput.Frame = new CGRect(0, 5, View.Bounds.Size.Width, 40);
+            ChangeInput.Frame = new CGRect(0, SegControlPosition, View.Bounds.Size.Width, 40);
             ChangeInput.BackgroundColor = UIColor.White;
             ChangeInput.TintColor = UIColor.Clear;
 
@@ -319,195 +282,312 @@ namespace IEatHealthy.iOS
             ChangeInput.SetTitleTextAttributes(new UITextAttributes()
             {
                 TextColor = UIColor.Black,
-                Font = UIFont.FromName("Helvetica-Bold", 14f),
+                Font = UIFont.FromName("Helvetica-Light", 14f),
                 TextShadowColor = UIColor.Clear
             }, UIControlState.Normal);
 
             ChangeInput.SetTitleTextAttributes(new UITextAttributes()
             {
                 TextColor = UIColor.Red,
-                Font = UIFont.FromName("Helvetica-Bold", 14f),
+                Font = UIFont.FromName("Helvetica-Light", 14f),
                 TextShadowColor = UIColor.Clear
             }, UIControlState.Selected);
 
             ChangeInput.SelectedSegment = 0;
             scrollView.AddSubview(ChangeInput);
 
+            var IngredientPosition = SegControlPosition + ChangeInput.Bounds.Height;
+            var SpecialToolsPosition = SegControlPosition + ChangeInput.Bounds.Height;
+            var StepsPosition = SegControlPosition + ChangeInput.Bounds.Height;
 
+            // First Ingredient
+            Ingre ingre = new Ingre();
+            UIView FirstIngredientView = new UIView(new CGRect(0, IngredientPosition, View.Bounds.Width, 40));
+            FirstIngredientView.BackgroundColor = UIColor.White;
 
-            int YforIngredient = (int)(ChangeInput.Frame.Y + 50);
-            int YforSpecial = (int)(ChangeInput.Frame.Y + 50);
-            int YforStep = (int)(ChangeInput.Frame.Y + 50);
+            UITextField FirstIngredientAmount = new UITextField(new CGRect(20, 5, 90, 25));
+            NewTextField(FirstIngredientAmount);
+            FirstIngredientAmount.Placeholder = "Amount";
 
+            UITextField FirstIngredientUnit = new UITextField(new CGRect(120, 5, 90, 25));
+            NewTextField(FirstIngredientUnit);
+            FirstIngredientUnit.Placeholder = "Unit of Measure";
 
-            UITextField FrstSpecial = new UITextField(new System.Drawing.RectangleF(20, YforSpecial, 270, 30));
-            //label.Placeholder = " Step " + i.ToString();
-            FrstSpecial.Layer.BorderWidth = 1f;
-            FrstSpecial.Layer.CornerRadius = 8;
-            FrstSpecial.BackgroundColor = UIColor.White;
-            SpecialTools.Add(FrstSpecial);
-            //  scrollView.AddSubview(FrstSpecial);
+            UITextField FirstIngredientName = new UITextField(new CGRect(220, 5, 90, 25));
+            NewTextField(FirstIngredientName);
+            FirstIngredientName.Placeholder = "Name";
 
+            ingre.background = FirstIngredientView;
+            ingre.Amount = FirstIngredientAmount;
+            ingre.Unit = FirstIngredientUnit;
+            ingre.Name = FirstIngredientName;
+            ingredients.Add(ingre);
 
-            UITextField FrstIng = new UITextField(new System.Drawing.RectangleF(20, YforIngredient, 250, 30));
-            //label.Placeholder = " Step " + i.ToString();
-            FrstIng.Layer.BorderWidth = 1f;
-            FrstIng.Layer.CornerRadius = 5;
-            ingredients.Add(FrstIng);
-            scrollView.AddSubview(FrstIng);
-
-
-            UITextView Frststep = new UITextView(new System.Drawing.RectangleF(15, YforStep, 270, 50));
-            //label.Placeholder = " Step " + i.ToString();
-            Frststep.Layer.BorderWidth = 1f;
-            Frststep.Layer.CornerRadius = 5;
-            PreperationStepsList.Add(Frststep);
-            //  scrollView.AddSubview(Frststep);
-
-            var AddIngrediantButton = new UIButton(UIButtonType.ContactAdd)
+            var AddIngredientButton = new UIButton(UIButtonType.ContactAdd)
             {
-                Frame = new CGRect(340, YforSpecial, 20, 20),
+                Frame = new CGRect(View.Bounds.Width - 40, 5, 20, 20),
             };
-            scrollView.AddSubview(AddIngrediantButton);
+            FirstIngredientView.AddSubview(FirstIngredientAmount);
+            FirstIngredientView.AddSubview(FirstIngredientUnit);
+            FirstIngredientView.AddSubview(FirstIngredientName);
+            FirstIngredientView.AddSubview(AddIngredientButton);
 
+            scrollView.AddSubview(FirstIngredientView);
 
-            var AddSpecialTool = new UIButton(UIButtonType.ContactAdd)
-            {
-                Frame = new CGRect(340, YforIngredient, 20, 20),
-            };
+            // First StepView
+
+            Steps step = new Steps();
+            UIView FirstStepView = new UIView(new CGRect(0, StepsPosition, View.Bounds.Width, 70));
+            FirstStepView.BackgroundColor = UIColor.White;
+            UITextView FirstStep = new UITextView();
+            FirstStep.ContentMode = UIViewContentMode.ScaleAspectFit;
+            UIView ShadowStep = new UIView(new CGRect(20, 5, 200, 60));
+            FirstStep.Frame = ShadowStep.Bounds;
+            ShadowStep.AddSubview(FirstStep);
+
+            ShadowStep.Layer.ShadowRadius = 2f;
+            ShadowStep.Layer.ShadowColor = UIColor.FromRGB(100, 100, 100).CGColor;
+            ShadowStep.Layer.ShadowOffset = new CGSize(1.0, 1.0);
+            ShadowStep.Layer.ShadowOpacity = 1f;
+
+            FirstStep.BackgroundColor = UIColor.White;
+            FirstStep.Layer.BorderColor = UIColor.FromRGB(200, 200, 200).CGColor;
+            FirstStep.Layer.BorderWidth = 1f;
+            FirstStep.Layer.CornerRadius = 5;
+            FirstStep.Font = UIFont.FromName("Helvetica-Light", 14f);
+            FirstStep.ScrollEnabled = true;
+            FirstStepView.AddSubview(ShadowStep);
+
+            step.background = FirstStepView;
+            step.shadow = ShadowStep;
+            step.Step = FirstStep;
+            PreparationStepsList.Add(step);
+
 
             var AddStepButton = new UIButton(UIButtonType.ContactAdd)
             {
-                Frame = new CGRect(340, YforStep, 20, 20),
-
+                Frame = new CGRect(View.Bounds.Width - 40, 5, 20, 20),
             };
-            // creating save button with dynamic movements after additional steps are added
-            /*
-             var btnSaveItem = new UIButton(UIButtonType.Custom)
-             {
-                 Frame = new CGRect(25, YforStep + 80, 320, 40),
-                 BackgroundColor = UIColor.FromRGB(66,134,244),
-             };
- */
+            FirstStepView.AddSubview(AddStepButton);
 
+            // First Tool 
+            Tools tool = new Tools();
+            UIView FirstSpecialToolView = new UIView(new CGRect(0, SpecialToolsPosition, View.Bounds.Width, 40));
+            FirstSpecialToolView.BackgroundColor = UIColor.White;
+            UITextField FirstSpecialTool = new UITextField(new CGRect(20, 5, 100, 25));
+            NewTextField(FirstSpecialTool);
 
-            //dynamically adding ingredient boxes as plus button is pressed
-            AddIngrediantButton.TouchUpInside += (s, e) =>
+            tool.background = FirstSpecialToolView;
+            tool.Name = FirstSpecialTool;
+            SpecialTools.Add(tool);
+            var AddSpecialToolButton = new UIButton(UIButtonType.ContactAdd)
             {
-                YforIngredient += 40;
-                UITextField label2 = new UITextField(new System.Drawing.RectangleF(20, YforIngredient, 250, 30));
-                label2.Layer.BorderWidth = 1f;
-                label2.Layer.CornerRadius = 5;
-                scrollView.AddSubview(label2);
-                ingredients.Add(label2);
-                AddIngrediantButton.Center = new CGPoint(310, YforIngredient + 15);
-                scrollView.ContentSize = new CGSize(View.Frame.Width, YforIngredient + 60);
+                Frame = new CGRect(View.Bounds.Width - 40, 5, 20, 20),
+            };
+            FirstSpecialToolView.AddSubview(AddSpecialToolButton);
+
+
+
+            // Add to ingredient list
+            AddIngredientButton.TouchUpInside += (s, e) =>
+            {
+                Ingre ingredient = new Ingre();
+                AddIngredientButton.RemoveFromSuperview();
+                IngredientPosition += 40;
+                UIView newIngredientView = new UIView(new CGRect(0, IngredientPosition, View.Bounds.Width, 40));
+                newIngredientView.BackgroundColor = UIColor.White;
+                UITextField newIngredientAmount = new UITextField(new CGRect(20, 5, 90, 25));
+                UITextField newIngredientUnit = new UITextField(new CGRect(120, 5, 90, 25));
+                UITextField newIngredientName = new UITextField(new CGRect(220, 5, 90, 25));
+                NewTextField(newIngredientAmount);
+                NewTextField(newIngredientUnit);
+                NewTextField(newIngredientName);
+                newIngredientAmount.Placeholder = "Amount";
+                newIngredientUnit.Placeholder = "Unit of Measure";
+                newIngredientName.Placeholder = "Name";
+                newIngredientView.AddSubview(newIngredientAmount);
+                newIngredientView.AddSubview(newIngredientUnit);
+                newIngredientView.AddSubview(newIngredientName);
+                newIngredientView.AddSubview(AddIngredientButton);
+                ingredient.background = newIngredientView;
+                ingredient.Amount = newIngredientAmount;
+                ingredient.Unit = newIngredientUnit;
+                ingredient.Name = newIngredientName;
+                ingredients.Add(ingredient);
+                scrollView.AddSubview(newIngredientView);
             };
 
-
+            // Add to preparation step list
             AddStepButton.TouchUpInside += (s, e) =>
             {
-                YforStep += 70;
-                UITextView label3 = new UITextView(new System.Drawing.RectangleF(15, YforStep, 270, 50));
-                label3.Layer.BorderWidth = 1f;
-                label3.Layer.CornerRadius = 5;
-                label3.BackgroundColor = UIColor.White;
-                PreperationStepsList.Add(label3);
-                scrollView.AddSubview(label3);
+                Steps steps = new Steps();
+                StepsPosition += 70;
+                AddStepButton.RemoveFromSuperview();
+                UIView newStepView = new UIView(new CGRect(0, StepsPosition, View.Bounds.Width, 70));
+                newStepView.BackgroundColor = UIColor.White;
+                UITextView newStep = new UITextView();
+                newStep.ContentMode = UIViewContentMode.ScaleAspectFit;
+                UIView newShadowStep = new UIView(new CGRect(20, 5, 200, 60));
+                newStep.Frame = newShadowStep.Bounds;
+                newShadowStep.AddSubview(newStep);
 
-                AddStepButton.Center = new CGPoint(330, AddStepButton.Frame.Y + 80);
-                scrollView.ContentSize = new CGSize(View.Frame.Width, YforStep + 60);
+                newShadowStep.Layer.ShadowRadius = 2f;
+                newShadowStep.Layer.ShadowColor = UIColor.FromRGB(100, 100, 100).CGColor;
+                newShadowStep.Layer.ShadowOffset = new CGSize(1.0, 1.0);
+                newShadowStep.Layer.ShadowOpacity = 1f;
 
+                newStep.BackgroundColor = UIColor.White;
+                newStep.Layer.BorderColor = UIColor.FromRGB(200, 200, 200).CGColor;
+                newStep.Layer.BorderWidth = 1f;
+                newStep.Layer.CornerRadius = 5;
+                newStep.Font = UIFont.FromName("Helvetica-Light", 14f);
+                newStep.ScrollEnabled = true;
+                newStepView.AddSubview(newShadowStep);
+                newStepView.AddSubview(AddStepButton);
+
+                steps.background = newStepView;
+                steps.shadow = newShadowStep;
+                steps.Step = newStep;
+                PreparationStepsList.Add(steps);
+                scrollView.AddSubview(newStepView);
             };
 
-            AddSpecialTool.TouchUpInside += (s, e) =>
+            // Add to Special Tools list
+            AddSpecialToolButton.TouchUpInside += (s, e) =>
             {
-                YforSpecial += 40;
-                UITextField label3 = new UITextField(new System.Drawing.RectangleF(15, YforSpecial, 270, 30));
-                label3.Layer.BorderWidth = 1f;
-                label3.Layer.CornerRadius = 5;
-                label3.BackgroundColor = UIColor.White;
-                SpecialTools.Add(label3);
-                scrollView.AddSubview(label3);
-
-                AddSpecialTool.Center = new CGPoint(330, AddSpecialTool.Frame.Y + 50);
-                scrollView.ContentSize = new CGSize(View.Frame.Width, YforSpecial + 60);
-
+                Tools tools = new Tools();
+                AddSpecialToolButton.RemoveFromSuperview();
+                SpecialToolsPosition += 40;
+                UIView newSpecialToolsView = new UIView(new CGRect(0, SpecialToolsPosition, View.Bounds.Width, 40));
+                newSpecialToolsView.BackgroundColor = UIColor.White;
+                UITextField newSpecialTool = new UITextField(new CGRect(20, 5, 100, 25));
+                NewTextField(newSpecialTool);
+                newSpecialToolsView.AddSubview(newSpecialTool);
+                newSpecialToolsView.AddSubview(AddSpecialToolButton);
+                tools.background = newSpecialToolsView;
+                tools.Name = newSpecialTool;
+                SpecialTools.Add(tools);
+                scrollView.AddSubview(newSpecialToolsView);
             };
-
-
-
 
             ChangeInput.ValueChanged += (sender, e) =>
             {
                 var index = ChangeInput.SelectedSegment;
 
-                if (index == 0)
+                switch (index)
                 {
-                    foreach (UITextField item in ingredients)
-                    { scrollView.AddSubview(item); }
+                    case 0:
+                        // add all ingredient subviews
+                        foreach (Ingre item in ingredients)
+                        {
+                            scrollView.AddSubview(item.background);
+                            item.background.AddSubview(item.Amount);
+                            item.background.AddSubview(item.Unit);
+                            item.background.AddSubview(item.Name);
+                        }
 
-                    scrollView.AddSubview(AddIngrediantButton);
-                    AddSpecialTool.RemoveFromSuperview();
-                    foreach (UITextField item in SpecialTools)
-                    {
-                        item.RemoveFromSuperview();
-                    }
-                    AddSpecialTool.RemoveFromSuperview();
+                        // remove all step subviews
+                        foreach (Steps item in PreparationStepsList)
+                        {
+                            item.background.RemoveFromSuperview();
+                            item.shadow.RemoveFromSuperview();
+                            item.Step.RemoveFromSuperview();
+                        }
 
-                    foreach (UITextView item in PreperationStepsList)
-                    {
-                        item.RemoveFromSuperview();
-                    }
-                    scrollView.AddSubview(AddStepButton);
-                    AddStepButton.RemoveFromSuperview();
+                        // remove all tool subviews
+                        foreach (Tools item in SpecialTools)
+                        {
+                            item.background.RemoveFromSuperview();
+                            item.Name.RemoveFromSuperview();
+                        }
+                        break;
+                    case 1:
+                        // remove all ingredient subviews
+                        foreach (Ingre item in ingredients)
+                        {
+                            item.background.RemoveFromSuperview();
+                            item.Amount.RemoveFromSuperview();
+                            item.Name.RemoveFromSuperview();
+                            item.Unit.RemoveFromSuperview();
+                        }
+
+                        // add all step subviews
+                        foreach (Steps item in PreparationStepsList)
+                        {
+                            scrollView.AddSubview(item.background);
+                            item.shadow.AddSubview(item.Step);
+                            item.background.AddSubview(item.shadow);
+                        }
+
+                        // remove all tool subviews
+                        foreach (Tools item in SpecialTools)
+                        {
+                            item.background.RemoveFromSuperview();
+                            item.Name.RemoveFromSuperview();
+                        }
+
+                        break;
+                    case 2:
+                        foreach (Ingre item in ingredients)
+                        {
+                            item.background.RemoveFromSuperview();
+                            item.Amount.RemoveFromSuperview();
+                            item.Name.RemoveFromSuperview();
+                            item.Unit.RemoveFromSuperview();
+                        }
+
+                        foreach (Steps item in PreparationStepsList)
+                        {
+                            item.background.RemoveFromSuperview();
+                            item.shadow.RemoveFromSuperview();
+                            item.Step.RemoveFromSuperview();
+                        }
+
+                        foreach (Tools item in SpecialTools)
+                        {
+                            scrollView.AddSubview(item.background);
+                            item.background.AddSubview(item.Name);
+                        }
+                        break;
                 }
-                if (index == 1)
-                {
-
-
-                    // View.AddSubview(InstructionLabel);
-                    foreach (UITextField item in ingredients)
-                    { item.RemoveFromSuperview(); }
-
-                    AddIngrediantButton.RemoveFromSuperview();
-                    foreach (UITextField item in SpecialTools)
-                    {
-                        item.RemoveFromSuperview();
-                    }
-                    AddSpecialTool.RemoveFromSuperview();
-
-                    foreach (UITextView item in PreperationStepsList)
-                    {
-                        scrollView.AddSubview(item);
-                    }
-                    scrollView.AddSubview(AddStepButton);
-                }
-                if (index == 2)
-                {
-                    foreach (UITextField item in SpecialTools)
-                    {
-                        scrollView.AddSubview(item);
-
-                    }
-                    foreach (UITextField item in ingredients)
-                    { item.RemoveFromSuperview(); }
-
-                    AddStepButton.RemoveFromSuperview();
-                    AddIngrediantButton.RemoveFromSuperview();
-
-                    foreach (UITextView item in PreperationStepsList)
-                    {
-                        item.RemoveFromSuperview();
-                    }
-                    scrollView.AddSubview(AddSpecialTool);
-
-                }
-
             };
         }
 
+        void NewTextField(UITextField textbox)
+        {
+            textbox.Layer.BorderColor = UIColor.FromRGB(200, 200, 200).CGColor;
+            textbox.Layer.BorderWidth = 1f;
+            textbox.Layer.CornerRadius = 5;
+            textbox.Layer.ShadowRadius = 2f;
+            textbox.Layer.ShadowColor = UIColor.FromRGB(100, 100, 100).CGColor;
+            textbox.Layer.ShadowOffset = new CGSize(1.0, 1.0);
+            textbox.Layer.ShadowOpacity = 1f;
+            textbox.BackgroundColor = UIColor.White;
+            textbox.Font = UIFont.FromName("Helvetica-Light", 14f);
+            textbox.AdjustsFontSizeToFitWidth = true;
+        }
 
+        void NewTextView(UITextView textbox, UIView shadowbox)
+        {
+            textbox.ContentMode = UIViewContentMode.ScaleAspectFit;
+            shadowbox.Layer.ShadowRadius = 2f;
+            shadowbox.Layer.ShadowColor = UIColor.FromRGB(100, 100, 100).CGColor;
+            shadowbox.Layer.ShadowOffset = new CGSize(1.0, 1.0);
+            shadowbox.Layer.ShadowOpacity = 1f;
+
+            textbox.BackgroundColor = UIColor.White;
+            textbox.Layer.BorderColor = UIColor.FromRGB(200, 200, 200).CGColor;
+            textbox.Layer.BorderWidth = 1f;
+            textbox.Layer.CornerRadius = 5;
+            textbox.Font = UIFont.FromName("Helvetica-Light", 14f);
+            textbox.ScrollEnabled = true;
+        }
+        //public class IngredientItem
+        //{
+        //    public string unitOfMeasure { get; set; }
+        //    public float amount { get; set; }
+        //    public string desc { get; set; }
+        //}
 
         partial void BtnSaveItem_TouchUpInside(UIButton sender)
         {
@@ -523,9 +603,9 @@ namespace IEatHealthy.iOS
                 readyInTime = Convert.ToInt32(ReadyInText.Text),
                 // picture = imgView.Image,
                 ingredients = convertIng(),
-                steps = convertStep(),
+                steps = convertSteps(),
+                toolsNeeded = convertTools(),
                 description = DescriptionText.Text,
-                // = label4.Text,
                 difficulty = 1,
             };
             ViewModel.AddItemCommand.Execute(item);
@@ -536,28 +616,36 @@ namespace IEatHealthy.iOS
         {
             List<IngredientItem> ing = new List<IngredientItem>();
 
-            foreach (UITextView item in PreperationStepsList)
+            foreach (Ingre item in ingredients)
             {
-                IngredientItem aa = new IngredientItem();
-                aa.desc = item.Text;
-                ing.Add(aa);
+                IngredientItem temp = new IngredientItem();
 
+                temp.amount = float.Parse(item.Amount.Text);
+                temp.unitOfMeasure = item.Unit.Text;
+                temp.desc = item.Name.Text;
+                ing.Add(temp);
             }
             return ing;
-
         }
 
-        List<string> convertStep()
-        {
-            List<string> ing = null;
+        List<string> convertSteps() {
+            List<string> steps = new List<string>();
 
-            foreach (IngredientItem item in IngrediantList)
+            foreach (Steps temp in PreparationStepsList)
             {
-                ing.Add(item.desc);
-
+                steps.Add(temp.Step.Text);
             }
-            return ing;
+            return steps;
+        }
 
+        List<string> convertTools() {
+            List<string> tools = new List<string>();
+
+            foreach (Tools temp in SpecialTools)
+            {
+                tools.Add(temp.Name.Text);
+            }
+            return tools;
         }
 
         public void Finished(object sender, UIImagePickerMediaPickedEventArgs e)
@@ -609,5 +697,26 @@ namespace IEatHealthy.iOS
             base.ViewDidLayoutSubviews();
 
         }
+    }
+
+    public class Ingre
+    {
+        public UIView background { get; set; }
+        public UITextField Name { get; set; }
+        public UITextField Unit { get; set; }
+        public UITextField Amount { get; set; }
+    }
+
+    public class Tools
+    {
+        public UIView background { get; set; }
+        public UITextField Name { get; set; }
+    }
+
+    public class Steps
+    {
+        public UIView background { get; set; }
+        public UIView shadow { get; set; }
+        public UITextView Step { get; set; }
     }
 }

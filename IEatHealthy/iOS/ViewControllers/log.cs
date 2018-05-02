@@ -130,10 +130,10 @@ namespace IEatHealthy.iOS
                     // objectret = aResponse;
                     // UserAccount aa = JsonConvert.DeserializeObject<UserAccount>(aResponse);
                     // string bba = JsonConvert.SerializeObject(aa);
-                //    UITextView aaaa = new UITextView(new CGRect(50, 300, 250, 400));
-                //    aaaa.Text = aResponse.Replace(",", "," + System.Environment.NewLine);
-                //    View.AddSubview(aaaa);
-                //    datareceved = true;
+                    UITextView aaaa = new UITextView(new CGRect(50, 300, 250, 400));
+                    aaaa.Text = aResponse.Replace(",", "," + System.Environment.NewLine);
+                    View.AddSubview(aaaa);
+                    datareceved = true;
 
                 }
             }
