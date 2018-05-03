@@ -32,8 +32,8 @@ namespace IEatHealthy.iOS
             base.ViewDidLoad();
             //   Title = ViewModel.Item.Text;
 
-           
-          //NavigationItem.BackBarButtonItem.Enabled = true;
+
+            //NavigationItem.BackBarButtonItem.Enabled = true;
 
             scrollView.AutoresizingMask = UIViewAutoresizing.FlexibleHeight;
 
@@ -53,7 +53,7 @@ namespace IEatHealthy.iOS
 
             var str1 = new UIButton(UIButtonType.Custom)
             {
-                Frame = new CGRect(10, 90, 30,30),
+                Frame = new CGRect(10, 90, 30, 30),
             };
             str1.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
 
@@ -71,7 +71,7 @@ namespace IEatHealthy.iOS
 
             var str4 = new UIButton(UIButtonType.Custom)
             {
-                Frame = new CGRect(100, 90, 30,30),
+                Frame = new CGRect(100, 90, 30, 30),
             };
             str4.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
 
@@ -81,36 +81,41 @@ namespace IEatHealthy.iOS
             };
             str5.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
 
-            if(ratingCount>1&&ratingCount<1.7){
+            if (ratingCount > 1 && ratingCount < 1.7)
+            {
                 str1.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
                 str2.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
                 str3.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
                 str4.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
                 str5.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
-            
+
             }
-            if (ratingCount>=1.7  && ratingCount < 2.7) { 
+            if (ratingCount >= 1.7 && ratingCount < 2.7)
+            {
                 str1.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
                 str2.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
                 str3.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
                 str4.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
                 str5.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
             }
-            if (ratingCount >= 2.7 && ratingCount < 3.7) {
+            if (ratingCount >= 2.7 && ratingCount < 3.7)
+            {
                 str1.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
                 str2.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
                 str3.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
                 str4.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
                 str5.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
             }
-            if (ratingCount >=3.7 && ratingCount < 4.7) {
+            if (ratingCount >= 3.7 && ratingCount < 4.7)
+            {
                 str1.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
                 str2.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
                 str3.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
                 str4.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
                 str5.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
             }
-            if (ratingCount > 4.7 && ratingCount <= 5) {
+            if (ratingCount > 4.7 && ratingCount <= 5)
+            {
                 str1.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
                 str2.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
                 str3.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
@@ -119,7 +124,7 @@ namespace IEatHealthy.iOS
             }
 
 
-            
+
             scrollView.AddSubviews(str1, str2, str3, str4, str5);
 
 
@@ -143,13 +148,14 @@ namespace IEatHealthy.iOS
             {
                 Frame = new CGRect(View.Frame.Width - 60, 50, 40, 50),
 
-             };
+            };
 
             Bookmark.SetImage(UIImage.FromBundle("bookmarkicon"), UIControlState.Normal);
             scrollView.AddSubview(Bookmark);
-            Bookmark.TouchUpInside += (sender, e) => {
+            Bookmark.TouchUpInside += (sender, e) =>
+            {
                 App.currentAccount.bookmarkedRecipes.Add(ViewModel.Item.stringId);
-                var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/bookmark?recipeId={0}&email={1}&token={2}",ViewModel.Item.stringId, App.currentAccount.email, App.currentAccount.JWTToken));
+                var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/bookmark?recipeId={0}&email={1}&token={2}", ViewModel.Item.stringId, App.currentAccount.email, App.currentAccount.JWTToken));
                 request.ContentType = "application/JSON";
                 request.Method = "POST";
                 using (var streamWriter = new StreamWriter(request.GetRequestStream()))
@@ -200,7 +206,7 @@ namespace IEatHealthy.iOS
             RecipeControl.Layer.BorderWidth = 0f;
             RecipeControl.SelectedSegment = 0;
 
-          
+
             var imageBytes = Convert.FromBase64String(ViewModel.Item.foodImage.data);
             var imagedata = NSData.FromArray(imageBytes);
             var uiimage = UIImage.LoadFromData(imagedata);
@@ -302,7 +308,7 @@ namespace IEatHealthy.iOS
 
 
             UILabel CalorieLabel = new UILabel(new CGRect(20, graybox12.Frame.Y + 4, 300, 30));
-            CalorieLabel.Text = "Calories "+ViewModel.Item.calories.ToString();
+            CalorieLabel.Text = "Calories " + ViewModel.Item.calories.ToString();
             CalorieLabel.Font = UIFont.FromName("Helvetica", 15f);
             NutrationalFactsList.Add(CalorieLabel);
 
@@ -322,7 +328,7 @@ namespace IEatHealthy.iOS
             NutrationalFactsList.Add(graybox14);
 
             UILabel Fatlabel = new UILabel(new CGRect(20, graybox14.Frame.Y + 4, 300, 20));
-            Fatlabel.Text = "Total Fat "+ViewModel.Item.fat.ToString();
+            Fatlabel.Text = "Total Fat " + ViewModel.Item.fat.ToString();
             Fatlabel.Font = UIFont.FromName("Helvetica-bold", 15f);
             NutrationalFactsList.Add(Fatlabel);
 
@@ -336,7 +342,7 @@ namespace IEatHealthy.iOS
             NutrationalFactsList.Add(graybox15);
 
             UILabel satFatlabel = new UILabel(new CGRect(40, graybox15.Frame.Y + 4, 300, 20));
-            satFatlabel.Text = "Saturated Fat "+ViewModel.Item.fat.ToString();
+            satFatlabel.Text = "Saturated Fat " + ViewModel.Item.fat.ToString();
             satFatlabel.Font = UIFont.FromName("Helvetica", 15f);
             NutrationalFactsList.Add(satFatlabel);
 
@@ -345,7 +351,7 @@ namespace IEatHealthy.iOS
             NutrationalFactsList.Add(graybox16);
 
             UILabel Transfat = new UILabel(new CGRect(40, graybox16.Frame.Y + 4, 300, 20));
-            Transfat.Text = "Trans Fat  "+ViewModel.Item.fat.ToString();
+            Transfat.Text = "Trans Fat  " + ViewModel.Item.fat.ToString();
             Transfat.Font = UIFont.FromName("Helvetica", 15f);
             NutrationalFactsList.Add(Transfat);
 
@@ -359,7 +365,7 @@ namespace IEatHealthy.iOS
             NutrationalFactsList.Add(graybox17);
 
             UILabel cholesLabel = new UILabel(new CGRect(20, graybox17.Frame.Y + 4, 300, 20));
-            cholesLabel.Text = "Cholesterol "+ViewModel.Item.cholestrol.ToString();
+            cholesLabel.Text = "Cholesterol " + ViewModel.Item.cholestrol.ToString();
             cholesLabel.Font = UIFont.FromName("Helvetica-bold", 15f);
             NutrationalFactsList.Add(cholesLabel);
 
@@ -373,7 +379,7 @@ namespace IEatHealthy.iOS
             NutrationalFactsList.Add(graybox18);
 
             UILabel SodiiumLabel = new UILabel(new CGRect(20, graybox18.Frame.Y + 4, 300, 20));
-            SodiiumLabel.Text = "Sodium "+ViewModel.Item.sodium.ToString();
+            SodiiumLabel.Text = "Sodium " + ViewModel.Item.sodium.ToString();
             SodiiumLabel.Font = UIFont.FromName("Helvetica-bold", 15f);
             NutrationalFactsList.Add(SodiiumLabel);
 
@@ -387,7 +393,7 @@ namespace IEatHealthy.iOS
             NutrationalFactsList.Add(graybox19);
 
             UILabel Carblabel = new UILabel(new CGRect(20, graybox19.Frame.Y + 4, 300, 20));
-            Carblabel.Text = "Total Carbohydrate "+ViewModel.Item.carbohydrate.ToString();
+            Carblabel.Text = "Total Carbohydrate " + ViewModel.Item.carbohydrate.ToString() + "g";
             Carblabel.Font = UIFont.FromName("Helvetica-bold", 15f);
             NutrationalFactsList.Add(Carblabel);
 
@@ -415,7 +421,7 @@ namespace IEatHealthy.iOS
             NutrationalFactsList.Add(graybox21);
 
             UILabel Sugerlabel = new UILabel(new CGRect(40, graybox21.Frame.Y + 4, 300, 20));
-            Sugerlabel.Text = "Sugars  0g";//+ViewModel.Item.calorieCount;
+            Sugerlabel.Text = "Sugars " + ViewModel.Item.sugar + "g";
             Sugerlabel.Font = UIFont.FromName("Helvetica", 15f);
             NutrationalFactsList.Add(Sugerlabel);
 
@@ -424,7 +430,7 @@ namespace IEatHealthy.iOS
             NutrationalFactsList.Add(graybox22);
 
             UILabel ProteinLabel = new UILabel(new CGRect(20, graybox22.Frame.Y + 4, 300, 20));
-            ProteinLabel.Text = "Protein 0g";//+ViewModel.Item.calorieCount;
+            ProteinLabel.Text = "Protein " + ViewModel.Item.protein + "g";
             ProteinLabel.Font = UIFont.FromName("Helvetica-bold", 15f);
             NutrationalFactsList.Add(ProteinLabel);
 
@@ -433,7 +439,7 @@ namespace IEatHealthy.iOS
             NutrationalFactsList.Add(graybox23);
 
             UILabel Vitalabel = new UILabel(new CGRect(20, graybox23.Frame.Y + 4, 300, 20));
-            Vitalabel.Text = "Vitamin A";//+ViewModel.Item.calorieCount;
+            Vitalabel.Text = "Vitamin A " + ViewModel.Item.vitAiu.ToString() + "mg";
             Vitalabel.Font = UIFont.FromName("Helvetica-bold", 15f);
             NutrationalFactsList.Add(Vitalabel);
 
@@ -447,12 +453,12 @@ namespace IEatHealthy.iOS
             NutrationalFactsList.Add(graybox24);
 
             UILabel Vitclabel = new UILabel(new CGRect(20, graybox24.Frame.Y + 4, 300, 20));
-            Vitclabel.Text = "Vitamin C";//+ViewModel.Item.calorieCount;
+            Vitclabel.Text = "Vitamin C " + ViewModel.Item.vitaminC.ToString() + "mg";
             Vitclabel.Font = UIFont.FromName("Helvetica-bold", 15f);
             NutrationalFactsList.Add(Vitclabel);
 
             UILabel VitcPer = new UILabel(new CGRect(View.Frame.Width - 50, graybox24.Frame.Y + 4, 30, 20));
-            VitcPer.Text = "0 %";//+ViewModel.Item.calorieCount;
+            VitcPer.Text = "0 %";//ViewModel.Item.calorieCount;
             VitcPer.Font = UIFont.FromName("Helvetica", 15f);
             NutrationalFactsList.Add(VitcPer);
 
@@ -461,7 +467,7 @@ namespace IEatHealthy.iOS
             NutrationalFactsList.Add(graybox25);
 
             UILabel Vitdlabel = new UILabel(new CGRect(20, graybox25.Frame.Y + 4, 300, 20));
-            Vitdlabel.Text = "Vitamin D";//+ViewModel.Item.calorieCount;
+            Vitdlabel.Text = "Vitamin D " + ViewModel.Item.vitDiu.ToString() +"mg";
             Vitdlabel.Font = UIFont.FromName("Helvetica-bold", 15f);
             NutrationalFactsList.Add(Vitdlabel);
 
@@ -475,7 +481,7 @@ namespace IEatHealthy.iOS
             NutrationalFactsList.Add(graybox26);
 
             UILabel Ironlabel = new UILabel(new CGRect(20, graybox26.Frame.Y + 4, 300, 20));
-            Ironlabel.Text = "Iron";//+ViewModel.Item.calorieCount;
+            Ironlabel.Text = "Iron" + ViewModel.Item.iron.ToString()+"g";
             Ironlabel.Font = UIFont.FromName("Helvetica-bold", 15f);
             NutrationalFactsList.Add(Ironlabel);
 
@@ -489,7 +495,7 @@ namespace IEatHealthy.iOS
             NutrationalFactsList.Add(graybox27);
 
             UILabel Potlabel = new UILabel(new CGRect(20, graybox27.Frame.Y + 4, 300, 20));
-            Potlabel.Text = "Potassium";//+ViewModel.Item.calorieCount;
+            Potlabel.Text = "Potassium"+ViewModel.Item.potassium.ToString()+"g";
             Potlabel.Font = UIFont.FromName("Helvetica-bold", 15f);
             NutrationalFactsList.Add(Potlabel);
 
