@@ -24,7 +24,7 @@ namespace IEatHealthy.iOS
         public BrowseItemDetailViewController(IntPtr handle) : base(handle) { }
         public int itemsss = 0;
         public int reviewCount = 0;
-        public int ratingCount = 0;
+        public double ratingCount = 0;
         public bool searched = false;
 
         public override void ViewDidLoad()
@@ -50,10 +50,77 @@ namespace IEatHealthy.iOS
 
             scrollView.AddSubview(bylabel);
             gettotalRatingt();
-            UILabel ratingimg = new UILabel(new CGRect(10, 90, 80, 20));
-            // ratingimg.Image = UIImage.FromBundle("RatingIcon");
-            ratingimg.Text = ratingCount.ToString() + "/5";
-            scrollView.AddSubview(ratingimg);
+
+            var str1 = new UIButton(UIButtonType.Custom)
+            {
+                Frame = new CGRect(10, 90, 30,30),
+            };
+            str1.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
+
+            var str2 = new UIButton(UIButtonType.Custom)
+            {
+                Frame = new CGRect(40, 90, 30, 30),
+            };
+            str2.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
+
+            var str3 = new UIButton(UIButtonType.Custom)
+            {
+                Frame = new CGRect(70, 90, 30, 30),
+            };
+            str3.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
+
+            var str4 = new UIButton(UIButtonType.Custom)
+            {
+                Frame = new CGRect(100, 90, 30,30),
+            };
+            str4.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
+
+            var str5 = new UIButton(UIButtonType.Custom)
+            {
+                Frame = new CGRect(130, 90, 30, 30),
+            };
+            str5.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
+
+            if(ratingCount>1&&ratingCount<1.7){
+                str1.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
+                str2.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
+                str3.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
+                str4.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
+                str5.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
+            
+            }
+            if (ratingCount>=1.7  && ratingCount < 2.7) { 
+                str1.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
+                str2.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
+                str3.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
+                str4.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
+                str5.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
+            }
+            if (ratingCount >= 2.7 && ratingCount < 3.7) {
+                str1.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
+                str2.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
+                str3.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
+                str4.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
+                str5.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
+            }
+            if (ratingCount >=3.7 && ratingCount < 4.7) {
+                str1.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
+                str2.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
+                str3.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
+                str4.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
+                str5.SetImage(UIImage.FromBundle("str1"), UIControlState.Normal);
+            }
+            if (ratingCount > 4.7 && ratingCount <= 5) {
+                str1.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
+                str2.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
+                str3.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
+                str4.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
+                str5.SetImage(UIImage.FromBundle("str2"), UIControlState.Normal);
+            }
+
+
+            
+            scrollView.AddSubviews(str1, str2, str3, str4, str5);
 
 
             ReviewButton.Frame = new CGRect(View.Frame.Width - 160, 90, 150, 20);
@@ -106,10 +173,6 @@ namespace IEatHealthy.iOS
                     }
                 }
             };
-
-            UILabel ratinglabel = new UILabel(new CGRect(10, 114, 100, 15));
-            ratinglabel.Text = "  5 of 5";
-            scrollView.AddSubviews(ratingimg, ratinglabel);
 
             UISegmentedControl RecipeControl = new UISegmentedControl();
             RecipeControl.Frame = new CGRect(0, 140, View.Bounds.Size.Width, 40);
@@ -193,14 +256,19 @@ namespace IEatHealthy.iOS
             Readyin.Font = UIFont.FromName("Helvetica", 14f);
 
 
-
+            string ab = "";
+            int a = ViewModel.Item.difficulty;
+            if (a == 1) { ab = "Easy"; }
+            if (a == 2) { ab = "Medium"; }
+            if (a == 3) { ab = "Hard"; }
 
             UILabel difficultylabel = new UILabel(new CGRect(20, Readyin.Frame.Y + 20, 100, 20));
             difficultylabel.Text = "Difficulty ";
             difficultylabel.Font = UIFont.FromName("Helvetica", 14f);
 
+
             UILabel difficulty = new UILabel(new CGRect(140, Readyin.Frame.Y + 20, 100, 20));
-            difficulty.Text = ViewModel.Item.difficulty.ToString();
+            difficulty.Text = ab;
             difficulty.Font = UIFont.FromName("Helvetica", 14f);
 
             UILabel graybox1 = new UILabel(new CGRect(0, difficulty.Frame.Y + 30, View.Frame.Width, 5));
@@ -696,7 +764,7 @@ namespace IEatHealthy.iOS
         }
         public async void gettotalRatingt()
         {
-            var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/{0}/ratings?token={1}", ViewModel.Item.stringId, App.currentAccount.JWTToken));
+            var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/{0}/totalrating?token={1}", ViewModel.Item.stringId, App.currentAccount.JWTToken));
             request.ContentType = "application/JSON";
             request.Method = "GET";
 
@@ -707,11 +775,19 @@ namespace IEatHealthy.iOS
             {
 
                 aResponse = sr.ReadToEnd();
-               // var newitem = JsonConvert.DeserializeObject<RecipeRating>(aResponse);
-               // if (newitem == null) { reviewCount = 0; }
-             //   else{ if (newitem.ratings == null) { reviewCount = 0; }
-             //   else ratingCount = (int)newitem.totalRating;
+                if (aResponse != null)
+                {
+                    double ll;
+                    if (aResponse != null)
+                    {
+                        bool asd = double.TryParse(aResponse,out ll);
+                        if (asd) { ratingCount = ll; }
+                        else { ratingCount = 0; }
+                    }
+                    else ratingCount = 0;
+
                 }
+            }
 
             }
 
