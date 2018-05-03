@@ -105,12 +105,6 @@ namespace IEatHealthy.iOS
                     userdata = aResponse;
                     datareceved = true;
 
-
-                    UITextView aaaa = new UITextView(new CGRect(50, 300, 250, 400));
-                    aaaa.Text = aResponse.Replace(",", "," + System.Environment.NewLine);
-                    View.AddSubview(aaaa);
-                    datareceved = true;
-
                 }
             }
             catch (System.Net.WebException)
