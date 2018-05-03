@@ -235,11 +235,16 @@ namespace IEatHealthy.iOS
                 return resultImage;
             }
 
-
             var cell = tableView.DequeueReusableCell(CELL_IDENTIFIER, indexPath);
+
             var item = viewModel.Items[indexPath.Row];
+            string ab = "";
+            int a = item.difficulty;
+            if (a == 1) { ab = "Easy"; }
+            if (a == 2) { ab = "Medium"; }
+            if (a == 3) { ab = "Hard"; }
             cell.TextLabel.Text = item.name;
-            cell.DetailTextLabel.Text = item.description;
+            cell.DetailTextLabel.Text =  ab + "    "+ item.servings.ToString()+ " Servings  "+item.readyInTime.ToString()+" Min";
             cell.LayoutMargins = UIEdgeInsets.Zero;
                 var imageBytes = Convert.FromBase64String(item.foodImage.data);
                 var imagedata = NSData.FromArray(imageBytes);
