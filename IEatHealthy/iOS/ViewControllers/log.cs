@@ -78,7 +78,7 @@ namespace IEatHealthy.iOS
                     App.currentAccount = JsonConvert.DeserializeObject<UserAccount>(userdata);
                     App.currentAccount.JWTToken = tokendata;
                     App.currentAccount.email = loginEmail.Text;
-                    return false; //base.ShouldPerformSegue(segueIdentifier, sender);
+                    return base.ShouldPerformSegue(segueIdentifier, sender);
                 }
                 else return false;
             }

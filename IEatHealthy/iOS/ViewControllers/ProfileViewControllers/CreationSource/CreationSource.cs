@@ -71,12 +71,14 @@ namespace IEatHealthy.iOS
             var backButton = new UIBarButtonItem();
             backButton.Title = "Back";
             backButton.Style = UIBarButtonItemStyle.Plain;
+            backButton.TintColor = UIColor.Red;
             backButton.Clicked += (sender, e) =>
             {
-                navController.PopViewController(true);
+                owner.DismissViewController(true, null);
             };
-            navController.NavigationItem.LeftBarButtonItem = backButton;
+            controller.NavigationItem.LeftBarButtonItem = backButton;
             owner.PresentViewController(navController, true, null);
         }
+
     }
 }
