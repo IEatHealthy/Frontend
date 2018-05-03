@@ -111,10 +111,28 @@ namespace IEatHealthy.iOS
             ratinglabel.Text = "  5 of 5";
             scrollView.AddSubviews(ratingimg, ratinglabel);
 
-            UISegmentedControl RecipeControl = new UISegmentedControl(new CGRect(10, 140, 350, 30));
+            UISegmentedControl RecipeControl = new UISegmentedControl();
+            RecipeControl.Frame = new CGRect(0, 140, View.Bounds.Size.Width, 40);
+            RecipeControl.BackgroundColor = UIColor.White;
+            RecipeControl.TintColor = UIColor.Clear;
             RecipeControl.InsertSegment("Detail", 0, false);
             RecipeControl.InsertSegment("Ingredients", 1, false);
-            RecipeControl.InsertSegment("Preparations steps", 2, false);
+            RecipeControl.InsertSegment("Steps", 2, false);
+
+            RecipeControl.SetTitleTextAttributes(new UITextAttributes()
+            {
+                TextColor = UIColor.Black,
+                Font = UIFont.FromName("Helvetica-Light", 14f),
+                TextShadowColor = UIColor.Clear
+            }, UIControlState.Normal);
+
+            RecipeControl.SetTitleTextAttributes(new UITextAttributes()
+            {
+                TextColor = UIColor.Red,
+                Font = UIFont.FromName("Helvetica-Light", 14f),
+                TextShadowColor = UIColor.Clear
+            }, UIControlState.Selected);
+
             RecipeControl.Layer.BorderColor = (UIColor.White).CGColor;
             RecipeControl.Layer.BorderWidth = 0f;
             RecipeControl.SelectedSegment = 0;

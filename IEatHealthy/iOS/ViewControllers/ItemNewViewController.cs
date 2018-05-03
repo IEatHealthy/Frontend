@@ -90,8 +90,6 @@ namespace IEatHealthy.iOS
             RecipeName.AddSubview(ImageBtn);
             RecipeName.AddSubview(ImageView);
 
-
-
             var NameLabel = new UILabel();
             NameLabel.Frame = new CGRect(View.Bounds.Size.Width / 2 + 10, 10, 10, 10);
             NameLabel.Text = "Name:";
@@ -121,7 +119,6 @@ namespace IEatHealthy.iOS
             DescriptionBox.Layer.ShadowColor = UIColor.FromRGB(100, 100, 100).CGColor;
             DescriptionBox.Layer.ShadowOffset = new CGSize(1.0, 1.0);
             DescriptionBox.Layer.ShadowOpacity = 1f;
-            DescriptionText.Text = App.currentAccount.email;
             DescriptionText.BackgroundColor = UIColor.White;
             DescriptionText.Layer.BorderColor = UIColor.FromRGB(200, 200, 200).CGColor;
             DescriptionText.Layer.BorderWidth = 1f;
@@ -197,18 +194,21 @@ namespace IEatHealthy.iOS
             // Difficulty Buttons
             var DifficultyPosition = RecipeNumbersPosition + RecipeNumbers.Bounds.Height + 5;
             var DifficultyButtons = new UIView();
+            border.BackgroundColor = UIColor.FromRGB(200, 200, 200).CGColor;
+            border.Frame = new CGRect(0, DifficultyButtons.Frame.Size.Height - 1, DifficultyButtons.Frame.Size.Width, 1);
+            DifficultyButtons.Layer.AddSublayer(border);
 
             DifficultyButtons.Frame = new CGRect(0, DifficultyPosition, View.Bounds.Size.Width, 100);
             DifficultyButtons.BackgroundColor = UIColor.White;
             var DifficultyBorder = new CALayer();
             DifficultyBorder.BackgroundColor = UIColor.FromRGB(200, 200, 200).CGColor;
-            DifficultyBorder.Frame = new CGRect(0, DifficultyButtons.Frame.Size.Height - 1, DifficultyBorder.Frame.Size.Width, 1);
+            DifficultyBorder.Frame = new CGRect(0, DifficultyButtons.Frame.Size.Height - 1, DifficultyButtons.Frame.Size.Width, 1);
             DifficultyButtons.Layer.AddSublayer(DifficultyBorder);
             scrollView.AddSubview(DifficultyButtons);
 
             var DifficultyLabel = new UILabel();
             DifficultyLabel.Frame = new CGRect(20, 10, 10, 10);
-            DifficultyLabel.Text = "Difficulty";
+            DifficultyLabel.Text = "Difficulty:";
             DifficultyLabel.Font = UIFont.FromName("Helvetica-Light", 14f);
             DifficultyLabel.SizeToFit();
             DifficultyButtons.AddSubview(DifficultyLabel);
@@ -216,13 +216,14 @@ namespace IEatHealthy.iOS
 
             int RecipeDifficulty;
 
+
             var easy = new UIButton(UIButtonType.Custom)
             {
                 Frame = new CGRect(20, 50, 70, 20),
             };
             var Intermediate = new UIButton(UIButtonType.Custom)
             {
-                Frame = new CGRect(100, 50, 140, 20),
+                Frame = new CGRect(110, 50, 140, 20),
             };
             var Hard = new UIButton(UIButtonType.Custom)
             {
@@ -232,25 +233,22 @@ namespace IEatHealthy.iOS
 
             Hard.SetTitleColor(UIColor.Black, UIControlState.Normal);
             Hard.SetTitle("Hard", UIControlState.Normal);
-            Hard.Layer.BorderWidth = 0.2f;
-            Hard.Layer.CornerRadius = 5;
+            BtnShadow(Hard);
             DifficultyButtons.AddSubview(Hard);
 
             Intermediate.SetTitle("Intermediate", UIControlState.Normal);
             Intermediate.SetTitleColor(UIColor.Black, UIControlState.Normal);
-            Intermediate.Layer.CornerRadius = 5;
-            Intermediate.Layer.BorderWidth = 0.2f;
+            BtnShadow(Intermediate);
             DifficultyButtons.AddSubview(Intermediate);
 
             easy.SetTitle("Easy", UIControlState.Normal);
             easy.SetTitleColor(UIColor.Black, UIControlState.Normal);
-            easy.Layer.CornerRadius = 5;
-            easy.Layer.BorderWidth = 0.2f;
+            BtnShadow(easy);
             DifficultyButtons.AddSubview(easy);
 
             easy.TouchUpInside += (s, e) =>
             {
-                easy.BackgroundColor = UIColor.FromRGB(0, 150, 255);
+                easy.BackgroundColor = UIColor.Red;
                 Intermediate.BackgroundColor = UIColor.White;
                 Hard.BackgroundColor = UIColor.White;
                 RecipeDifficulty = 1;
@@ -258,7 +256,7 @@ namespace IEatHealthy.iOS
 
             Intermediate.TouchUpInside += (s, e) =>
             {
-                Intermediate.BackgroundColor = UIColor.FromRGB(0, 150, 255);
+                Intermediate.BackgroundColor = UIColor.Red;
                 easy.BackgroundColor = UIColor.White;
                 Hard.BackgroundColor = UIColor.White;
                 RecipeDifficulty = 2;
@@ -266,7 +264,7 @@ namespace IEatHealthy.iOS
 
             Hard.TouchUpInside += (s, e) =>
             {
-                Hard.BackgroundColor = UIColor.FromRGB(0, 150, 255);
+                Hard.BackgroundColor = UIColor.Red;
                 Intermediate.BackgroundColor = UIColor.White;
                 easy.BackgroundColor = UIColor.White;
                 RecipeDifficulty = 3;
@@ -309,15 +307,15 @@ namespace IEatHealthy.iOS
             UIView FirstIngredientView = new UIView(new CGRect(0, IngredientPosition, View.Bounds.Width, 40));
             FirstIngredientView.BackgroundColor = UIColor.White;
 
-            UITextField FirstIngredientAmount = new UITextField(new CGRect(20, 5, 90, 25));
+            UITextField FirstIngredientAmount = new UITextField(new CGRect(20, 5, 40, 25));
             NewTextField(FirstIngredientAmount);
             FirstIngredientAmount.Placeholder = "Amount";
 
-            UITextField FirstIngredientUnit = new UITextField(new CGRect(120, 5, 90, 25));
+            UITextField FirstIngredientUnit = new UITextField(new CGRect(70, 5, 50, 25));
             NewTextField(FirstIngredientUnit);
             FirstIngredientUnit.Placeholder = "Unit of Measure";
 
-            UITextField FirstIngredientName = new UITextField(new CGRect(220, 5, 90, 25));
+            UITextField FirstIngredientName = new UITextField(new CGRect(130, 5, 190, 25));
             NewTextField(FirstIngredientName);
             FirstIngredientName.Placeholder = "Name";
 
@@ -329,7 +327,7 @@ namespace IEatHealthy.iOS
 
             var AddIngredientButton = new UIButton(UIButtonType.ContactAdd)
             {
-                Frame = new CGRect(View.Bounds.Width - 40, 5, 20, 20),
+                Frame = new CGRect(View.Bounds.Width - 40, 10, 20, 20),
             };
             FirstIngredientView.AddSubview(FirstIngredientAmount);
             FirstIngredientView.AddSubview(FirstIngredientUnit);
@@ -341,11 +339,11 @@ namespace IEatHealthy.iOS
             // First StepView
 
             Steps step = new Steps();
-            UIView FirstStepView = new UIView(new CGRect(0, StepsPosition, View.Bounds.Width, 70));
+            UIView FirstStepView = new UIView(new CGRect(0, StepsPosition, View.Bounds.Width, 80));
             FirstStepView.BackgroundColor = UIColor.White;
             UITextView FirstStep = new UITextView();
             FirstStep.ContentMode = UIViewContentMode.ScaleAspectFit;
-            UIView ShadowStep = new UIView(new CGRect(20, 5, 200, 60));
+            UIView ShadowStep = new UIView(new CGRect(20, 5, View.Bounds.Width - 80, 60));
             FirstStep.Frame = ShadowStep.Bounds;
             ShadowStep.AddSubview(FirstStep);
 
@@ -378,7 +376,7 @@ namespace IEatHealthy.iOS
             Tools tool = new Tools();
             UIView FirstSpecialToolView = new UIView(new CGRect(0, SpecialToolsPosition, View.Bounds.Width, 40));
             FirstSpecialToolView.BackgroundColor = UIColor.White;
-            UITextField FirstSpecialTool = new UITextField(new CGRect(20, 5, 100, 25));
+            UITextField FirstSpecialTool = new UITextField(new CGRect(20, 5, View.Bounds.Width - 80, 25));
             NewTextField(FirstSpecialTool);
 
             tool.background = FirstSpecialToolView;
@@ -400,9 +398,9 @@ namespace IEatHealthy.iOS
                 IngredientPosition += 40;
                 UIView newIngredientView = new UIView(new CGRect(0, IngredientPosition, View.Bounds.Width, 40));
                 newIngredientView.BackgroundColor = UIColor.White;
-                UITextField newIngredientAmount = new UITextField(new CGRect(20, 5, 90, 25));
-                UITextField newIngredientUnit = new UITextField(new CGRect(120, 5, 90, 25));
-                UITextField newIngredientName = new UITextField(new CGRect(220, 5, 90, 25));
+                UITextField newIngredientAmount = new UITextField(new CGRect(20, 5, 40, 25));
+                UITextField newIngredientUnit = new UITextField(new CGRect(70, 5, 50, 25));
+                UITextField newIngredientName = new UITextField(new CGRect(130, 5, 190, 25));
                 NewTextField(newIngredientAmount);
                 NewTextField(newIngredientUnit);
                 NewTextField(newIngredientName);
@@ -427,11 +425,11 @@ namespace IEatHealthy.iOS
                 Steps steps = new Steps();
                 StepsPosition += 70;
                 AddStepButton.RemoveFromSuperview();
-                UIView newStepView = new UIView(new CGRect(0, StepsPosition, View.Bounds.Width, 70));
+                UIView newStepView = new UIView(new CGRect(0, StepsPosition, View.Bounds.Width, 80));
                 newStepView.BackgroundColor = UIColor.White;
                 UITextView newStep = new UITextView();
                 newStep.ContentMode = UIViewContentMode.ScaleAspectFit;
-                UIView newShadowStep = new UIView(new CGRect(20, 5, 200, 60));
+                UIView newShadowStep = new UIView(new CGRect(20, 5, View.Bounds.Width - 80, 60));
                 newStep.Frame = newShadowStep.Bounds;
                 newShadowStep.AddSubview(newStep);
 
@@ -464,7 +462,7 @@ namespace IEatHealthy.iOS
                 SpecialToolsPosition += 40;
                 UIView newSpecialToolsView = new UIView(new CGRect(0, SpecialToolsPosition, View.Bounds.Width, 40));
                 newSpecialToolsView.BackgroundColor = UIColor.White;
-                UITextField newSpecialTool = new UITextField(new CGRect(20, 5, 100, 25));
+                UITextField newSpecialTool = new UITextField(new CGRect(20, 5, View.Bounds.Width - 80, 25));
                 NewTextField(newSpecialTool);
                 newSpecialToolsView.AddSubview(newSpecialTool);
                 newSpecialToolsView.AddSubview(AddSpecialToolButton);
@@ -558,6 +556,19 @@ namespace IEatHealthy.iOS
         
         }
 
+        void BtnShadow (UIButton btn) 
+        {
+            btn.Layer.BorderColor = UIColor.FromRGB(200, 200, 200).CGColor;
+            btn.Layer.BorderWidth = 1f;
+            btn.Layer.CornerRadius = 5;
+            btn.Layer.ShadowRadius = 2f;
+            btn.Layer.ShadowColor = UIColor.FromRGB(100, 100, 100).CGColor;
+            btn.Layer.ShadowOffset = new CGSize(1.0, 1.0);
+            btn.Layer.ShadowOpacity = 1f;
+            btn.BackgroundColor = UIColor.White;
+            btn.Font = UIFont.FromName("Helvetica-Light", 14f);
+        }
+
         void NewTextField(UITextField textbox)
         {
             textbox.Layer.BorderColor = UIColor.FromRGB(200, 200, 200).CGColor;
@@ -587,12 +598,6 @@ namespace IEatHealthy.iOS
             textbox.Font = UIFont.FromName("Helvetica-Light", 14f);
             textbox.ScrollEnabled = true;
         }
-        //public class IngredientItem
-        //{
-        //    public string unitOfMeasure { get; set; }
-        //    public float amount { get; set; }
-        //    public string desc { get; set; }
-        //}
 
         partial void BtnSaveItem_TouchUpInside(UIButton sender)
         {
@@ -623,7 +628,8 @@ namespace IEatHealthy.iOS
 
             PostRecipe(item);
             NavigationController.PopToRootViewController(true);
-       }
+        }
+
         public async Task PostRecipe(SubmitItem item)
         {
             var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe?email={0}&token={1}",App.currentAccount.email, App.currentAccount.JWTToken));
@@ -648,8 +654,7 @@ namespace IEatHealthy.iOS
             }
 
             catch (System.Net.WebException err){
-
-                DescriptionText.Text = err.ToString();
+                
             }
         }
 
