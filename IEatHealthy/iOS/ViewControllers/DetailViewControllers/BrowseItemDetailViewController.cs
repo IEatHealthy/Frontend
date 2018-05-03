@@ -481,7 +481,7 @@ namespace IEatHealthy.iOS
             NutrationalFactsList.Add(graybox26);
 
             UILabel Ironlabel = new UILabel(new CGRect(20, graybox26.Frame.Y + 4, 300, 20));
-            Ironlabel.Text = "Iron" + ViewModel.Item.iron.ToString()+"g";
+            Ironlabel.Text = "Iron " + ViewModel.Item.iron.ToString()+"g";
             Ironlabel.Font = UIFont.FromName("Helvetica-bold", 15f);
             NutrationalFactsList.Add(Ironlabel);
 
