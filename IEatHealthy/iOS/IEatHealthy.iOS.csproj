@@ -188,6 +188,7 @@
     <ImageAsset Include="Assets.xcassets\NewbBadge.imageset\1-Newbie.jpg" />
     <ImageAsset Include="Assets.xcassets\bookmarkicon.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\bookmarkicon.imageset\bookmark.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Logo-final LEAVES.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ViewControllers\DetailViewControllers\BrowseItemDetailViewController.cs" />
