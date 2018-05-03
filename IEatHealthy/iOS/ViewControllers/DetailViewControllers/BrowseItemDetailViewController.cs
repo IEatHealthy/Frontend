@@ -25,13 +25,15 @@ namespace IEatHealthy.iOS
         public int itemsss = 0;
         public int reviewCount = 0;
         public int ratingCount = 0;
+        public bool searched = false;
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
             //   Title = ViewModel.Item.Text;
 
-
+           
+          //NavigationItem.BackBarButtonItem.Enabled = true;
 
             scrollView.AutoresizingMask = UIViewAutoresizing.FlexibleHeight;
 

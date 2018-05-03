@@ -99,9 +99,8 @@ namespace IEatHealthy.iOS
             { 
                 var controller = segue.DestinationViewController as BrowseItemDetailViewController;
                 var indexPath = TableView.IndexPathForCell(sender as UITableViewCell);
-                var item = ViewModel.Items[indexPath.Row];
-
-                controller.ViewModel = new ItemDetailViewModel(item);
+                    var item = ViewModel.Items[indexPath.Row];
+                    controller.ViewModel = new ItemDetailViewModel(item);
 
             }
             else
@@ -126,7 +125,7 @@ namespace IEatHealthy.iOS
             // Adds search bar to navigation bar
             search = new UISearchController(searchResultsController: null)
             {
-                HidesNavigationBarDuringPresentation = true,
+                HidesNavigationBarDuringPresentation = false,
                 DimsBackgroundDuringPresentation = false,
             };
             search.SearchBar.Placeholder = "Search for a Recipe";

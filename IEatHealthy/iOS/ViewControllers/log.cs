@@ -62,26 +62,6 @@ namespace IEatHealthy.iOS
                         //storing token in CurrentAccount instance of type UserAccount
                         tokendata = myResponse;
                          getdata(myResponse);
-
-                       // getrecipe(myResponse);
-                      
-
-                   
-                       if (datareceved == true)
-                        {
-                          /*I var newitem = JsonConvert.DeserializeObject<Item>(objectret);
-                            errMsg.Text = newitem.foodImage.data;
-                            var imageBytes = Convert.FromBase64String(newitem.foodImage.data);
-                            var imagedata = NSData.FromArray(imageBytes);
-                            var uiimage = UIImage.LoadFromData(imagedata);
-
-
-                            UIImageView aad = new UIImageView(new CGRect(200, 0, 100, 100));
-                            aad.Image = uiimage;
-                            View.AddSubview(aad);
-                            */
-                      }
-
                         loggedin = true;
 
                     }
@@ -98,7 +78,7 @@ namespace IEatHealthy.iOS
                     App.currentAccount = JsonConvert.DeserializeObject<UserAccount>(userdata);
                     App.currentAccount.JWTToken = tokendata;
                     App.currentAccount.email = loginEmail.Text;
-                    return base.ShouldPerformSegue(segueIdentifier, sender);
+                    return false; //base.ShouldPerformSegue(segueIdentifier, sender);
                 }
                 else return false;
             }
@@ -125,11 +105,7 @@ namespace IEatHealthy.iOS
                     userdata = aResponse;
                     datareceved = true;
 
-                    //storing token in CurrentAccount instance of type UserAccount
-                    // App.currentAccount.JWTToken = aResponse;
-                    // objectret = aResponse;
-                    // UserAccount aa = JsonConvert.DeserializeObject<UserAccount>(aResponse);
-                    // string bba = JsonConvert.SerializeObject(aa);
+
                     UITextView aaaa = new UITextView(new CGRect(50, 300, 250, 400));
                     aaaa.Text = aResponse.Replace(",", "," + System.Environment.NewLine);
                     View.AddSubview(aaaa);
@@ -146,45 +122,6 @@ namespace IEatHealthy.iOS
             }
         }
 
-        public async void getrecipe(string myResponse)
-        {
-            var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/name?name=Grilled%20Salmon&token={0}", myResponse));
-            request.ContentType = "application/JSON";
-            request.Method = "GET";
-
-            try
-            {
-                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
-                string aResponse = "";
-                using (StreamReader sr = new StreamReader(response.GetResponseStream()))
-                {
-
-                    aResponse = sr.ReadToEnd();
-                    //storing token in CurrentAccount instance of type UserAccount
-
-                   // App.currentAccount.JWTToken = aResponse;
-
-                 //   App.currentAccount.JWTToken = aResponse;
-
-                  //  objectret = aResponse;
-                  // Item newitem= JsonConvert.DeserializeObject<Item>(json);
-                 //   newitem=JsonConvert.DeserializeObject<>
-                //   UITextView bbb = new UITextView(new CGRect(150, 500, 200, 400));
-                //   bbb.Text = aResponse.Replace(",", "," + System.Environment.NewLine);
-                //  View.AddSubview(bbb);
-                    datareceved = true;
-                  
-                }
-
-            }
-            catch{
-                UITextView ccc = new UITextView(new CGRect(150, 500, 200, 400));
-                ccc.Text = "recipe not found";
-                View.AddSubview(ccc);
-
-            }
-           
-        }
 
 
         public log(IntPtr handle) : base(handle)
