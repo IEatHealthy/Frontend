@@ -144,7 +144,8 @@ namespace IEatHealthy.iOS
             creationCollection.BackgroundColor = UIColor.White;
             creationCollection.ContentSize = View.Frame.Size;
             creationCollection.RowHeight = UITableView.AutomaticDimension;
-            creationCollection.EstimatedRowHeight = 100;
+            creationCollection.EstimatedRowHeight = 200;
+            creationCollection.SeparatorColor = UIColor.Red;
             creationCollection.ReloadData();
 
             var creationCollectionSource = new CreationSource(ViewModel, this);
@@ -241,14 +242,6 @@ namespace IEatHealthy.iOS
                 {
 
                     aResponse = sr.ReadToEnd();
-                    //storing token in CurrentAccount instance of type UserAccount
-
-                    // App.currentAccount.JWTToken = aResponse;
-
-                    //   App.currentAccount.JWTToken = aResponse;
-
-                    //  objectret = aResponse;
-                    // Item newitem= JsonConvert.DeserializeObject<Item>(json);
                     Item newitem = JsonConvert.DeserializeObject<Item>(aResponse);
                     ViewModel.Items.Add(newitem);
                 }

@@ -237,7 +237,6 @@ namespace IEatHealthy.iOS
 
 
             var cell = tableView.DequeueReusableCell(CELL_IDENTIFIER, indexPath);
-
             var item = viewModel.Items[indexPath.Row];
             cell.TextLabel.Text = item.name;
             cell.DetailTextLabel.Text = item.description;

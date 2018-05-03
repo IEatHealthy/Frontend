@@ -25,43 +25,35 @@ namespace IEatHealthy.iOS
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
             UITableViewCell cell = tableView.DequeueReusableCell(CELL_IDENTIFIER);
-
+                
             if (cell == null)
-                cell = new UITableViewCell(UITableViewCellStyle.Default, CELL_IDENTIFIER);
+                cell = new UITableViewCell(UITableViewCellStyle.Subtitle, CELL_IDENTIFIER);
 
-            //UIImage ResizeImage(UIImage sourceImage, float width, float height)
-            //{
-            //    UIGraphics.BeginImageContext(new SizeF(width, height));
-            //    sourceImage.Draw(new RectangleF(0, 0, width, height));
-            //    var resultImage = UIGraphics.GetImageFromCurrentImageContext();
-            //    UIGraphics.EndImageContext();
-            //    return resultImage;
-            //}
+            UIImage ResizeImage(UIImage sourceImage, float width, float height)
+            {
+                UIGraphics.BeginImageContext(new SizeF(width, height));
+                sourceImage.Draw(new RectangleF(0, 0, width, height));
+                var resultImage = UIGraphics.GetImageFromCurrentImageContext();
+                UIGraphics.EndImageContext();
+                return resultImage;
+            }
 
             var item = ViewModel.Items[indexPath.Row];
             cell.TextLabel.Text = item.name;
+            cell.DetailTextLabel.Text = item.description;
             cell.LayoutMargins = UIEdgeInsets.Zero;
 
-            //var imageBytes = Convert.FromBase64String(item.foodImage.data);
-            //var imagedata = NSData.FromArray(imageBytes);
-            //var uiimage = UIImage.LoadFromData(imagedata);
-            //var image = ResizeImage(uiimage, 45, 35);
-            //cell.ImageView.Image = image;
+            var imageBytes = Convert.FromBase64String(item.foodImage.data);
+            var imagedata = NSData.FromArray(imageBytes);
+            var uiimage = UIImage.LoadFromData(imagedata);
+            var image = ResizeImage(uiimage, 45, 35);
+            cell.ImageView.Image = image;
 
             return cell;
         }
 
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {
-            //            let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: "goBack")
-            //   navigationItem.leftBarButtonItem = backButton
-
-            //}
-
-            //func goBack()
-            //{
-            //    dismissViewControllerAnimated(true, completion: nil)
-            //}
             var item = ViewModel.Items[indexPath.Row];
             tableView.DeselectRow(indexPath, true);
             var StoryBoard = UIStoryboard.FromName("Main", null);
