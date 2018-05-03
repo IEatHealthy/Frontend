@@ -112,7 +112,7 @@ namespace IEatHealthy.iOS
             UISegmentedControl RecipeControl = new UISegmentedControl(new CGRect(10, 140, 350, 30));
             RecipeControl.InsertSegment("Detail", 0, false);
             RecipeControl.InsertSegment("Ingredients", 1, false);
-            RecipeControl.InsertSegment("Preperation steps", 2, false);
+            RecipeControl.InsertSegment("Preparations steps", 2, false);
             RecipeControl.Layer.BorderColor = (UIColor.White).CGColor;
             RecipeControl.Layer.BorderWidth = 0f;
             RecipeControl.SelectedSegment = 0;

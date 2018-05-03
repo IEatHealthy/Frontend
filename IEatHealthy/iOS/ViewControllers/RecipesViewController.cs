@@ -19,7 +19,7 @@ namespace IEatHealthy.iOS
         }
         public override void ViewDidLoad()
         {
-            scrollview.BackgroundColor = UIColor.White;
+           
             base.ViewDidLoad();
             List<Item> items = new List<Item>();
 
@@ -57,7 +57,7 @@ namespace IEatHealthy.iOS
                 var imagedata = NSData.FromArray(imageBytes);
                 var uiimage = UIImage.LoadFromData(imagedata);
                 recipepic.Image = uiimage;
-                scrollview.AddSubview(recipepic);
+              
                 y += 60;
 
             }

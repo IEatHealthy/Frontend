@@ -28,7 +28,7 @@ namespace IEatHealthy.iOS
             errMsg.Layer.CornerRadius = 5;
             View.AddSubview(errMsg);
             loginEmail.Text = "test@ieathealthy.info";
-            loginPassword.Text = "potato2";
+            loginPassword.Text = "potato3";
            
         }
 

@@ -13,10 +13,15 @@ namespace IEatHealthy.iOS
 {
     public partial class BrowseViewController : UITableViewController
     {
+        public List<Item> returnedItems;
         public string token { get; set; }
         UIRefreshControl refreshControl;
         public UISearchController search { get; set; }
         public ItemsViewModel ViewModel { get; set; }
+        public bool searchMade = false;
+        public List<Item> recommandedRecipes=new List<Item>();
+
+
         public static AppDelegate App
         {
             get { return (AppDelegate)UIApplication.SharedApplication.Delegate; }
@@ -48,8 +53,15 @@ namespace IEatHealthy.iOS
             RecipeTableView.RowHeight = UITableView.AutomaticDimension;
             RecipeTableView.EstimatedRowHeight = 100;
             RecipeTableView.ReloadData();
+            search.SearchBar.SearchButtonClicked += (s, e) => { 
+                search.ResignFirstResponder();
+                getSearch(); };
+            search.SearchBar.CancelButtonClicked += (s, e) => { 
+                cancleButtonClicked();
+            };
+            RecipeTableView.ReloadData();
 
-            var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/recommended/test@ieathealthy.info?token={0}",App.currentAccount.JWTToken));
+            var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/recommended/test@ieathealthy.info?token={0}", App.currentAccount.JWTToken));
 
             request.ContentType = "application/JSON";
             request.Method = "GET";
@@ -59,13 +71,19 @@ namespace IEatHealthy.iOS
             {
 
                 aResponse = sr.ReadToEnd();
-               ingred = JsonConvert.DeserializeObject<List<Item>>(aResponse);
-                foreach(Item item in ingred){
+                ingred = JsonConvert.DeserializeObject<List<Item>>(aResponse);
+                foreach (Item item in ingred)
+                {
                     ViewModel.Items.Add(item);
+                    recommandedRecipes.Add(item);
                 }
 
             }
+
+
+
         }
+
 
         public override void ViewDidAppear(bool animated)
         {
@@ -78,13 +96,13 @@ namespace IEatHealthy.iOS
         public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
         {
             if (segue.Identifier == "NavigateToItemDetailSegue")
-            {
-                
+            { 
                 var controller = segue.DestinationViewController as BrowseItemDetailViewController;
                 var indexPath = TableView.IndexPathForCell(sender as UITableViewCell);
                 var item = ViewModel.Items[indexPath.Row];
 
                 controller.ViewModel = new ItemDetailViewModel(item);
+
             }
             else
             {
@@ -109,11 +127,12 @@ namespace IEatHealthy.iOS
             search = new UISearchController(searchResultsController: null)
             {
                 HidesNavigationBarDuringPresentation = true,
-                DimsBackgroundDuringPresentation = true
+                DimsBackgroundDuringPresentation = false,
             };
             search.SearchBar.Placeholder = "Search for a Recipe";
             NavigationItem.SearchController = search;
             NavigationItem.HidesSearchBarWhenScrolling = false;
+
         }
 
         void RefreshControl_ValueChanged(object sender, EventArgs e)
@@ -140,10 +159,55 @@ namespace IEatHealthy.iOS
                     break;
             }
         }
-
+       
         void Items_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             InvokeOnMainThread(() => TableView.ReloadData());
+        }
+        void cancleButtonClicked()
+        {
+            if (searchMade)
+            {
+                ViewModel.Items.Clear();
+                foreach (Item item in recommandedRecipes)
+                {
+                    ViewModel.Items.Add(item);
+                }
+                searchMade = false;
+
+            }
+
+        }
+        public async void getSearch()
+        {
+            searchMade = true;
+            string aa = search.SearchBar.Text;
+            aa = aa.Replace(" ", "%20");
+
+            var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/{0}?token={1}", aa, App.currentAccount.JWTToken));
+            request.ContentType = "application/JSON";
+            request.Method = "GET";
+
+
+            HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+            string aResponse = "";
+            using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+            {   
+
+                aResponse = sr.ReadToEnd();
+
+                var newitem = JsonConvert.DeserializeObject<List<Item>>(aResponse);
+                ItemsViewModel newmod = new ItemsViewModel();
+
+                ViewModel.Items.Clear();
+               
+               
+                foreach (Item item in newitem)
+                {
+                    ViewModel.Items.Add(item);
+                }
+                TableView.ReloadData();
+            }
         }
     }
 
@@ -179,18 +243,23 @@ namespace IEatHealthy.iOS
             cell.TextLabel.Text = item.name;
             cell.DetailTextLabel.Text = item.description;
             cell.LayoutMargins = UIEdgeInsets.Zero;
-
                 var imageBytes = Convert.FromBase64String(item.foodImage.data);
                 var imagedata = NSData.FromArray(imageBytes);
                 var uiimage = UIImage.LoadFromData(imagedata);
+            if (uiimage != null)
+            {
                 var image = ResizeImage(uiimage, 45, 35);
                 cell.ImageView.Image = image;
-
+            }
 
 
 
 
             return cell;
         }
+
     }
-}
+   
+    }
+
+

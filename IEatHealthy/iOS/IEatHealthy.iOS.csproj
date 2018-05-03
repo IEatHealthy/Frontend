@@ -275,6 +275,7 @@
     <Compile Include="ViewControllers\ProfileViewControllers\editProfileViewController_.designer.cs">
       <DependentUpon>editProfileViewController_.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\ResultsTableController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />

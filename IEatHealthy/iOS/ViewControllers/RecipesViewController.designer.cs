@@ -14,16 +14,8 @@ namespace IEatHealthy.iOS
     [Register ("RecipesViewController")]
     partial class RecipesViewController
     {
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIScrollView scrollview { get; set; }
-
         void ReleaseDesignerOutlets ()
         {
-            if (scrollview != null) {
-                scrollview.Dispose ();
-                scrollview = null;
-            }
         }
     }
 }

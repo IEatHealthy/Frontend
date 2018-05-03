@@ -1,9 +1,16 @@
 ﻿<Properties StartupConfiguration="{C2E903DD-CDDC-4AE6-AFDE-B54511A5E1C0}|Default">
-  <MonoDevelop.Ide.ItemProperties.IEatHealthy.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.56785AEB-D7EB-4D6D-8E4A-26D412125AE4" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/ViewControllers/ItemNewViewController.cs">
+  <MonoDevelop.Ide.ItemProperties.IEatHealthy.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.0F802176-C2B6-4E37-88A4-4A6C016DECDB" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/ViewControllers/DetailViewControllers/BrowseItemDetailViewController.cs">
     <Files>
-      <File FileName="iOS/ViewControllers/ItemNewViewController.cs" Line="409" Column="65" />
-      <File FileName="IEatHealthy/Models/Item.cs" Line="28" Column="26" />
+      <File FileName="iOS/ViewControllers/ItemNewViewController.cs" Line="617" Column="14" />
+      <File FileName="IEatHealthy/Models/Item.cs" Line="82" Column="43" />
+      <File FileName="iOS/ViewControllers/BrowseViewController.cs" Line="106" Column="14" />
+      <File FileName="iOS/CommentController.cs" Line="189" Column="20" />
+      <File FileName="iOS/ViewControllers/SignupController.cs" Line="132" Column="18" />
+      <File FileName="IEatHealthy/Services/MockDataStore.cs" Line="13" Column="29" />
+      <File FileName="iOS/ViewControllers/RecipesViewController.cs" Line="33" Column="1" />
+      <File FileName="iOS/Main.storyboard" />
+      <File FileName="iOS/ViewControllers/DetailViewControllers/BrowseItemDetailViewController.cs" Line="115" Column="55" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />

@@ -5,6 +5,10 @@ using System.Collections.Generic;
 using CoreGraphics;
 using System.Drawing;
 using CoreAnimation;
+using System.Threading.Tasks;
+using System.Net;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace IEatHealthy.iOS
 {
@@ -117,7 +121,7 @@ namespace IEatHealthy.iOS
             DescriptionBox.Layer.ShadowColor = UIColor.FromRGB(100, 100, 100).CGColor;
             DescriptionBox.Layer.ShadowOffset = new CGSize(1.0, 1.0);
             DescriptionBox.Layer.ShadowOpacity = 1f;
-
+            DescriptionText.Text = App.currentAccount.email;
             DescriptionText.BackgroundColor = UIColor.White;
             DescriptionText.Layer.BorderColor = UIColor.FromRGB(200, 200, 200).CGColor;
             DescriptionText.Layer.BorderWidth = 1f;
@@ -551,6 +555,7 @@ namespace IEatHealthy.iOS
                         break;
                 }
             };
+        
         }
 
         void NewTextField(UITextField textbox)
@@ -591,25 +596,61 @@ namespace IEatHealthy.iOS
 
         partial void BtnSaveItem_TouchUpInside(UIButton sender)
         {
+            NSData data = ImageView.Image.AsPNG();
+            String img64 = data.GetBase64EncodedString(NSDataBase64EncodingOptions.None);
+
             if (PrepTimeText.Text == null) { PrepTimeText.Text = "0"; }
             if (CookTimeText.Text == null) { CookTimeText.Text = "0"; }
             if (ReadyInText.Text == null) { ReadyInText.Text = "0"; }
-            var item = new Item
+
+
+            var item = new SubmitItem
             {
                 name = NameText.Text,
                 servings = Convert.ToInt32(ServingSizeText.Text),
                 prepTime = Convert.ToInt32(PrepTimeText.Text),
                 cookTime = Convert.ToInt32(CookTimeText.Text),
                 readyInTime = Convert.ToInt32(ReadyInText.Text),
-                // picture = imgView.Image,
                 ingredients = convertIng(),
                 steps = convertSteps(),
                 toolsNeeded = convertTools(),
                 description = DescriptionText.Text,
                 difficulty = 1,
+                typeOfFood = 30,
+                author = App.currentAccount.username,
+                foodImage = img64
             };
-            ViewModel.AddItemCommand.Execute(item);
+
+            PostRecipe(item);
             NavigationController.PopToRootViewController(true);
+       }
+        public async Task PostRecipe(SubmitItem item)
+        {
+            var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe?email={0}&token={1}",App.currentAccount.email, App.currentAccount.JWTToken));
+
+            request.ContentType = "application/json";
+            request.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+            {
+                string json = JsonConvert.SerializeObject(item);
+
+                streamWriter.Write(json);
+            }
+           
+            try
+            {
+                var response = (HttpWebResponse)request.GetResponse();
+                using (var streamReader = new StreamReader(response.GetResponseStream()))
+                {
+                    var result = streamReader.ReadToEnd();
+                }
+            }
+
+            catch (System.Net.WebException err){
+
+                DescriptionText.Text = err.ToString();
+            }
         }
 
         List<IngredientItem> convertIng()
@@ -620,7 +661,11 @@ namespace IEatHealthy.iOS
             {
                 IngredientItem temp = new IngredientItem();
 
-                temp.amount = float.Parse(item.Amount.Text);
+                if (item.Amount.Text == null) { temp.amount = 0; }
+                else
+                {
+                    temp.amount = (float)Convert.ToInt32(item.Amount.Text);
+                }
                 temp.unitOfMeasure = item.Unit.Text;
                 temp.desc = item.Name.Text;
                 ing.Add(temp);
