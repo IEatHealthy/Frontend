@@ -112,7 +112,7 @@ namespace IEatHealthy.iOS
             ChangeProfile.BackgroundColor = UIColor.White;
             ChangeProfile.SizeToFit();
 
-            ChangeProfile.TouchUpInside += (object sender, System.EventArgs e) =>
+            ChangeProfile.TouchUpInside += (s, e) =>
             {
                 if (App.currentAccount.badgeSelected.badgeId == element.CurrentBadge.badgeId)
                 {
