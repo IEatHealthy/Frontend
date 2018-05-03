@@ -79,6 +79,9 @@ namespace IEatHealthy.iOS
             signOut.Layer.CornerRadius = 5;
             signOut.SetTitle("Sign Out", UIControlState.Normal);
             InfoView.AddSubview(signOut);
+            signOut.TouchUpInside += (sender, e) => {
+                App.currentAccount.JWTToken = null;
+            };
 
 
             // UI segmented control for info, badge and creation tabs
