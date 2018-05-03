@@ -24,7 +24,7 @@ namespace IEatHealthy.iOS
 
         public string token = "ss";
         public bool isCOmment = false;
-
+        UITextView CommentField;
         public int ratingvalue = 0;
         public override void ViewDidLoad()
         {
@@ -133,7 +133,7 @@ namespace IEatHealthy.iOS
                 CommentLabel.Font = UIFont.FromName("Helvetica-bold", 18f);
                 scrollview.AddSubview(CommentLabel);
 
-                UITextView CommentField = new UITextView(new CGRect(20, 170, 330, 150));
+                CommentField = new UITextView(new CGRect(20, 170, 330, 150));
                 CommentField.Layer.BorderWidth = 1f;
                 CommentField.Layer.CornerRadius = 5;
                 CommentField.Font = UIFont.FromName("Helvetica", 16f);
@@ -153,39 +153,8 @@ namespace IEatHealthy.iOS
 
                 SaveComment.TouchUpInside += (s, e) =>
                 {
-
-                    //post the rating and comment and go back to the recipedetail page
-
-                    var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/{0}/rating?token={1}", ViewModel.Item.stringId, App.currentAccount.JWTToken));
-
-                    request.ContentType = "application/json";
-                    request.Method = "POST";
-
-                    using (var streamWriter = new StreamWriter(request.GetRequestStream()))
-                    {
-                        string json = JsonConvert.SerializeObject(new UserRating
-                        {
-                            userEmail = App.currentAccount.email,
-                            userRating = ratingvalue,
-
-                        });
-
-                        streamWriter.Write(json);
-                    }
-
-                    var response1 = (HttpWebResponse)request.GetResponse();
-                    using (var streamReader = new StreamReader(response1.GetResponseStream()))
-                    {
-                        var result = streamReader.ReadToEnd();
-                    }
-
-
-
-
-                    // SaveComment.Layer.BackgroundColor = UIColor.Gray.CGColor;
-
-
-
+                    postRating();
+                    postComment();
                     NavigationController.PopViewController(true);
                 };
             }
@@ -318,6 +287,58 @@ namespace IEatHealthy.iOS
 
             }
         }
+        public async void postRating()
+        {
+            var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/{0}/rate?token={1}", ViewModel.Item.stringId, App.currentAccount.JWTToken));
+
+            request.ContentType = "application/json";
+            request.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+            {
+                string json = JsonConvert.SerializeObject(new UserRating
+                {
+                    userEmail = App.currentAccount.email,
+                    userRating = ratingvalue,
+
+                });
+
+                streamWriter.Write(json);
+            }
+
+            var response1 = (HttpWebResponse)request.GetResponse();
+            using (var streamReader = new StreamReader(response1.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+            }
+        }
+        public async void postComment()
+        {
+            var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/{0}/review?token={1}", ViewModel.Item.stringId, App.currentAccount.JWTToken));
+
+            request.ContentType = "application/json";
+            request.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+            {
+                string json = JsonConvert.SerializeObject(new UserReview
+                {
+                    userEmail = App.currentAccount.email,
+                    userReview=CommentField.Text,
+
+                });
+
+                streamWriter.Write(json);
+            }
+
+            var response1 = (HttpWebResponse)request.GetResponse();
+            using (var streamReader = new StreamReader(response1.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+            }
+        }
+
+
     }
 }
    
