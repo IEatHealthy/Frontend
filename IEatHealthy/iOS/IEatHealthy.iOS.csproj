@@ -81,9 +81,6 @@
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="Plugin.Share">
-      <HintPath>..\packages\Plugin.Share.7.1.1\lib\Xamarin.iOS10\Plugin.Share.dll</HintPath>
-    </Reference>
     <Reference Include="Plugin.Connectivity.Abstractions">
       <HintPath>..\packages\Xam.Plugin.Connectivity.3.1.1\lib\Xamarin.iOS10\Plugin.Connectivity.Abstractions.dll</HintPath>
     </Reference>
@@ -107,6 +104,9 @@
     </Reference>
     <Reference Include="Plugin.Share.Abstractions">
       <HintPath>..\packages\Plugin.Share.7.1.1\lib\Xamarin.iOS10\Plugin.Share.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Share">
+      <HintPath>..\packages\Plugin.Share.7.1.1\lib\Xamarin.iOS10\Plugin.Share.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -258,10 +258,6 @@
     </Compile>
     <Compile Include="ViewControllers\ProfileViewControllers\BadgeSource\BadgeCell.cs" />
     <Compile Include="ViewControllers\ProfileViewControllers\BadgeSource\BadgeCollectionSource.cs" />
-    <Compile Include="ViewControllers\ProfileViewControllers\CreationSource\CreationCell.cs" />
-    <Compile Include="ViewControllers\ProfileViewControllers\CreationSource\CreationCollectionSource.cs" />
-    <Compile Include="ViewControllers\ProfileViewControllers\InfoSource\InfoCell.cs" />
-    <Compile Include="ViewControllers\ProfileViewControllers\InfoSource\InfoCollectionSource.cs" />
     <Compile Include="ViewControllers\CartViewControllers\CartViewController.cs" />
     <Compile Include="ViewControllers\CartViewControllers\CartViewController.designer.cs">
       <DependentUpon>CartViewController.cs</DependentUpon>
@@ -276,6 +272,7 @@
       <DependentUpon>editProfileViewController_.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewControllers\ResultsTableController.cs" />
+    <Compile Include="ViewControllers\ProfileViewControllers\CreationSource\CreationSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />
@@ -324,7 +321,6 @@
     <Folder Include="Assets.xcassets\SmoothieKing.imageset\" />
     <Folder Include="ViewControllers\ProfileViewControllers\BadgeSource\" />
     <Folder Include="ViewControllers\ProfileViewControllers\CreationSource\" />
-    <Folder Include="ViewControllers\ProfileViewControllers\InfoSource\" />
     <Folder Include="ViewControllers\CartViewControllers\" />
     <Folder Include="Assets.xcassets\bookmarkicon.imageset\" />
   </ItemGroup>

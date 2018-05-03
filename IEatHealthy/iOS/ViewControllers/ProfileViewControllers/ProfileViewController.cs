@@ -2,6 +2,9 @@ using System;
 using UIKit;
 using CoreGraphics;
 using System.Collections.Generic;
+using System.Net;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace IEatHealthy.iOS
 {
@@ -10,9 +13,9 @@ namespace IEatHealthy.iOS
         public ProfileViewController(IntPtr handle) : base(handle)
         {
         }
-
+        public ItemsViewModel ViewModel { get; set; }
         public UIImageView BadgeImg { get; set; }
-
+        public List<Item> creationList { get; set; }
         public static AppDelegate App
         {
             get { return (AppDelegate)UIApplication.SharedApplication.Delegate; }
@@ -25,6 +28,8 @@ namespace IEatHealthy.iOS
 
         public override void ViewDidLoad()
         {
+            ViewModel = new ItemsViewModel();
+            getCreationData();
             base.ViewDidLoad();
 
             this.View.BackgroundColor = UIColor.FromRGB(240, 240, 240);
@@ -44,7 +49,7 @@ namespace IEatHealthy.iOS
 
             BadgeImg = new UIImageView();
             SetProfileBadge(BadgeImg);
-            InfoView.AddSubview(BadgeImg);        
+            InfoView.AddSubview(BadgeImg);
 
             var NameLabel = new UILabel();
             NameLabel.Frame = new CGRect(20, 90, 10, 10);
@@ -85,17 +90,14 @@ namespace IEatHealthy.iOS
             segmentControl.BackgroundColor = UIColor.White;
             segmentControl.TintColor = UIColor.Clear;
 
-            segmentControl.InsertSegment("Info", 0, false);
-            segmentControl.InsertSegment("Badges", 1, false);
-            segmentControl.InsertSegment("Creations", 2, false);
+            segmentControl.InsertSegment("Badges", 0, false);
+            segmentControl.InsertSegment("Creations", 1, false);
             segmentControl.SetTitleTextAttributes(new UITextAttributes()
             {
                 TextColor = UIColor.Black,
                 Font = UIFont.FromName("Helvetica-Bold", 14f),
                 TextShadowColor = UIColor.Clear
             }, UIControlState.Normal);
-
-
 
             segmentControl.SetTitleTextAttributes(new UITextAttributes()
             {
@@ -104,31 +106,11 @@ namespace IEatHealthy.iOS
                 TextShadowColor = UIColor.Clear
             }, UIControlState.Selected);
 
-            segmentControl.SelectedSegment = 1;
+            segmentControl.SelectedSegment = 0;
 
             this.View.AddSubview(segmentControl);
 
             double ContainerLocation = NavLocation + 45;
-
-            // Collection View for the Info tab
-            var InfoCollectionLayout = new UICollectionViewFlowLayout
-            {
-                SectionInset = new UIEdgeInsets(0, 0, 0, 0),
-                MinimumInteritemSpacing = 5,
-                MinimumLineSpacing = 5,
-                ItemSize = new CGSize(View.Bounds.Size.Width, 60),
-                ScrollDirection = UICollectionViewScrollDirection.Vertical
-            };
-
-            var infoCollection = new UICollectionView(new CGRect(0, ContainerLocation, View.Bounds.Size.Width, 490), InfoCollectionLayout);
-            infoCollection.BackgroundColor = UIColor.White;
-            infoCollection.ContentSize = View.Frame.Size;
-
-            var infoCollectionSource = new InfoCollectionSource();
-
-
-            infoCollection.RegisterClassForCell(typeof(InfoCell), InfoCell.InfoID);
-            infoCollection.Source = infoCollectionSource;
 
             // Collection View for the Badge tab
             var badgeCollectionLayout = new UICollectionViewFlowLayout
@@ -152,162 +134,124 @@ namespace IEatHealthy.iOS
             this.View.AddSubview(BadgeCollection);
 
             // Collection View for Creations tab
-            var creationCollectionLayout = new UICollectionViewFlowLayout
-            {
-                SectionInset = new UIEdgeInsets(5, 5, 5, 5),
-                MinimumInteritemSpacing = 5,
-                MinimumLineSpacing = 5,
-                ItemSize = new CGSize(View.Bounds.Size.Width, 100),
-                ScrollDirection = UICollectionViewScrollDirection.Vertical
-            };
 
-            var creationCollection = new UICollectionView(new CGRect(0, ContainerLocation, View.Bounds.Size.Width, 490), creationCollectionLayout);
+            //foreach (Item item in creationList)
+            //{
+            //    ViewModel.Items.Add(item);
+            //}
+
+            var creationCollection = new UITableView(new CGRect(0, ContainerLocation, View.Bounds.Size.Width, 490));
             creationCollection.BackgroundColor = UIColor.White;
             creationCollection.ContentSize = View.Frame.Size;
+            creationCollection.RowHeight = UITableView.AutomaticDimension;
+            creationCollection.EstimatedRowHeight = 100;
+            creationCollection.ReloadData();
 
-            var creationCollectionSource = new CreationCollectionSource();
+            var creationCollectionSource = new CreationSource(ViewModel, this);
 
-
-            creationCollection.RegisterClassForCell(typeof(CreationCell), CreationCell.CreationID);
             creationCollection.Source = creationCollectionSource;
 
-            int previousindex = 1;
-            // Segmented Control for navigation among Info, Badge, and Creation tabs
+            // Segmented Control for navigation among Badge and Creation tabs
             segmentControl.ValueChanged += (sender, e) =>
             {
                 var index = segmentControl.SelectedSegment;
                 switch (index)
                 {
                     case 0:
-                        if (previousindex == 1)
-                        {
-                            BadgeCollection.RemoveFromSuperview();
-                        }
-                        else if (previousindex == 2)
-                        {
-                            creationCollection.RemoveFromSuperview();
-                        }
-                        this.View.AddSubview(infoCollection);
-                        break;
-                    case 1:
-                        if (previousindex == 0)
-                        {
-                            infoCollection.RemoveFromSuperview();
-                        }
-                        else if (previousindex == 2)
-                        {
-                            creationCollection.RemoveFromSuperview();
-                        }
+                        creationCollection.RemoveFromSuperview();
                         this.View.AddSubview(BadgeCollection);
                         break;
-                    case 2:
-                        if (previousindex == 0)
-                        {
-                            infoCollection.RemoveFromSuperview();
-                        }
-                        else if (previousindex == 1)
-                        {
-                            BadgeCollection.RemoveFromSuperview();
-                        }
+                    case 1:
+                        BadgeCollection.RemoveFromSuperview();
                         this.View.AddSubview(creationCollection);
                         break;
                 }
             };
+        }
 
-
-            void addEarnedBadges(BadgeCollectionSource badgeCollection)
+        void SetProfileBadge(UIImageView badgeImg)
+        {
+            int index = App.currentAccount.badgeSelected.badgeId;
+            switch (index)
             {
-                foreach (Badge badge in App.currentAccount.badgesEarned)
-                {
-                    int index = badge.badgeId;
-                    BadgeElement badgeEle;
-                    switch (index)
-                    {
-                        case 1:
-                            badgeEle = new BadgeElement(UIImage.FromBundle("NewbBadge"), "NewbBadge", "Create an Account");
-                            badgeCollection.Rows.Add(badgeEle);
-                            break;
-                        case 2:
-                            badgeEle = new BadgeElement(UIImage.FromBundle("MeatFace"), "Carnivore", "Bookmark 10 Recipes");
-                            badgeCollection.Rows.Add(badgeEle);
-                            break;
-                        case 3:
-                            badgeEle = new BadgeElement(UIImage.FromBundle("EggFace"), "Egg Face", "Bookmark 5 Breakfast Recipes");
-                            badgeCollection.Rows.Add(badgeEle);
-                            break;
-                        case 4:
-                            badgeEle = new BadgeElement(UIImage.FromBundle("VeggieFace"), "Mother Earth", "Bookmark 10 Salad Recipes");
-                            badgeCollection.Rows.Add(badgeEle);
-                            break;
-                        case 5:
-                            badgeEle = new BadgeElement(UIImage.FromBundle("SweetTooth"), "Sweet Tooth", "Bookmark 10 Dessert Recipes");
-                            badgeCollection.Rows.Add(badgeEle);
-                            break;
-                        case 6:
-                            badgeEle = new BadgeElement(UIImage.FromBundle("CookieMonster"), "Cookie Monster", "Bookmark 10 Cookie Recipes");
-                            badgeCollection.Rows.Add(badgeEle);
-                            break;
-                        case 7:
-                            badgeEle = new BadgeElement(UIImage.FromBundle("SmoothieQueen"), "Smoothie Queen", "Bookmark 5 Smoothie Recipes");
-                            badgeCollection.Rows.Add(badgeEle);
-                            break;
-                        case 8:
-                            badgeEle = new BadgeElement(UIImage.FromBundle("SmoothieKing"), "Smoothie King", "Bookmark 10 Smoothie Recipes");
-                            badgeCollection.Rows.Add(badgeEle);
-                            break;
-                        case 9:
-                            badgeEle = new BadgeElement(UIImage.FromBundle("BaconFace"), "Keep Calm & Eat Bacon", "Bookmark 10 Breakfast Recipes");
-                            badgeCollection.Rows.Add(badgeEle);
-                            break;
-                        case 10:
-                            badgeEle = new BadgeElement(UIImage.FromBundle("FishFace"), "The Fisherman", "Bookmark 10 Fish Recipes");
-                            badgeCollection.Rows.Add(badgeEle);
-                            break;
-                    }
-                }
+                case 1:
+                    badgeImg.Image = UIImage.FromBundle("NewbBadge");
+                    break;
+                case 2:
+                    badgeImg.Image = UIImage.FromBundle("Carnivore");
+                    break;
+                case 3:
+                    badgeImg.Image = UIImage.FromBundle("EggFace");
+                    break;
+                case 4:
+                    badgeImg.Image = UIImage.FromBundle("VeggieFace");
+                    break;
+                case 5:
+                    badgeImg.Image = UIImage.FromBundle("SweetTooth");
+                    break;
+                case 6:
+                    badgeImg.Image = UIImage.FromBundle("CookieMonster");
+                    break;
+                case 7:
+                    badgeImg.Image = UIImage.FromBundle("SmoothieQueen");
+                    break;
+                case 8:
+                    badgeImg.Image = UIImage.FromBundle("SmoothieKing");
+                    break;
+                case 9:
+                    badgeImg.Image = UIImage.FromBundle("BaconFace");
+                    break;
+                case 10:
+                    badgeImg.Image = UIImage.FromBundle("FishFace");
+                    break;
             }
+            badgeImg.Frame = new CGRect(20, 20, 60, 60);
+            badgeImg.Layer.BorderColor = UIColor.FromRGB(100, 100, 100).CGColor;
+            badgeImg.Layer.BorderWidth = 2;
+            badgeImg.Layer.CornerRadius = 5;
+            badgeImg.Layer.MasksToBounds = true;
+        }
 
-            void SetProfileBadge(UIImageView badgeImg)
+        void addEarnedBadges(BadgeCollectionSource badgeCollection)
+        {
+            // under the assumption that the # of titles and badges are the same.
+            for (int i = 0; i < App.currentAccount.badgesEarned.Count; i++)
             {
-                int index = App.currentAccount.badgeSelected.badgeId;
-                switch (index)
+                Badge badgeTemp;
+                badgeTemp = App.currentAccount.badgesEarned[i];
+                BadgeElement badgeEle = new BadgeElement(badgeTemp);
+                badgeCollection.Rows.Add(badgeEle);
+            }
+        }
+
+
+        //does not request async. still figuring it out
+        public async void getCreationData()
+        {
+            foreach (string created in App.currentAccount.recipesCreated)
+            {
+                var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/id?id={0}&token={1}", created, App.currentAccount.JWTToken));
+                request.ContentType = "application/JSON";
+                request.Method = "GET";
+
+
+                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                string aResponse = "";
+                using (StreamReader sr = new StreamReader(response.GetResponseStream()))
                 {
-                    case 1:
-                        badgeImg.Image = UIImage.FromBundle("NewbBadge");
-                        break;
-                    case 2:
-                        badgeImg.Image = UIImage.FromBundle("Carnivore");
-                        break;
-                    case 3:
-                        badgeImg.Image = UIImage.FromBundle("EggFace");
-                        break;
-                    case 4:
-                        badgeImg.Image = UIImage.FromBundle("VeggieFace");
-                        break;
-                    case 5:
-                        badgeImg.Image = UIImage.FromBundle("SweetTooth");
-                        break;
-                    case 6:
-                        badgeImg.Image = UIImage.FromBundle("CookieMonster");
-                        break;
-                    case 7:
-                        badgeImg.Image = UIImage.FromBundle("SmoothieQueen");
-                        break;
-                    case 8:
-                        badgeImg.Image = UIImage.FromBundle("SmoothieKing");
-                        break;
-                    case 9:
-                        badgeImg.Image = UIImage.FromBundle("BaconFace");
-                        break;
-                    case 10:
-                        badgeImg.Image = UIImage.FromBundle("FishFace");
-                        break;
+
+                    aResponse = sr.ReadToEnd();
+                    //storing token in CurrentAccount instance of type UserAccount
+
+                    // App.currentAccount.JWTToken = aResponse;
+
+                    //   App.currentAccount.JWTToken = aResponse;
+
+                    //  objectret = aResponse;
+                    // Item newitem= JsonConvert.DeserializeObject<Item>(json);
+                    Item newitem = JsonConvert.DeserializeObject<Item>(aResponse);
+                    ViewModel.Items.Add(newitem);
                 }
-                badgeImg.Frame = new CGRect(20, 20, 60, 60);
-                badgeImg.Layer.BorderColor = UIColor.FromRGB(100, 100, 100).CGColor;
-                badgeImg.Layer.BorderWidth = 2;
-                badgeImg.Layer.CornerRadius = 5;
-                badgeImg.Layer.MasksToBounds = true;
             }
         }
     }

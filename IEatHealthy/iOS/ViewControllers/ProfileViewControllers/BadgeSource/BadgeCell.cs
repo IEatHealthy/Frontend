@@ -6,6 +6,11 @@ namespace IEatHealthy.iOS
 {
     public class BadgeCell : UICollectionViewCell
     {
+        public static AppDelegate App
+        {
+            get { return (AppDelegate)UIApplication.SharedApplication.Delegate; }
+        }
+
         public static readonly NSString BadgeID = new NSString("BadgeCell");
 
         [Export("initWithFrame:")]
@@ -42,9 +47,52 @@ namespace IEatHealthy.iOS
 
         public void UpdateRow(BadgeElement element)
         {
-            LabelView.Text = element.Title;
-            ImageView.Image = element.Image;
-            Description.Text = element.Description;
+            int index = element.CurrentBadge.badgeId;
+            switch (index)
+            {
+                case 1:
+                    ImageView.Image = UIImage.FromBundle("NewbBadge");
+                    LabelView.Text = "The Newbie";
+                    break;
+                case 2:
+                    ImageView.Image = UIImage.FromBundle("MeatFace");
+                    LabelView.Text = "Carnivore";
+                    break;
+                case 3:
+                    ImageView.Image = UIImage.FromBundle("EggFace");
+                    LabelView.Text = "Egg Face";
+                    break;
+                case 4:
+                    ImageView.Image = UIImage.FromBundle("VeggieFace");
+                    LabelView.Text = "Mother Earth";
+                    break;
+                case 5:
+                    ImageView.Image = UIImage.FromBundle("SweetTooth");
+                    LabelView.Text = "Sweet Tooth";
+                    break;
+                case 6:
+                    ImageView.Image = UIImage.FromBundle("CookieMonster");
+                    LabelView.Text = "Cookie Monster";
+                    break;
+                case 7:
+                    ImageView.Image = UIImage.FromBundle("SmoothieQueen");
+                    LabelView.Text = "Smoothie Queen";
+                    break;
+                case 8:
+                    ImageView.Image = UIImage.FromBundle("SmoothieKing");
+                    LabelView.Text = "Smoothie King";
+                    break;
+                case 9:
+                    ImageView.Image = UIImage.FromBundle("BaconFace");
+                    LabelView.Text = "Keep Calm & Eat Bacon";
+                    break;
+                case 10:
+                    ImageView.Image = UIImage.FromBundle("FishFace");
+                    LabelView.Text = "The Fisherman";
+                    break;
+            }
+
+            Description.Text = element.CurrentBadge.description;
 
             ChangeProfile.Frame = new CGRect(305, 15, 50, 50);
             var normal = new NSAttributedString(
@@ -63,9 +111,17 @@ namespace IEatHealthy.iOS
             ChangeProfile.SetAttributedTitle(selected, UIControlState.Selected);
             ChangeProfile.BackgroundColor = UIColor.White;
             ChangeProfile.SizeToFit();
+
             ChangeProfile.TouchUpInside += (object sender, System.EventArgs e) =>
             {
-
+                if (App.currentAccount.badgeSelected.badgeId == element.CurrentBadge.badgeId)
+                {
+                    return;
+                }
+                else
+                {
+                    App.currentAccount.badgeSelected = element.CurrentBadge;
+                }
             };
 
             ImageView.Frame = new CGRect(10, 5, 50, 50);

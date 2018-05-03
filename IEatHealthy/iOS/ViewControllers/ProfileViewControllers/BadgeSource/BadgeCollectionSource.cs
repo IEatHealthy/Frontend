@@ -4,6 +4,7 @@ using UIKit;
 using System.Collections.Generic;
 
 
+
 namespace IEatHealthy.iOS
 {
     public class BadgeCollectionSource : UICollectionViewSource
@@ -32,15 +33,13 @@ namespace IEatHealthy.iOS
 
     public class BadgeElement
     {
-        public BadgeElement(UIImage image, string title, string description)
+        public BadgeElement(Badge badge) //,Title title)
         {
-            Image = image;
-            Title = title;
-            Description = description;
+            CurrentBadge = badge;
+            //CurrentTitle = title;
         }
 
-        public UIImage Image { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
+        public Badge CurrentBadge { get; set; }
+        //public Title CurrentTitle { get; set; }
     }
 }
