@@ -61,24 +61,27 @@ namespace IEatHealthy.iOS
             };
             RecipeTableView.ReloadData();
 
-            var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/recommended/test@ieathealthy.info?token={0}", App.currentAccount.JWTToken));
+            var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/recipe/recommended/{0}?token={1}",App.currentAccount.email, App.currentAccount.JWTToken));
 
             request.ContentType = "application/JSON";
-            request.Method = "GET";
-            HttpWebResponse response = request.GetResponse() as HttpWebResponse;
-            string aResponse = "";
-            using (StreamReader sr = new StreamReader(response.GetResponseStream()))
-            {
+          
 
-                aResponse = sr.ReadToEnd();
-                ingred = JsonConvert.DeserializeObject<List<Item>>(aResponse);
-                foreach (Item item in ingred)
+                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                string aResponse = "";
+                using (StreamReader sr = new StreamReader(response.GetResponseStream()))
                 {
-                    ViewModel.Items.Add(item);
-                    recommandedRecipes.Add(item);
-                }
 
-            }
+                    aResponse = sr.ReadToEnd();
+                    ingred = JsonConvert.DeserializeObject<List<Item>>(aResponse);
+                    foreach (Item item in ingred)
+                    {
+                        ViewModel.Items.Add(item);
+                        recommandedRecipes.Add(item);
+                    }
+
+                }
+            
+        
 
 
 
@@ -246,13 +249,16 @@ namespace IEatHealthy.iOS
             cell.TextLabel.Text = item.name;
             cell.DetailTextLabel.Text =  ab + "    "+ item.servings.ToString()+ " Servings  "+item.readyInTime.ToString()+" Min";
             cell.LayoutMargins = UIEdgeInsets.Zero;
+            if (item.foodImage!= null && item.foodImage.data != "")
+            {
                 var imageBytes = Convert.FromBase64String(item.foodImage.data);
                 var imagedata = NSData.FromArray(imageBytes);
                 var uiimage = UIImage.LoadFromData(imagedata);
-            if (uiimage != null)
-            {
-                var image = ResizeImage(uiimage, 45, 35);
-                cell.ImageView.Image = image;
+                if (uiimage != null)
+                {
+                    var image = ResizeImage(uiimage, 45, 35);
+                    cell.ImageView.Image = image;
+                }
             }
 
 

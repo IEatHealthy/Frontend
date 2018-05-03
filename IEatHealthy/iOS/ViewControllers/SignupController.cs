@@ -16,12 +16,21 @@ namespace IEatHealthy.iOS
         public string username { get; set; }
         public string password { get; set; }
         public int skillLevel { get; set; }
-
+        public bool signedup = false;
 
 
     };
+
     public partial class SignupController : UIViewController
     {
+        public static AppDelegate App
+        {
+            get { return (AppDelegate)UIApplication.SharedApplication.Delegate; }
+        }
+
+        public int skill = 1;
+        public bool created = true;
+        public bool nodata = false;
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -29,6 +38,7 @@ namespace IEatHealthy.iOS
             btn1.Layer.CornerRadius = 8;
             btn3.Layer.CornerRadius = 8;
             btn2.Layer.CornerRadius = 8;
+
         }
         public SignupController(IntPtr handle) : base(handle)
         {
@@ -44,6 +54,7 @@ namespace IEatHealthy.iOS
             btn1.BackgroundColor = UIColor.FromRGB(144, 197, 244);
             btn2.BackgroundColor = UIColor.White;
             btn3.BackgroundColor = UIColor.White;
+            skill = 1;
         }
 
         partial void Btn2_TouchUpInside(UIButton sender)
@@ -51,6 +62,7 @@ namespace IEatHealthy.iOS
             btn2.BackgroundColor = UIColor.FromRGB(144, 197, 244);
             btn1.BackgroundColor = UIColor.White;
             btn3.BackgroundColor = UIColor.White;
+            skill = 2;
         }
 
         partial void Btn3_TouchUpInside(UIButton sender)
@@ -58,54 +70,32 @@ namespace IEatHealthy.iOS
             btn3.BackgroundColor = UIColor.FromRGB(144, 197, 244);
             btn2.BackgroundColor = UIColor.White;
             btn1.BackgroundColor = UIColor.White;
+            skill = 3;
         }
 
-		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
-		{
-            if(segue.Identifier=="signupsegue"){
-                var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/user/{0}", UEmail.Text));
-
-                request.ContentType = "application/json";
-                request.Method = "POST";
-
-                using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+        public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+        {
+            if (segue.Identifier == "signupsegue")
+            {
+                created = true;
+                signup();
+                if (created == true)
                 {
-                    string json = JsonConvert.SerializeObject(new user
-                    {
-                        username = Uname.Text,
-                        email = UEmail.Text,
-                        password = UPword.Text,
-                        firstName = Fname.Text,
-                        lasrName = Lname.Text,
+                    getdata(App.currentAccount.JWTToken);
 
-                    });
-
-                    streamWriter.Write(json);
-                }
-                try
-                {
-                    var response = (HttpWebResponse)request.GetResponse();
-                    using (var streamReader = new StreamReader(response.GetResponseStream()))
+                    if (created == true && nodata == false)
                     {
-                        var result = streamReader.ReadToEnd();
+                        base.PrepareForSegue(segue, sender);
                     }
                 }
-
-                catch (System.Net.WebException)
-                {
-
-                    Uname.Layer.BorderWidth = (System.nfloat)0.99;
-                    Uname.Layer.BorderColor = UIColor.Red.CGColor;
-                   
-                }
-
             }
-            base.PrepareForSegue(segue, sender);
-		}
+          
+        }
+        
 		public async Task signup()
         {
             var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info/api/user/{0}", UEmail.Text));
-          
+           
             request.ContentType = "application/json";
             request.Method = "POST";
 
@@ -118,31 +108,34 @@ namespace IEatHealthy.iOS
                     password = UPword.Text,
                     firstName = Fname.Text,
                     lasrName = Lname.Text,
+                    skillLevel = skill,
 
                 });
 
                 streamWriter.Write(json);
             }
+
+
             try
             {
                 var response = (HttpWebResponse)request.GetResponse();
                 using (var streamReader = new StreamReader(response.GetResponseStream()))
                 {
                     var result = streamReader.ReadToEnd();
+                    App.currentAccount.JWTToken = result;
+
                 }
             }
-
-            catch (System.Net.WebException)
-            {
-
-                Uname.Layer.BorderWidth = 0.8f;
-                Uname.Layer.BorderColor = UIColor.Red.CGColor;
+            catch{
+                created = false;
             }
+            
+
+        
         }
-        /*
         public async void getdata(string myResponse)
         {
-            var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info//api/user/accountOwner/{0}?token={1}", UEmail.Text, myResponse));
+            var request = HttpWebRequest.Create(string.Format(@"http://ieathealthy.info//api/user/accountOwner/{0}?token={1}", UEmail.Text,myResponse));
             request.ContentType = "application/JSON";
             request.Method = "GET";
             try
@@ -153,18 +146,23 @@ namespace IEatHealthy.iOS
                 {
 
                     aResponse = sr.ReadToEnd();
-                    userdata = aResponse;
+                   
+                    App.currentAccount = JsonConvert.DeserializeObject<UserAccount>(aResponse);
+                    App.currentAccount.JWTToken = myResponse;
+                    nodata = false;
+                
+
                 }
             }
-            catch (System.Net.WebException)
+            catch (System.Net.WebException err)
             {
-
-                errMsg.Text = "couldnt retreve user data";
-                errMsg.BackgroundColor = UIColor.FromRGB(244, 217, 66);
-                datareceved = false;
+                nodata = true;
+                Uname.Text = err.ToString();
             }
         }
-*/
+
+
+
 
     }
 }
