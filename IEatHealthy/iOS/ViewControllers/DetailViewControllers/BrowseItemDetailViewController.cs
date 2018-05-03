@@ -127,16 +127,25 @@ namespace IEatHealthy.iOS
 
             scrollView.AddSubviews(str1, str2, str3, str4, str5);
 
-
-            ReviewButton.Frame = new CGRect(View.Frame.Width - 160, 90, 150, 20);
             getCommentCount();
-            ReviewButton.Font = UIFont.FromName("Helvetica", 15f);
-            string aa = reviewCount.ToString() + " reviews";
-            ReviewButton.SetTitle(aa, UIControlState.Normal);
-            ReviewButton.SetTitleColor(UIColor.FromRGB(66, 134, 244), UIControlState.Normal);
-            scrollView.AddSubview(ReviewButton);
 
-
+            if (reviewCount == 0)
+            {
+                string noReviews = reviewCount.ToString() + " reviews";
+                UILabel reviewstext = new UILabel(new CGRect(View.Frame.Width - 105, 90, 150, 20));
+                reviewstext.Text = noReviews;
+                ReviewButton.Font = UIFont.FromName("Helvetica", 13f);
+                scrollView.AddSubview(reviewstext);
+            }
+            else if (reviewCount > 0)
+            {
+                ReviewButton.Frame = new CGRect(View.Frame.Width - 140, 90, 150, 20);
+                ReviewButton.Font = UIFont.FromName("Helvetica", 15f);
+                string aa = reviewCount.ToString() + " reviews";
+                ReviewButton.SetTitle(aa, UIControlState.Normal);
+                ReviewButton.SetTitleColor(UIColor.FromRGB(66, 134, 244), UIControlState.Normal);
+                scrollView.AddSubview(ReviewButton);
+            }
 
             CommentButton.Frame = new CGRect(View.Frame.Width - 160, 110, 150, 20);
             CommentButton.Font = UIFont.FromName("Helvetica", 15f);

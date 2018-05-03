@@ -603,11 +603,106 @@ namespace IEatHealthy.iOS
         {
             NSData data = ImageView.Image.AsPNG();
             String img64 = data.GetBase64EncodedString(NSDataBase64EncodingOptions.None);
-
+            int parsedValue;
             if (PrepTimeText.Text == null) { PrepTimeText.Text = "0"; }
             if (CookTimeText.Text == null) { CookTimeText.Text = "0"; }
             if (ReadyInText.Text == null) { ReadyInText.Text = "0"; }
 
+            if (NameText.Text == "")
+            {
+                var NameAlert = UIAlertController.Create("Error!", "Cannot Leave Recipe Name Blank.", UIAlertControllerStyle.Alert);
+                NameAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, alert => Console.WriteLine("Okay was clicked")));
+                PresentViewController(NameAlert, true, null);
+                return;
+            }
+
+            if (DescriptionText.Text == "")
+            {
+                var DescriptionAlert = UIAlertController.Create("Error!", "Cannot Leave Description Blank.", UIAlertControllerStyle.Alert);
+                DescriptionAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, alert => Console.WriteLine("Okay was clicked")));
+                PresentViewController(DescriptionAlert, true, null);
+                return;
+            }
+
+            if (!Int32.TryParse(PrepTimeText.Text, out parsedValue))
+            {
+                var PrepTimeAlert = UIAlertController.Create("Error!", "Prep Time is not a number. Try Again.", UIAlertControllerStyle.Alert);
+                PrepTimeAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, alert => Console.WriteLine("Okay was clicked")));
+                PresentViewController(PrepTimeAlert, true, null);
+                return;
+            }
+
+            if (!Int32.TryParse(CookTimeText.Text, out parsedValue))
+            {
+                var CookTimeAlert = UIAlertController.Create("Error!", "Cook Time is not a number. Try Again.", UIAlertControllerStyle.Alert);
+                CookTimeAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, alert => Console.WriteLine("Okay was clicked")));
+                PresentViewController(CookTimeAlert, true, null);
+                return;
+            }
+
+            if (!Int32.TryParse(ReadyInText.Text, out parsedValue))
+            {
+                var ReadyInAlert = UIAlertController.Create("Error!", "Ready In is not a number. Try Again.", UIAlertControllerStyle.Alert);
+                ReadyInAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, alert => Console.WriteLine("Okay was clicked")));
+                PresentViewController(ReadyInAlert, true, null);
+                return;
+            }
+
+            if (!Int32.TryParse(ServingSizeText.Text, out parsedValue))
+            {
+                var ServingSizeAlert = UIAlertController.Create("Error!", "Serving Size is not a number. Try Again.", UIAlertControllerStyle.Alert);
+                ServingSizeAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, alert => Console.WriteLine("Okay was clicked")));
+                PresentViewController(ServingSizeAlert, true, null);
+                return;
+            }
+
+            foreach (Ingre i in ingredients)
+            {
+                IngredientItem temp = new IngredientItem();
+                if (!Int32.TryParse(i.Amount.Text, out parsedValue))
+                {
+                    var IngredientAmountAlert = UIAlertController.Create("Error!", "An Ingredient Amount is not a Number. Try Again.", UIAlertControllerStyle.Alert);
+                    IngredientAmountAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, alert => Console.WriteLine("Okay was clicked")));
+                    PresentViewController(IngredientAmountAlert, true, null);
+                    return;
+                }
+                if (i.Name.Text == "")
+                {
+                    var IngredientNameAlert = UIAlertController.Create("Error!", "Cannot Leave An Ingredient Name Blank.", UIAlertControllerStyle.Alert);
+                    IngredientNameAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, alert => Console.WriteLine("Okay was clicked")));
+                    PresentViewController(IngredientNameAlert, true, null);
+                    return;
+                }
+                if (i.Unit.Text == "")
+                {
+                    var IngredientUnitAlert = UIAlertController.Create("Error!", "Cannot Leave An Ingredient Unit Blank.", UIAlertControllerStyle.Alert);
+                    IngredientUnitAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, alert => Console.WriteLine("Okay was clicked")));
+                    PresentViewController(IngredientUnitAlert, true, null);
+                    return;
+                }
+            }
+
+            foreach (Tools i in SpecialTools)
+            {
+                if (i.Name.Text == "")
+                {
+                    var ToolsAlert = UIAlertController.Create("Error!", "Cannot Leave Tool Blank", UIAlertControllerStyle.Alert);
+                    ToolsAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, alert => Console.WriteLine("Okay was clicked")));
+                    PresentViewController(ToolsAlert, true, null);
+                    return;
+                }
+            }
+
+            foreach (Steps i in PreparationStepsList)
+            {
+                if (i.Step.Text == "")
+                {
+                    var StepsAlert = UIAlertController.Create("Error!", "Cannot Leave Steps Blank", UIAlertControllerStyle.Alert);
+                    StepsAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, alert => Console.WriteLine("Okay was clicked")));
+                    PresentViewController(StepsAlert, true, null);
+                    return;
+                }
+            }
 
             var item = new SubmitItem
             {
